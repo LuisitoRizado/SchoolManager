@@ -1,5 +1,14 @@
+import { useState } from "react";
 export const AgregarMateriaPage = () => {
   const [Id_Carrera, setId_Carrera] = useState();
+  const [ID_HORARIO, setId_Horario] = useState();
+  const [ID_AULA, setId_Aula] = useState();
+  const [MATERIA, setMateria] = useState();
+  const [CREDITOS, setCreditos] = useState();
+  const [CUPO, setCupo] = useState();
+  const [SEMESTRE, setSemestre] = useState();
+
+
   
   const onHandleCarrera = (e) => {
     setId_Carrera(e.target.value);
@@ -106,9 +115,9 @@ export const AgregarMateriaPage = () => {
         <input type="text" name="semestre" className="form-control" />
 
         <label htmlFor="docente" className="form-label">
-          Docente
+          Id Docente
         </label>
-        <input type="text" name="docente" className="form-control" />
+        <input type="text" name="idDocente" className="form-control" />
 
         <button className="btn btn-danger">Cancelar</button>
         <button className="btn btn-success m-4">Agregar!</button>
