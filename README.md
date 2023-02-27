@@ -16,3 +16,19 @@ Some of the users and passwords for alumns are:
 
 username: 3030 
 password: Erick123
+
+
+
+UI:
+LOGIN PAGE:
+![image](https://user-images.githubusercontent.com/96703907/221597516-72f10b4d-3686-4ff6-b55a-5c1b189a8600.png)
+
+ALUMN INTERFACE: 
+![image](https://user-images.githubusercontent.com/96703907/221597948-afa0a873-bb2e-462d-819d-89d3f19ca968.png)
+
+ADMIN INTERFACE: 
+
+![image](https://user-images.githubusercontent.com/96703907/221598125-b21284b3-de25-473c-ab13-ac323914495b.png)
+
+These interfaces look similar, but the accesses are very different, as i said, alumns can check groups, schedules, califications, etc...
+and admins can manage all about alumns, teachers 
