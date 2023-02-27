@@ -1,0 +1,21 @@
+.horario{
+    margin: 0 auto;
+
+}
+.dia{
+    background: rgb(160, 160, 160);
+    margin: .5rem;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+.materia{
+    padding: 0 !important;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid orange;
+    margin: .5rem;
+    border-radius: 5px;
+}

@@ -1,0 +1,30 @@
+.infoDiv{
+    
+}
+.profileDiv{
+    display: flex;
+    
+    
+}
+.profileDiv img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.profileDiv div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    text-align: left;
+}
+.datosGeneralesDiv{
+    border: 1px solid gray;
+    border-radius: 5px;
+    
+}
+.contenedorInfoEscolar{
+    border: 1px solid gray;
+    border-radius: 5px;
+}

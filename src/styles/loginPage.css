@@ -1,0 +1,36 @@
+/*Estilos del contendor principal*/
+.loginContainer{
+    min-height: 98vh;
+}
+
+/*Estilos del contenedor de imagenes*/
+.leftContainer{
+    background-image: url('https://i0.wp.com/atiempo.tv/wp-content/uploads/2020/05/tec-saltillo.jpg?fit=3072%2C2048&ssl=1');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/*Estilos del contendor derecho del formulario*/
+.rightContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #E74C3C  ;
+
+}
+
+.rightContainer img{
+    width: 200px;
+}
+input{
+    border-top: none;
+}
+
+/*---------------DISEÑO RESPONSIVE---------------*/
+@media (max-width: 720px) {
+    .leftContainer {
+      display: none;
+    }
+  }

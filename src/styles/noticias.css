@@ -1,0 +1,70 @@
+
+/*Generales*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/*Principal*/
+.noticiaPrincipal{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+   
+}
+.contenidoNoticiaPrincipal{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    
+    padding: 1.5rem;
+}
+
+.contenidoNoticiaPrincipal div p, .contenidoNoticiaPrincipal h1{
+    text-align: left;
+}
+.noticiaInicial{
+    
+}
+/*Noticias laterales*/
+.noticiasLateral{
+    background: rgb(4, 4, 39);
+    padding: 1.4rem;
+}
+.noticiasLateral h3{
+    color: white;
+}
+.noticiasLateral p{
+    color: gray;
+    border-bottom: 1px solid white;
+}
+/*Noticias de terceros*/
+.noticiasTerceros{
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+.noticiaChica{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.noticiaChica img{
+    width: 100px;
+    height:  120px;
+}
+.noticiaChica p, .noticiaChica h3{
+    margin-left: 10px;
+}
+@media (max-width:600px) {
+    .noticiasTerceros{
+        flex-direction: column;
+    }
+}
