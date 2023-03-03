@@ -26,6 +26,7 @@ export const SeleccionMateriasPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+       
         setMaterias(data);
       });
       
@@ -53,7 +54,10 @@ export const SeleccionMateriasPage = () => {
    
   
     carga = window.localStorage.getItem('materias')
+    //La ordenadmos
+     
     carga = JSON.parse(carga)
+    
     horarios = carga.map((materia)=>materia.HORA_FINAL_LUNES); 
 
   //console.log('aaa' + array[1])
@@ -117,14 +121,16 @@ export const SeleccionMateriasPage = () => {
   //Entonces debería de aparecer un mensaje en la pagina de que no te deje hacer horario
 
   const comprobarSiTieneCarga =  () =>{
+    
     let tieneMaterias ;
     fetch('http://localhost:3030/getCarga/'+ window.localStorage.getItem('user'))
     .then((response) => response.json())
     .then((data) => {
       console.log(data.length)
-      if(data.length>0){
+      //Si la longitud es mayor a 0, entonces siginifica que tiene al menos una materia
+      if(data.length>=1){
         window.localStorage.setItem('tieneMaterias', 'true')
-      }
+      }//Cso contrario, significa que NO tiene materias cargadas
       else{
         window.localStorage.setItem('tieneMaterias', 'false')
 
@@ -134,10 +140,12 @@ export const SeleccionMateriasPage = () => {
     //Tenemos que hacer una peticion con el número de control del alumno
     if(window.localStorage.getItem('tieneMaterias')==='true'){
       //Mostramos un mensaje que diga que ya está cargado su horario
-
+      window.localStorage.removeItem('tieneMaterias');
       return(<h1>Ya tienes un horario asignado para este periodo</h1>)
     }
     else{
+      window.localStorage.removeItem('tieneMaterias');
+      
       return(
         <>
         <div className="materiasSeleccionadas shadow border border-dark mt-5">

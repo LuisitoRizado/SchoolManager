@@ -11,7 +11,7 @@ export const AdministrarMaterias = () => {
   //Peticion fetch
 
   const fetchUser = async () => {
-    const URL = "http://localhost:3030/getGrupos/" + materia.toUpperCase().trim();
+    const URL = "http://localhost:3030/getGrupos/" + materia.trim();
     //Hacemos la peticion
     await fetch(URL)
       .then((res) => res.json())

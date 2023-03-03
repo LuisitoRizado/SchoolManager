@@ -19,6 +19,37 @@ export const EnCursoPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        //Ordenamos el horario por hora:
+        //Cortamos el primer número, en caso de ser dos los cortamos los y los convertirmos a number
+        let seEncontro = false;
+        let hora;
+        /* const arregloConNumerosCortados = data.map((materia)=>{
+          //Buscamos los : 
+          for(let i = 0 ; materia.HORA_INICIO_LUNES.length; i++){
+            //Buscamos el : 
+           if(materia.HORA_INICIO_LUNES.charAt(i)===':')
+           {
+            seEncontro = true;
+           }
+           if(seEncontro){
+            hora = materia.HORA_INICIO_LUNES.slice(0,i);
+            break;
+           }
+          
+          }
+        }) */
+        data.sort((o1,o2)=>{
+          
+          if(o1.HORA_INICIO_LUNES>o2.HORA_INICIO_LUNES){
+            return -1;
+          }
+          else if(o1.HORA_INICIO_LUNES<o2.HORA_INICIO_LUNES){
+            return 1;
+          }
+          else{
+            return 0;
+          }
+        })
         setCargas(data);
       });
   };

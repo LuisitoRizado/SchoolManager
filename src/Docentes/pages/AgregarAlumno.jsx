@@ -84,7 +84,7 @@ export const AgregarAlumno = () => {
             type="radio"
             id="gestion"
             name="fav_language"
-            value="gestion"
+            value="30"
             className="form-check-input"
             onChange={(event)=>onHandleCarrera(event)}
 
@@ -95,7 +95,7 @@ export const AgregarAlumno = () => {
             type="radio"
             id="industrial"
             name="fav_language"
-            value="industrial"
+            value="40"
             className="form-check-input"
             onChange={(event)=>onHandleCarrera(event)}
 
@@ -106,7 +106,7 @@ export const AgregarAlumno = () => {
             type="radio"
             id="mecatronica"
             name="fav_language"
-            value="mecatronica"
+            value="50"
             className="form-check-input"
             onChange={(event)=>onHandleCarrera(event)}
 
@@ -117,7 +117,7 @@ export const AgregarAlumno = () => {
             type="radio"
             id="electronica"
             name="fav_language"
-            value="electronica"
+            value="60"
             className="form-check-input"
             onChange={(event)=>onHandleCarrera(event)}
 
