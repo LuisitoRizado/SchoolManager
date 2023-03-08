@@ -12,6 +12,14 @@ import { DocentesPage } from '../../Docentes/pages/DocentesPage';
 import { AgregarDocentePage } from '../../Docentes/pages/AgregarDocentePage';
 import { AdministrarDocentePage } from '../../Docentes/pages/AdministrarDocentePage';
 import { AdministracionDocentePage } from '../../Docentes/pages/AdministracionDocentePage';
+import { AulasPage } from '../../Docentes/pages/AulasPage';
+import { AgregarAula } from '../../Docentes/pages/AgregarAula';
+import { AdministrarAulaPage } from '../../Docentes/pages/AdministrarAulaPage';
+import { ModificarAulaPage } from '../../Docentes/pages/ModificarAulaPage';
+import { HorariosPage } from '../../Docentes/pages/HorariosPage';
+import { AgregarHorarioPage } from '../../Docentes/pages/AgregarHorarioPage';
+import { AdministracionHorarioPage } from '../../Docentes/pages/AdministracionHorarioPage';
+import { ModificarHorarioPage } from '../../Docentes/pages/ModificarHorarioPage';
 export const DocenteRoutes = () => {
   return (
     <>
@@ -31,6 +39,22 @@ export const DocenteRoutes = () => {
                 <Route path="agregarDocente" element={<AgregarDocentePage />} />
                 <Route path="administrarDocente" element={<AdministrarDocentePage />} />
                 <Route path="modificarDocente" element={<AdministracionDocentePage />} />
+                <Route path="aulas" element={<AulasPage />} />
+                <Route path="agregarAula" element={<AgregarAula />} />
+                <Route path="administrarAula" element={<AdministrarAulaPage  />} />
+                <Route path="administracionAula" element={<ModificarAulaPage  />} />
+                <Route path="horarios" element={<HorariosPage  />} />
+                <Route path="agregarHorario" element={<AgregarHorarioPage  />} />
+                <Route path="administrarHorarios" element={<AdministracionHorarioPage  />} />
+                <Route path="modificarHorario" element={<ModificarHorarioPage  />} />
+
+
+
+
+
+
+
+
 
 
                 <Route path="/" element={<Navigate to="/inicio" />} />

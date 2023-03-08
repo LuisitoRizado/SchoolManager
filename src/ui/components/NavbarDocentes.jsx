@@ -48,6 +48,18 @@ export const NavbarDocentes = () => {
                     >
                         Docentes 
                     </NavLink>
+                    <NavLink 
+                        className={({isActive})=> `nav-item nav-link ${isActive ? 'active':''}`}
+                        to="aulas"
+                    >
+                        Aulas 
+                    </NavLink>
+                    <NavLink 
+                        className={({isActive})=> `nav-item nav-link ${isActive ? 'active':''}`}
+                        to="horarios"
+                    >
+                        Horarios 
+                    </NavLink>
                    
                 </div>
             </div>
