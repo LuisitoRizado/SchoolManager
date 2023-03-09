@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { validarCampos } from './validarCampos';
 
 export const AdministracionHorarioPage = () => {
     const [id_horario, setId_horario] = useState([]);
     const [horarios, setHorarios] = useState([]);
-  
+    let inputId;
     //---------HANDLERS
     const onHandleHorario = (e) => {
       setId_horario(e.target.value);
@@ -12,12 +13,15 @@ export const AdministracionHorarioPage = () => {
   
     //Metodo para realizar peticion
     const mostrarHorarios = () => {
+      if(validarCampos(inputId)){
+
       const url = "http://localhost:3030/getHorario/" + id_horario;
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
           setHorarios(data);
         });
+      }
     };
   
     const redirecionamientoPage = () =>{
@@ -46,9 +50,18 @@ export const AdministracionHorarioPage = () => {
         //De lo contrario no hacemos nada
         return;
       }
+    
   
     }
-  
+    
+    useEffect(() => {
+      inputId = document.querySelector('#id_horario');
+    }, [])
+    useEffect(() => {
+      inputId = document.querySelector('#id_horario');
+    }, [id_horario])
+    
+    
     return (
       <div>
         <h1>Administrar horarios</h1>
@@ -58,6 +71,7 @@ export const AdministracionHorarioPage = () => {
             type="text"
             placeholder="Buscar por id horario"
             className="form-control"
+            id='id_horario'
             onChange={(e) => onHandleHorario(e)}
           />
           <button

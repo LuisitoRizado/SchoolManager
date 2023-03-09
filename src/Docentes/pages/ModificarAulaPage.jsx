@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import { validarCampos } from "./validarCampos";
 export const ModificarAulaPage = () => {
   //Obtener query params de la url
   //Leemos el query params de la url
@@ -14,7 +15,7 @@ export const ModificarAulaPage = () => {
   const [nombre, setNombre] = useState();
   const [edificio, setEdificio] = useState();
   const [capacidad, setCapacidad] = useState();
-
+  let inputNombre, inputEdificio, inputCapacidad;
   //---HANDLERS
   const onHandleNombre = (e) => {
     setNombre(e.target.value);
@@ -44,6 +45,7 @@ export const ModificarAulaPage = () => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
 
+    if(validarCampos(inputNombre, inputEdificio, inputCapacidad)){
     fetch("http://localhost:3030/updateAula/" + id, {
       method: "PUT",
       headers: {
@@ -51,19 +53,30 @@ export const ModificarAulaPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ID_AULA: id,
-        NOMBRE: aula,
-        EDIFICIO: edificio,
-        CAPACIDAD: capacidad,
+        "ID_AULA": id,
+        "NOMBRE": aula,
+        "EDIFICIO": edificio,
+        "CAPACIDAD": capacidad,
       }),
     });
     window.location.reload();
+  }
   };
 
    //Para los datos
    useEffect(() => {
     obtenerAula();
+    inputNombre = document.querySelector('#aula')
+    inputEdificio = document.querySelector('#edificio')
+    inputCapacidad = document.querySelector('#capacidad')
     }, [])
+
+    useEffect(() => {
+      inputNombre = document.querySelector('#aula')
+      inputEdificio = document.querySelector('#edificio')
+      inputCapacidad = document.querySelector('#capacidad')
+      }, [aula, edificio, capacidad])
+
     
 
   return (
@@ -94,12 +107,11 @@ export const ModificarAulaPage = () => {
             </label>
             <input
               type="text"
-              name="materia"
-              id="materia"
+              name="aula"
+              id="aula"
               className="form-control"
               defaultValue={aul.Nombre}
               onChange={(e) => onHandleNombre(e)}
-              placeholder={aul.Nombre}
             />
             {/*Profesor que imparte la materia */}
             <label htmlFor="" className="form-label">
@@ -112,7 +124,6 @@ export const ModificarAulaPage = () => {
               className="form-control"
               defaultValue={aul.Edificio}
               onChange={(e) => onHandleEdificio(e)}
-              placeholder={aul.Edificio}
             />
             {/*Hora de la materia */}
             <label htmlFor="" className="form-label">
@@ -125,7 +136,6 @@ export const ModificarAulaPage = () => {
               className="form-control"
               defaultValue={aul.Capacidad}
               
-              placeholder={aul.Capacidad}
               onChange={(e) => onHandleCapacidad(e)}
             />
             {/*Aula donde se imparte la materia */}

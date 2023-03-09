@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { validarCampos } from "./validarCampos";
 export const AdministracionDocentePage = () => {
 
     //Obtener query params de la url
@@ -15,7 +16,10 @@ export const AdministracionDocentePage = () => {
     const [nombre, setNombre] = useState([])
     const [AP_PATERNO, setAP_PATERNO] = useState([])
     const [AP_MATERNO, setAP_MATERNO] = useState([])
-
+    let inputId;
+    let inputNombre;
+    let inputAPaterno;
+    let inputAMaterno;
 
     //LEER DATOS DEL INPUT
     const onHandleNombre = (e) =>{
@@ -41,23 +45,38 @@ export const AdministracionDocentePage = () => {
     const guardarDatos = (id_docente, name, ap_pat, ap_mat) =>{
         //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
         //Todo esto es lo introducido en los campos de texto del formulario
+      if(validarCampos(inputNombre,inputAPaterno,inputAMaterno)){
 
-    fetch('http://localhost:3030/updateDocente/'+id, {method:'PUT', headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        "ID_DOCENTE":id,
-        "NOMBRE":name,
-        "AP_PATERNO": ap_pat,
-        "AP_MATERNO": ap_mat
-    })})
-    window.location.reload();
+        fetch('http://localhost:3030/updateDocente/'+id, {method:'PUT', headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "ID_DOCENTE":id,
+            "NOMBRE":name,
+            "AP_PATERNO": ap_pat,
+            "AP_MATERNO": ap_mat
+        })})
+        window.location.reload();
+      }
     }
     //Para los datos
     useEffect(() => {
     obtenerDocente();
+    //obtenemos los inputs al cargar
+
+    inputNombre = document.querySelector('#nombre');
+    inputAPaterno = document.querySelector('#ap_paterno');
+    inputAMaterno = document.querySelector('#ap_materno');
     }, [])
+    useEffect(() => {
+      //obtenemos los inputs al cargar
+  
+      inputNombre = document.querySelector('#nombre');
+      inputAPaterno = document.querySelector('#ap_paterno');
+      inputAMaterno = document.querySelector('#ap_materno');
+      }, [nombre, AP_PATERNO, AP_MATERNO])
+   
     
 
   return (
@@ -90,11 +109,10 @@ export const AdministracionDocentePage = () => {
             <input
               type="text"
               name="materia"
-              id="materia"
+              id="nombre"
               className="form-control"
               defaultValue = {doc.Nombre}
               onChange= {(e)=>onHandleNombre(e)}
-              placeholder={doc.Nombre}
             />
             {/*Profesor que imparte la materia */}
             <label htmlFor="" className="form-label">
@@ -103,15 +121,11 @@ export const AdministracionDocentePage = () => {
             <input
               type="text"
               name="profesor"
-              id="profesor"
+              id="ap_paterno"
               className="form-control"
               defaultValue = {doc.AP_PATERNO}
               onChange= {(e)=>onHandleAp_Paterno(e)}
 
-              placeholder={
-               doc.AP_PATERNO
-              }
-             
             />
             {/*Hora de la materia */}
             <label htmlFor="" className="form-label">
@@ -120,11 +134,11 @@ export const AdministracionDocentePage = () => {
             <input
               type="text"
               name="hora"
-              id="hora"
+              id="ap_materno"
               className="form-control"
               defaultValue = {doc.AP_MATERNO}
 
-              placeholder={doc.AP_MATERNO}
+              
 
               onChange= {(e)=>onHandleAp_Materno(e)}
               

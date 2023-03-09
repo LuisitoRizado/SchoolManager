@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { json } from 'react-router-dom'
+import { validarCampos } from './validarCampos'
 export const AgregarAula = () => {
 
     //HOOKS
@@ -8,7 +9,10 @@ export const AgregarAula = () => {
     const [nombreAula, setNombreAula] = useState()
     const [edificio, setEdificio] = useState()
     const [capacidad, setCapacidad] = useState()
-
+    let inputId;
+    let inputAula;
+    let inputEdificio;
+    let inputCapacidad;
     //handlers
     const onHandleId = (e)=>{
         setId_aula(e.target.value);
@@ -26,6 +30,7 @@ export const AgregarAula = () => {
     //Functions
     const addAula = () =>{
         //Damos fetcha  nuestra api
+        if(validarCampos(inputAula, inputId, inputEdificio, inputCapacidad)){
         const url = 'http://localhost:3030/addAula';
         fetch(url, {
             method: "POST",
@@ -43,7 +48,23 @@ export const AgregarAula = () => {
           //Recargamos la pagina
           window.prompt("Aula agregada con exito")
           window.location.reload();
+        }
     }
+
+    useEffect(() => {
+    inputId = document.querySelector('#id_aula')
+    inputAula = document.querySelector('#aula')
+    inputEdificio = document.querySelector('#edificio')
+    inputCapacidad = document.querySelector('#capacidad')
+    }, [])
+    useEffect(() => {
+      inputId = document.querySelector('#id_aula')
+      inputAula = document.querySelector('#aula')
+      inputEdificio = document.querySelector('#edificio')
+      inputCapacidad = document.querySelector('#capacidad')
+    }, [id_aula, nombreAula, edificio, capacidad])
+    
+    
   return (
     <div>
     <h1>Agregar Aula </h1>
@@ -55,6 +76,7 @@ export const AgregarAula = () => {
       <input
         type="number"
         name="id_aula"
+        id='id_aula'
         className="form-control"
         onChange={(event) => onHandleId(event)}
       />
@@ -66,6 +88,7 @@ export const AgregarAula = () => {
       <input
         type="text"
         name="aula"
+        id='aula'
         className="form-control"
         onChange={(event) => onHandleAula(event)}
       />
@@ -76,6 +99,7 @@ export const AgregarAula = () => {
       <input
         type="text"
         name="edificio"
+        id='edificio'
         className="form-control"
         onChange={(event) => onHandleEdificio(event)}
       />
@@ -86,6 +110,7 @@ export const AgregarAula = () => {
       <input
         type="number"
         name="capacidad"
+        id='capacidad'
         className="form-control"
         onChange={(event) => onHandleCupo(event)}
       />

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { validarCampos } from "./validarCampos";
 export const AdministrarDocentePage = () => {
   const [id_docente, setId_docente] = useState([]);
   const [docentes, setDocentes] = useState([]);
-
+  let inputId;
   //---------HANDLERS
   const onHandleDocente = (e) => {
     setId_docente(e.target.value);
@@ -10,12 +11,15 @@ export const AdministrarDocentePage = () => {
 
   //Metodo para realizar peticion
   const mostrarDocentes = () => {
+    if(validarCampos(inputId)){
     const url = "http://localhost:3030/getDocente/" + id_docente;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setDocentes(data);
       });
+    }
+
   };
 
   const redirecionamientoPage = () =>{
@@ -46,6 +50,12 @@ export const AdministrarDocentePage = () => {
     }
 
   }
+  useEffect(() => {
+   inputId = document.querySelector('#id_docente')
+  }, [])
+  useEffect(() => {
+    inputId = document.querySelector('#id_docente')
+   }, [id_docente])
 
   return (
     <div>
@@ -56,6 +66,7 @@ export const AdministrarDocentePage = () => {
           type="text"
           placeholder="Buscar por id docente"
           className="form-control "
+          id="id_docente"
           onChange={(e) => onHandleDocente(e)}
         />
         <button

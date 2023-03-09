@@ -13,7 +13,7 @@ export const ModificarMateriaPage = () => {
   const [profesor, setProfesor] = useState();
   const [hora, setHora] = useState();
   const [aula, setAula] = useState();
-
+  let inputProfesor, inputHora, inputAula;
   //FUNCIONES PARA LA FUNCIONALIDAD DE LA PAGINA ESTAS PUEDEN SER IMPORTADAS O NO
   const fetchUser = async () => {
     const URL = "http://localhost:3030/getMateria/" + id;
@@ -48,7 +48,17 @@ export const ModificarMateriaPage = () => {
   //use Effect
   useEffect(() => {
     fetchUser();
+    inputProfesor = document.querySelector('#profesor')
+    inputHora = document.querySelector('#hora')
+    inputAula = document.querySelector('#aula')
   }, []);
+
+  useEffect(() => {
+    inputProfesor = document.querySelector('#profesor')
+    inputHora = document.querySelector('#hora')
+    inputAula = document.querySelector('#aula')
+  }, [profesor, hora,aula]);
+  
 
   return (
     <div>

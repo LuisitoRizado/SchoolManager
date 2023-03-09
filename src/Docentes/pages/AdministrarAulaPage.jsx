@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { validarCampos } from './validarCampos'
 export const AdministrarAulaPage = () => {
 
     //----------HOOKS
     const [aulas, setAulas] = useState([])
     const [id_aula, setId_aula] = useState()
-
+    let inputId;
     //---------HANDLERS
     const onHandleIdAula = (e) =>{
         //Capturamos el id que ingrese el usuario
@@ -14,10 +15,13 @@ export const AdministrarAulaPage = () => {
 
     //-----FUNCTIONS
     const searchAula = () =>{
+      
+      if(validarCampos(inputId)){
         const url = 'http://localhost:3030/getAula/' + id_aula;
         fetch(url)
         .then(res => res.json())
         .then(data => setAulas(data))
+      }
     }
 
     const eliminarAula = (id) =>{
@@ -48,15 +52,22 @@ export const AdministrarAulaPage = () => {
       const redirecionamientoPage = (id) =>{
         window.location.href = "administracionAula/?id="+id;
   }
+  useEffect(() => {
+    inputId = document.querySelector('#id_aula')
+   }, [])
+   useEffect(() => {
+     inputId = document.querySelector('#id_aula')
+    }, [id_aula])
   return (
     <div>
-    <h1>Administrar docentes</h1>
+    <h1>Administrar Aulas</h1>
     <hr />
     <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
       <input
         type="number"
         placeholder="Buscar por id aula"
         className="form-control"
+        id='id_aula'
         onChange={(e) => onHandleIdAula(e)}
       />
       <button

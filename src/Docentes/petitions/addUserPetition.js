@@ -1,9 +1,12 @@
 
 //Exportamos la funcion para hacer la peticion
 //Recibe al alumno, que inicialmnete es un objeto vacio
-export const addUserPetition = (ncontrol,id_carrera, nombre, ap_paterno, ap_materno, semestre,periodo,creditos,especialidad, contrasena) =>{
+import { validarCampos } from "../pages/validarCampos";
+export const addUserPetition = (ncontrol,id_carrera, nombre, ap_paterno, ap_materno, semestre,periodo,creditos,especialidad, contrasena, ...inputs) =>{
     //Construimos la url para agregar datos
     const url = 'http://localhost:3030/addAlumno'
+    if(validarCampos(...inputs)){
+
     fetch(url, {method:"POST", headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -23,4 +26,9 @@ export const addUserPetition = (ncontrol,id_carrera, nombre, ap_paterno, ap_mate
     .then((data)=>console.log('Alumno agregado: ' + data));
 
     window.location.reload();
+}
+
+else{
+    confirm('asdf')
+}
 }

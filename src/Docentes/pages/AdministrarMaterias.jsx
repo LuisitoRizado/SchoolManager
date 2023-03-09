@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { validarCampos } from "./validarCampos";
 export const AdministrarMaterias = () => {
   //Hooks
   const [materia, setMateria] = useState([]);
   const [materias, setMaterias] = useState([]);
+  let inputNombre;
   //Obtener el valor que el usuario teclea.
   const onHandleNControl = (e) => {
     setMateria(e.target.value);
@@ -11,8 +13,10 @@ export const AdministrarMaterias = () => {
   //Peticion fetch
 
   const fetchUser = async () => {
-    const URL = "http://localhost:3030/getGrupos/" + materia.trim();
     //Hacemos la peticion
+    if(validarCampos(inputNombre)){
+    const URL = "http://localhost:3030/getGrupos/" + materia.trim();
+
     await fetch(URL)
       .then((res) => res.json())
       .then((data) => {
@@ -21,6 +25,7 @@ export const AdministrarMaterias = () => {
         setMaterias(data);
       })
       .catch((err) => console.log(err));
+    }
   };
 
   //Funcion para redireccionar
@@ -31,12 +36,21 @@ export const AdministrarMaterias = () => {
   const mostrarMaterias = () => {
     fetchUser();
   };
+  useEffect(() => {
+    inputNombre = document.querySelector('#nombre')
+    console.log(inputNombre)
+  }, [])
+  
+  useEffect(() => {
+    inputNombre = document.querySelector('#nombre')
+  }, [materia])
   return (
     <div className="mt-4">
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
-          placeholder="Buscar por nombre de materia"
+          id="nombre"
+          name="nombre"
           className="form-control"
           onChange={(e) => onHandleNControl(e)}
         />

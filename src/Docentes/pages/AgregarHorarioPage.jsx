@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { validarCampos } from './validarCampos'
 export const AgregarHorarioPage = () => {
     //-------------HOOKS
     const [id_horario, setId_horario] = useState()
     const [hora_inicio, setHora_inicio] = useState()
     const [hora_fin, setHora_fin] = useState()
-
+    let inputHorario, inputInicio, inputFin;
 
     //---------------HANDLERS
     const onHandleId = (e) =>{
@@ -18,10 +19,13 @@ export const AgregarHorarioPage = () => {
         setHora_fin(e.target.value);
     }
 
+    
     //---------------FUNCTIONS
     const addHorario = () =>{
         //En esta funcion vamos a aagregar al horario que se seleciones
+
         const url = 'http://localhost:3030/addHorario';
+        if(validarCampos(inputInicio, inputHorario, inputFin)){
         fetch(url, {
             method: "POST",
             headers: {
@@ -35,11 +39,22 @@ export const AgregarHorarioPage = () => {
             }),
           })
           //Recargamos la pagina
-          window.prompt("Aula agregada con exito")
+          window.confirm("Horario agregada con exito")
           window.location.reload();
+        }
         
     }
-
+    useEffect(() => {
+      inputHorario = document.querySelector('#id_horario')
+      inputInicio = document.querySelector('#horaInicio')
+      inputFin = document.querySelector('#horaFin')
+    }, [])
+    
+    useEffect(() => {
+      inputHorario = document.querySelector('#id_horario')
+      inputInicio = document.querySelector('#horaInicio')
+      inputFin = document.querySelector('#horaFin')
+    }, [id_horario, hora_inicio, hora_fin])
   return (
     <div>
     <h1>Agregar Horario </h1>
@@ -50,7 +65,8 @@ export const AgregarHorarioPage = () => {
       </label>
       <input
         type="number"
-        name="id_aula"
+        name="id_horario"
+        id='id_horario'
         className="form-control"
         onChange={(event) => onHandleId(event)}
       />
@@ -62,6 +78,7 @@ export const AgregarHorarioPage = () => {
       <input
         type="text"
         name="horaInicio"
+        id='horaInicio'
         className="form-control"
         onChange={(event) => onHandleHora_Inicio(event)}
       />
@@ -72,6 +89,7 @@ export const AgregarHorarioPage = () => {
       <input
         type="text"
         name="horaFin"
+        id='horaFin'
         className="form-control"
         onChange={(event) => onHandleHora_Fin(event)}
       />
