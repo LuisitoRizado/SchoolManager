@@ -2,17 +2,19 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { json } from 'react-router-dom'
 import { validarCampos } from './validarCampos'
+let inputId;
+    let inputAula;
+    let inputEdificio;
+    let inputCapacidad;
 export const AgregarAula = () => {
 
     //HOOKS
+    const [aulas, setAulas] = useState([])
     const [id_aula, setId_aula] = useState()
     const [nombreAula, setNombreAula] = useState()
     const [edificio, setEdificio] = useState()
     const [capacidad, setCapacidad] = useState()
-    let inputId;
-    let inputAula;
-    let inputEdificio;
-    let inputCapacidad;
+    
     //handlers
     const onHandleId = (e)=>{
         setId_aula(e.target.value);
@@ -56,6 +58,10 @@ export const AgregarAula = () => {
     inputAula = document.querySelector('#aula')
     inputEdificio = document.querySelector('#edificio')
     inputCapacidad = document.querySelector('#capacidad')
+    //al cargar el aula, vamos a motrar las materias que existen
+      fetch('http://localhost:3030/getAllAulas')
+      .then(res => res.json())
+      .then(data => setAulas(data))
     }, [])
     useEffect(() => {
       inputId = document.querySelector('#id_aula')
@@ -64,7 +70,117 @@ export const AgregarAula = () => {
       inputCapacidad = document.querySelector('#capacidad')
     }, [id_aula, nombreAula, edificio, capacidad])
     
-    
+    const comprobarSiExiste = () => {
+      //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
+  
+      //Creamos la url
+      const url = "http://localhost:3030/getAula/" + id_aula;
+  
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          //Actualizamos los datos en los inputs
+          inputAula.value = data[0].Nombre;
+          inputEdificio.value = data[0].Edificio;
+          inputCapacidad.value = data[0].Capacidad;
+        });
+    };
+    //----------------------------------------------------------logica de modificacion
+    const habilitarModificacion = (index) => {
+      //deshabilitamos el boton modificar
+      const modificarButton = document.querySelectorAll(".modificarButton");
+      modificarButton.forEach((btn) => {
+        btn.classList.add("disabled");
+      });
+  
+      //vamos a buscar todos los elementos con la classe fila-index
+      const inputs = document.querySelectorAll(".fila-" + index);
+      const mod = document.querySelector(".btn-" + index);
+      const id = document.querySelector(".id-" + index).value;
+      console.log(id);
+      console.log(inputs);
+      const okButton = document.createElement("button");
+      const noButton = document.createElement("button");
+      okButton.classList.add("btn", "btn-success", "m-2");
+      okButton.innerText = "OK";
+      noButton.classList.add("btn", "btn-danger", "m-2");
+      noButton.innerText = "X";
+  
+      //obtener valores iniciales
+      const valoresIniciales = [];
+      valoresIniciales.push(inputs[0].value);
+      valoresIniciales.push(inputs[1].value);
+      valoresIniciales.push(inputs[2].value);
+      for (let i = 0; i < 3; i++) {
+        console.log(valoresIniciales[i]);
+      }
+  
+      //Agregamos el button
+      mod.appendChild(okButton);
+      mod.appendChild(noButton);
+  
+      //Habiliatamos los campos
+      inputs.forEach((input) => {
+        input.disabled = false;
+      });
+  
+      //Evento de cancelacion
+      noButton.addEventListener("click", () => {
+        modificarButton.disabled = false;
+  
+        //Aquí vamos a cancelar todo, es decir solo eliminamos los dos botones
+        modificarButton.forEach((btn) => {
+          btn.classList.replace("disabled", "enable");
+        });
+        //primero deshabilitamo los inputs
+        console.log(inputs[0].value);
+        console.log(valoresIniciales[0]);
+        inputs[0].value = valoresIniciales[0];
+        inputs[1].value = valoresIniciales[1];
+        inputs[2].value = valoresIniciales[2];
+        inputs.forEach((input, index) => {
+          input.disabled = true;
+          //a la vez, regresamos su valores iniciales
+  
+          //por ultimo, eliminamos los botones
+          noButton.remove();
+          okButton.remove();
+        });
+      });
+      //detectamos el evento del button ok
+      okButton.addEventListener("click", () => {
+        modificarButton.forEach((btn) => {
+          btn.classList.replace("disabled", "enable");
+        });
+  
+        console.log("me diste click");
+        console.log(inputs[0]);
+        //guardamos los datos de los inputs
+        const aula = inputs[0].value;
+        const edificio = inputs[1].value;
+        const capacidad = inputs[2].value;
+        //recopilamos los inputs
+        const inputName = inputs[0];
+        const inputAPaterno = inputs[1];
+        const inputAMaterno = inputs[2];
+  
+        //hacemos la peticion
+  
+        fetch("http://localhost:3030/updateAula/" + id, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "NOMBRE": aula,
+            "EDIFICIO": edificio,
+            "CAPACIDAD": capacidad
+          }),
+        });
+        window.location.reload();
+      });
+    };
   return (
     <div>
     <h1>Agregar Aula </h1>
@@ -77,6 +193,7 @@ export const AgregarAula = () => {
         type="number"
         name="id_aula"
         id='id_aula'
+        onBlur={()=>comprobarSiExiste()}
         className="form-control"
         onChange={(event) => onHandleId(event)}
       />
@@ -88,7 +205,7 @@ export const AgregarAula = () => {
       <input
         type="text"
         name="aula"
-        id='aula'
+        id='id_aula'
         className="form-control"
         onChange={(event) => onHandleAula(event)}
       />
@@ -126,6 +243,58 @@ export const AgregarAula = () => {
         Agregar!
       </button>
     </form>
+    <table className="table  table-bordered">
+      <thead className="bg-body-secondary">
+        <tr className="bg-body-dark">
+          <th scope="col">Id aula</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Edificio </th>
+          <th scope="col">Capacidad</th>
+          <th>Modificar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {aulas.length >= 1 ? (
+          aulas.map((aula, index) => (
+            <tr key={aula}>
+              <td><input
+                    className={`id-${index} form-control`}
+                    defaultValue={aula.Id_Aula}
+                    disabled
+                  /> </td>
+              <td><input
+                    className={`fila-${index} form-control`}
+                    defaultValue={aula.Nombre}
+                    disabled
+                  /></td>
+              <td><input
+                    className={`fila-${index} form-control`}
+                    defaultValue={aula.Edificio}
+                    disabled
+                  /></td>
+              <td><input
+                    className={`fila-${index} form-control`}
+                    defaultValue={aula.Capacidad}
+                    disabled
+                  /></td>
+              <td className={`btn-${index} form-control`}>
+                <a   onClick={()=> habilitarModificacion(index)} className="btn btn-warning modificarButton">
+                  Modificar
+                </a>
+              </td>
+              <td>
+                <a href="" className="btn btn-danger" onClick={()=>eliminarAula(aula.Id_Aula)}>
+                  Eliminar
+                </a>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <h1>No existe esa aula</h1>
+        )}
+      </tbody>
+    </table>
   </div>
   )
 }

@@ -20,6 +20,7 @@ import { HorariosPage } from '../../Docentes/pages/HorariosPage';
 import { AgregarHorarioPage } from '../../Docentes/pages/AgregarHorarioPage';
 import { AdministracionHorarioPage } from '../../Docentes/pages/AdministracionHorarioPage';
 import { ModificarHorarioPage } from '../../Docentes/pages/ModificarHorarioPage';
+import { AgregarDocenteMateria } from '../../Docentes/pages/AgregarDocenteMateria';
 export const DocenteRoutes = () => {
   return (
     <>
@@ -47,6 +48,8 @@ export const DocenteRoutes = () => {
                 <Route path="agregarHorario" element={<AgregarHorarioPage  />} />
                 <Route path="administrarHorarios" element={<AdministracionHorarioPage  />} />
                 <Route path="modificarHorario" element={<ModificarHorarioPage  />} />
+                <Route path="agregarDocenteMateria" element={<AgregarDocenteMateria  />} />
+
 
 
 

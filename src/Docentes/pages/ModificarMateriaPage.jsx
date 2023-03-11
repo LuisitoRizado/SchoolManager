@@ -43,6 +43,7 @@ export const ModificarMateriaPage = () => {
     //Vamos a actualizar la materia con los datos que se cambiaron
     setMateria(...materia, profesor,hora,aula)
     console.log('NUEVA MATERIA: ' + materia);
+    
   };
 
   //use Effect
