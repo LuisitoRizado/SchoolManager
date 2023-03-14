@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
+import '../../styles/tablas.css'
 let inputId, inputIdDocente, inputIdMateria;
+let estaSeleccionado = true;
+let materiasSeleccionadas = []
+
 export const AgregarDocenteMateria = () => {
   //--HOOKS
   const [id, setId] = useState();
@@ -7,6 +11,13 @@ export const AgregarDocenteMateria = () => {
   const [id_materia, setId_materia] = useState();
   const [materias, setMaterias] = useState([]);
 
+  const [docentes, setDocentes] = useState([]);
+  const [aulas, setAulas] = useState([])
+  const [carreras, setCarreras] = useState([])
+  const [materiasCargadas, setMateriasCargadas] = useState([]);
+ 
+  const [docenteSeleccionado, setDocenteSeleccionado] = useState();
+  const [horarios, setHorarios] = useState([])
   //-----Handlers
   const onHandleId = (e) => {
     setId(e.target.value);
@@ -30,7 +41,7 @@ export const AgregarDocenteMateria = () => {
       .then((data) => {
         //Actualizamos los datos en los inputs
 
-        console.log(data)
+        console.log(data);
         inputIdDocente.value = data[0].ID_DOCENTE;
         inputIdMateria.value = data[0].ID_MATERIA;
       });
@@ -42,17 +53,43 @@ export const AgregarDocenteMateria = () => {
     inputId = document.querySelector("#id");
     inputIdDocente = document.querySelector("#id_docente");
     inputIdMateria = document.querySelector("#id_materia");
-    const url = "http://localhost:3030/getAllMats";
-    fetch(url)
+    const url1 = "http://localhost:3030/getAllMats";
+    fetch(url1)
       .then((res) => res.json())
       .then((data) => {
-        setMaterias(data)
-        console.log(data)
-    }
-        );
+        setMateriasCargadas(data);
+        console.log(data);
+      });
+    //obtener todos los docentes
+    fetch("http://localhost:3030/getAllDocentes")
+      .then((res) => res.json())
+      .then((data) => setDocentes(data));
+
+      const url3 = "http://localhost:3030/getAllMaterias";
+    fetch(url3)
+      .then((res) => res.json())
+      .then((data) => setMaterias(data));
+      
+    const url2 = 'http://localhost:3030/getAllHorarios'
+    fetch(url2)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      setHorarios(data)
+    })
+    //pedir todas las maulas
+    fetch('http://localhost:3030/getAllAulas')
+    .then(res=>res.json())
+    .then(data=>setAulas(data))
+
+    //traer todas las carreas
+    fetch('http://localhost:3030/getAllCarreras')
+    .then(res=>res.json())
+    .then(data=>setCarreras(data))
+
   }, []);
-//----HABILITAMOS LA EDICION DE LOS DATOS EN LOS INPUTS
-const habilitarModificacion = (index) => {
+  //----HABILITAMOS LA EDICION DE LOS DATOS EN LOS INPUTS
+  const habilitarModificacion = (index) => {
     //deshabilitamos el boton modificar
     const modificarButton = document.querySelectorAll(".modificarButton");
     modificarButton.forEach((btn) => {
@@ -81,7 +118,6 @@ const habilitarModificacion = (index) => {
     valoresIniciales.push(inputs[4].value);
     valoresIniciales.push(inputs[5].value);
     valoresIniciales.push(inputs[6].value);
-
 
     for (let i = 0; i < 7; i++) {
       console.log(valoresIniciales[i]);
@@ -150,19 +186,156 @@ const habilitarModificacion = (index) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          "NOMBRE": aula,
-          "EDIFICIO": edificio,
-          "CAPACIDAD": capacidad
+          NOMBRE: aula,
+          EDIFICIO: edificio,
+          CAPACIDAD: capacidad,
         }),
       });
       window.location.reload();
     });
   };
+
+  //---------------------------FUNCIONALIDAD DE RELACIONES
+  const seleccionarMateria = (fila) =>{
+    fila.style.backgroundColor = "yellow";
+  }
+  const seleccionarDocente = (checkbox, row) => {
+  
+    // Modificar el estilo de la fila
+    row.style.backgroundColor = "gray";
+  
+    // Deshabilitar todos los otros checkboxes
+    const checkboxes = document.querySelectorAll('.check-docente');
+    checkboxes.forEach((box, index) => {
+      if (box !== checkbox) {
+        box.disabled = true;
+      }
+    });
+    //Vamos a habilitar todas las checkbox de la materia
+    const materiasCheckboxes = document.querySelectorAll('.check-materia');
+    materiasCheckboxes.forEach((box, index) => {
+      //habilitamos todas las checkbox de materias
+      box.disabled = false;
+    });
+    setDocenteSeleccionado(parseInt(row.children[0].textContent))
+    // Manejar evento change del checkbox
+    checkbox.addEventListener('change', () => {
+      // Si el checkbox ha sido deseleccionado
+      if (!checkbox.checked) {
+        // Habilitar todos los otros checkboxes
+        checkboxes.forEach((box, index) => {
+          if (box !== checkbox) {
+            box.disabled = false;
+          }
+        });
+        // Restablecer el estilo de la fila
+        row.style.backgroundColor = "white";
+        estaSeleccionado = false;
+        materiasCheckboxes.forEach((box, index) => {
+          //habilitamos todas las checkbox de materias
+          box.disabled = true;
+          //limpiamos las cajas
+          box.checked = false;
+        });
+      } else {
+        estaSeleccionado = true;
+      }
+      console.log("¿Seleccionado?: " + estaSeleccionado);
+      return estaSeleccionado;
+    });
+  };
+  
+  //------------funcion para seleccionar las materias
+  const seleccionarMaterias = (checkbox, fila) =>{
+    
+    //habilitamos los botones de cancelar y aceptar
+    const btnAceptar = document.querySelector('.btnAceptar');
+    btnAceptar.classList.replace('disabled','enable')
+    const btnCancelar = document.querySelector('.btnCancelar');
+    btnCancelar.disabled = false;
+
+    console.log("materia: " + fila.children)
+    const childrenArray = Array.from(fila.children);
+    console.log("materia: " + childrenArray[1].textContent)
+    materiasSeleccionadas.push(parseInt(childrenArray[1].textContent))
+    console.log(materiasSeleccionadas)
+    fila.style.backgroundColor = "red";
+
+
+    //eventos para los botones
+   
+    btnCancelar.addEventListener('click', () =>{
+      materiasSeleccionadas = []
+      //vamos a deshabilitar y limpiar TODAS LAS CAJAS
+      const docentesCheck = document.querySelectorAll('.check-docente');
+      docentesCheck.forEach((box, index) => {
+        //habilitamos todas las checkbox de materias
+          box.checked = false;
+        box.disabled = false;
+        //limpiamos los colores
+        box.parentNode.parentNode.style.backgroundColor = 'white'
+      });
+      const materiasCheckboxes = document.querySelectorAll('.check-materia');
+      materiasCheckboxes.forEach((box, index) => {
+      //habilitamos todas las checkbox de materias
+      box.disabled = true;
+      box.checked = false;
+      box.parentNode.parentNode.style.backgroundColor = 'white'
+
+    });
+    //Tambien deshabilitamos los botones
+    btnAceptar.disabled = true;
+    btnCancelar.disabled = false;
+    })
+
+    
+
+    
+  }
+  const guardarCambios = () =>{
+    //primero comprobamos que si hay un profe y una materia al menos
+    
+      console.log('se seleccionaron!');
+      materiasSeleccionadas.forEach(materia=>{
+         fetch('http://localhost:3030/addMateria_Asignada', {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "ID_DOCXMATH":Math.floor(Math.random() * 100000),
+            "ID_DOCENTE":docenteSeleccionado,
+            "ID_MATERIA":materia
+          }),
+        });   
+        console.log('ID: ' + Math.floor(Math.random() * 100000) +  ' materia: ' + materia + "  docente: "+ docenteSeleccionado)
+      })
+      //vamos a hacer la peticion
+     window.location.reload();
+    
+  }
+
+  const eliminarMateriaAsignada = (id_docxmath) =>{
+
+    //vamos a elminar la materia
+    fetch('http://localhost:3030/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Registro eliminado exitosamente");
+      } else {
+        console.error("Ocurrió un error al eliminar el registro");
+      }
+    })
+    .catch((error) => console.error(error));
+    confirm('Aula eliminada con exito')
+
+  }
   return (
     <div>
       <h1>Asignar docente a materia</h1>
       <hr />
-      <form action="" onSubmit={(e) => e.preventDefault()}>
+      {/* <form action="" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="" className="form-label">
           Id
         </label>
@@ -194,10 +367,103 @@ const habilitarModificacion = (index) => {
           id="id_materia"
           onChange={(e) => onHandleIdMateria(e)}
         />
-      </form>
+      </form> */}
+      <div className="row">
+        <div className="tablaDocentes col-md-6 table-responsive table-container border">
+          <table className="table  table-bordered table-responsive">
+            <thead className="bg-body-secondary table-container">
+              <tr className="bg-body-dark">
+                <th scope="col">Id docente</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ap paterno</th>
+                <th scope="col">Ap materno</th>
+                <th scope="col">Seleccionar</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {docentes.length >= 1 ? (
+                docentes.map((docente) => (
+                  <tr key={docente}  >
+                    <td>{docente.Id_Docente}</td>
+                    <td>{docente.Nombre}</td>
+                    <td>{docente.AP_PATERNO}</td>
+                    <td>{docente.AP_MATERNO}</td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} class="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                  </tr>
+                ))
+              ) : (
+                <p>No se encontraron docentes</p>
+              )}
+            </tbody>
+          </table>
+        </div>
+        {/* Contenido de las materias */}
+        <div className="tablaMaterias col-md-5 table-responsive table-container">
+        <table className="table  table-bordered ">
+        <thead className="bg-body-secondary">
+          <tr className="bg-body-dark">
+            <th scope="col">Seleccionar</th>
+            <th scope="col">Id_Materia</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Aula</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Creditos</th>
+            <th scope="col">Cupo</th>
+            <th scope="col">Semestre</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          {materias.length >= 1 ? (
+            materias.map((materia, index) => (
+              <tr key={materia} >
+                <td className="d-flex justify-content-center align-items-center"><input disabled onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
+                <td>
+                {materia.ID_MATERIA}
+                </td>
+                <td>
+                {materia.HORA_INICIO_LUNES+ ' - ' + materia.HORA_FINAL_LUNES}
+                  
+                </td>
+                <td>
+               
+                {materia.Nombre}
+                </td>
+                <td>
+                {materia.NOMBRE}
+                </td>
+                <td>
+                {materia.MATERIA}
+                </td>
+                <td>
+                {materia.CREDITOS}
+                </td>
+                <td>
+                {materia.CUPO}
+                </td>
+                <td>
+                {materia.SEMESTRE}
+                </td>
+
+                
+              </tr>
+            ))
+          ) : (
+            <p className="m-1 text-danger">No se encontro ningúna materia</p>
+          )}
+        </tbody>
+      </table>
+        </div>
+      </div>
+      <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
+        <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
+        <button className="btn btn-success m-3 btnAceptar disabled"   onClick={()=>guardarCambios()} >Aceptar</button>
+      </div>
       <hr />
 
-      <table className="table  table-bordered">
+      <table className="table  table-bordered table-responsive ">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
             <th scope="col">Id materia asignada docente</th>
@@ -213,8 +479,8 @@ const habilitarModificacion = (index) => {
           </tr>
         </thead>
         <tbody>
-          {materias.length >= 1 ? (
-            materias.map((materia, index) => (
+          {materiasCargadas.length >= 1 ? (
+            materiasCargadas.map((materia, index) => (
               <tr key={materia}>
                 <td>
                   <input
@@ -272,19 +538,19 @@ const habilitarModificacion = (index) => {
                     disabled
                   />
                 </td>
-                <td className={`btn-${index} form-control`}>
+                {/* <td className={`btn-${index} form-control`}>
                   <a
                     onClick={() => habilitarModificacion(index)}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
                   </a>
-                </td>
+                </td> */}
                 <td>
                   <a
                     href=""
                     className="btn btn-danger"
-                    onClick={() => eliminarDocente(docente.Id_Docente)}
+                    onClick={() =>eliminarMateriaAsignada(materia.ID_DOCXMATH)}
                   >
                     Eliminar
                   </a>
@@ -292,7 +558,7 @@ const habilitarModificacion = (index) => {
               </tr>
             ))
           ) : (
-            <h1>No existe ese Docente</h1>
+            <p>No existe ese Docente</p>
           )}
         </tbody>
       </table>

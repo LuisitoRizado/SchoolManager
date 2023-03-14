@@ -1,20 +1,21 @@
 import { addUserPetition } from "../petitions/addUserPetition";
 import { useState, useEffect } from "react";
-import { validarCampos } from "./validarCampos";
+import { validarCampos, validarNumeros } from "./validarCampos";
 let inputContro,
-inputNombre,
-inputAPaterno,
-inputAMaterno,
-inputSemestre,
-inputPeriodo,
-inputCreditos,
-inputEspecidaldiad,
-inputContrasena;
+  inputNombre,
+  inputAPaterno,
+  inputAMaterno,
+  inputSemestre,
+  inputPeriodo,
+  inputCreditos,
+  inputEspecidaldiad,
+  inputCarrera,
+  inputContrasena;
 export const AgregarAlumno = () => {
   //Hooks de nuestra aplicacion, inicialmente es un objeto vacio
 
   //Hacemos un hook para cada atributo del alumno
-  const [Ncontrol, setNcontrol] = useState();
+  const [Ncontrol, setNcontrol] = useState(0);
   const [Id_Carrera, setId_Carrera] = useState();
   const [Nombre, setNombre] = useState();
   const [Ap_Paterno, setAp_Paterno] = useState();
@@ -24,8 +25,9 @@ export const AgregarAlumno = () => {
   const [Creditos, setCreditos] = useState();
   const [Especialidad, setEspecialidad] = useState();
   const [Contrasena, setContrasena] = useState();
-  const [alumno, setAlumno] = useState([])
- 
+  const [alumno, setAlumno] = useState([]);
+  const [carreras, setCarreras] = useState([])
+
   ///-------FIN DE HOOKS
 
   //La siguiente función nos sirve para ir creando nuestro alumno
@@ -76,13 +78,22 @@ export const AgregarAlumno = () => {
     inputCreditos = document.querySelector("#creditos");
     inputEspecidaldiad = document.querySelector("#especialidad");
     inputContrasena = document.querySelector("#contrasena");
+    inputCarrera = document.querySelector('#id_carrera')
     //obtenemos todos los alumnos
-    fetch('http://localhost:3030/getAllAlumnos')
-    .then(res => res.json())
-    .then(data => setAlumno(data))
+    fetch("http://localhost:3030/getAllAlumnos")
+      .then((res) => res.json())
+      .then((data) => setAlumno(data));
+
+    fetch('http://localhost:3030/getAllCarreras')
+    .then(res=>res.json())
+    .then(data=>setCarreras(data))
+
   }, []);
+
+
   useEffect(() => {
     //Ncontrol
+    
     inputContro = document.querySelector("#Ncontrol");
     inputNombre = document.querySelector("#nombre");
     inputAPaterno = document.querySelector("#ap_paterno");
@@ -104,55 +115,108 @@ export const AgregarAlumno = () => {
     Contrasena,
   ]);
 
-  const comprobarSiExiste = () => {
+  const comprobarSiExiste = async () => {
     //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
-
+    inputCarrera.value = "";
+    inputNombre.value = "";
+    inputAPaterno.value = "";
+    inputAMaterno.value = "";
+    inputSemestre.value = "";
+    inputPeriodo.value = "";
+    inputCreditos.value = "";
+    inputEspecidaldiad.value = "";
+    inputContrasena.value = "";
     //Creamos la url
     const url = "http://localhost:3030/getAlumno/" + Ncontrol;
 
-    fetch(url)
+    await fetch(url)
       .then((res) => res.json())
       .then((data) => {
         //Actualizamos los datos en los inputs
-        inputContro.value = data[0].NControl
-    inputNombre.value = data[0].Nombre
-    inputAPaterno.value = data[0].AP_PATERNO
-    inputAMaterno.value = data[0].AP_MATERNO
-    inputSemestre.value = data[0].SEMESTRE
-    inputPeriodo.value = data[0].PERIODO
-    inputCreditos.value = data[0].CREDITOS_DISPONIBLES
-    inputEspecidaldiad.value = data[0].ESPECIALIDAD
-    inputContrasena.value = data[0].CONTRASENA
+        inputCarrera.value = data[0].ID_Carrera;
+        inputContro.value = data[0].NControl;
+        inputNombre.value = data[0].Nombre;
+        inputAPaterno.value = data[0].AP_PATERNO;
+        inputAMaterno.value = data[0].AP_MATERNO;
+        inputSemestre.value = data[0].SEMESTRE;
+        inputPeriodo.value = data[0].PERIODO;
+        inputCreditos.value = data[0].CREDITOS_DISPONIBLES;
+        inputEspecidaldiad.value = data[0].ESPECIALIDAD;
+        inputContrasena.value = data[0].CONTRASENA;
       });
+
+    if (inputNombre === "") {
+      //habilitamos las cajas
+      inputCarrera.disabled = false;
+
+      inputContro.disabled = false;
+      inputNombre.disabled = false;
+      inputAPaterno.disabled = false;
+      inputAMaterno.disabled = false;
+      inputSemestre.disabled = false;
+      inputPeriodo.disabled = false;
+      inputCreditos.disabled = false;
+      inputEspecidaldiad.disabled = false;
+      inputContrasena.disabled = false;
+      const btnagregar = document.querySelector(".btn-agregar");
+      btnagregar.disabled = false;
+    } else {
+      inputCarrera.disabled = true;
+
+      inputContro.disabled = true;
+      inputNombre.disabled = true;
+      inputAPaterno.disabled = true;
+      inputAMaterno.disabled = true;
+      inputSemestre.disabled = true;
+      inputPeriodo.disabled = true;
+      inputCreditos.disabled = true;
+      inputEspecidaldiad.disabled = true;
+      inputContrasena.disabled = true;
+      const btnagregar = document.querySelector(".btn-agregar");
+      btnagregar.disabled = true;
+    }
   };
 
-  const agregarAlumno = () =>{
-    const url = 'http://localhost:3030/addAlumno'
-    if(validarCampos(inputContro, inputNombre, inputAPaterno, inputAPaterno, inputSemestre, inputPeriodo, inputCreditos, inputEspecidaldiad, inputContrasena)){
+  const agregarAlumno = () => {
+    const url = "http://localhost:3030/addAlumno";
+    if (
+      validarCampos(
+        inputContro,
+        inputNombre,
+        inputAPaterno,
+        inputAPaterno,
+        inputSemestre,
+        inputPeriodo,
+        inputCreditos,
+        inputEspecidaldiad,
+        inputContrasena
+      )
+    ) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          NCONTROL: Ncontrol,
+          ID_CARRERA: Id_Carrera,
+          NOMBRE: Nombre,
+          AP_PATERNO: Ap_Paterno,
+          AP_MATERNO: Ap_Matern,
+          SEMESTRE: Semestre,
+          PERIODO: Periodo,
+          CREDITOS_DISPONIBLES: Creditos,
+          ESPECIALIDAD: Especialidad,
+          CONTRASENA: Contrasena,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log("Alumno agregado: " + data));
 
-    fetch(url, {method:"POST", headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },body: JSON.stringify({
-        "NCONTROL": Ncontrol,
-        "ID_CARRERA": Id_Carrera,
-        "NOMBRE": Nombre,
-        "AP_PATERNO":Ap_Paterno,
-        "AP_MATERNO":Ap_Matern,
-        "SEMESTRE":Semestre,
-        "PERIODO":Periodo,
-        "CREDITOS_DISPONIBLES":Creditos,
-        "ESPECIALIDAD":Especialidad,
-        "CONTRASENA":Contrasena
-    })})
-    .then((response)=>response.json())
-    .then((data)=>console.log('Alumno agregado: ' + data));
-
-    window.location.reload();
-}
-
-
-  }
+      window.location.reload();
+    }
+  };
   //----------------------------------------------------------logica de modificacion
   const habilitarModificacion = (index) => {
     //deshabilitamos el boton modificar
@@ -183,8 +247,6 @@ export const AgregarAlumno = () => {
     valoresIniciales.push(inputs[4].value);
     valoresIniciales.push(inputs[5].value);
     valoresIniciales.push(inputs[6].value);
-
-
 
     for (let i = 0; i < 7; i++) {
       console.log(valoresIniciales[i]);
@@ -253,7 +315,6 @@ export const AgregarAlumno = () => {
       const inputCreditos = inputs[5];
       const inputEspecialidad = inputs[6];
 
-
       //hacemos la peticion
 
       fetch("http://localhost:3030/updateAlumno/" + id, {
@@ -263,85 +324,84 @@ export const AgregarAlumno = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          "NOMBRE": nombre,
-          "AP_PATERNO": ap_paterno,
-          "AP_MATERNO": ap_materno,
-          "SEMESTRE": semestre,
-          "PERIODO": periodo,
-          "CREDITOS": creditos,
-          "ESPECIALIDAD": especialidad
+          NOMBRE: nombre,
+          AP_PATERNO: ap_paterno,
+          AP_MATERNO: ap_materno,
+          SEMESTRE: semestre,
+          PERIODO: periodo,
+          CREDITOS: creditos,
+          ESPECIALIDAD: especialidad,
         }),
       });
       window.location.reload();
     });
   };
+  const cancelarEvento = () =>{
+    inputCarrera.value = ""
+    inputContro.value = "";
+    inputNombre.value = "";
+    inputAPaterno.value = "";
+    inputAMaterno.value = "";
+    inputSemestre.value = "";
+    inputPeriodo.value = "";
+    inputCreditos.value = "";
+    inputEspecidaldiad.value = "";
+    inputContrasena.value = "";
+
+    inputCarrera.disabled = false;
+
+    inputContro.disabled = false;
+    inputNombre.disabled = false;
+    inputAPaterno.disabled = false;
+    inputAMaterno.disabled = false;
+    inputSemestre.disabled = false;
+    inputPeriodo.disabled = false;
+    inputCreditos.disabled = false;
+    inputEspecidaldiad.disabled = false;
+    inputContrasena.disabled = false;
+    const btnagregar = document.querySelector(".btn-agregar");
+    btnagregar.disabled = false;
+  }
   return (
-    <div>
-      <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
+    <div className="animate__animated animate__fadeInLeft">
+      <form action="" className="mt-5 animate__fadeInLeft" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="Ncontrol" className="form-label">
           Número de control
         </label>
         <input
           type="number"
           name="Ncontrol"
+          onKeyPress={validarNumeros}
+
           id="Ncontrol"
           className="form-control"
-          onBlur={()=> comprobarSiExiste()}
+          onBlur={() => comprobarSiExiste()}
           onChange={(event) => onHandleNcontrol(event)}
         />
         <h4 className="mt-3">Carrera</h4>
-        <div className="radioGroup p-2 d-flex flex-column justify-content-around">
-          <label for="sistemas">Sistemas</label>
-
-          <input
-            type="radio"
-            id="sistemas"
-            name="fav_language"
-            value="20"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="gestion">Gestión</label>
-
-          <input
-            type="radio"
-            id="gestion"
-            name="fav_language"
-            value="30"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="industrial">Industrial</label>
-
-          <input
-            type="radio"
-            id="industrial"
-            name="fav_language"
-            value="40"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="mecatronica">Mecatrónica</label>
-
-          <input
-            type="radio"
-            id="mecatronica"
-            name="fav_language"
-            value="50"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="electronica">Electrónica</label>
-
-          <input
-            type="radio"
-            id="electronica"
-            name="fav_language"
-            value="60"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-        </div>
+        <select
+                    className={"form-select nuevoIdAula fila-"}
+                    aria-label="Default select example"
+                    id='id_carrera'
+                    onChange={(e) => {
+                     onHandleCarrera(e)
+                      
+                    }}
+                  >
+                      
+                    {carreras.length >= 1 ? (
+                      carreras.map((carrera, index) => (
+                        <option
+                          value={carrera.ID_CARRERA}
+                          className={"opcion-" + index}
+                        >
+                          {carrera.NOMBRE}
+                        </option>
+                      ))
+                    ) : (
+                      <p>No existen Carreras</p>
+                    )}
+                  </select>
         <label htmlFor="nombre" className="form-label mt-3">
           Nombre (s)
         </label>
@@ -381,6 +441,8 @@ export const AgregarAlumno = () => {
 
         <input
           type="number"
+          onKeyPress={validarNumeros}
+
           name="semestre"
           id="semestre"
           className="form-control"
@@ -404,6 +466,8 @@ export const AgregarAlumno = () => {
         <input
           type="text"
           name="creditos"
+          onKeyPress={validarNumeros}
+
           id="creditos"
           className="form-control"
           onChange={(event) => onHandleCreditos(event)}
@@ -430,13 +494,11 @@ export const AgregarAlumno = () => {
           className="form-control"
           onChange={(event) => onHandleContrasena(event)}
         />
-        <button className="btn btn-danger">Cancelar</button>
+        <button className="btn btn-danger .btn-agregar" onClick={()=>cancelarEvento()}>Cancelar</button>
         <button
           className="btn btn-success m-4"
           //Llamamos a la función para agregar al alumno, antes que todo, hay que validar que todos los datos sean correctos
-          onClick={() =>
-            agregarAlumno()
-          }
+          onClick={() => agregarAlumno()}
         >
           Agregar!
         </button>
@@ -456,62 +518,91 @@ export const AgregarAlumno = () => {
           </tr>
         </thead>
         <tbody>
-            {
-                alumno.length>=1 ? alumno.map((alumno, index)=>(
-                  <tr key={alumno}>
-                  <td><input
+          {alumno.length >= 1 ? (
+            alumno.map((alumno, index) => (
+              <tr key={alumno}>
+                <td>
+                  <input
                     className={`id-${index} form-control`}
                     defaultValue={alumno.NControl}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.Nombre}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.AP_PATERNO}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.AP_MATERNO}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.SEMESTRE}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.PERIODO}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
                     defaultValue={alumno.CREDITOS_DISPONIBLES}
                     disabled
-                  /></td>
-                  <td><input
+                  />
+                </td>
+                <td>
+                  <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.ESPECIALIDAD ? alumno.ESPECIALIDAD: 'Ninguna'}
+                    defaultValue={
+                      alumno.ESPECIALIDAD ? alumno.ESPECIALIDAD : "Ninguna"
+                    }
                     disabled
-                  /></td>
+                  />
+                </td>
 
-
-                  <td className={`btn-${index} form-control`}>
-                <a   onClick={()=> habilitarModificacion(index)} className="btn btn-warning modificarButton">
-                  Modificar
-                </a>
-              </td>
-                  <td><button className="btn btn-danger" onClick={() => eliminarAlumno(alumno.NControl)}>Eliminar</button></td>
-                </tr>
-              )) : <h3 className="m-1 text-danger">No se encontro ningún alumno con ese número de control</h3>
-                
-            }
-        
+                <td className={`btn-${index} form-control`}>
+                  <a
+                    onClick={() => habilitarModificacion(index)}
+                    className="btn btn-warning modificarButton"
+                  >
+                    Modificar
+                  </a>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => eliminarAlumno(alumno.NControl)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <h3 className="m-1 text-danger">
+              No se encontro ningún alumno con ese número de control
+            </h3>
+          )}
         </tbody>
       </table>
     </div>

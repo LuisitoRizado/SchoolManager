@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { validarCampos } from "./validarCampos";
+import { validarCampos, validarNumeros } from "./validarCampos";
 let inputIdMateria,
   inputIdHorario,
   inputIdAula,
@@ -10,7 +10,7 @@ let inputIdMateria,
   inputSemestre,
   inputIdHorarioMostrar;
 export const AgregarMateriaPage = () => {
-  const [ID_MATERIA, setID_MATERIA] = useState();
+  const [ID_MATERIA, setID_MATERIA] = useState(0);
   const [Id_Carrera, setId_Carrera] = useState();
   const [HORARIO, setHorario] = useState();
   const [AULA, setAula] = useState();
@@ -19,11 +19,13 @@ export const AgregarMateriaPage = () => {
   const [CUPO, setCupo] = useState();
   const [SEMESTRE, setSemestre] = useState();
   const [Id_Docente, setId_Docente] = useState();
-  const [aulas, setAulas] = useState([])
-  const [carreras, setCarreras] = useState([])
+  const [aulas, setAulas] = useState([]);
+  const [carreras, setCarreras] = useState([]);
   //hook para cargar todas las materias existentes
   const [materias, setMaterias] = useState([]);
-  const [horarios, setHorarios] = useState([])
+  const [horarios, setHorarios] = useState([]);
+  const [materiasAsignadas, setmMteriasAsignadas] = useState([]);
+
   const onHandleIdMateria = (e) => {
     setID_MATERIA(e.target.value);
   };
@@ -44,9 +46,12 @@ export const AgregarMateriaPage = () => {
     setMateria(e.target.value);
   };
 
+
   const onHandleCreditos = (e) => {
     setCreditos(e.target.value);
   };
+
+
   const onHandleCupo = (e) => {
     setCupo(e.target.value);
   };
@@ -59,84 +64,155 @@ export const AgregarMateriaPage = () => {
   };
 
   const agregarMateria = () => {
-    const url = "http://localhost:3030/postMateria";
-    fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ID_MATERIA: ID_MATERIA,
-        HORA: HORARIO,
-        AULA: AULA,
-        ID_CARRERA: Id_Carrera,
-        MATERIA: MATERIA,
-        CREDITOS: CREDITOS,
-        CUPO: CUPO,
-        SEMESTRE: SEMESTRE,
-      }),
-    });
+    console.log("horario" + HORARIO);
+    console.log(
+      inputIdMateria,
+      inputIdHorarioMostrar,
+      inputIdAula,
+      inputMateria,
+      inputCredtios,
+      inputCupo,
+      inputSemestre
+    );
+    if (
+      validarCampos(
+        inputIdMateria,
+        inputIdHorarioMostrar,
+        inputIdAula,
+        inputMateria,
+        inputIdCarrera,
+        inputCredtios,
+        inputCupo,
+        inputSemestre
+      )
+    ) {
+      const url = "http://localhost:3030/addNewMateria";
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ID_MATERIA: ID_MATERIA,
+          ID_HORARIO: HORARIO,
+          ID_AULA: AULA,
+          ID_CARRERA: Id_Carrera,
+          MATERIA: MATERIA,
+          CREDITOS: CREDITOS,
+          CUPO: CUPO,
+          SEMESTRE: SEMESTRE,
+        }),
+      });
+    }
   };
 
   //useEffect
   useEffect(() => {
     //Obtener todos los inputs
-    inputIdHorarioMostrar = document.querySelector('#id_horario');
+    inputIdHorarioMostrar = document.querySelector("#id_horario");
     inputIdMateria = document.querySelector("#id_materia");
     //AQUI FALTA DEL ID DE LA CARRERA
     inputIdHorario = document.querySelector(".mySelect");
     inputIdAula = document.querySelector("#id_aula");
+    inputIdCarrera = document.querySelector("#id_carreras");
+
     inputMateria = document.querySelector("#materia");
     inputCredtios = document.querySelector("#creditos");
     inputCupo = document.querySelector("#cupo");
     inputSemestre = document.querySelector("#semestre");
-
 
     //cargamos los datos
     const url = "http://localhost:3030/getAllMaterias";
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMaterias(data));
-      
-    const url2 = 'http://localhost:3030/getAllHorarios'
+
+    const url2 = "http://localhost:3030/getAllHorarios";
     fetch(url2)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-      setHorarios(data)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setHorarios(data);
+      });
     //pedir todas las maulas
-    fetch('http://localhost:3030/getAllAulas')
-    .then(res=>res.json())
-    .then(data=>setAulas(data))
+    fetch("http://localhost:3030/getAllAulas")
+      .then((res) => res.json())
+      .then((data) => setAulas(data));
 
     //traer todas las carreas
-    fetch('http://localhost:3030/getAllCarreras')
-    .then(res=>res.json())
-    .then(data=>setCarreras(data))
+    fetch("http://localhost:3030/getAllCarreras")
+      .then((res) => res.json())
+      .then((data) => setCarreras(data));
 
+    //traer todas las auals
+    fetch("http://localhost:3030/getAllAulas")
+      .then((res) => res.json())
+      .then((data) => setAulas(data));
+
+    fetch("http://localhost:3030/getMaterias_asigandas")
+      .then((res) => res.json())
+      .then((data) => setmMteriasAsignadas(data));
   }, []);
 
+  
   //---------------------------------tablas
-  const comprobarSiExiste = () => {
+  const comprobarSiExiste = async () => {
     //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
 
+    console.log(inputIdAula)
+    inputIdCarrera.value = "";
+    inputCredtios.value = "";
+    inputSemestre.value = "";
+    inputMateria.value = "";
+    inputCupo.value = "";
+    inputIdAula.value = "";
     //Creamos la url
     const url = "http://localhost:3030/getJusAtMateria/" + ID_MATERIA;
 
-    fetch(url)
+    await fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         //Actualizamos los datos en los inputs
-        inputIdHorarioMostrar.value = data[0].ID_HORARIO
+        inputIdHorarioMostrar.value = data[0].ID_HORARIO;
         inputCredtios.value = data[0].CREDITOS;
         inputSemestre.value = data[0].SEMESTRE;
         inputMateria.value = data[0].MATERIA;
         inputCupo.value = data[0].CUPO;
         inputIdAula.value = data[0].ID_AULA;
+        inputIdCarrera.value = data[0].NOMBRE;
+
       });
+
+    //VAMOS A DESHABILITAR TODOS LOS INPUT
+    if (inputCredtios.materia === "") {
+      inputIdMateria.disabled = false;
+      inputIdHorarioMostrar.disabled = false;
+      inputCredtios.disabled = false;
+      inputSemestre.disabled = false;
+      inputMateria.disabled = false;
+    inputIdCarrera.disabled = false;
+
+      inputCupo.disabled = false;
+      inputIdAula.disabled = false;
+      const btnagregar = document.querySelector(".btn-agregar");
+      btnagregar.disabled = false;
+    } else {
+      inputIdMateria.disabled = true;
+    inputIdCarrera.disabled = true;
+
+      inputIdHorarioMostrar.disabled = true;
+      inputCredtios.disabled = true;
+      inputSemestre.disabled = true;
+      inputMateria.disabled = true;
+      inputCupo.disabled = true;
+      inputIdAula.disabled = true;
+      const btnagregar = document.querySelector(".btn-agregar");
+      btnagregar.disabled = true;
+    }
+    setID_MATERIA(0);
   };
   //----------------------------------------------------------logica de modificacion
   const habilitarModificacion = (index) => {
@@ -190,10 +266,11 @@ export const AgregarMateriaPage = () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
-      
+
       //primero deshabilitamo los inputs
       console.log(inputs[0].value);
       console.log(valoresIniciales[0]);
+
       inputs[0].value = valoresIniciales[0];
       inputs[1].value = valoresIniciales[1];
       inputs[2].value = valoresIniciales[2];
@@ -202,6 +279,7 @@ export const AgregarMateriaPage = () => {
       inputs[5].value = valoresIniciales[5];
       inputs[6].value = valoresIniciales[6];
 
+      
       inputs.forEach((input, index) => {
         input.disabled = true;
         //a la vez, regresamos su valores iniciales
@@ -228,43 +306,108 @@ export const AgregarMateriaPage = () => {
       const cupo = inputs[5].value;
       const semestre = inputs[6].value;
 
-
-
       //recopilamos los inputs
       const inputIdHorario = inputs[0];
       const inputIdAula = inputs[1];
-      const inputIdCarrera= inputs[2];
-      const inputMateria= inputs[3];
-      const inputCreditos= inputs[4];
-      const inputCupo= inputs[5];
-      const inputSemestre= inputs[6];
-
+      const inputIdCarrera = inputs[2];
+      const inputMateria = inputs[3];
+      const inputCreditos = inputs[4];
+      const inputCupo = inputs[5];
+      const inputSemestre = inputs[6];
 
       //hacemos la peticion
-      if(validarCampos(inputIdHorario,inputIdAula, inputIdCarrera, inputMateria, inputCreditos, inputCupo, inputSemestre))
-      {
-      console.log('id horario: '+ idHorario, idAula, idCarrera, idMateria, creditos, cupo,semestre)
-         fetch("http://localhost:3030/updateMat/" + id, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            "ID_HORARIO": idHorario,
-            "ID_AULA": idAula,
-            "ID_CARRERA": idCarrera,
-            "MATERIA": idMateria,
-            "CREDITOS": creditos,
-            "CUPO": cupo,
-            "SEMESTRE": semestre,
-        }),
-      });
-      window.location.reload();   
-    }
+      if (
+        validarCampos(
+          inputIdHorario,
+          inputIdAula,
+          inputIdCarrera,
+          inputMateria,
+          inputCreditos,
+          inputCupo,
+          inputSemestre
+        )
+      ) {
+        console.log(
+          "id horario: " + idHorario,
+          idAula,
+          idCarrera,
+          idMateria,
+          creditos,
+          cupo,
+          semestre
+        );
+        fetch("http://localhost:3030/updateMat/" + id, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ID_HORARIO: idHorario,
+            ID_AULA: idAula,
+            ID_CARRERA: idCarrera,
+            MATERIA: idMateria,
+            CREDITOS: creditos,
+            CUPO: cupo,
+            SEMESTRE: semestre,
+          }),
+        });
+        window.location.reload();
+      }
     });
   };
 
+  const cancelarEvent = () => {
+    inputIdMateria.value = "";
+    inputIdHorarioMostrar.value = "";
+    inputCredtios.value = "";
+    inputSemestre.value = "";
+    inputMateria.value = "";
+    inputCupo.value = "";
+    inputIdAula.value = "";
+    inputIdCarrera.value = ""
+
+    inputIdCarrera.disabled = false;
+    inputIdMateria.disabled = false;
+    inputIdHorarioMostrar.disabled = false;
+    inputCredtios.disabled = false;
+    inputSemestre.disabled = false;
+    inputMateria.disabled = false;
+    inputCupo.disabled = false;
+    inputIdAula.disabled = false;
+    const btnagregar = document.querySelector(".btn-agregar");
+    btnagregar.disabled = false;
+  };
+
+  //
+  const eliminarMateria = async (id_materia) => {
+    let tieneHijos = false;
+
+    await materiasAsignadas.forEach((materia) => {
+      if (materia.ID_MATERIA === id_materia) {
+        tieneHijos = true;
+      }
+      console.log(materia.ID_MATERIA + " === " + id_materia);
+    });
+
+    if (!tieneHijos) {
+      //borramos la materia
+      fetch("http://localhost:3030/deleteMateria/" + id_materia, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Registro eliminado exitosamente");
+          } else {
+            console.error("Ocurrió un error al eliminar el registro");
+          }
+        })
+        .catch((error) => console.error(error));
+      confirm("Aula eliminada con exito");
+    } else {
+      confirm("No se puede eliminar, tiene hijos");
+    }
+  };
   return (
     <div>
       <h1>Agregar Materias</h1>
@@ -276,86 +419,83 @@ export const AgregarMateriaPage = () => {
         <input
           type="number"
           name="idmateria"
+          id="id_materia"
           className="form-control"
           onBlur={() => comprobarSiExiste()}
+          onKeyPress={validarNumeros}
           onChange={(e) => onHandleIdMateria(e)}
         />
 
-        <h4 className="mt-3">Carrera</h4>
-        <div className="radioGroup p-2 d-flex flex-column justify-content-around">
-          <label for="sistemas">Sistemas</label>
+        <label htmlFor="carrera" className="form-label">
+          Carrera
+        </label>
+        <select
+          className={"form-select mySelect "}
+          name='carrera'
+          id="id_carreras"
+          aria-label="Default select example"
+          onChange={(e) => {
+            onHandleCarrera(e);
+          }}
+        >
 
-          <input
-            type="radio"
-            id="sistemas"
-            name="fav_language"
-            value="20"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="gestion">Gestión empresarial</label>
-
-          <input
-            type="radio"
-            id="gestion"
-            name="fav_language"
-            value="30"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="industrial">Industrial</label>
-
-          <input
-            type="radio"
-            id="industrial"
-            name="fav_language"
-            value="40"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="mecatronica">Mecatrónica</label>
-
-          <input
-            type="radio"
-            id="mecatronica"
-            name="fav_language"
-            value="50"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-          <label for="electronica">Electrónica</label>
-
-          <input
-            type="radio"
-            id="electronica"
-            name="fav_language"
-            value="60"
-            className="form-check-input"
-            onChange={(event) => onHandleCarrera(event)}
-          />
-        </div>
-
+        {carreras.length >= 1 ? (
+          carreras.map((carrera, index) => (
+            <option value={carrera.ID_CARRERA} className={"opcion-" + index}>
+              {carrera.NOMBRE}
+            </option>
+          ))
+        ) : (
+          <p>No existen Carreras</p>
+        )}
+      </select>
         <label htmlFor="horario" className="form-label">
           Id horario
         </label>
-        <input
-          type="number"
-          name="id_horario"
+        <select
+          className={"form-select mySelect "}
           id="id_horario"
-          className="form-control"
-          onChange={(e) => onHandleHorario(e)}
-        />
+          aria-label="Default select example"
+          onChange={(e) => {
+            onHandleHorario(e);
+          }}
+        >
+            <option value=""> </option>
+
+          {horarios.length >= 1 ? (
+            horarios.map((horario, index) => (
+              <option value={horario.Id_Horario} className={"opcion-" + index}>
+                {horario.Hora_Inicio_Lunes + " - " + horario.Hora_Final_Lunes}
+              </option>
+            ))
+          ) : (
+            <p>No existen horarios</p>
+          )}
+        </select>
 
         <label htmlFor="aula" className="form-label">
           Id Aula
         </label>
-        <input
-          type="number"
-          name="id_aula"
+        <select
+          className={"form-select mySelect "}
           id="id_aula"
-          className="form-control"
-          onChange={(e) => onHandleAula(e)}
-        />
+          aria-label="Default select example"
+          onChange={(e) => {
+            onHandleAula(e);
+          }}
+        >
+            <option value=""> </option>
+
+          {aulas.length >= 1 ? (
+            aulas.map((aula, index) => (
+              <option value={aula.Id_Aula} className={"opcion-" + index}>
+                {aula.Nombre}
+              </option>
+            ))
+          ) : (
+            <p>No existen horarios</p>
+          )}
+        </select>
 
         <label htmlFor="materia" className="form-label">
           Materia
@@ -375,6 +515,7 @@ export const AgregarMateriaPage = () => {
           type="number"
           name="creditos"
           id="creditos"
+          onKeyPress={validarNumeros}
           className="form-control"
           onChange={(e) => onHandleCreditos(e)}
         />
@@ -386,6 +527,7 @@ export const AgregarMateriaPage = () => {
           type="number"
           name="cupo"
           id="cupo"
+          onKeyPress={validarNumeros}
           className="form-control"
           onChange={(e) => onHandleCupo(e)}
         />
@@ -395,6 +537,7 @@ export const AgregarMateriaPage = () => {
         </label>
         <input
           type="number"
+          onKeyPress={validarNumeros}
           name="semestre"
           id="semestre"
           className="form-control"
@@ -409,9 +552,11 @@ export const AgregarMateriaPage = () => {
         
         /> */}
 
-        <button className="btn btn-danger">Cancelar</button>
+        <button className="btn btn-danger" onClick={() => cancelarEvent()}>
+          Cancelar
+        </button>
         <button
-          className="btn btn-success m-4"
+          className="btn btn-success m-4 btn-agregar"
           onClick={() => agregarMateria()}
         >
           Agregar!
@@ -447,76 +592,94 @@ export const AgregarMateriaPage = () => {
                   />
                 </td>
                 <td>
-                <select
-                    
-                    className={"form-select mySelect fila-"+index}
+                  <select
+                    className={"form-select mySelect fila-" + index}
                     aria-label="Default select example"
-                    onChange={(e)=>{
+                    onChange={(e) => {
                       const selectedValueAsNumber = parseInt(e.target.value);
-                    console.log(`Valor seleccionado: ${selectedValueAsNumber}`);
+                      console.log(
+                        `Valor seleccionado: ${selectedValueAsNumber}`
+                      );
                     }}
-                    
                     disabled
                   >
-                    <option value={materia.ID_HORARIO} selected>{materia.HORA_INICIO_LUNES+ ' - ' + materia.HORA_FINAL_LUNES}</option>
-                 {
-                  horarios.length >= 1 ? (
-                    horarios.map((horario,index)=>(
-                    
-                      <option  value={horario.Id_Horario} className={'opcion-'+index}>{horario.Hora_Inicio_Lunes+ ' - ' + horario.Hora_Final_Lunes}</option>
-                    
-                    ))
-                  
-                  ) : (<p>No existen horarios</p>)
-                 }
+                    <option value={materia.ID_HORARIO} selected>
+                      {materia.HORA_INICIO_LUNES +
+                        " - " +
+                        materia.HORA_FINAL_LUNES}
+                    </option>
+                    {horarios.length >= 1 ? (
+                      horarios.map((horario, index) => (
+                        <option
+                          value={horario.Id_Horario}
+                          className={"opcion-" + index}
+                        >
+                          {horario.Hora_Inicio_Lunes +
+                            " - " +
+                            horario.Hora_Final_Lunes}
+                        </option>
+                      ))
+                    ) : (
+                      <p>No existen horarios</p>
+                    )}
                   </select>
                 </td>
                 <td>
-                <select
-                    className={"form-select nuevoIdAula fila-"+index}
+                  <select
+                    className={"form-select nuevoIdAula fila-" + index}
                     aria-label="Default select example"
-                    onChange={(e)=>{
+                    onChange={(e) => {
                       const selectedValueAsNumber = parseInt(e.target.value);
-                    console.log(`Valor seleccionado: ${selectedValueAsNumber}`);
+                      console.log(
+                        `Valor seleccionado: ${selectedValueAsNumber}`
+                      );
                     }}
-                    
                     disabled
                   >
-                    <option value={materia.ID_AULA} selected>{materia.Nombre}</option>
-                 {
-                  aulas.length >= 1 ? (
-                    aulas.map((aula,index)=>(
-                    
-                      <option  value={aula.Id_Aula} className={'opcion-'+index}>{aula.Nombre}</option>
-                    
-                    ))
-                  
-                  ) : (<p>No existen horarios</p>)
-                 }
+                    <option value={materia.ID_AULA} selected>
+                      {materia.Nombre}
+                    </option>
+                    {aulas.length >= 1 ? (
+                      aulas.map((aula, index) => (
+                        <option
+                          value={aula.Id_Aula}
+                          className={"opcion-" + index}
+                        >
+                          {aula.Nombre}
+                        </option>
+                      ))
+                    ) : (
+                      <p>No existen horarios</p>
+                    )}
                   </select>
                 </td>
                 <td>
-                   <select
-                    className={"form-select nuevoIdAula fila-"+index}
+                  <select
+                    className={"form-select nuevoIdAula fila-" + index}
                     aria-label="Default select example"
-                    onChange={(e)=>{
+                    onChange={(e) => {
                       const selectedValueAsNumber = parseInt(e.target.value);
-                    console.log(`Valor seleccionado: ${selectedValueAsNumber}`);
+                      console.log(
+                        `Valor seleccionado: ${selectedValueAsNumber}`
+                      );
                     }}
-                    
                     disabled
                   >
-                    <option value={materia.ID_CARRERA} selected>{materia.NOMBRE}</option>
-                 {
-                  carreras.length >= 1 ? (
-                    carreras.map((carrera,index)=>(
-                    
-                      <option  value={carrera.ID_CARRERA} className={'opcion-'+index}>{carrera.NOMBRE}</option>
-                    
-                    ))
-                  
-                  ) : (<p>No existen Carreras</p>)
-                 }
+                    <option value={materia.ID_CARRERA} selected>
+                      {materia.NOMBRE}
+                    </option>
+                    {carreras.length >= 1 ? (
+                      carreras.map((carrera, index) => (
+                        <option
+                          value={carrera.ID_CARRERA}
+                          className={"opcion-" + index}
+                        >
+                          {carrera.NOMBRE}
+                        </option>
+                      ))
+                    ) : (
+                      <p>No existen Carreras</p>
+                    )}
                   </select>
                 </td>
                 <td>
@@ -531,6 +694,7 @@ export const AgregarMateriaPage = () => {
                   <input
                     disabled
                     type="number"
+                    onKeyPress={validarNumeros}
                     defaultValue={materia.CREDITOS}
                     className={"form-control fila-" + index}
                   />
@@ -540,6 +704,7 @@ export const AgregarMateriaPage = () => {
                     disabled
                     type="number"
                     defaultValue={materia.CUPO}
+                    onKeyPress={validarNumeros}
                     className={"form-control fila-" + index}
                   />
                 </td>
@@ -548,6 +713,7 @@ export const AgregarMateriaPage = () => {
                     disabled
                     type="number"
                     defaultValue={materia.SEMESTRE}
+                    onKeyPress={validarNumeros}
                     className={"form-control fila-" + index}
                   />
                 </td>
@@ -561,7 +727,12 @@ export const AgregarMateriaPage = () => {
                   </a>
                 </td>
                 <td>
-                  <button className="btn btn-danger">ELiminar</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => eliminarMateria(materia.ID_MATERIA)}
+                  >
+                    ELiminar
+                  </button>
                 </td>
               </tr>
             ))

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { validarCampos } from "./validarCampos";
+import { validarCampos, validarNumeros } from "./validarCampos";
 let inputId;
 let inputNombre;
 let inputAPaterno;
@@ -17,6 +17,10 @@ export const AgregarDocentePage = () => {
   const [Ap_Matern, setAp_Matern] = useState();
   const [docentes, setDocentes] = useState([]);
   const [search, setSearch] = useState("")
+
+
+  const [materias_asignadas, setmaterias_Asignadas] = useState([])
+
   const onHandleId = (e) => {
     setId_docente(e.target.value);
   };
@@ -115,13 +119,32 @@ export const AgregarDocentePage = () => {
     ventanaModal.classList.remove("d-none");
     console.log(ventanaModal);
   };
-  const comprobarSiExiste = () => {
+
+  //Boton cancelar
+  const cancelarEvent = () =>{
+    //Habilitamos todas las cajas y las limpiamos
+    inputNombre.value = ''
+    inputAPaterno.value = ''
+    inputAMaterno.value = ''
+    inputId.value = '';
+    //habilitamos
+    inputId.disabled = false; 
+    inputNombre.disabled = false;
+    inputAPaterno.disabled = false;
+    inputAMaterno.disabled = false;
+    const btnagregar = document.querySelector('.btn-agregar');
+    btnagregar.disabled = false;
+  }
+  const comprobarSiExiste = async () => {
     //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
 
     //Creamos la url
     const url = "http://localhost:3030/getDocente/" + id_docente;
-
-    fetch(url)
+    //limpiamos los inputs
+    inputNombre.value = ''
+    inputAPaterno.value = ''
+    inputAMaterno.value = ''
+    await fetch(url)
       .then((res) => res.json())
       .then((data) => {
         //Actualizamos los datos en los inputs
@@ -129,6 +152,29 @@ export const AgregarDocentePage = () => {
         inputAPaterno.value = data[0].AP_PATERNO;
         inputAMaterno.value = data[0].AP_MATERNO;
       });
+    
+      if(inputNombre.value===''){
+        //comprobamos si tiene valor es porque si existe.
+        //bloqueamos el boton  y los inputs
+        inputId.disabled = false; 
+        inputNombre.disabled = false;
+        inputAPaterno.disabled = false;
+        inputAMaterno.disabled = false;
+        const btnagregar = document.querySelector('.btn-agregar');
+        btnagregar.disabled = false;
+
+        
+      }
+      else{
+        inputId.disabled = true; 
+
+        inputNombre.disabled = true;
+        inputAPaterno.disabled = true;
+        inputAMaterno.disabled = true;
+        const btnagregar = document.querySelector('.btn-agregar');
+        btnagregar.disabled = true;
+      }
+      setId_docente(0)
   };
 
   const getAllDocentes = () => {
@@ -146,6 +192,9 @@ export const AgregarDocentePage = () => {
     console.log(inputId.value);
     //Reconocemos la ventana modal
     getAllDocentes();
+    fetch('http://localhost:3030/getMaterias_asigandas')
+    .then(res=>res.json())
+    .then(data=>setmaterias_Asignadas(data))
   }, []);
 
   useEffect(() => {
@@ -255,7 +304,9 @@ export const AgregarDocentePage = () => {
       const inputAMaterno = inputs[2];
 
       //hacemos la peticion
-
+      //COMPROBAMOS QUE ESTEN TODOS LOS CAMPOS
+      if(validarCampos(inputName, inputAMaterno, inputAPaterno))
+      {
       fetch("http://localhost:3030/updateDocente/" + id, {
         method: "PUT",
         headers: {
@@ -269,8 +320,41 @@ export const AgregarDocentePage = () => {
         }),
       });
       window.location.reload();
+    }
     });
   };
+
+  //eliminar docente
+  const eliminarDocente = (id_docente) =>{
+    //vamos a eliminar el docente seleccionado, solo en caso de que no tenga elementos hijos
+    let tieneHijos = false;
+
+    //vamos a recorrer las materias asignadas profesor en busca del id del docente
+    materias_asignadas.forEach(materia=>{
+      //vamos a buscar en cada materia
+      if(materia.ID_DOCENTE==id_docente){
+        tieneHijos = true;
+      }
+    })
+
+    //si no tiene hijos, eliminamos el registro
+    if(!tieneHijos){
+      //eliminamos
+      fetch('http://localhost:3030/deleteADocente/'+id_docente, { method: 'DELETE' })
+      .then(response => {
+    if (response.ok) {
+      console.log('Registro eliminado exitosamente');
+    } else {
+      console.error('Ocurrió un error al eliminar el registro');
+    }
+  })
+  .catch(error => console.error(error));
+
+    }
+    else{
+      confirm('No se puede eliminar, ya que tiene hijos')
+    }
+  }
   return (
     <div>
       <h1>Agregar docentes </h1>
@@ -281,9 +365,11 @@ export const AgregarDocentePage = () => {
         </label>
         <input
           type="number"
+          pattern="[0-9]*"
           id="id_docente"
           name="id_docente"
           className="form-control"
+          onKeyPress={validarNumeros}
           onBlur={() => comprobarSiExiste()}
           onChange={(event) => onHandleId(event)}
         />
@@ -322,9 +408,9 @@ export const AgregarDocentePage = () => {
           onChange={(event) => onHandleApMaterno(event)}
         />
 
-        <button className="btn btn-danger">Cancelar</button>
+        <button className="btn btn-danger" onClick={()=>cancelarEvent()}>Cancelar</button>
         <button
-          className="btn btn-success m-4"
+          className="btn btn-success m-4 btn-agregar"
           //Llamamos a la función para agregar al alumno, antes que todo, hay que validar que todos los datos sean correctos
           onClick={() =>
             addDocentePetition(id_docente, Nombre, Ap_Paterno, Ap_Matern)

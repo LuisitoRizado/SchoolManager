@@ -1,0 +1,28 @@
+.tablaMaterias{
+    max-height: 580px;
+    margin-left: 35px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.tablaDocentes{
+    max-height: 580px;
+   
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+/* Estilo para el scroll horizontal */
+.table-container::-webkit-scrollbar {
+    height: 2px;
+    width: 2px;
+    background-color: #F5F5F5;
+}
+.table-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+/* Estilo para el scroll vertical */
+.table-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #F5F5F5;
+}
