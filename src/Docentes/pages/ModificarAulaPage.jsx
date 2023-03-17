@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import { validarCampos } from "./validarCampos";
+import { validarCampos, validarNumeros } from "./validarCampos";
 export const ModificarAulaPage = () => {
   //Obtener query params de la url
   //Leemos el query params de la url
@@ -53,12 +53,12 @@ export const ModificarAulaPage = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "ID_AULA": id,
         "NOMBRE": aula,
         "EDIFICIO": edificio,
         "CAPACIDAD": capacidad,
       }),
     });
+    confirm('Aula actualizada!')
     window.location.reload();
   }
   };
@@ -81,7 +81,7 @@ export const ModificarAulaPage = () => {
 
   return (
     <div>
-      <h1>Modificación de docente</h1>
+      <h1>Modificación de Aula</h1>
       <hr />
 
       {/*Mostraremos la información del docente en un formulario */}
@@ -135,7 +135,7 @@ export const ModificarAulaPage = () => {
               id="capacidad"
               className="form-control"
               defaultValue={aul.Capacidad}
-              
+              onKeyPress={validarNumeros}
               onChange={(e) => onHandleCapacidad(e)}
             />
             {/*Aula donde se imparte la materia */}

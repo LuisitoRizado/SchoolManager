@@ -93,26 +93,56 @@ export const ModificarHorarioPage = () => {
             <label htmlFor="" className="form-label">
               Hora inicio
             </label>
-            <input
-              type="text"
-              name="hora_inicio"
-              id="hora_inicio"
-              className="form-control"
-              defaultValue={hora.Hora_Inicio_Lunes}
-              onChange={(e) => onHandleHora_Inicio(e)}
-            />
+            <select
+          class="form-select"
+          aria-label="Default select example"
+          id="hora_inicio"
+          defaultValue={hora.Hora_Inicio_Lunes}
+          onChange={(event) => onHandleHora_Inicio(event)}
+        >
+          <option value="" selected>{hora.Hora_Inicio_Lunes}</option>
+          <option value="9:00">9:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:0</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+        </select>
             {/*Profesor que imparte la materia */}
             <label htmlFor="" className="form-label">
               Edificio
             </label>
-            <input
-              type="text"
-              name="hora_final"
-              id="hora_final"
-              className="form-control"
-              defaultValue={hora.Hora_Final_Lunes}
-              onChange={(e) => onHandleHora_Final(e)}
-            />
+            <select
+          class="form-select"
+          aria-label="Default select example"
+          id="hora_final"
+          defaultValue={hora.Hora_Final_Lunes}
+          onChange={(event) => onHandleHora_Inicio(event)}
+        >
+          <option value="" selected>{hora.Hora_Final_Lunes}</option>
+          <option value="9:00">9:00</option>
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:0</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+        </select>
             {/*Hora de la materia */}
 
             <button

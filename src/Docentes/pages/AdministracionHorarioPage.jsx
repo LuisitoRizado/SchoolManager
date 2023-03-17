@@ -5,6 +5,8 @@ import { validarCampos } from './validarCampos';
 export const AdministracionHorarioPage = () => {
     const [id_horario, setId_horario] = useState([]);
     const [horarios, setHorarios] = useState([]);
+  const [materias, setMaterias] = useState([])
+
     let inputId;
     //---------HANDLERS
     const onHandleHorario = (e) => {
@@ -28,34 +30,41 @@ export const AdministracionHorarioPage = () => {
           window.location.href = "modificarHorario/?id="+id_horario;
     }
   
-    const eliminarHorario = (Id_horario) =>{
-      //vamos a pedir la peticion al http de delte en la base de datos
-      //Nos va a pasar como parametros el numero de control del alumno
-      //Ok ahora podemos hacer la peticion al servidor
-      const url = 'http://localhost:3030/deleteHorario/'+Id_horario;
-      
-      //hacemos el fetch a la api
+    const eliminarHorario = (id_horario) =>{
+      //vamos a buscar entre todas las materias si es que coincide
+      let tieneHijos = false;
+      console.log("clikeaste");
+      materias.forEach((materia) => {
+        if (materia.ID_HORARIO === id_horario) {
+          tieneHijos = true;
+        }
+      });
   
-      //Primero preguntamos si esta seguo de que quiere elimnar el alumno
-      if(confirm('¿Estás seguro de que quieres eliminar este horario?'))
-      {
-        //En caso de que diga que si , entonces, lo eliminamos
-        fetch(url, { method: 'DELETE' })
-        .then((res) => res.json())
-        .then((data)=>console.log('Eliminado : ' + data))
-  
-        window.location.reload();
+      if (!tieneHijos) {
+        //borramos la materia
+        fetch("http://localhost:3030/deleteHorario/" + id_horario, { method: "DELETE" })
+          .then((response) => {
+            if (response.ok) {
+              console.log("Registro eliminado exitosamente");
+            } else {
+              console.error("Ocurrió un error al eliminar el registro");
+            }
+          })
+          .catch((error) => console.error(error));
+          confirm('Horario eliminada con exito')
+      } else {
+        confirm("No se puede eliminar, tiene hijos");
       }
-      else{
-        //De lo contrario no hacemos nada
-        return;
-      }
-    
   
     }
+  
     
     useEffect(() => {
       inputId = document.querySelector('#id_horario');
+       //traemos todas las materias
+    fetch('http://localhost:3030/getAllMaterias')
+    .then(res=>res.json())
+    .then(data=>setMaterias(data));
     }, [])
     useEffect(() => {
       inputId = document.querySelector('#id_horario');

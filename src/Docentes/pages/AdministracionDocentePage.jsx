@@ -13,9 +13,9 @@ export const AdministracionDocentePage = () => {
 
     //Hooks
     const [docente, setDocente] = useState([])
-    const [nombre, setNombre] = useState([])
-    const [AP_PATERNO, setAP_PATERNO] = useState([])
-    const [AP_MATERNO, setAP_MATERNO] = useState([])
+    const [nombre, setNombre] = useState()
+    const [AP_PATERNO, setAP_PATERNO] = useState()
+    const [AP_MATERNO, setAP_MATERNO] = useState()
     let inputId;
     let inputNombre;
     let inputAPaterno;
@@ -34,12 +34,20 @@ export const AdministracionDocentePage = () => {
 
 
     //Peticion
-    const obtenerDocente = () =>{
+    const obtenerDocente = async () =>{
         const url = "http://localhost:3030/getDocente/"+id;
-        fetch(url)
+        await fetch(url)
         .then(res => res.json())
-        .then(data => setDocente(data));
-    }
+        .then(data => {
+          
+          setAP_PATERNO(data[0].AP_PATERNO)
+          setAP_MATERNO(data[0].AP_MATERNO)
+          setDocente(data)
+
+        });
+     
+
+      }
 
     //Mmetodo para guardar los datos del docente
     const guardarDatos = (id_docente, name, ap_pat, ap_mat) =>{
@@ -47,16 +55,18 @@ export const AdministracionDocentePage = () => {
         //Todo esto es lo introducido en los campos de texto del formulario
       if(validarCampos(inputNombre,inputAPaterno,inputAMaterno)){
 
-        fetch('http://localhost:3030/updateDocente/'+id, {method:'PUT', headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "ID_DOCENTE":id,
-            "NOMBRE":name,
-            "AP_PATERNO": ap_pat,
-            "AP_MATERNO": ap_mat
-        })})
+        fetch("http://localhost:3030/updateDocente/" + id, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            NOMBRE: name,
+            AP_PATERNO: ap_pat,
+            AP_MATERNO: ap_mat,
+          }),
+        });
         window.location.reload();
       }
     }
@@ -68,6 +78,7 @@ export const AdministracionDocentePage = () => {
     inputNombre = document.querySelector('#nombre');
     inputAPaterno = document.querySelector('#ap_paterno');
     inputAMaterno = document.querySelector('#ap_materno');
+    
     }, [])
     useEffect(() => {
       //obtenemos los inputs al cargar
@@ -75,6 +86,7 @@ export const AdministracionDocentePage = () => {
       inputNombre = document.querySelector('#nombre');
       inputAPaterno = document.querySelector('#ap_paterno');
       inputAMaterno = document.querySelector('#ap_materno');
+      
       }, [nombre, AP_PATERNO, AP_MATERNO])
    
     

@@ -113,22 +113,22 @@ export const SeleccionMateriasPage = () => {
     window.location.reload(2);
   }
 
+  useEffect(() => {
   
+  }, [])
   
- 
 
   //Metodo que comprueba si el alumno tiene materias cargadas o no, en caso de si tenerlas, 
   //Entonces debería de aparecer un mensaje en la pagina de que no te deje hacer horario
 
   const comprobarSiTieneCarga =  () =>{
-    
     let tieneMaterias ;
     fetch('http://localhost:3030/getCarga/'+ window.localStorage.getItem('user'))
     .then((response) => response.json())
     .then((data) => {
       console.log(data.length)
       //Si la longitud es mayor a 0, entonces siginifica que tiene al menos una materia
-      if(data.length>=1){
+      if(data.length>0){
         window.localStorage.setItem('tieneMaterias', 'true')
       }//Cso contrario, significa que NO tiene materias cargadas
       else{
@@ -136,11 +136,11 @@ export const SeleccionMateriasPage = () => {
 
       }
     })
+    console.log(window.localStorage.getItem('tieneMaterias'))
     console.log(" asdfasdf " + carga)
     //Tenemos que hacer una peticion con el número de control del alumno
     if(window.localStorage.getItem('tieneMaterias')==='true'){
       //Mostramos un mensaje que diga que ya está cargado su horario
-      window.localStorage.removeItem('tieneMaterias');
       return(<h1>Ya tienes un horario asignado para este periodo</h1>)
     }
     else{

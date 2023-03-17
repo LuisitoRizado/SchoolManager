@@ -1,5 +1,6 @@
 import { AlumnoEncontrado } from "../components/AlumnoEncontrado";
 import { useState, useEffect } from "react";
+import { validarNumeros } from "./validarCampos";
 
 export const EliminarAlumnoPage = () => {
   const [ncontrol, setNcontrol] = useState([]);
@@ -42,7 +43,7 @@ export const EliminarAlumnoPage = () => {
       fetch(url, { method: 'DELETE' })
       .then((res) => res.json())
       .then((data)=>console.log('Eliminado : ' + data))
-
+      confirm('Alumno eliminado con exito!')
       window.location.reload();
     }
     else{
@@ -62,6 +63,7 @@ export const EliminarAlumnoPage = () => {
           type="number"
           placeholder="Buscar por Número de control"
           className="form-control"
+          onKeyPress={validarNumeros}
           onChange={(e) => onHandleNControl(e)}
         />
         <button className="btn btn-primary mt-2" onClick={()=> mostrarAlumno()}>Buscar</button>

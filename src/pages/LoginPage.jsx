@@ -26,6 +26,8 @@ export const LoginPage = () => {
   };
   //Eliminamos el usuario cargado anteriormente
   window.localStorage.removeItem("user");
+  window.localStorage.removeItem("tieneMaterias");
+
 
   //Realizamos las peticions
   //loginPetition(username,password);

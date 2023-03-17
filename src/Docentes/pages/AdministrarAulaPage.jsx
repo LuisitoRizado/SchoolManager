@@ -6,6 +6,8 @@ export const AdministrarAulaPage = () => {
     //----------HOOKS
     const [aulas, setAulas] = useState([])
     const [id_aula, setId_aula] = useState()
+  const [materias, setMaterias] = useState([]);
+
     let inputId;
     //---------HANDLERS
     const onHandleIdAula = (e) =>{
@@ -24,36 +26,38 @@ export const AdministrarAulaPage = () => {
       }
     }
 
-    const eliminarAula = (id) =>{
-        //vamos a pedir la peticion al http de delte en la base de datos
-        //Nos va a pasar como parametros el numero de control del alumno
-        //Ok ahora podemos hacer la peticion al servidor
-        const url = 'http://localhost:3030/deleteAula/'+id;
-        
-        //hacemos el fetch a la api
-    
-        //Primero preguntamos si esta seguo de que quiere elimnar el alumno
-        if(confirm('¿Estás seguro de que quieres eliminar esta Aula?'))
-        {
-          //En caso de que diga que si , entonces, lo eliminamos
-          fetch(url, { method: 'DELETE' })
-          .then((res) => res.json())
-          .then((data)=>console.log('Eliminado : ' + data))
-    
-          window.location.reload();
+    const eliminarAula = (id_aula) => {
+      let tieneHijos = false;
+      //recorremos todas las materias en busca del id del aula
+      console.log("clikeaste");
+      materias.forEach((materia) => {
+        if (materia.ID_AULA === id_aula) {
+          tieneHijos = true;
         }
-        else{
-          //De lo contrario no hacemos nada
-          return;
-        }
-    
+      });
+  
+      //Si no tiene hijos
+      if (!tieneHijos) {
+        //borramos la materia
+        fetch("http://localhost:3030/deleteAula/" + id_aula, { method: "DELETE" })
+          .then((response) => {
+            if (response.ok) {
+              console.log("Registro eliminado exitosamente");
+            } else {
+              console.error("Ocurrió un error al eliminar el registro");
+            }
+          })
+          .catch((error) => console.error(error));
+          confirm('Aula eliminada con exito')
+      } else {
+        confirm("No se puede eliminar, tiene hijos");
       }
-
-      const redirecionamientoPage = (id) =>{
-        window.location.href = "administracionAula/?id="+id;
-  }
+    };
   useEffect(() => {
     inputId = document.querySelector('#id_aula')
+    fetch("http://localhost:3030/getAllMaterias")
+      .then((res) => res.json())
+      .then((data) => setMaterias(data));
    }, [])
    useEffect(() => {
      inputId = document.querySelector('#id_aula')

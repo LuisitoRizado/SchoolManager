@@ -399,7 +399,7 @@ export const AgregarDocenteMateria = () => {
           </table>
         </div>
         {/* Contenido de las materias */}
-        <div className="tablaMaterias col-md-5 table-responsive table-container">
+        <div className="tablaMaterias col-md-5 table-responsive table-container border">
         <table className="table  table-bordered ">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -474,7 +474,6 @@ export const AgregarDocenteMateria = () => {
             <th scope="col">Ap materno</th>
             <th scope="col">Hora inicio</th>
             <th scope="col">Hora Final</th>
-            <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
         </thead>

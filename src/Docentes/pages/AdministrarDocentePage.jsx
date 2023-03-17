@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import { validarCampos } from "./validarCampos";
+import { validarCampos, validarNumeros } from "./validarCampos";
 export const AdministrarDocentePage = () => {
   const [id_docente, setId_docente] = useState([]);
   const [docentes, setDocentes] = useState([]);
+
+  const [materias_asignadas, setmaterias_Asignadas] = useState([])
+
   let inputId;
   //---------HANDLERS
   const onHandleDocente = (e) => {
@@ -26,32 +29,41 @@ export const AdministrarDocentePage = () => {
         window.location.href = "modificarDocente/?id="+id_docente;
   }
 
-  const eliminarDocente = (Id_Docente) =>{
-    //vamos a pedir la peticion al http de delte en la base de datos
-    //Nos va a pasar como parametros el numero de control del alumno
-    //Ok ahora podemos hacer la peticion al servidor
-    const url = 'http://localhost:3030/deleteDocente/'+Id_Docente;
-    
-    //hacemos el fetch a la api
+  const eliminarDocente = (id_docente) =>{
+    //vamos a eliminar el docente seleccionado, solo en caso de que no tenga elementos hijos
+    let tieneHijos = false;
 
-    //Primero preguntamos si esta seguo de que quiere elimnar el alumno
-    if(confirm('¿Estás seguro de que quieres eliminar este Docente?'))
-    {
-      //En caso de que diga que si , entonces, lo eliminamos
-      fetch(url, { method: 'DELETE' })
-      .then((res) => res.json())
-      .then((data)=>console.log('Eliminado : ' + data))
+    //vamos a recorrer las materias asignadas profesor en busca del id del docente
+    materias_asignadas.forEach(materia=>{
+      //vamos a buscar en cada materia
+      if(materia.ID_DOCENTE==id_docente){
+        tieneHijos = true;
+      }
+    })
 
-      window.location.reload();
+    //si no tiene hijos, eliminamos el registro
+    if(!tieneHijos){
+      //eliminamos
+      fetch('http://localhost:3030/deleteADocente/'+id_docente, { method: 'DELETE' })
+      .then(response => {
+    if (response.ok) {
+      console.log('Registro eliminado exitosamente');
+    } else {
+      console.error('Ocurrió un error al eliminar el registro');
+    }
+  })
+  .catch(error => console.error(error));
+    confirm('Docente Eliminado con exito!')
     }
     else{
-      //De lo contrario no hacemos nada
-      return;
+      confirm('No se puede eliminar, ya que tiene hijos')
     }
-
   }
   useEffect(() => {
    inputId = document.querySelector('#id_docente')
+   fetch('http://localhost:3030/getMaterias_asigandas')
+    .then(res=>res.json())
+    .then(data=>setmaterias_Asignadas(data))
   }, [])
   useEffect(() => {
     inputId = document.querySelector('#id_docente')
@@ -67,6 +79,7 @@ export const AdministrarDocentePage = () => {
           placeholder="Buscar por id docente"
           className="form-control "
           id="id_docente"
+          onKeyPress={validarNumeros}
           onChange={(e) => onHandleDocente(e)}
         />
         <button
