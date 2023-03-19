@@ -71,8 +71,8 @@ export const EliminarAlumnoPage = () => {
       <hr />
       <h3>Resultados</h3>
       <hr />
-
-      <table className="table  table-bordered">
+      <div className="table-responsive">
+      <table className="table  table-bordered table-responsive table-container">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
             <th scope="col">Numero de control</th>
@@ -96,12 +96,17 @@ export const EliminarAlumnoPage = () => {
                   <td></td>
                   <td><button className="btn btn-danger" onClick={() => eliminarAlumno(alumno.NControl)}>Eliminar</button></td>
                 </tr>
-              )) : <h3 className="m-1 text-danger">No se encontro ningún alumno con ese número de control</h3>
-                
+              )) : 
+              <tr>
+                <td>
+              <h3 className="m-1 text-danger">No se encontro ningún alumno con ese número de control</h3>
+              </td>
+              </tr>
             }
         
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

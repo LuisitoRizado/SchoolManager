@@ -399,7 +399,7 @@ export const AgregarAlumno = () => {
                         </option>
                       ))
                     ) : (
-                      <p>No existen Carreras</p>
+                      <option>No existen Carreras</option>
                     )}
                   </select>
         <label htmlFor="nombre" className="form-label mt-3">
@@ -503,7 +503,8 @@ export const AgregarAlumno = () => {
           Agregar!
         </button>
       </form>
-      <table className="table  table-bordered">
+      <div className="table-responsive">
+      <table className="table  table-bordered table-responsive table-container">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
             <th scope="col">Numero de control</th>
@@ -520,7 +521,7 @@ export const AgregarAlumno = () => {
         <tbody>
           {alumno.length >= 1 ? (
             alumno.map((alumno, index) => (
-              <tr key={alumno}>
+              <tr key={index}>
                 <td>
                   <input
                     className={`id-${index} form-control`}
@@ -599,12 +600,17 @@ export const AgregarAlumno = () => {
               </tr>
             ))
           ) : (
-            <h3 className="m-1 text-danger">
+            <tr>
+            <td className="m-1 text-danger">
+              <h3>
               No se encontro ningún alumno con ese número de control
-            </h3>
+              </h3>
+            </td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

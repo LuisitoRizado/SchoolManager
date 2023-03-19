@@ -152,6 +152,8 @@ export const SeleccionMateriasPage = () => {
         <h4 className="text-center bg-body-secondary">
           Grupos seleccionados por el momento.
         </h4>
+    <div className="table-responsive">
+
         <table className="table table-bordered text-center">
           <thead>
             <tr className="bg-body-secondary">
@@ -169,10 +171,10 @@ export const SeleccionMateriasPage = () => {
             
             {
               //Vamos a recorrer el arreglo del localstorage con nuestras materias...
-              carga.map((materia)=>{
+              carga.map((materia,index)=>{
                 return(
                   <>
-                <tr>
+                <tr key={index}>
                 <td><button className="btn btn-danger" onClick={()=>{ 
                   eliminarMateria(materia.ID_MATERIA)
                    window.location.reload()}}>Eliminar</button></td>
@@ -197,6 +199,7 @@ export const SeleccionMateriasPage = () => {
            
           </tbody>
         </table>
+        </div>
         <button className="btn btn-success p-2 m-2" onClick={() => guardarHorario()}>Guardar Horario</button>
       </div>
 
@@ -242,6 +245,8 @@ export const SeleccionMateriasPage = () => {
           </li>
         </ul>
       </div>
+    <div className="table-responsive">
+
       <table className="table mt-5 table-bordered">
         <thead>
           <tr>
@@ -258,10 +263,10 @@ export const SeleccionMateriasPage = () => {
         <tbody>
           
             {
-              materias.map((materia)=>{
+              materias.map((materia,index)=>{
                 return(
                   <>
-                  <tr key={materia}>
+                  <tr key={index}>
                   <td>{materia.ID_MATERIA}</td>
                   <td>{materia.MATERIA}</td>
                   <td>{materia.CUPO}</td>
@@ -283,7 +288,9 @@ export const SeleccionMateriasPage = () => {
             }
           
         </tbody>
-      </table></>
+      </table>
+      </div>
+      </>
       )
     }
   }

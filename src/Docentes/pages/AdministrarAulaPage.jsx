@@ -26,6 +26,12 @@ export const AdministrarAulaPage = () => {
       }
     }
 
+    const redirecionamientoPage = (id_aula) =>{
+      console.log('Me diste click')
+      window.location.href = 'modificarAula/?id='+id_aula
+      
+    }
+
     const eliminarAula = (id_aula) => {
       let tieneHijos = false;
       //recorremos todas las materias en busca del id del aula
@@ -62,6 +68,8 @@ export const AdministrarAulaPage = () => {
    useEffect(() => {
      inputId = document.querySelector('#id_aula')
     }, [id_aula])
+
+    
   return (
     <div>
     <h1>Administrar Aulas</h1>
@@ -84,6 +92,8 @@ export const AdministrarAulaPage = () => {
     <hr />
     <h3>Resultados</h3>
     <hr />
+    <div className="table-responsive">
+
     <table className="table  table-bordered">
       <thead className="bg-body-secondary">
         <tr className="bg-body-dark">
@@ -116,10 +126,13 @@ export const AdministrarAulaPage = () => {
             </tr>
           ))
         ) : (
-          <h1>No existe esa aula</h1>
+          <tr>
+            <td><h1>No existe esa aula</h1></td>
+          </tr>
         )}
       </tbody>
     </table>
+    </div>
   </div>
   )
 }

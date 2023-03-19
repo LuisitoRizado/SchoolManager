@@ -28,6 +28,8 @@ export const MateriasPage = () => {
 
   return (
     <div className="mt-5">
+    <div className="table-responsive">
+
       <table className="table table-bordered text-center">
         <thead>
           <tr className="bg-body-secondary">
@@ -41,10 +43,10 @@ export const MateriasPage = () => {
           </tr>
         </thead>
         <tbody>
-          {materias.map((materia) => {
+          {materias.map((materia, index) => {
             return (
               //Pintamos las materias en el componente
-              <tr key={materia}>
+              <tr key={index}>
                 <td>{materia.ID_MATERIA}</td>
                 <td>{materia.MATERIA}</td>
                 <td>{materia.CUPO}</td>
@@ -56,6 +58,7 @@ export const MateriasPage = () => {
           })}
         </tbody>
       </table>
+      </div>
       <a className="btn btn-warning" href="materiasdisponibles">Regresar</a>
     </div>
   );

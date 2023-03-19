@@ -43,7 +43,7 @@ export const DocenteRoutes = () => {
                 <Route path="aulas" element={<AulasPage />} />
                 <Route path="agregarAula" element={<AgregarAula />} />
                 <Route path="administrarAula" element={<AdministrarAulaPage  />} />
-                <Route path="administracionAula" element={<ModificarAulaPage  />} />
+                <Route path="modificarAula" element={<ModificarAulaPage  />} />
                 <Route path="horarios" element={<HorariosPage  />} />
                 <Route path="agregarHorario" element={<AgregarHorarioPage  />} />
                 <Route path="administrarHorarios" element={<AdministracionHorarioPage  />} />

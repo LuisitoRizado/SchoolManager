@@ -93,6 +93,8 @@ export const AdministracionHorarioPage = () => {
         <hr />
         <h3>Resultados</h3>
         <hr />
+    <div className="table-responsive">
+
         <table className="table  table-bordered">
           <thead className="bg-body-secondary">
             <tr className="bg-body-dark">
@@ -124,10 +126,13 @@ export const AdministracionHorarioPage = () => {
                 </tr>
               ))
             ) : (
-              <h1>No existe ese Docente</h1>
+              <tr>
+                <td><h1>No existe ese Docente</h1></td>
+              </tr>
             )}
           </tbody>
         </table>
+        </div>
       </div>
   )
 }

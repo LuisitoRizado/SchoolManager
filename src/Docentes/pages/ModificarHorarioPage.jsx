@@ -51,10 +51,13 @@ export const ModificarHorarioPage = () => {
           HORA_FINAL_LUNES: hora_final,
         }),
       });
+      confirm('Cambios realizados!')
       window.location.reload();
     }
   };
 
+  inputInicio = document.querySelector("#hora_inicio");
+  inputFinal = document.querySelector("#hora_final");
   //Para los datos
   useEffect(() => {
     obtenerHorario();
@@ -73,9 +76,9 @@ export const ModificarHorarioPage = () => {
       <hr />
 
       {/*Mostraremos la información del docente en un formulario */}
-      {horario.map((hora) => {
+      {horario.map((hora, index) => {
         return (
-          <form action="" className="mt-4" onSubmit={(e) => e.preventDefault()}>
+          <form action="" className="mt-4" onSubmit={(e) => e.preventDefault()} key={index}>
             {/*Id de la materia */}
             <label htmlFor="" className="form-label">
               Id Horario
@@ -94,13 +97,13 @@ export const ModificarHorarioPage = () => {
               Hora inicio
             </label>
             <select
-          class="form-select"
+          className="form-select"
           aria-label="Default select example"
           id="hora_inicio"
           defaultValue={hora.Hora_Inicio_Lunes}
           onChange={(event) => onHandleHora_Inicio(event)}
         >
-          <option value="" selected>{hora.Hora_Inicio_Lunes}</option>
+          <option value="" >{hora.Hora_Inicio_Lunes}</option>
           <option value="9:00">9:00</option>
           <option value="10:00">10:00</option>
           <option value="11:00">11:0</option>
@@ -118,16 +121,16 @@ export const ModificarHorarioPage = () => {
         </select>
             {/*Profesor que imparte la materia */}
             <label htmlFor="" className="form-label">
-              Edificio
+              Hora Terminación
             </label>
             <select
-          class="form-select"
+          className="form-select"
           aria-label="Default select example"
           id="hora_final"
           defaultValue={hora.Hora_Final_Lunes}
           onChange={(event) => onHandleHora_Inicio(event)}
         >
-          <option value="" selected>{hora.Hora_Final_Lunes}</option>
+          <option value="" >{hora.Hora_Final_Lunes}</option>
           <option value="9:00">9:00</option>
           <option value="10:00">10:00</option>
           <option value="11:00">11:0</option>
@@ -154,7 +157,7 @@ export const ModificarHorarioPage = () => {
             <button
               className="btn btn-success m-2"
               onClick={() =>
-                guardarDatos(hora.Id_Horario, hora_inicio, hora_final)
+                guardarDatos(hora.Id_Horario, hora_final, hora_inicio )
               }
             >
               Confirmar

@@ -321,6 +321,8 @@ export const AgregarAula = () => {
           Agregar!
         </button>
       </form>
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -335,7 +337,7 @@ export const AgregarAula = () => {
         <tbody>
           {aulas.length >= 1 ? (
             aulas.map((aula, index) => (
-              <tr key={aula}>
+              <tr key={index}>
                 <td>
                   <input
                     className={`id-${index} form-control`}
@@ -385,10 +387,13 @@ export const AgregarAula = () => {
               </tr>
             ))
           ) : (
-            <h1>No existe esa aula</h1>
+            <tr>
+              <td><h1>No existe esa aula</h1></td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

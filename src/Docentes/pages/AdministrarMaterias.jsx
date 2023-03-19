@@ -64,6 +64,8 @@ export const AdministrarMaterias = () => {
       <hr />
       <h3>Resultados</h3>
       <hr />
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -102,10 +104,13 @@ export const AdministrarMaterias = () => {
               </tr>
             ))
           ) : (
-            <h3 className="m-1 text-danger">No se encontro ningúna materia</h3>
+            <tr>
+              <td><h3 className="m-1 text-danger">No se encontro ningúna materia</h3></td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

@@ -53,7 +53,7 @@ export const LoginPage = () => {
               value="alumno"
               className="form-check-input"
             />
-            <label for="alumno">Alumno</label>
+            <label htmlFor="alumno">Alumno</label>
 
             <input
               type="radio"
@@ -62,7 +62,7 @@ export const LoginPage = () => {
               value="empleado"
               className="form-check-input"
             />
-            <label for="empleado">Empleado</label>
+            <label htmlFor="empleado">Empleado</label>
           </div>
 
           <label htmlFor="username" className="mb-3 form-label text-dark">

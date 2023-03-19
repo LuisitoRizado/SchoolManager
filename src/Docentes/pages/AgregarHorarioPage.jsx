@@ -263,7 +263,7 @@ export const AgregarHorarioPage = () => {
         </label>
 
         <select
-          class="form-select"
+          className="form-select"
           aria-label="Default select example"
           id="horaInicio"
           
@@ -290,7 +290,7 @@ export const AgregarHorarioPage = () => {
         </label>
 
         <select
-          class="form-select"
+          className="form-select"
           aria-label="Default select example"
           id="horaFin"
           onChange={(event) => onHandleHora_Fin(event)}
@@ -325,6 +325,8 @@ export const AgregarHorarioPage = () => {
         </button>
       </form>
 
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -339,7 +341,7 @@ export const AgregarHorarioPage = () => {
         <tbody>
           {horarios.length >= 1 ? (
             horarios.map((horario, index) => (
-              <tr key={horario}>
+              <tr key={index}>
                 <td>
                   <input
                     className={`id-${index} form-control`}
@@ -349,9 +351,8 @@ export const AgregarHorarioPage = () => {
                 </td>
                 <td>
                   <select
-                    class="form-select"
                     aria-label="Default select example"
-                    className={`fila-${index} form-control`}
+                    className={`fila-${index} form-control form-select`}
                     defaultValue={horario.Hora_Inicio_Lunes}
                     disabled
                   >
@@ -373,9 +374,8 @@ export const AgregarHorarioPage = () => {
                 </td>
                 <td>
                   <select
-                    class="form-select"
                     aria-label="Default select example"
-                    className={`fila-${index} form-control`}
+                    className={`fila-${index} form-control form-select`}
                     defaultValue={horario.Hora_Final_Lunes}
                     disabled
                   >
@@ -415,10 +415,13 @@ export const AgregarHorarioPage = () => {
               </tr>
             ))
           ) : (
-            <h1>No existe ese Docente</h1>
+            <tr>
+              <td><h1>No existe ese Docente</h1></td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

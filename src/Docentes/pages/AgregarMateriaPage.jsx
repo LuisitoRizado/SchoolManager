@@ -105,6 +105,8 @@ export const AgregarMateriaPage = () => {
           SEMESTRE: SEMESTRE,
         }),
       });
+      confirm('Materia agregada con exito!')
+      window.location.reload()
     }
   };
 
@@ -441,12 +443,12 @@ export const AgregarMateriaPage = () => {
 
         {carreras.length >= 1 ? (
           carreras.map((carrera, index) => (
-            <option value={carrera.ID_CARRERA} className={"opcion-" + index}>
+            <option value={carrera.ID_CARRERA} className={"opcion-" + index} key={index}>
               {carrera.NOMBRE}
             </option>
           ))
         ) : (
-          <p>No existen Carreras</p>
+          <option >No existen Carreras</option>
         )}
       </select>
         <label htmlFor="horario" className="form-label">
@@ -464,12 +466,12 @@ export const AgregarMateriaPage = () => {
 
           {horarios.length >= 1 ? (
             horarios.map((horario, index) => (
-              <option value={horario.Id_Horario} className={"opcion-" + index}>
+              <option value={horario.Id_Horario} className={"opcion-" + index} key={index}>
                 {horario.Hora_Inicio_Lunes + " - " + horario.Hora_Final_Lunes}
               </option>
             ))
           ) : (
-            <p>No existen horarios</p>
+            <option >No existen horarios</option>
           )}
         </select>
 
@@ -488,12 +490,12 @@ export const AgregarMateriaPage = () => {
 
           {aulas.length >= 1 ? (
             aulas.map((aula, index) => (
-              <option value={aula.Id_Aula} className={"opcion-" + index}>
+              <option value={aula.Id_Aula} className={"opcion-" + index} key={index}>
                 {aula.Nombre}
               </option>
             ))
           ) : (
-            <p>No existen horarios</p>
+            <option >No existen horarios</option>
           )}
         </select>
 
@@ -564,6 +566,8 @@ export const AgregarMateriaPage = () => {
       </form>
 
       {/*Tabla de nuestras materias existentes */}
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -582,7 +586,7 @@ export const AgregarMateriaPage = () => {
         <tbody>
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
-              <tr key={materia}>
+              <tr key={index}>
                 <td>
                   <input
                     disabled
@@ -603,7 +607,7 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_HORARIO} selected>
+                    <option value={materia.ID_HORARIO} >
                       {materia.HORA_INICIO_LUNES +
                         " - " +
                         materia.HORA_FINAL_LUNES}
@@ -613,6 +617,7 @@ export const AgregarMateriaPage = () => {
                         <option
                           value={horario.Id_Horario}
                           className={"opcion-" + index}
+                          key={index}
                         >
                           {horario.Hora_Inicio_Lunes +
                             " - " +
@@ -620,7 +625,8 @@ export const AgregarMateriaPage = () => {
                         </option>
                       ))
                     ) : (
-                      <p>No existen horarios</p>
+                      <option>No existen horarios</option>
+                      
                     )}
                   </select>
                 </td>
@@ -636,7 +642,7 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_AULA} selected>
+                    <option value={materia.ID_AULA} >
                       {materia.Nombre}
                     </option>
                     {aulas.length >= 1 ? (
@@ -644,12 +650,13 @@ export const AgregarMateriaPage = () => {
                         <option
                           value={aula.Id_Aula}
                           className={"opcion-" + index}
+                          key={index}
                         >
                           {aula.Nombre}
                         </option>
                       ))
                     ) : (
-                      <p>No existen horarios</p>
+                      <option>No existen aulas</option>
                     )}
                   </select>
                 </td>
@@ -665,7 +672,7 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_CARRERA} selected>
+                    <option value={materia.ID_CARRERA} >
                       {materia.NOMBRE}
                     </option>
                     {carreras.length >= 1 ? (
@@ -673,12 +680,13 @@ export const AgregarMateriaPage = () => {
                         <option
                           value={carrera.ID_CARRERA}
                           className={"opcion-" + index}
+                          key={index}
                         >
                           {carrera.NOMBRE}
                         </option>
                       ))
                     ) : (
-                      <p>No existen Carreras</p>
+                      <option>No existen Carreras</option>
                     )}
                   </select>
                 </td>
@@ -737,10 +745,14 @@ export const AgregarMateriaPage = () => {
               </tr>
             ))
           ) : (
-            <h3 className="m-1 text-danger">No se encontro ningúna materia</h3>
+            <tr>
+            <td><h3 className="m-1 text-danger">No se encontro ningúna materia</h3></td>
+          </tr>
+            
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

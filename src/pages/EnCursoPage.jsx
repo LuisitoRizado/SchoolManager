@@ -91,6 +91,8 @@ export const EnCursoPage = () => {
             
         </div>
       </div> */}
+    <div className="table-responsive">
+
       <table className="table table-bordered text-center">
         <thead>
           <tr className="bg-body-secondary">
@@ -102,12 +104,12 @@ export const EnCursoPage = () => {
           </tr>
         </thead>
         <tbody>
-        {cargas.map(carga=>{
+        {cargas.map((carga,index)=>{
           
          
             return (
               
-              <tr>
+              <tr key={index}>
               <td>
               <div className=" materia shadow" >
               <div className="card-body">
@@ -165,6 +167,7 @@ export const EnCursoPage = () => {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   )
 }

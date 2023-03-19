@@ -13,9 +13,9 @@ export const AdministracionDocentePage = () => {
 
     //Hooks
     const [docente, setDocente] = useState([])
-    const [nombre, setNombre] = useState()
-    const [AP_PATERNO, setAP_PATERNO] = useState()
-    const [AP_MATERNO, setAP_MATERNO] = useState()
+    const [nombre, setNombre] = useState("")
+    const [AP_PATERNO, setAP_PATERNO] = useState("")
+    const [AP_MATERNO, setAP_MATERNO] = useState("")
     let inputId;
     let inputNombre;
     let inputAPaterno;
@@ -51,6 +51,9 @@ export const AdministracionDocentePage = () => {
 
     //Mmetodo para guardar los datos del docente
     const guardarDatos = (id_docente, name, ap_pat, ap_mat) =>{
+      inputNombre = document.querySelector('#nombre');
+      inputAPaterno = document.querySelector('#ap_paterno');
+      inputAMaterno = document.querySelector('#ap_materno');
         //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
         //Todo esto es lo introducido en los campos de texto del formulario
       if(validarCampos(inputNombre,inputAPaterno,inputAMaterno)){
@@ -67,9 +70,14 @@ export const AdministracionDocentePage = () => {
             AP_MATERNO: ap_mat,
           }),
         });
+        confirm('Modificaciones realizadas!')
         window.location.reload();
       }
+      
     }
+    inputNombre = document.querySelector('#nombre');
+    inputAPaterno = document.querySelector('#ap_paterno');
+    inputAMaterno = document.querySelector('#ap_materno');
     //Para los datos
     useEffect(() => {
     obtenerDocente();
@@ -97,9 +105,9 @@ export const AdministracionDocentePage = () => {
         <hr />
 
         {/*Mostraremos la información del docente en un formulario */}
-        {docente.map((doc) => {
+        {docente.map((doc, index) => {
         return (
-          <form action="" className="mt-4" onSubmit={(e)=>e.preventDefault()}>
+          <form action="" className="mt-4" onSubmit={(e)=>e.preventDefault()} key={index}>
             {/*Id de la materia */}
             <label htmlFor="" className="form-label">
               Id materia
@@ -165,7 +173,7 @@ export const AdministracionDocentePage = () => {
               Cancelar
             </button>
             <button className="btn btn-success m-2"
-              onClick={() => guardarDatos(doc.ID_Docente, nombre, AP_PATERNO, AP_MATERNO)}
+              onClick={() => guardarDatos(doc.ID_Docente, inputNombre.value, inputAPaterno.value, inputAMaterno.value)}
             
             >Confirmar</button>
           </form>

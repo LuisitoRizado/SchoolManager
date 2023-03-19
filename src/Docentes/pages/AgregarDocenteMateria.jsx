@@ -383,17 +383,21 @@ export const AgregarDocenteMateria = () => {
             </thead>
             <tbody>
               {docentes.length >= 1 ? (
-                docentes.map((docente) => (
-                  <tr key={docente}  >
+                docentes.map((docente, index) => (
+                  <tr key={index}  >
                     <td>{docente.Id_Docente}</td>
                     <td>{docente.Nombre}</td>
                     <td>{docente.AP_PATERNO}</td>
                     <td>{docente.AP_MATERNO}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} class="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
-                <p>No se encontraron docentes</p>
+                <tr>
+              <td>
+                <p className="m-1 text-danger">No se encontro ningúna docente</p>
+              </td>
+            </tr>
               )}
             </tbody>
           </table>
@@ -418,7 +422,7 @@ export const AgregarDocenteMateria = () => {
         <tbody>
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
-              <tr key={materia} >
+              <tr key={index} >
                 <td className="d-flex justify-content-center align-items-center"><input disabled onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
                 <td>
                 {materia.ID_MATERIA}
@@ -451,7 +455,11 @@ export const AgregarDocenteMateria = () => {
               </tr>
             ))
           ) : (
-            <p className="m-1 text-danger">No se encontro ningúna materia</p>
+            <tr>
+              <td>
+                <p className="m-1 text-danger">No se encontro ningúna materia</p>
+              </td>
+            </tr>
           )}
         </tbody>
       </table>
@@ -462,6 +470,7 @@ export const AgregarDocenteMateria = () => {
         <button className="btn btn-success m-3 btnAceptar disabled"   onClick={()=>guardarCambios()} >Aceptar</button>
       </div>
       <hr />
+      <div className="table-responsive">
 
       <table className="table  table-bordered table-responsive ">
         <thead className="bg-body-secondary">
@@ -480,7 +489,7 @@ export const AgregarDocenteMateria = () => {
         <tbody>
           {materiasCargadas.length >= 1 ? (
             materiasCargadas.map((materia, index) => (
-              <tr key={materia}>
+              <tr key={index}>
                 <td>
                   <input
                     className={`id-${index} form-control`}
@@ -557,10 +566,15 @@ export const AgregarDocenteMateria = () => {
               </tr>
             ))
           ) : (
-            <p>No existe ese Docente</p>
+            <tr>
+            <td>
+              <p className="m-1 text-danger">No se encontro ninguna materia</p>
+            </td>
+          </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

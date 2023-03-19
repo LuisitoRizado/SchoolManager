@@ -420,6 +420,8 @@ export const AgregarDocentePage = () => {
         </button>
       </form>
       <input type="text" placeholder="Buscar"  className="form-control search" value={search} onChange={(e)=>onHandleSearch(e)}/>
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -434,7 +436,7 @@ export const AgregarDocentePage = () => {
         <tbody>
           {docentes.length >= 1 ? (
             docentes.map((docente, index) => (
-              <tr key={docente}>
+              <tr key={index}>
                 <td>
                   <input
                     className={`id-${index} form-control`}
@@ -483,59 +485,22 @@ export const AgregarDocentePage = () => {
               </tr>
             ))
           ) : (
-            <h1>No existe ese Docente</h1>
+            <tr>
+              <td>
+              <h1>No existe ese Docente</h1>
+              </td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
       {/*Ventana modal para modificar un docente */}
 
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
-
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <label htmlFor=""></label>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+     
+            
+         
+   
+      
     </div>
   );
 };

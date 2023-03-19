@@ -4,7 +4,7 @@ import { misDatosPetition } from "../fetchPetitions/misDatosPetition";
 import { Alumno } from "../ui/components/Alumno";
 
 export const MisDatos = () => {
-
+  let img;
   const [alumno, setAlumno] = useState([]);
  
   const URL = "http://localhost:3030/getAlumno/" + window.localStorage.getItem("user");
@@ -23,6 +23,8 @@ export const MisDatos = () => {
    // HOOKS
   useEffect(() => {
     fetchUser(URL);
+    //get an image
+    
   }, [])
   
     
@@ -40,7 +42,7 @@ export const MisDatos = () => {
         <div className="profileDiv">
           {/**IMAGEN DEL USUARIO, SÓLO PODRA SER UNA IMAGEN DE INTERNET */}
           <img
-            src="https://cdn-icons-png.flaticon.com/512/25/25634.png"
+            src="https://xsgames.co/randomusers/avatar.php?g=male"
             alt=""
           />
           <div>

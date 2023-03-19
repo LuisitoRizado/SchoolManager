@@ -106,6 +106,8 @@ export const SeleccionarMateriaPage = () => {
         de baja
       </div>
       <p>Selecciona el grupo en el cuál deseas inscribirte</p>
+    <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-secondary">
@@ -139,7 +141,7 @@ export const SeleccionarMateriaPage = () => {
             }
 
             return (
-              <tr>
+              <tr key={i}>
                 <td>
                   <button
                     className={`btn btn-success ${
@@ -179,6 +181,7 @@ export const SeleccionarMateriaPage = () => {
           })}
         </tbody>
       </table>
+      </div>
       <button className="btn btn-warning">Regresar</button>
     </div>
   );

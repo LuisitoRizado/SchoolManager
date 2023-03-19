@@ -85,9 +85,9 @@ export const ModificarAulaPage = () => {
       <hr />
 
       {/*Mostraremos la información del docente en un formulario */}
-      {aula.map((aul) => {
+      {aula.map((aul, index) => {
         return (
-          <form action="" className="mt-4" onSubmit={(e) => e.preventDefault()}>
+          <form action="" className="mt-4" onSubmit={(e) => e.preventDefault()} key={index}>
             {/*Id de la materia */}
             <label htmlFor="" className="form-label">
               Id materia

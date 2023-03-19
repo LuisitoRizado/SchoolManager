@@ -92,6 +92,8 @@ export const AdministrarDocentePage = () => {
       <hr />
       <h3>Resultados</h3>
       <hr />
+      <div className="table-responsive">
+
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
@@ -105,8 +107,8 @@ export const AdministrarDocentePage = () => {
         </thead>
         <tbody>
           {docentes.length >= 1 ? (
-            docentes.map((docente) => (
-              <tr key={docente}>
+            docentes.map((docente, index) => (
+              <tr key={index}>
                 <td>{docente.Id_Docente}</td>
                 <td>{docente.Nombre}</td>
                 <td>{docente.AP_PATERNO}</td>
@@ -124,10 +126,13 @@ export const AdministrarDocentePage = () => {
               </tr>
             ))
           ) : (
-            <h1>No existe ese Docente</h1>
+            <tr>
+              <td><h1>No existe ese Docente</h1></td>
+            </tr>
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
