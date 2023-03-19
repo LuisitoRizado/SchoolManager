@@ -29,7 +29,7 @@ export const ModificarAulaPage = () => {
 
   //---FUNCTIONS
   const obtenerAula = () => {
-    const url = "http://localhost:3030/getAula/" + id;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getAula/" + id;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -46,7 +46,7 @@ export const ModificarAulaPage = () => {
     //Todo esto es lo introducido en los campos de texto del formulario
 
     if(validarCampos(inputNombre, inputEdificio, inputCapacidad)){
-    fetch("http://localhost:3030/updateAula/" + id, {
+    fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
       method: "PUT",
       headers: {
         'Accept': "application/json",

@@ -32,12 +32,11 @@ export const LoginPage = () => {
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
-    <div className="loginContainer row d-flex h-100">
-      <div className="leftContainer bg-primary col-md-6"></div>
-      <div className="rightContainer  col-md-6 text-white d-flex flex-column justify-content-center align-items-center">
+    <div className="loginContainer row d-flex h-100 shadow border">
+      <div className="rightContainer  col-md-5  d-flex flex-column justify-content-center align-items-center">
         <h4>Inicio de sesión</h4>
         <img
-          src="https://cdn-icons-png.flaticon.com/512/1995/1995485.png"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Round_Landmark_School_Icon_-_Transparent.svg/1024px-Round_Landmark_School_Icon_-_Transparent.svg.png"
           alt=""
         />
         <form
@@ -105,6 +104,7 @@ export const LoginPage = () => {
         </form>
         <div className="errorContainer"></div>
       </div>
+      <div className="leftContainer bg-primary col-md-7"></div>
     </div>
   );
 };

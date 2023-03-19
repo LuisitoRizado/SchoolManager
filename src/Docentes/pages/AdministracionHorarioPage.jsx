@@ -1,26 +1,27 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { validarCampos } from './validarCampos';
+let inputId;
 
 export const AdministracionHorarioPage = () => {
-    const [id_horario, setId_horario] = useState([]);
+    const [id_horario, setId_horario] = useState();
     const [horarios, setHorarios] = useState([]);
   const [materias, setMaterias] = useState([])
 
-    let inputId;
     //---------HANDLERS
     const onHandleHorario = (e) => {
       setId_horario(e.target.value);
     };
   
     //Metodo para realizar peticion
-    const mostrarHorarios = () => {
-      if(validarCampos(inputId)){
+    const mostrarHorarios = async () => {
+      const url = "https://rest-api-production-a5bf.up.railway.app/getHorario/" + id_horario;
 
-      const url = "http://localhost:3030/getHorario/" + id_horario;
-      fetch(url)
+      if(validarCampos(inputId)){
+      await fetch(url)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data)
           setHorarios(data);
         });
       }
@@ -35,14 +36,14 @@ export const AdministracionHorarioPage = () => {
       let tieneHijos = false;
       console.log("clikeaste");
       materias.forEach((materia) => {
-        if (materia.ID_HORARIO === id_horario) {
+        if (materia.Id_Horario === id_horario) {
           tieneHijos = true;
         }
       });
   
       if (!tieneHijos) {
         //borramos la materia
-        fetch("http://localhost:3030/deleteHorario/" + id_horario, { method: "DELETE" })
+        fetch("https://rest-api-production-a5bf.up.railway.app/deleteHorario/" + id_horario, { method: "DELETE" })
           .then((response) => {
             if (response.ok) {
               console.log("Registro eliminado exitosamente");
@@ -62,10 +63,11 @@ export const AdministracionHorarioPage = () => {
     useEffect(() => {
       inputId = document.querySelector('#id_horario');
        //traemos todas las materias
-    fetch('http://localhost:3030/getAllMaterias')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllMaterias')
     .then(res=>res.json())
     .then(data=>setMaterias(data));
     }, [])
+
     useEffect(() => {
       inputId = document.querySelector('#id_horario');
     }, [id_horario])
@@ -127,7 +129,7 @@ export const AdministracionHorarioPage = () => {
               ))
             ) : (
               <tr>
-                <td><h1>No existe ese Docente</h1></td>
+                <td><p> No existe ese Docente</p></td>
               </tr>
             )}
           </tbody>

@@ -19,7 +19,7 @@ export const AdministrarAulaPage = () => {
     const searchAula = () =>{
       
       if(validarCampos(inputId)){
-        const url = 'http://localhost:3030/getAula/' + id_aula;
+        const url = 'https://rest-api-production-a5bf.up.railway.app/getAula/' + id_aula;
         fetch(url)
         .then(res => res.json())
         .then(data => setAulas(data))
@@ -37,7 +37,7 @@ export const AdministrarAulaPage = () => {
       //recorremos todas las materias en busca del id del aula
       console.log("clikeaste");
       materias.forEach((materia) => {
-        if (materia.ID_AULA === id_aula) {
+        if (materia.Id_Aula === id_aula) {
           tieneHijos = true;
         }
       });
@@ -45,7 +45,7 @@ export const AdministrarAulaPage = () => {
       //Si no tiene hijos
       if (!tieneHijos) {
         //borramos la materia
-        fetch("http://localhost:3030/deleteAula/" + id_aula, { method: "DELETE" })
+        fetch("https://rest-api-production-a5bf.up.railway.app/deleteAula/" + id_aula, { method: "DELETE" })
           .then((response) => {
             if (response.ok) {
               console.log("Registro eliminado exitosamente");
@@ -61,7 +61,7 @@ export const AdministrarAulaPage = () => {
     };
   useEffect(() => {
     inputId = document.querySelector('#id_aula')
-    fetch("http://localhost:3030/getAllMaterias")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllMaterias")
       .then((res) => res.json())
       .then((data) => setMaterias(data));
    }, [])

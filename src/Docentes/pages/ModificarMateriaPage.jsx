@@ -16,7 +16,7 @@ export const ModificarMateriaPage = () => {
   let inputProfesor, inputHora, inputAula;
   //FUNCIONES PARA LA FUNCIONALIDAD DE LA PAGINA ESTAS PUEDEN SER IMPORTADAS O NO
   const fetchUser = async () => {
-    const URL = "http://localhost:3030/getMateria/" + id;
+    const URL = "https://rest-api-production-a5bf.up.railway.app/getMateria/" + id;
     //Hacemos la peticion
     await fetch(URL)
       .then((res) => res.json())

@@ -12,7 +12,7 @@ export const SeleccionarMateriaPage = () => {
   const [cargas, setCargas] = useState([]);
   //const [semestre, setSemestre] = useState();
   //URL
-  const URL = "http://localhost:3030/getGrupos/" + materia;
+  const URL = "https://rest-api-production-a5bf.up.railway.app/getGrupos/" + materia;
   //Peticion
   const consultarMaterias = async () => {
     await fetch(URL)
@@ -124,7 +124,8 @@ export const SeleccionarMateriaPage = () => {
           </tr>
         </thead>
         <tbody>
-          {cargas.map((carga, i) => {
+          
+          {cargas.length>=1 ? (cargas.map((carga, i) => {
             //Hay que comprobar si la materia ya ha sido seleccionada, en caso de serlo, vamos a deshabilitar el boton
             console.log(carga.ID_MATERIA);
 
@@ -178,7 +179,7 @@ export const SeleccionarMateriaPage = () => {
                 </td>
               </tr>
             );
-          })}
+          })) : (<p>No existen grupos disponibles</p>)}
         </tbody>
       </table>
       </div>

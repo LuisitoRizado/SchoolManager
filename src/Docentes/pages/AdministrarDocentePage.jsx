@@ -13,12 +13,13 @@ export const AdministrarDocentePage = () => {
   };
 
   //Metodo para realizar peticion
-  const mostrarDocentes = () => {
+  const mostrarDocentes =async  () => {
     if(validarCampos(inputId)){
-    const url = "http://localhost:3030/getDocente/" + id_docente;
-    fetch(url)
+    const url = "https://rest-api-production-a5bf.up.railway.app/getDocente/" + id_docente;
+    await fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         setDocentes(data);
       });
     }
@@ -36,7 +37,7 @@ export const AdministrarDocentePage = () => {
     //vamos a recorrer las materias asignadas profesor en busca del id del docente
     materias_asignadas.forEach(materia=>{
       //vamos a buscar en cada materia
-      if(materia.ID_DOCENTE==id_docente){
+      if(materia.Id_Docente==id_docente){
         tieneHijos = true;
       }
     })
@@ -44,7 +45,7 @@ export const AdministrarDocentePage = () => {
     //si no tiene hijos, eliminamos el registro
     if(!tieneHijos){
       //eliminamos
-      fetch('http://localhost:3030/deleteADocente/'+id_docente, { method: 'DELETE' })
+      fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
       .then(response => {
     if (response.ok) {
       console.log('Registro eliminado exitosamente');
@@ -61,7 +62,7 @@ export const AdministrarDocentePage = () => {
   }
   useEffect(() => {
    inputId = document.querySelector('#id_docente')
-   fetch('http://localhost:3030/getMaterias_asigandas')
+   fetch('https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas')
     .then(res=>res.json())
     .then(data=>setmaterias_Asignadas(data))
   }, [])

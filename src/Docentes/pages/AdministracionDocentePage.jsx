@@ -35,7 +35,7 @@ export const AdministracionDocentePage = () => {
 
     //Peticion
     const obtenerDocente = async () =>{
-        const url = "http://localhost:3030/getDocente/"+id;
+        const url = "https://rest-api-production-a5bf.up.railway.app/getDocente/"+id;
         await fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -58,7 +58,7 @@ export const AdministracionDocentePage = () => {
         //Todo esto es lo introducido en los campos de texto del formulario
       if(validarCampos(inputNombre,inputAPaterno,inputAMaterno)){
 
-        fetch("http://localhost:3030/updateDocente/" + id, {
+        fetch("https://rest-api-production-a5bf.up.railway.app/updateDocente/" + id, {
           method: "PUT",
           headers: {
             Accept: "application/json",

@@ -5,7 +5,8 @@ export const SeleccionMateriasPage = () => {
     window.location.reload()
   })
   const querystring = window.location.search;
-
+  let ncontrol;
+  ncontrol = parseInt(window.localStorage.getItem('user'))
   // usando el querystring, creamos un objeto del tipo URLSearchParams
   const params = new URLSearchParams(querystring);
   const sem = params.get("semestre");
@@ -13,6 +14,7 @@ export const SeleccionMateriasPage = () => {
   //-----Hooks
   const [materias, setMaterias] = useState([]);
   const [cargadas, setCargadas] = useState([]);
+  const [user, setUser] = useState([])
   //El siguiente hook tendra las horas ya seleccionadas en el horario
   const [horariosReservados, setHorariosReservados] = useState([]);
 
@@ -21,7 +23,7 @@ export const SeleccionMateriasPage = () => {
  
   //Peticion
   const consultarMaterias =  (semestre) => {
-    const URL = "http://localhost:3030/getMaterias/" + semestre;
+    const URL = "https://rest-api-production-a5bf.up.railway.app/getMaterias/" + semestre + '/' + user[0].Id_Carrera;
      fetch(URL)
       .then((response) => response.json())
       .then((data) => {
@@ -97,13 +99,13 @@ export const SeleccionMateriasPage = () => {
     //Por cada materia que haya, hacemo una peticion a la api
     materias.forEach(materia => {
         //Hacemos la peticion y lo vamos guardando.
-        fetch('http://localhost:3030/addCarga' , {method:'POST' , headers: {
+        fetch('https://rest-api-production-a5bf.up.railway.app/addCarga' , {method:'POST' , headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       }, body: JSON.stringify({
           "Id_Carga":Math.floor(Math.random() * 100000) + 1,
           "Ncontrol": window.localStorage.getItem('user'),
-          "Id_DocxMath":materia.AULA,
+          "Id_DocxMath":materia.ID_DOCXMATH,
           "Calificacion":null
       })
       })
@@ -114,8 +116,13 @@ export const SeleccionMateriasPage = () => {
   }
 
   useEffect(() => {
-  
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAlumno/' + ncontrol)
+    .then(res => res.json())
+    .then((data) => {
+      setUser(data)
+    })
   }, [])
+
   
 
   //Metodo que comprueba si el alumno tiene materias cargadas o no, en caso de si tenerlas, 
@@ -123,7 +130,7 @@ export const SeleccionMateriasPage = () => {
 
   const comprobarSiTieneCarga =  () =>{
     let tieneMaterias ;
-    fetch('http://localhost:3030/getCarga/'+ window.localStorage.getItem('user'))
+    fetch('https://rest-api-production-a5bf.up.railway.app/getCarga/'+ window.localStorage.getItem('user'))
     .then((response) => response.json())
     .then((data) => {
       console.log(data.length)
@@ -267,16 +274,16 @@ export const SeleccionMateriasPage = () => {
                 return(
                   <>
                   <tr key={index}>
-                  <td>{materia.ID_MATERIA}</td>
-                  <td>{materia.MATERIA}</td>
-                  <td>{materia.CUPO}</td>
-                  <td>{materia.CREDITOS}</td>
-                  <td>{materia.SEMESTRE}</td>
+                  <td>{materia.Id_Materia}</td>
+                  <td>{materia.Materia}</td>
+                  <td>{materia.Cupo}</td>
+                  <td>{materia.Creditos}</td>
+                  <td>{materia.Semestre}</td>
 
                   
                   <td>
                     
-                    <a href={"seleccionarMateria?materia=" + materia.MATERIA} className="btn btn-primary">
+                    <a href={"seleccionarMateria?materia=" + materia.Materia} className="btn btn-primary">
                       Ver grupos
                     </a>
                   </td>

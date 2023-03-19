@@ -12,7 +12,7 @@ export const EnCursoPage = () => {
   const [cargas, setCargas] = useState([]);
   //const [semestre, setSemestre] = useState();
   //URL
-  const URL = "http://localhost:3030/getCarga/" + alumno;
+  const URL = "https://rest-api-production-a5bf.up.railway.app/getCarga/" + alumno;
   //Peticion
   const consultarMaterias =  () => {
      fetch(URL)

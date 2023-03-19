@@ -1,6 +1,6 @@
 export const loginPetition = (usuario, password) => {
   //Construimos la url para el login
-  const url = "http://localhost:3030/getLogin/" + usuario + "/" + password;
+  const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + usuario + "/" + password;
   //Hacemos la peticion a la API
   fetch(url)
     .then((res) => res.json())

@@ -86,7 +86,7 @@ export const AgregarMateriaPage = () => {
         inputSemestre
       )
     ) {
-      const url = "http://localhost:3030/addNewMateria";
+      const url = "https://rest-api-production-a5bf.up.railway.app/addNewMateria";
 
       fetch(url, {
         method: "POST",
@@ -126,12 +126,12 @@ export const AgregarMateriaPage = () => {
     inputSemestre = document.querySelector("#semestre");
 
     //cargamos los datos
-    const url = "http://localhost:3030/getAllMaterias";
+    const url = "https://rest-api-production-a5bf.up.railway.app/getAllMaterias";
     fetch(url)
       .then((res) => res.json())
       .then((data) => setMaterias(data));
 
-    const url2 = "http://localhost:3030/getAllHorarios";
+    const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
     fetch(url2)
       .then((res) => res.json())
       .then((data) => {
@@ -139,21 +139,21 @@ export const AgregarMateriaPage = () => {
         setHorarios(data);
       });
     //pedir todas las maulas
-    fetch("http://localhost:3030/getAllAulas")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
       .then((res) => res.json())
       .then((data) => setAulas(data));
 
     //traer todas las carreas
-    fetch("http://localhost:3030/getAllCarreras")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
       .then((res) => res.json())
       .then((data) => setCarreras(data));
 
     //traer todas las auals
-    fetch("http://localhost:3030/getAllAulas")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
       .then((res) => res.json())
       .then((data) => setAulas(data));
 
-    fetch("http://localhost:3030/getMaterias_asigandas")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas")
       .then((res) => res.json())
       .then((data) => setmMteriasAsignadas(data));
   }, []);
@@ -171,7 +171,7 @@ export const AgregarMateriaPage = () => {
     inputCupo.value = "";
     inputIdAula.value = "";
     //Creamos la url
-    const url = "http://localhost:3030/getJusAtMateria/" + ID_MATERIA;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getJusAtMateria/" + ID_MATERIA;
 
     await fetch(url)
       .then((res) => res.json())
@@ -292,7 +292,7 @@ export const AgregarMateriaPage = () => {
       });
     });
     //detectamos el evento del button ok
-    okButton.addEventListener("click", () => {
+    okButton.addEventListener("click",async  () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
@@ -338,7 +338,7 @@ export const AgregarMateriaPage = () => {
           cupo,
           semestre
         );
-        fetch("http://localhost:3030/updateMat/" + id, {
+        await fetch("https://rest-api-production-a5bf.up.railway.app/updateMat/" + id, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -386,15 +386,17 @@ export const AgregarMateriaPage = () => {
     let tieneHijos = false;
 
     await materiasAsignadas.forEach((materia) => {
-      if (materia.ID_MATERIA === id_materia) {
+      if (materia.Id_Materia === id_materia) {
         tieneHijos = true;
       }
-      console.log(materia.ID_MATERIA + " === " + id_materia);
+      console.log(materia.Id_Materia + " === " + id_materia);
     });
 
     if (!tieneHijos) {
       //borramos la materia
-      fetch("http://localhost:3030/deleteMateria/" + id_materia, {
+      if(confirm('¿Esta seguro que quiere eliminar?'))
+      {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/deleteMateria/" + id_materia, {
         method: "DELETE",
       })
         .then((response) => {
@@ -406,6 +408,8 @@ export const AgregarMateriaPage = () => {
         })
         .catch((error) => console.error(error));
       confirm("Aula eliminada con exito");
+      window.location.reload()
+      }
     } else {
       confirm("No se puede eliminar, tiene hijos");
     }
@@ -443,8 +447,8 @@ export const AgregarMateriaPage = () => {
 
         {carreras.length >= 1 ? (
           carreras.map((carrera, index) => (
-            <option value={carrera.ID_CARRERA} className={"opcion-" + index} key={index}>
-              {carrera.NOMBRE}
+            <option value={carrera.Id_Carrera} className={"opcion-" + index} key={index}>
+              {carrera.Nombre}
             </option>
           ))
         ) : (
@@ -591,7 +595,7 @@ export const AgregarMateriaPage = () => {
                   <input
                     disabled
                     type="number"
-                    defaultValue={materia.ID_MATERIA}
+                    defaultValue={materia.Id_Materia}
                     className={"form-control id-" + index}
                   />
                 </td>
@@ -607,10 +611,10 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_HORARIO} >
-                      {materia.HORA_INICIO_LUNES +
+                    <option value={materia.Id_Horario} >
+                      {materia.Hora_Inicio_Lunes +
                         " - " +
-                        materia.HORA_FINAL_LUNES}
+                        materia.Hora_Final_Lunes}
                     </option>
                     {horarios.length >= 1 ? (
                       horarios.map((horario, index) => (
@@ -642,8 +646,8 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_AULA} >
-                      {materia.Nombre}
+                    <option value={materia.Id_Aula} >
+                      {materia.Nombre_Aula}
                     </option>
                     {aulas.length >= 1 ? (
                       aulas.map((aula, index) => (
@@ -672,17 +676,17 @@ export const AgregarMateriaPage = () => {
                     }}
                     disabled
                   >
-                    <option value={materia.ID_CARRERA} >
-                      {materia.NOMBRE}
+                    <option value={materia.Id_Carrera} >
+                      {materia.Nombre_Carrera}
                     </option>
                     {carreras.length >= 1 ? (
                       carreras.map((carrera, index) => (
                         <option
-                          value={carrera.ID_CARRERA}
+                          value={carrera.Id_Carrera}
                           className={"opcion-" + index}
                           key={index}
                         >
-                          {carrera.NOMBRE}
+                          {carrera.Nombre}
                         </option>
                       ))
                     ) : (
@@ -694,7 +698,7 @@ export const AgregarMateriaPage = () => {
                   <input
                     disabled
                     type="text"
-                    defaultValue={materia.MATERIA}
+                    defaultValue={materia.Materia}
                     className={"form-control fila-" + index}
                   />
                 </td>
@@ -703,7 +707,7 @@ export const AgregarMateriaPage = () => {
                     disabled
                     type="number"
                     onKeyPress={validarNumeros}
-                    defaultValue={materia.CREDITOS}
+                    defaultValue={materia.Creditos}
                     className={"form-control fila-" + index}
                   />
                 </td>
@@ -711,7 +715,7 @@ export const AgregarMateriaPage = () => {
                   <input
                     disabled
                     type="number"
-                    defaultValue={materia.CUPO}
+                    defaultValue={materia.Cupo}
                     onKeyPress={validarNumeros}
                     className={"form-control fila-" + index}
                   />
@@ -720,7 +724,7 @@ export const AgregarMateriaPage = () => {
                   <input
                     disabled
                     type="number"
-                    defaultValue={materia.SEMESTRE}
+                    defaultValue={materia.Semestre}
                     onKeyPress={validarNumeros}
                     className={"form-control fila-" + index}
                   />
@@ -737,7 +741,7 @@ export const AgregarMateriaPage = () => {
                 <td>
                   <button
                     className="btn btn-danger"
-                    onClick={() => eliminarMateria(materia.ID_MATERIA)}
+                    onClick={() => eliminarMateria(materia.Id_Materia)}
                   >
                     ELiminar
                   </button>

@@ -3,7 +3,7 @@ export const AlumnoEncontrado = (Ncontrol) => {
     //Realizamos la peticion en busca del alumno
     const [alumno, setAlumno] = useState({});
  
-    const URL = "http://localhost:3030/getAlumno/" +Ncontrol;
+    const URL = "https://rest-api-production-a5bf.up.railway.app/getAlumno/" +Ncontrol;
     const fetchUser =  async (URL) => {
      
       //Hacemos la peticion

@@ -2,7 +2,7 @@
 export const consultarMateria = (semestre) =>{
 
     //URL
-    const URL = 'http://localhost:3030/getMaterias/'+semestre;
+    const URL = 'https://rest-api-production-a5bf.up.railway.app/getMaterias/'+semestre;
     //Peticion
     fetch(URL)
     .then((response)=>response.json())

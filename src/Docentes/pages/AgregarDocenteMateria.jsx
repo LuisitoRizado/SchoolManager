@@ -34,7 +34,7 @@ export const AgregarDocenteMateria = () => {
     //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
 
     //Creamos la url
-    const url = "http://localhost:3030/getMats/" + id;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getMats/" + id;
 
     fetch(url)
       .then((res) => res.json())
@@ -53,7 +53,7 @@ export const AgregarDocenteMateria = () => {
     inputId = document.querySelector("#id");
     inputIdDocente = document.querySelector("#id_docente");
     inputIdMateria = document.querySelector("#id_materia");
-    const url1 = "http://localhost:3030/getAllMats";
+    const url1 = "https://rest-api-production-a5bf.up.railway.app/getAllMats";
     fetch(url1)
       .then((res) => res.json())
       .then((data) => {
@@ -61,16 +61,16 @@ export const AgregarDocenteMateria = () => {
         console.log(data);
       });
     //obtener todos los docentes
-    fetch("http://localhost:3030/getAllDocentes")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllDocentes")
       .then((res) => res.json())
       .then((data) => setDocentes(data));
 
-      const url3 = "http://localhost:3030/getAllMaterias";
+      const url3 = "https://rest-api-production-a5bf.up.railway.app/getAllMaterias";
     fetch(url3)
       .then((res) => res.json())
       .then((data) => setMaterias(data));
       
-    const url2 = 'http://localhost:3030/getAllHorarios'
+    const url2 = 'https://rest-api-production-a5bf.up.railway.app/getAllHorarios'
     fetch(url2)
     .then(res=>res.json())
     .then(data=>{
@@ -78,12 +78,12 @@ export const AgregarDocenteMateria = () => {
       setHorarios(data)
     })
     //pedir todas las maulas
-    fetch('http://localhost:3030/getAllAulas')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllAulas')
     .then(res=>res.json())
     .then(data=>setAulas(data))
 
     //traer todas las carreas
-    fetch('http://localhost:3030/getAllCarreras')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllCarreras')
     .then(res=>res.json())
     .then(data=>setCarreras(data))
 
@@ -179,7 +179,7 @@ export const AgregarDocenteMateria = () => {
 
       //hacemos la peticion
 
-      fetch("http://localhost:3030/updateAula/" + id, {
+      fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -246,9 +246,10 @@ export const AgregarDocenteMateria = () => {
   };
   
   //------------funcion para seleccionar las materias
-  const seleccionarMaterias = (checkbox, fila) =>{
+  const seleccionarMaterias = (checkbox, fila, e) =>{
     
     //habilitamos los botones de cancelar y aceptar
+    console.log(e)
     const btnAceptar = document.querySelector('.btnAceptar');
     btnAceptar.classList.replace('disabled','enable')
     const btnCancelar = document.querySelector('.btnCancelar');
@@ -257,9 +258,32 @@ export const AgregarDocenteMateria = () => {
     console.log("materia: " + fila.children)
     const childrenArray = Array.from(fila.children);
     console.log("materia: " + childrenArray[1].textContent)
+
+    //comprobar que no deseleccione
+    console.log('Evento?' + checkbox.checked)
+    console.log(parseInt(childrenArray[1].textContent))
+    if(!checkbox.checked) //Eliminamos el elemento del arreglo
+    {
+      //Limpiamos el color
+      console.log(checkbox.parentNode.parentNode)
+      checkbox.parentNode.parentNode.style.backgroundColor = 'white'
+      
+      let index = materiasSeleccionadas.indexOf(parseInt(childrenArray[1].textContent));
+
+      // Si el elemento se encuentra en el array, elimínalo
+      if (index !== -1) {
+      materiasSeleccionadas.splice(index, 1);
+      }
+
+    }
+
+    if(!materiasSeleccionadas.includes(parseInt(childrenArray[1].textContent)) && checkbox.checked){
     materiasSeleccionadas.push(parseInt(childrenArray[1].textContent))
-    console.log(materiasSeleccionadas)
     fila.style.backgroundColor = "red";
+
+    }
+
+    console.log(materiasSeleccionadas)
 
 
     //eventos para los botones
@@ -281,6 +305,14 @@ export const AgregarDocenteMateria = () => {
       box.disabled = true;
       box.checked = false;
       box.parentNode.parentNode.style.backgroundColor = 'white'
+      box.addEventListener('click',()=>{
+        console.log('cambio!!!')
+        if(!box.checked){
+          box.parentNode.parentNode.style.backgroundColor = 'white'
+
+
+        }
+      })
 
     });
     //Tambien deshabilitamos los botones
@@ -296,8 +328,8 @@ export const AgregarDocenteMateria = () => {
     //primero comprobamos que si hay un profe y una materia al menos
     
       console.log('se seleccionaron!');
-      materiasSeleccionadas.forEach(materia=>{
-         fetch('http://localhost:3030/addMateria_Asignada', {
+      materiasSeleccionadas.forEach(async(materia)=>{
+         await fetch('https://rest-api-production-a5bf.up.railway.app/addMateria_Asignada', {
           method: "POST",
           headers: {
             "Accept": "application/json",
@@ -312,6 +344,7 @@ export const AgregarDocenteMateria = () => {
         console.log('ID: ' + Math.floor(Math.random() * 100000) +  ' materia: ' + materia + "  docente: "+ docenteSeleccionado)
       })
       //vamos a hacer la peticion
+      confirm('Guardado con exito!')
      window.location.reload();
     
   }
@@ -319,7 +352,9 @@ export const AgregarDocenteMateria = () => {
   const eliminarMateriaAsignada = (id_docxmath) =>{
 
     //vamos a elminar la materia
-    fetch('http://localhost:3030/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
+    if(confirm('Está seguro que quieres eliminar?'))
+    {
+    fetch('https://rest-api-production-a5bf.up.railway.app/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
     .then((response) => {
       if (response.ok) {
         console.log("Registro eliminado exitosamente");
@@ -328,8 +363,8 @@ export const AgregarDocenteMateria = () => {
       }
     })
     .catch((error) => console.error(error));
-    confirm('Aula eliminada con exito')
-
+    confirm('Materia eliminada con exito')
+  }
   }
   return (
     <div>
@@ -423,32 +458,32 @@ export const AgregarDocenteMateria = () => {
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
               <tr key={index} >
-                <td className="d-flex justify-content-center align-items-center"><input disabled onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
+                <td className="d-flex justify-content-center align-items-center"><input disabled onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode, e)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
                 <td>
-                {materia.ID_MATERIA}
+                {materia.Id_Materia}
                 </td>
                 <td>
-                {materia.HORA_INICIO_LUNES+ ' - ' + materia.HORA_FINAL_LUNES}
+                {materia.Hora_Inicio_Lunes+ ' - ' + materia.Hora_Final_Lunes}
                   
                 </td>
                 <td>
                
-                {materia.Nombre}
+                {materia.Nombre_Aula}
                 </td>
                 <td>
-                {materia.NOMBRE}
+                {materia.Nombre_Carrera}
                 </td>
                 <td>
-                {materia.MATERIA}
+                {materia.Materia}
                 </td>
                 <td>
-                {materia.CREDITOS}
+                {materia.Creditos}
                 </td>
                 <td>
-                {materia.CUPO}
+                {materia.Cupo}
                 </td>
                 <td>
-                {materia.SEMESTRE}
+                {materia.Semestre}
                 </td>
 
                 
@@ -478,6 +513,7 @@ export const AgregarDocenteMateria = () => {
             <th scope="col">Id materia asignada docente</th>
             <th scope="col">Id Materia</th>
             <th scope="col">Materia</th>
+            <th scope="col">Aula</th>
             <th scope="col">Profesor</th>
             <th scope="col">Ap paterno</th>
             <th scope="col">Ap materno</th>
@@ -493,21 +529,21 @@ export const AgregarDocenteMateria = () => {
                 <td>
                   <input
                     className={`id-${index} form-control`}
-                    defaultValue={materia.ID_DOCXMATH}
+                    defaultValue={materia.Id_Docxmath}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.ID_MATERIA}
+                    defaultValue={materia.Id_Materia}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.MATERIA}
+                    defaultValue={materia.Materia}
                     disabled
                   />
                 </td>
@@ -521,28 +557,35 @@ export const AgregarDocenteMateria = () => {
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.AP_PATERNO}
+                    defaultValue={materia.Nombre}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.AP_MATERNO}
+                    defaultValue={materia.Ap_Paterno}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.HORA_INICIO_LUNES}
+                    defaultValue={materia.Ap_Materno}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.HORA_FINAL_LUNES}
+                    defaultValue={materia.Hora_Inicio_Lunes}
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    className={`fila-${index} form-control`}
+                    defaultValue={materia.Hora_Final_Lunes}
                     disabled
                   />
                 </td>
@@ -558,7 +601,7 @@ export const AgregarDocenteMateria = () => {
                   <a
                     href=""
                     className="btn btn-danger"
-                    onClick={() =>eliminarMateriaAsignada(materia.ID_DOCXMATH)}
+                    onClick={() =>eliminarMateriaAsignada(materia.Id_Docxmath)}
                   >
                     Eliminar
                   </a>

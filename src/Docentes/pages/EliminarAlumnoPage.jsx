@@ -11,7 +11,7 @@ export const EliminarAlumnoPage = () => {
 
   const [alumno, setAlumno] = useState([]);
 
-  const URL = "http://localhost:3030/getAlumno/" + ncontrol;
+  const URL = "https://rest-api-production-a5bf.up.railway.app/getAlumno/" + ncontrol;
   const fetchUser = async (URL) => {
     //Hacemos la peticion
     await fetch(URL)
@@ -32,7 +32,7 @@ export const EliminarAlumnoPage = () => {
     //vamos a pedir la peticion al http de delte en la base de datos
     //Nos va a pasar como parametros el numero de control del alumno
     //Ok ahora podemos hacer la peticion al servidor
-    const url = 'http://localhost:3030/deleteAlumno/'+ncontrol;
+    const url = 'https://rest-api-production-a5bf.up.railway.app/deleteAlumno/'+ncontrol;
     
     //hacemos el fetch a la api
 

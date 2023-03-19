@@ -11,7 +11,7 @@ let results = [];
 export const AgregarDocentePage = () => {
   //objetctos
  
-  const [id_docente, setId_docente] = useState();
+  const [id_docente, setId_docente] = useState(0);
   const [Nombre, setNombre] = useState();
   const [Ap_Paterno, setAp_Paterno] = useState();
   const [Ap_Matern, setAp_Matern] = useState();
@@ -62,7 +62,7 @@ export const AgregarDocentePage = () => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
     if (validarCampos(inputNombre, inputAPaterno, inputAMaterno)) {
-      fetch("http://localhost:3030/updateDocente/" + id, {
+      fetch("https://rest-api-production-a5bf.up.railway.app/updateDocente/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -79,7 +79,7 @@ export const AgregarDocentePage = () => {
     }
   };
   console.log(inputId);
-  const addDocentePetition = (id_docente, nombre, ap_paterno, ap_materno) => {
+  const addDocentePetition = async(id_docente, nombre, ap_paterno, ap_materno) => {
     //Hacemos la peticion para enviar los datos del dcoente
     console.log(inputId);
     console.log(inputNombre);
@@ -87,8 +87,8 @@ export const AgregarDocentePage = () => {
     console.log(inputAMaterno);
 
     if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
-      const url = "http://localhost:3030/addDocente";
-      fetch(url, {
+      const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
+      await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -139,7 +139,7 @@ export const AgregarDocentePage = () => {
     //En esta funcion  vamos a comprobar si existe e o no el docente que se busca agregar
 
     //Creamos la url
-    const url = "http://localhost:3030/getDocente/" + id_docente;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getDocente/" + id_docente;
     //limpiamos los inputs
     inputNombre.value = ''
     inputAPaterno.value = ''
@@ -148,12 +148,17 @@ export const AgregarDocentePage = () => {
       .then((res) => res.json())
       .then((data) => {
         //Actualizamos los datos en los inputs
+        console.log(data)
+        console.log(inputNombre)
+        console.log(inputAPaterno)
+        console.log(inputAMaterno)
+
         inputNombre.value = data[0].Nombre;
         inputAPaterno.value = data[0].AP_PATERNO;
         inputAMaterno.value = data[0].AP_MATERNO;
       });
     
-      if(inputNombre.value===''){
+      if(inputNombre.value==='undefined'){
         //comprobamos si tiene valor es porque si existe.
         //bloqueamos el boton  y los inputs
         inputId.disabled = false; 
@@ -162,24 +167,27 @@ export const AgregarDocentePage = () => {
         inputAMaterno.disabled = false;
         const btnagregar = document.querySelector('.btn-agregar');
         btnagregar.disabled = false;
-
+        //Limpiamos las cajas
+        inputNombre.value = ''
+        inputAPaterno.value = ''
+        inputAMaterno.value = ''
         
       }
       else{
         inputId.disabled = true; 
-
         inputNombre.disabled = true;
         inputAPaterno.disabled = true;
         inputAMaterno.disabled = true;
         const btnagregar = document.querySelector('.btn-agregar');
         btnagregar.disabled = true;
+        //llenamos las cajas
       }
-      setId_docente(0)
+      //setId_docente()
   };
 
   const getAllDocentes = () => {
     //En esta funcion vamos a llamar a todos los docentes una vez que cargue la pagina del docente
-    const url = "http://localhost:3030/getAllDocentes";
+    const url = "https://rest-api-production-a5bf.up.railway.app/getAllDocentes";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -192,7 +200,7 @@ export const AgregarDocentePage = () => {
     console.log(inputId.value);
     //Reconocemos la ventana modal
     getAllDocentes();
-    fetch('http://localhost:3030/getMaterias_asigandas')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas')
     .then(res=>res.json())
     .then(data=>setmaterias_Asignadas(data))
   }, []);
@@ -287,7 +295,7 @@ export const AgregarDocentePage = () => {
       });
     });
     //detectamos el evento del button ok
-    okButton.addEventListener("click", () => {
+    okButton.addEventListener("click",async () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
@@ -307,7 +315,7 @@ export const AgregarDocentePage = () => {
       //COMPROBAMOS QUE ESTEN TODOS LOS CAMPOS
       if(validarCampos(inputName, inputAMaterno, inputAPaterno))
       {
-      fetch("http://localhost:3030/updateDocente/" + id, {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateDocente/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -325,22 +333,24 @@ export const AgregarDocentePage = () => {
   };
 
   //eliminar docente
-  const eliminarDocente = (id_docente) =>{
+  const eliminarDocente = async (id_docente) =>{
     //vamos a eliminar el docente seleccionado, solo en caso de que no tenga elementos hijos
     let tieneHijos = false;
 
     //vamos a recorrer las materias asignadas profesor en busca del id del docente
     materias_asignadas.forEach(materia=>{
       //vamos a buscar en cada materia
-      if(materia.ID_DOCENTE==id_docente){
+      if(materia.Id_Docente==id_docente){
         tieneHijos = true;
       }
     })
 
     //si no tiene hijos, eliminamos el registro
     if(!tieneHijos){
+      
       //eliminamos
-      fetch('http://localhost:3030/deleteADocente/'+id_docente, { method: 'DELETE' })
+      if(confirm('Esta seguro?'))
+      await fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
       .then(response => {
     if (response.ok) {
       console.log('Registro eliminado exitosamente');

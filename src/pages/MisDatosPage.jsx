@@ -7,7 +7,7 @@ export const MisDatos = () => {
   let img;
   const [alumno, setAlumno] = useState([]);
  
-  const URL = "http://localhost:3030/getAlumno/" + window.localStorage.getItem("user");
+  const URL = "https://rest-api-production-a5bf.up.railway.app/getAlumno/" + window.localStorage.getItem("user");
   const fetchUser =  async (URL) => {
    
     //Hacemos la peticion
@@ -57,11 +57,11 @@ export const MisDatos = () => {
             <h4 className="text-primary">Estudiante</h4>
             
             <h3 className='bg-dark text-white'>Datos generales</h3>
-            <p><kbd className='bg-danger'>Nombre :</kbd>{alum.Nombre} {alum.AP_PATERNO} {alum.AP_MATERNO} </p>
+            <p><kbd className='bg-danger'>Nombre :</kbd>{alum.Nombre} {alum.Ap_Paterno} {alum.Ap_Materno} </p>
             <h3 className='bg-dark text-white'>Información escolar</h3>
             <p><kbd className='bg-danger'>Número control:</kbd> {alum.NControl} </p>
             <p><kbd className='bg-danger'>Estatus:</kbd>ACTIVO</p>
-            <p><kbd className='bg-danger'>Semestre:</kbd> {alum.SEMESTRE} </p>
+            <p><kbd className='bg-danger'>Semestre:</kbd> {alum.Semestre} </p>
             <p><kbd className='bg-danger'>Carrera:</kbd>{alum.Id_Carrera} </p>
             <p><kbd className='bg-danger'>Especialidad:</kbd> {alum.Especialidad }</p>
             <hr/>

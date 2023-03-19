@@ -4,7 +4,7 @@
 import { validarCampos } from "../pages/validarCampos";
 export const addUserPetition = (ncontrol,id_carrera, nombre, ap_paterno, ap_materno, semestre,periodo,creditos,especialidad, contrasena, ...inputs) =>{
     //Construimos la url para agregar datos
-    const url = 'http://localhost:3030/addAlumno'
+    const url = 'https://rest-api-production-a5bf.up.railway.app/addAlumno'
     if(validarCampos(...inputs)){
 
     fetch(url, {method:"POST", headers: {

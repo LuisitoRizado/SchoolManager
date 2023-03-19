@@ -80,11 +80,11 @@ export const AgregarAlumno = () => {
     inputContrasena = document.querySelector("#contrasena");
     inputCarrera = document.querySelector('#id_carrera')
     //obtenemos todos los alumnos
-    fetch("http://localhost:3030/getAllAlumnos")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAlumnos")
       .then((res) => res.json())
       .then((data) => setAlumno(data));
 
-    fetch('http://localhost:3030/getAllCarreras')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllCarreras')
     .then(res=>res.json())
     .then(data=>setCarreras(data))
 
@@ -127,7 +127,7 @@ export const AgregarAlumno = () => {
     inputEspecidaldiad.value = "";
     inputContrasena.value = "";
     //Creamos la url
-    const url = "http://localhost:3030/getAlumno/" + Ncontrol;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getAlumno/" + Ncontrol;
 
     await fetch(url)
       .then((res) => res.json())
@@ -177,8 +177,8 @@ export const AgregarAlumno = () => {
     }
   };
 
-  const agregarAlumno = () => {
-    const url = "http://localhost:3030/addAlumno";
+  const agregarAlumno = async () => {
+    const url = "https://rest-api-production-a5bf.up.railway.app/addAlumno";
     if (
       validarCampos(
         inputContro,
@@ -192,7 +192,7 @@ export const AgregarAlumno = () => {
         inputContrasena
       )
     ) {
-      fetch(url, {
+      await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -218,7 +218,7 @@ export const AgregarAlumno = () => {
     }
   };
   //----------------------------------------------------------logica de modificacion
-  const habilitarModificacion = (index) => {
+  const habilitarModificacion = async (index) => {
     //deshabilitamos el boton modificar
     const modificarButton = document.querySelectorAll(".modificarButton");
     modificarButton.forEach((btn) => {
@@ -290,7 +290,7 @@ export const AgregarAlumno = () => {
       });
     });
     //detectamos el evento del button ok
-    okButton.addEventListener("click", () => {
+    okButton.addEventListener("click", async () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
@@ -316,8 +316,9 @@ export const AgregarAlumno = () => {
       const inputEspecialidad = inputs[6];
 
       //hacemos la peticion
-
-      fetch("http://localhost:3030/updateAlumno/" + id, {
+      if(validarCampos(inputNombre,inputAPaterno, inputAMaterno, inputSemestre, inputPeriodo, inputCreditos, inputEspecialidad))
+      {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateAlumno/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -329,11 +330,12 @@ export const AgregarAlumno = () => {
           AP_MATERNO: ap_materno,
           SEMESTRE: semestre,
           PERIODO: periodo,
-          CREDITOS: creditos,
+          CREDITOS_DISPONIBLES: creditos,
           ESPECIALIDAD: especialidad,
         }),
       });
       window.location.reload();
+    }
     });
   };
   const cancelarEvento = () =>{
@@ -361,6 +363,34 @@ export const AgregarAlumno = () => {
     inputContrasena.disabled = false;
     const btnagregar = document.querySelector(".btn-agregar");
     btnagregar.disabled = false;
+  }
+  //ELIMINAR
+  const eliminarAlumno = (ncontrol) =>{
+    //vamos a pedir la peticion al http de delte en la base de datos
+    //Nos va a pasar como parametros el numero de control del alumno
+    //Ok ahora podemos hacer la peticion al servidor
+    const url = 'https://rest-api-production-a5bf.up.railway.app/deleteAlumno/'+ncontrol;
+    
+    //hacemos el fetch a la api
+
+    //Primero preguntamos si esta seguo de que quiere elimnar el alumno
+    if(confirm('¿Estás seguro de que quieres eliminar este alumno?'))
+    {
+      //En caso de que diga que si , entonces, lo eliminamos
+      fetch(url, { method: 'DELETE' })
+      .then((res) => res.json())
+      .then((data)=>console.log('Eliminado : ' + data))
+      confirm('Alumno eliminado con exito!')
+      window.location.reload();
+    }
+    else{
+      //De lo contrario no hacemos nada
+      return;
+    }
+
+
+    //
+
   }
   return (
     <div className="animate__animated animate__fadeInLeft">
@@ -392,10 +422,10 @@ export const AgregarAlumno = () => {
                     {carreras.length >= 1 ? (
                       carreras.map((carrera, index) => (
                         <option
-                          value={carrera.ID_CARRERA}
+                          value={carrera.Id_Carrera}
                           className={"opcion-" + index}
                         >
-                          {carrera.NOMBRE}
+                          {carrera.Nombre}
                         </option>
                       ))
                     ) : (
@@ -514,6 +544,7 @@ export const AgregarAlumno = () => {
             <th scope="col">Semestre</th>
             <th scope="col">Periodo</th>
             <th scope="col">Creditos</th>
+            <th scope="col">Especialidad</th>
             <th scope="col">Modificar</th>
             <th>Eliminar</th>
           </tr>
@@ -539,35 +570,38 @@ export const AgregarAlumno = () => {
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.AP_PATERNO}
+                    defaultValue={alumno.Ap_Paterno}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.AP_MATERNO}
+                    defaultValue={alumno.Ap_Materno}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.SEMESTRE}
+                    defaultValue={alumno.Semestre}
+                    onKeyPress={validarNumeros}
+
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.PERIODO}
+                    defaultValue={alumno.Periodo}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={alumno.CREDITOS_DISPONIBLES}
+                    defaultValue={alumno.Creditos_Disponibles}
+                    onKeyPress={validarNumeros}
                     disabled
                   />
                 </td>
@@ -575,7 +609,7 @@ export const AgregarAlumno = () => {
                   <input
                     className={`fila-${index} form-control`}
                     defaultValue={
-                      alumno.ESPECIALIDAD ? alumno.ESPECIALIDAD : "Ninguna"
+                      alumno.Especialidad ? alumno.Especialidad : "Ninguna"
                     }
                     disabled
                   />

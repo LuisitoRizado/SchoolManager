@@ -34,7 +34,7 @@ export const AgregarAula = () => {
   const addAula = () => {
     //Damos fetcha  nuestra api
     if (validarCampos(inputAula, inputId, inputEdificio, inputCapacidad)) {
-      const url = "http://localhost:3030/addAula";
+      const url = "https://rest-api-production-a5bf.up.railway.app/addAula";
       fetch(url, {
         method: "POST",
         headers: {
@@ -60,12 +60,12 @@ export const AgregarAula = () => {
     inputEdificio = document.querySelector("#edificio");
     inputCapacidad = document.querySelector("#capacidad");
     //al cargar el aula, vamos a motrar las materias que existen
-    fetch("http://localhost:3030/getAllAulas")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
       .then((res) => res.json())
       .then((data) => setAulas(data));
 
     //traer todas las materias
-    fetch("http://localhost:3030/getAllMaterias")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllMaterias")
       .then((res) => res.json())
       .then((data) => setMaterias(data));
   }, []);
@@ -85,7 +85,7 @@ export const AgregarAula = () => {
     inputEdificio.value = "";
     inputCapacidad.value = "";
     //Creamos la url
-    const url = "http://localhost:3030/getAula/" + id_aula;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getAula/" + id_aula;
 
     await fetch(url)
       .then((res) => res.json())
@@ -180,7 +180,7 @@ export const AgregarAula = () => {
       });
     });
     //detectamos el evento del button ok
-    okButton.addEventListener("click", () => {
+    okButton.addEventListener("click",async () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
@@ -200,7 +200,7 @@ export const AgregarAula = () => {
 
       if(validarCampos(inputName, inputEdificio, inputCapacidad))
       {
-      fetch("http://localhost:3030/updateAula/" + id, {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -235,7 +235,7 @@ export const AgregarAula = () => {
     //recorremos todas las materias en busca del id del aula
     console.log("clikeaste");
     materias.forEach((materia) => {
-      if (materia.ID_AULA === id_aula) {
+      if (materia.Id_Aula === id_aula) {
         tieneHijos = true;
       }
     });
@@ -243,7 +243,7 @@ export const AgregarAula = () => {
     //Si no tiene hijos
     if (!tieneHijos) {
       //borramos la materia
-      fetch("http://localhost:3030/deleteAula/" + id_aula, { method: "DELETE" })
+      fetch("https://rest-api-production-a5bf.up.railway.app/deleteAula/" + id_aula, { method: "DELETE" })
         .then((response) => {
           if (response.ok) {
             console.log("Registro eliminado exitosamente");

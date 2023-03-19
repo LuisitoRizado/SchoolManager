@@ -2,7 +2,7 @@
 //Esto se ejecutara una vez entremos  al sesión de MisDatosPage.jsx
 export const misDatosPetition = (alumno) =>{
     //Definimos la URL 
-    const URL = 'http://localhost:3030/getAlumno/'+alumno;
+    const URL = 'https://rest-api-production-a5bf.up.railway.app/getAlumno/'+alumno;
 
     //Hacemos la peticion
     const data =  fetch(URL)

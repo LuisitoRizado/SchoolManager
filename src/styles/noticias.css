@@ -5,14 +5,33 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
+}
+.contenedorImageMain{
+    background-image: url('https://img.freepik.com/free-vector/ui-ux-design-concept-illustration_114360-11694.jpg?w=740&t=st=1679267245~exp=1679267845~hmac=a5dd69be215ec53d8e7fd7f34d899bf0a20cf132957bf4d1f6a25c11c9414e0f');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 90vh;
+}
+.contenedorImageMain2{
+    background-image: url('https://img.freepik.com/free-vector/ui-ux-team-concept-illustration_114360-11703.jpg?w=740&t=st=1679267436~exp=1679268036~hmac=86ea2971a749a4ca5b81a9873c0af6e542fb0280a07da4be77400bf09d4c0295');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 90vh;
 }
 
-
+#root{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.mainContainer{
+    margin: 0 !important;
+}
 /*Principal*/
 .noticiaPrincipal{
     display: flex;
-    padding: 2rem;
     justify-content: center;
     align-items: center;
    

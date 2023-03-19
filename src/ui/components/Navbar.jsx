@@ -12,7 +12,7 @@ export const Navbar = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary navegacion">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary navegacion" >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/user">
             <img

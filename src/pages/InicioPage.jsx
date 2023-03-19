@@ -1,5 +1,5 @@
 import "../styles/noticias.css";
-import {  cargarUsuario } from "../auth/storage";
+import { cargarUsuario } from "../auth/storage";
 export const InicioPage = () => {
   //Una vez estando en el inicio, llamamos a la funcion de localStorage
   //Obtenemos el usuario de los query params que se guarda.
@@ -9,29 +9,57 @@ export const InicioPage = () => {
   const params = new URLSearchParams(querystring);
   const usuario = params.get("usuario");
 
-//Tenemos dos casos:
-//1.- La primera vez que se inicia sesión
-//2.- Cuando ya hay una sesión iniciada
+  //Tenemos dos casos:
+  //1.- La primera vez que se inicia sesión
+  //2.- Cuando ya hay una sesión iniciada
 
-//Primer caso, cuando es la priemra vez que se inicioa
-//Comprobamos que no exista un valor anterior en el LocalStorage
-    //Si no se encuentra, lamamos la funcion con el query param
-    if(usuario){
+  //Primer caso, cuando es la priemra vez que se inicioa
+  //Comprobamos que no exista un valor anterior en el LocalStorage
+  //Si no se encuentra, lamamos la funcion con el query param
+  if (usuario) {
     cargarUsuario(usuario);
-    }
-    else{
-    cargarUsuario(window.localStorage.getItem('user'));
+  } else {
+    cargarUsuario(window.localStorage.getItem("user"));
+  }
 
-    }
+  //lIMPIAMOS EL HORARIO
+  window.localStorage.removeItem("materias");
+  console.log(window.localStorage.getItem("user"));
 
-    //lIMPIAMOS EL HORARIO
-    window.localStorage.removeItem('materias');
-  console.log(window.localStorage.getItem('user'));
-
-  
   return (
-    <div className="mainContainer">
-      <div className="noticiaPrincipal row shadow">
+    <div className="mainContainer mt-1 border container-fluid">
+      <div className="main row">
+        <div className="contenedorImageMain col-md-6"></div>
+        <div className="infoDerechaMain col-md-6 d-flex flex-column justify-content-center align-items-start">
+          <h2>Bienvendio al portal escolar</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+            atque eius necessitatibus dolor libero eveniet nisi, asperiores
+            veniam magnam accusantium nesciunt dolorem adipisci quas iure aut
+            recusandae provident ipsa vero!
+          </p>
+          <button className="btn btn-danger">Acceder</button>
+        </div>
+      </div>
+      <div className="main mt-3 border row">
+        <div className="infoDerechaMain col-md-6 d-flex flex-column justify-content-center align-items-start">
+          <h1>Bienvendio al portal escolar</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+            atque eius necessitatibus dolor libero eveniet nisi, asperiores
+            veniam magnam accusantium nesciunt dolorem adipisci quas iure aut
+            recusandae provident ipsa vero!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+            animi impedit quas dignissimos adipisci temporibus possimus
+            consequuntur quidem, ad ipsam perspiciatis molestiae modi a facere
+            excepturi odio ab inventore cumque.
+          </p>
+        </div>
+        <div className="contenedorImageMain2 col-md-6"></div>
+      </div>
+      {/*   <div className="noticiaPrincipal row shadow">
         <div className="noticiaInicial col-md-8">
           <img
             src="https://viveloensaltillo.com/wp-content/uploads/2021/11/1254x851usts.png"
@@ -126,7 +154,7 @@ export const InicioPage = () => {
             <a className="btn btn-primary">Ver más</a>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

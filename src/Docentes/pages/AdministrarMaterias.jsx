@@ -4,6 +4,7 @@ export const AdministrarMaterias = () => {
   //Hooks
   const [materia, setMateria] = useState([]);
   const [materias, setMaterias] = useState([]);
+  const [todasLasMaterias, setTodasLasMaterias] = useState([])
   let inputNombre;
   //Obtener el valor que el usuario teclea.
   const onHandleNControl = (e) => {
@@ -15,7 +16,7 @@ export const AdministrarMaterias = () => {
   const fetchUser = async () => {
     //Hacemos la peticion
     if(validarCampos(inputNombre)){
-    const URL = "http://localhost:3030/getGrupos/" + materia.trim();
+    const URL = "https://rest-api-production-a5bf.up.railway.app/getJusAtMateria/" + materia;
 
     await fetch(URL)
       .then((res) => res.json())
@@ -39,11 +40,48 @@ export const AdministrarMaterias = () => {
   useEffect(() => {
     inputNombre = document.querySelector('#nombre')
     console.log(inputNombre)
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllMats')
+    .then(res=>res.json())
+    .then(data=>setTodasLasMaterias(data))
   }, [])
   
   useEffect(() => {
     inputNombre = document.querySelector('#nombre')
   }, [materia])
+//Eliminar materia
+
+  const eliminarMateria = async (id_materia) => {
+    let tieneHijos = false;
+
+    await todasLasMaterias.forEach((materia) => {
+      if (materia.Id_Materia === id_materia) {
+        tieneHijos = true;
+      }
+      console.log(materia.Id_Materia + " === " + id_materia);
+    });
+
+    if (!tieneHijos) {
+      //borramos la materia
+      if(confirm('¿Esta seguro que quiere eliminar?'))
+      {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/deleteMateria/" + id_materia, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Registro eliminado exitosamente");
+          } else {
+            console.error("Ocurrió un error al eliminar el registro");
+          }
+        })
+        .catch((error) => console.error(error));
+      confirm("Aula eliminada con exito");
+      window.location.reload()
+      }
+    } else {
+      confirm("No se puede eliminar, tiene hijos");
+    }
+  };
   return (
     <div className="mt-4">
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
@@ -71,9 +109,13 @@ export const AdministrarMaterias = () => {
           <tr className="bg-body-dark">
             <th scope="col">Id_Materia</th>
             <th scope="col">Materia</th>
-            <th scope="col">Profesor</th>
-            <th scope="col">Hora</th>
+            <th scope="col">Hora inicio</th>
+            <th scope="col">Hora fin</th>
             <th scope="col">Aula</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Creditos</th>
+            <th scope="col">Cupo</th>
+            <th scope="col">Semestre</th>
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
           </tr>
@@ -84,11 +126,14 @@ export const AdministrarMaterias = () => {
               <tr key={materia}>
                 <td>{materia.ID_MATERIA}</td>
                 <td>{materia.MATERIA}</td>
-                <td>
-                  {materia.NOMBRE} {materia.AP_PATERNO} {materia.AP_MATERNO}
-                </td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
                 <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.HORA_FINAL_LUNES}</td>
+                <td>{materia.NOMBRE}</td>
+                <td>{materia.Nombre}</td>
+                <td>{materia.CREDITOS}</td>
+                <td>{materia.CUPO}</td>
+                <td>{materia.SEMESTRE}</td>
+
 
                 <td>
                   <a
@@ -99,13 +144,13 @@ export const AdministrarMaterias = () => {
                   </a>
                 </td>
                 <td>
-                  <button className="btn btn-danger">ELiminar</button>
+                  <button className="btn btn-danger" onClick={()=>eliminarMateria(materia.ID_MATERIA)}>ELiminar</button>
                 </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td><h3 className="m-1 text-danger">No se encontro ningúna materia</h3></td>
+              <td><p>No se encontro ningúna materia</p></td>
             </tr>
           )}
         </tbody>

@@ -1,11 +1,21 @@
 /*Estilos del contendor principal*/
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    font-family: 'Poppins', sans-serif !important;
+}
+
 .loginContainer{
-    min-height: 98vh;
+    width: 80%;
+   margin: 0 auto;
+   margin-top: 30px;
+
+   border: 1px solid gray;
+   border-radius: 15px;
 }
 
 /*Estilos del contenedor de imagenes*/
 .leftContainer{
-    background-image: url('https://i0.wp.com/atiempo.tv/wp-content/uploads/2020/05/tec-saltillo.jpg?fit=3072%2C2048&ssl=1');
+    background-image: url('https://img.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -17,15 +27,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #E74C3C  ;
-
+    background: #58D68D  ;
+    color: white;
 }
 
 .rightContainer img{
     width: 200px;
-}
-input{
-    border-top: none;
 }
 
 /*---------------DISEÑO RESPONSIVE---------------*/

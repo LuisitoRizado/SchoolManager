@@ -29,14 +29,14 @@ export const AgregarHorarioPage = () => {
     inputInicio = document.querySelector("#horaInicio");
     inputFin = document.querySelector("#horaFin");
     //Cargamos los horarios
-    fetch("http://localhost:3030/getAllHorarios")
+    fetch("https://rest-api-production-a5bf.up.railway.app/getAllHorarios")
       .then((res) => res.json())
       .then((data) => setHorarios(data));
 
     console.log(inputHorario, inputInicio, inputFin);
 
     //traemos todas las materias
-    fetch('http://localhost:3030/getAllMaterias')
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllMaterias')
     .then(res=>res.json())
     .then(data=>setMaterias(data));
 
@@ -54,7 +54,7 @@ export const AgregarHorarioPage = () => {
     console.log(inputHorario, inputInicio, inputFin);
 
     if (validarCampos(inputHorario, inputInicio, inputFin)) {
-      const url = "http://localhost:3030/addHorario";
+      const url = "https://rest-api-production-a5bf.up.railway.app/addHorario";
 
       fetch(url, {
         method: "POST",
@@ -92,12 +92,13 @@ export const AgregarHorarioPage = () => {
     inputInicio.value = "";
     inputFin.value = "";
     //Creamos la url
-    const url = "http://localhost:3030/getHorario/" + id_horario;
+    const url = "https://rest-api-production-a5bf.up.railway.app/getHorario/" + id_horario;
 
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
         //Actualizamos los datos en los inputs
+        console.log(data)
         inputHorario.value = data[0].Id_Horario;
         inputInicio.value = data[0].Hora_Inicio_Lunes;
         inputFin.value = data[0].Hora_Final_Lunes;
@@ -181,7 +182,7 @@ export const AgregarHorarioPage = () => {
       });
     });
     //detectamos el evento del button ok
-    okButton.addEventListener("click", () => {
+    okButton.addEventListener("click", async () => {
       modificarButton.forEach((btn) => {
         btn.classList.replace("disabled", "enable");
       });
@@ -189,15 +190,16 @@ export const AgregarHorarioPage = () => {
       console.log("me diste click");
       console.log(inputs[0]);
       //guardamos los datos de los inputs
-      const HORA_INICIO_LUNES = inputs[0].value;
-      const HORA_FINAL_LUNES = inputs[1].value;
+      let HORA_INICIO_LUNES = inputs[0].value;
+      let HORA_FINAL_LUNES = inputs[1].value;
       //recopilamos los inputs
       const inputInicio = inputs[0];
       const inputFinal = inputs[1];
 
       //hacemos la peticion
-
-      fetch("http://localhost:3030/updateHorario/" + id, {
+      if(validarCampos(inputInicio,inputFinal))
+      {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateHorario/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -209,6 +211,7 @@ export const AgregarHorarioPage = () => {
         }),
       });
       window.location.reload();
+    }
     });
   };
 
@@ -217,14 +220,14 @@ export const AgregarHorarioPage = () => {
     let tieneHijos = false;
     console.log("clikeaste");
     materias.forEach((materia) => {
-      if (materia.ID_HORARIO === id_horario) {
+      if (materia.Id_Horario === id_horario) {
         tieneHijos = true;
       }
     });
 
     if (!tieneHijos) {
       //borramos la materia
-      fetch("http://localhost:3030/deleteHorario/" + id_horario, { method: "DELETE" })
+      fetch("https://rest-api-production-a5bf.up.railway.app/deleteHorario/" + id_horario, { method: "DELETE" })
         .then((response) => {
           if (response.ok) {
             console.log("Registro eliminado exitosamente");
@@ -233,7 +236,7 @@ export const AgregarHorarioPage = () => {
           }
         })
         .catch((error) => console.error(error));
-        confirm('Aula eliminada con exito')
+        confirm('Horario eliminada con exito')
     } else {
       confirm("No se puede eliminar, tiene hijos");
     }
@@ -356,6 +359,7 @@ export const AgregarHorarioPage = () => {
                     defaultValue={horario.Hora_Inicio_Lunes}
                     disabled
                   >
+                    <option value={horario.Hora_Inicio_Lunes}>{horario.Hora_Inicio_Lunes}</option>
                     <option value="9:00">9:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:0</option>
@@ -379,6 +383,7 @@ export const AgregarHorarioPage = () => {
                     defaultValue={horario.Hora_Final_Lunes}
                     disabled
                   >
+                    <option value={horario.Hora_Final_Lunes}>{horario.Hora_Final_Lunes}</option>
                     <option value="9:00">9:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:0</option>
