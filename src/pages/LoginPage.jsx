@@ -39,7 +39,7 @@ export const LoginPage = () => {
     });
   };
   const onLogInEmpleado = () => {
-    navigate("/user/inicio/?usuario="+username, {
+    navigate("/empleado/inicio/?usuario="+username, {
       replace: true,
     });
   };
