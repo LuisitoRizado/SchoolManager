@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import { validarCampos } from './validarCampos'
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const AdministrarAulaPage = () => {
 
     //----------HOOKS

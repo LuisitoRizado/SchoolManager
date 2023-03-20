@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const ModificarMateriaPage = () => {
   //Leemos el query params de la url
