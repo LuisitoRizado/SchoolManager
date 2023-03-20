@@ -57,11 +57,11 @@ export const SeleccionarMateriaPage = () => {
   console.log(nuevoHorario);
 
   //Obtener todos los horarios de las materias ya cargadas
-  nuevoHorario = nuevoHorario.map((carga) => carga.HORA_FINAL_LUNES);
+  nuevoHorario = nuevoHorario.map((carga) => carga.HORA_INICIO_LUNES);
   console.log("NUEVO HORARIO:::" + nuevoHorario)
   const agregarMateriaHorario = (materia) => {
     //Hay que comprobar si ya habia seleccionado la materia con aterioridad
-    if (nombresMaterias.includes(materia.MATERIA) || nuevoHorario.includes(materia.HORA_FINAL_LUNES)) {
+    if (nombresMaterias.includes(materia.MATERIA) || nuevoHorario.includes(materia.HORA_INICIO_LUNES)) {
       //En este caso, quiere decir que ya lo había seleccionado
       //Lo que haremos es que vamos a reemplazar el anterior por el nuevo
 
