@@ -54,7 +54,7 @@ export const ModificarMateriaPage = () => {
         .then((res) => res.json())
         .then((data) => setAulas(data));
   
-      //traer todas las carreas
+      //traer todas las carre
       await fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
         .then((res) => res.json())
         .then((data) => setCarreras(data));
