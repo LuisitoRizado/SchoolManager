@@ -38,6 +38,11 @@ export const LoginPage = () => {
       replace: true,
     });
   };
+  const onLogInEmpleado = () => {
+    navigate("/user/inicio/?usuario="+username, {
+      replace: true,
+    });
+  };
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
@@ -131,7 +136,30 @@ export const LoginPage = () => {
                   });
               }
               else if (document.querySelector("#empleado").checked) {
-                loginPetitionEmpleado(username, password);
+                //loginPetitionEmpleado(username, password);
+                const url = "https://rest-api-production-a5bf.up.railway.app/getEmpleado/" + username + "/" + password;
+  //Hacemos la peticion a la API
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(' info:::', data);
+      //Pasamos a la siguiente pagina de inicio
+      let obj = new Object();
+      
+      if(Object.entries(data).length!==0){
+      //window.location.href = "empleado/inicio/?usuario=" + usuario;
+      onLogInEmpleado()
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      //En caso de que no exista , tendremos que colocar un anuncio de que no se encuentra ningun alumno con esa informacion
+     /*  const mensajeErorr =
+        document.createElement(`<div class="alert alert-primary" role="alert">
+      A simple primary alert—check it out!
+    </div>`);
+      document.querySelector(".errorContainer").innerHTML = mensajeErorr; */
+    });
               }
             }}
           >
