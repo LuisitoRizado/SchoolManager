@@ -16,6 +16,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"
   },
+  "homepage":"https://school-manager-its.000webhostapp.com/",
+  
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
