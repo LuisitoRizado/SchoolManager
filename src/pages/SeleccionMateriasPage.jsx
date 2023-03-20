@@ -287,7 +287,7 @@ export const SeleccionMateriasPage = () => {
                     
                   <NavLink
                 className={({ isActive }) =>
-                  `btn btn-danger ${isActive ? "active" : ""}`
+                  `btn btn-primary ${isActive ? "active" : ""}`
                 }
                 to="seleccionarMateria"
               >
