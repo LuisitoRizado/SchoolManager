@@ -122,7 +122,7 @@ export const AdministrarDocentePage = () => {
                 
                 
                 to={{
-                  pathname: 'modificarDocente/' ,
+                  pathname: 'modificarDocente' ,
                   search: '?id='+id_docente
                 }}
               >
