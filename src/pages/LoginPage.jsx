@@ -98,7 +98,7 @@ export const LoginPage = () => {
             className="btn btn-primary mt-4 btnLogin"
             onClick={async() => {
               if (document.querySelector("#alumno").checked) {
-                loginPetition(username, password);
+                //loginPetition(username, password);
                 const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + usuario + "/" + password;
                 //Hacemos la peticion a la API
                 await fetch(url)
