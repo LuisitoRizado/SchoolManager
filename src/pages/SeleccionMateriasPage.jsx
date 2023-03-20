@@ -286,10 +286,10 @@ export const SeleccionMateriasPage = () => {
                     <NavLink  
                     className="btn btn-primary"
                     to={{
-                  pathname: '/seleccionarMateria',
+                  pathname: 'seleccionarMateria',
                   search: '?materia='+materia.Materia
                 }}>
-
+                  Ver grupos
                     </NavLink>
                   
                   </td>
