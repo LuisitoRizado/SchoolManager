@@ -23,8 +23,8 @@ export const ModificarMateriaPage = () => {
       .then((data) => {
         //Esta data la tenemos que pasar a la página para poder imprimirla o pintarla
         
-        console.log(data);
-        setMateria(data[0]);
+        console.log(data.slice(0,1));
+        setMateria(data.slice(0,1));
       })
       .catch((err) => console.log(err));
   };
