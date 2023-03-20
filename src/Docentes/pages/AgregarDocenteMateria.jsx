@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 let inputId, inputIdDocente, inputIdMateria;
 let estaSeleccionado = true;
 let materiasSeleccionadas = []
-
+let prueba;
 export const AgregarDocenteMateria = () => {
   //--HOOKS
   const [id, setId] = useState();
