@@ -13,9 +13,9 @@ export const AppRouter = () => {
             <Route path="/" element={<LoginPage />} />
             <Route path="login" element={<LoginPage />} />
             
-            <Route path="SchoolManager/empleado/*" element={ <DocenteRoutes />} />
+            <Route path="empleado/*" element={ <DocenteRoutes />} />
             
-            <Route path="SchoolManager/user/*" element={ <UserRoutes />} />
+            <Route path="user/*" element={ <UserRoutes />} />
             
             
 

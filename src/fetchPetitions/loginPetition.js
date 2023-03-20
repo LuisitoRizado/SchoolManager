@@ -10,7 +10,7 @@ export const loginPetition = (usuario, password) => {
       let obj = new Object();
       
       if(Object.entries(data).length!==0){
-      window.location.href = "SchoolManager/user/inicio/?usuario=" + usuario;
+      window.location.href = "user/inicio/?usuario=" + usuario;
       }
     })
     .catch((err) => {
@@ -35,7 +35,7 @@ export const loginPetitionEmpleado = (usuario, password) => {
       let obj = new Object();
       
       if(Object.entries(data).length!==0){
-      window.location.href = "SchoolManager/empleado/inicio/?usuario=" + usuario;
+      window.location.href = "empleado/inicio/?usuario=" + usuario;
       }
     })
     .catch((err) => {
