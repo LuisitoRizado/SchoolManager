@@ -34,7 +34,7 @@ export const LoginPage = () => {
 
 
   const onLogoIn = () => {
-    navigate("/user/inicio?user="+username, {
+    navigate("/user/inicio/?user="+username, {
       replace: true,
     });
   };
