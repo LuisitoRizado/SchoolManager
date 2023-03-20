@@ -28,6 +28,7 @@ export const DocenteRoutes = () => {
 
         <div className="container">
             <Routes>
+              
                 <Route path="inicio/*" element={<InicioPage />} />
                 <Route path="alumnos" element={<AlumnosPage />} />
                 <Route path="materias" element={<MateriasPage />} />
