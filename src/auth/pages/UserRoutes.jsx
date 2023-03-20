@@ -26,8 +26,8 @@ export const UserRoutes = () => {
                 <Route path="/reinscripcion/datosreinscripcion" element={<DatosReinscripcionPage />} />
                 <Route path="/reinscripcion/materiasdisponibles" element={<MateriasDisponibles />} />
                 <Route path="/reinscripcion/seleccionmaterias" element={<SeleccionMateriasPage />} />
-                <Route path="seleccionarMateria" element={<SeleccionarMateriaPage />} />
-                <Route path="materiaspage" element={<MateriasPage />} />
+                <Route path="/seleccionmaterias/seleccionarMateria" element={<SeleccionarMateriaPage />} />
+                <Route path="/reinscripcion/materiaspage" element={<MateriasPage />} />
 
 
 

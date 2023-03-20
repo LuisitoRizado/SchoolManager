@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 
 export const SeleccionMateriasPage = () => {
   document.addEventListener('DOMContentLoaded', () =>{
@@ -283,9 +285,14 @@ export const SeleccionMateriasPage = () => {
                   
                   <td>
                     
-                    <a href={"seleccionarMateria?materia=" + materia.Materia} className="btn btn-primary">
-                      Ver grupos
-                    </a>
+                  <NavLink
+                className={({ isActive }) =>
+                  `btn btn-danger ${isActive ? "active" : ""}`
+                }
+                to="seleccionarMateria"
+              >
+                Ver grupos
+              </NavLink>
                   </td>
                   </tr>
                   </>

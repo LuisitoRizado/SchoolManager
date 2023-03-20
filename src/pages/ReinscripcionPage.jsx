@@ -38,7 +38,14 @@ export const ReinscripcionPage = () => {
     <h5 className="card-title">Grupos disponibles</h5>
     <p className="card-text">Comprueba los grupos disponibles para este semestre.</p>
     <br/>
-    <a href="materiasdisponibles" className="btn btn-primary">Acceder</a>
+    <NavLink
+                className={({ isActive }) =>
+                  `btn btn-danger ${isActive ? "active" : ""}`
+                }
+                to="materiasdisponibles"
+              >
+                Acceder
+              </NavLink>
   </div>
 </div>
 </div>
@@ -71,7 +78,14 @@ export const ReinscripcionPage = () => {
     <h5 className="card-title">Selección de materias</h5>
     <p className="card-text">Selecciona las materias para tu próximo semestre</p>
     <br/>
-    <a href="seleccionMaterias" className="btn btn-primary">Acceder</a>
+    <NavLink
+                className={({ isActive }) =>
+                  `nav-item nav-link ${isActive ? "active" : ""}`
+                }
+                to="SeleccionMateriasPage"
+              >
+                Acceder
+              </NavLink>
   </div>
 </div>
 </div>
