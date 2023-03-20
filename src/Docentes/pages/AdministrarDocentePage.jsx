@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { validarCampos, validarNumeros } from "./validarCampos";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const AdministrarDocentePage = () => {
   const [id_docente, setId_docente] = useState([]);
   const [docentes, setDocentes] = useState([]);
@@ -115,11 +117,23 @@ export const AdministrarDocentePage = () => {
                 <td>{docente.AP_PATERNO}</td>
                 <td>{docente.AP_MATERNO}</td>
                 <td>
-                  <a onClick={()=> redirecionamientoPage()} className="btn btn-warning">
+                <NavLink
+                className={'btn btn-warning'}
+                
+                
+                to={{
+                  pathname: 'modificarDocente/' ,
+                  search: '?id='+id_docente
+                }}
+              >
+                Modificar
+              </NavLink>
+                  {/* <a onClick={()=> redirecionamientoPage()} className="btn btn-warning">
                     Modificar
-                  </a>
+                  </a> */}
                 </td>
                 <td>
+                  
                   <a href="" className="btn btn-danger" onClick={()=>eliminarDocente(docente.Id_Docente)}>
                     Eliminar
                   </a>
