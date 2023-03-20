@@ -8,12 +8,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 //Número de control y la contraseña son correctos
 
 //Llamamos a la petiicion cuando el usuario introduzca los valores
-
+let btnNav;
 export const LoginPage = () => {
   //Hooks
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
+  btnNav = document.querySelector('.btnLogin')
   //Obtenemos los datos que el usuario va escribiendo y los vamos gaurdando en los hooks
   const onHandleUsername = (e) => {
     console.log(e.target.value);
@@ -90,13 +90,13 @@ export const LoginPage = () => {
             }}
           />
           <NavLink
-            className="btn btn-primary mt-4"
-            onClick={() => {
+            className="btn btn-primary mt-4 btnLogin"
+            onClick={async() => {
               if (document.querySelector("#alumno").checked) {
                 loginPetition(username, password);
                 const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + usuario + "/" + password;
                 //Hacemos la peticion a la API
-                fetch(url)
+                await fetch(url)
                   .then((res) => res.json())
                   .then((data) => {
                     console.log(' info:::', data);
@@ -104,8 +104,12 @@ export const LoginPage = () => {
                     let obj = new Object();
                     
                     if(Object.entries(data).length!==0){
-                    window.location.href = "user/inicio/?usuario=" + usuario;
+                      btnNav.to = {
+                        pathname:'user/inicio',
+                        search: "?usuario=" + usuario
+                      }
                     }
+                    console.loe(btnNav)
                   })
                   .catch((err) => {
                     console.log(err);
