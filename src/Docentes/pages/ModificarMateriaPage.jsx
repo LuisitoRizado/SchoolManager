@@ -136,7 +136,7 @@ export const ModificarMateriaPage = () => {
               className="btn btn-danger m-2"
               onClick={() => guardarCambios()}
             >
-              Cancelar
+              Cancela
             </button>
             <button className="btn btn-success m-2">Confirmar</button>
           </form>
