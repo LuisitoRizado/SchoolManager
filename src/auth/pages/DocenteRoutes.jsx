@@ -31,22 +31,22 @@ export const DocenteRoutes = () => {
                 <Route path="inicio/*" element={<InicioPage />} />
                 <Route path="alumnos" element={<AlumnosPage />} />
                 <Route path="materias" element={<MateriasPage />} />
-                <Route path="agregarAlumno" element={<AgregarAlumno />} />
-                <Route path="eliminarAlumno" element={<EliminarAlumnoPage />} />
-                <Route path="agregarMateria" element={<AgregarMateriaPage />} />
-                <Route path="administrarMaterias" element={<AdministrarMaterias />} />
-                <Route path="modificarMateria" element={<ModificarMateriaPage />} />
+                <Route path="alumnos/agregarAlumno" element={<AgregarAlumno />} />
+                <Route path="alumnos/eliminarAlumno" element={<EliminarAlumnoPage />} />
+                <Route path="materias/agregarMateria" element={<AgregarMateriaPage />} />
+                <Route path="materias/administrarMaterias" element={<AdministrarMaterias />} />
+                <Route path="administrarMaterias/modificarMateria" element={<ModificarMateriaPage />} />
                 <Route path="docentes" element={<DocentesPage />} />
-                <Route path="agregarDocente" element={<AgregarDocentePage />} />
-                <Route path="administrarDocente" element={<AdministrarDocentePage />} />
-                <Route path="modificarDocente" element={<AdministracionDocentePage />} />
+                <Route path="docentes/agregarDocente" element={<AgregarDocentePage />} />
+                <Route path="docentes/administrarDocente" element={<AdministrarDocentePage />} />
+                <Route path="administrarDocente/modificarDocente" element={<AdministracionDocentePage />} />
                 <Route path="aulas" element={<AulasPage />} />
-                <Route path="agregarAula" element={<AgregarAula />} />
-                <Route path="administrarAula" element={<AdministrarAulaPage  />} />
-                <Route path="modificarAula" element={<ModificarAulaPage  />} />
+                <Route path="aulas/agregarAula" element={<AgregarAula />} />
+                <Route path="aulas/administrarAula" element={<AdministrarAulaPage  />} />
+                <Route path="administrarAula/modificarAula" element={<ModificarAulaPage  />} />
                 <Route path="horarios" element={<HorariosPage  />} />
-                <Route path="agregarHorario" element={<AgregarHorarioPage  />} />
-                <Route path="administrarHorarios" element={<AdministracionHorarioPage  />} />
+                <Route path="horarios/agregarHorario" element={<AgregarHorarioPage  />} />
+                <Route path="horarios/administrarHorarios" element={<AdministracionHorarioPage  />} />
                 <Route path="modificarHorario" element={<ModificarHorarioPage  />} />
                 <Route path="agregarDocenteMateria" element={<AgregarDocenteMateria  />} />
 
