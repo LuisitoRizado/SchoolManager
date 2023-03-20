@@ -1,3 +1,4 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const ReinscripcionPage = () => {
   return (
@@ -15,7 +16,14 @@ export const ReinscripcionPage = () => {
     <h5 className="card-title">Datos de reinscripción</h5>
     <p className="card-text">Accede a los datos de tu reinscripción.</p>
     
-    <a href="datosReinscripcion" className="btn btn-primary">Acceder</a>
+    <NavLink
+                className={({ isActive }) =>
+                  `btn btn-danger ${isActive ? "active" : ""}`
+                }
+                to="datosreinscripcion"
+              >
+                Datos
+              </NavLink>
   </div>
 </div>
 </div>

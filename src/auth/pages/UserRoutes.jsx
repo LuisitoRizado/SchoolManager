@@ -23,7 +23,7 @@ export const UserRoutes = () => {
                 <Route path="reinscripcion" element={<ReinscripcionPage />} />
                 <Route path="documentos" element={<DocumentosPage />} />
                 <Route path="misdatos" element={<MisDatos />} />
-                <Route path="datosreinscripcion" element={<DatosReinscripcionPage />} />
+                <Route path="/reinscripcion/datosreinscripcion" element={<DatosReinscripcionPage />} />
                 <Route path="materiasdisponibles" element={<MateriasDisponibles />} />
                 <Route path="seleccionmaterias" element={<SeleccionMateriasPage />} />
                 <Route path="seleccionarMateria" element={<SeleccionarMateriaPage />} />
