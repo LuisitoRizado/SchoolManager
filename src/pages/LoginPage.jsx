@@ -2,6 +2,7 @@ import "../styles/loginPage.css";
 import "../fetchPetitions/loginPetition";
 import { useState } from "react";
 import { loginPetition, loginPetitionEmpleado } from "../fetchPetitions/loginPetition";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 //Esta será nuestra pagina de inicio , la cual deberá realizar una peticion a la api comparando si el
 //Número de control y la contraseña son correctos
@@ -88,11 +89,33 @@ export const LoginPage = () => {
               onHandlePassword(e);
             }}
           />
-          <button
+          <NavLink
             className="btn btn-primary mt-4"
             onClick={() => {
               if (document.querySelector("#alumno").checked) {
                 loginPetition(username, password);
+                const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + usuario + "/" + password;
+                //Hacemos la peticion a la API
+                fetch(url)
+                  .then((res) => res.json())
+                  .then((data) => {
+                    console.log(' info:::', data);
+                    //Pasamos a la siguiente pagina de inicio
+                    let obj = new Object();
+                    
+                    if(Object.entries(data).length!==0){
+                    window.location.href = "user/inicio/?usuario=" + usuario;
+                    }
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    //En caso de que no exista , tendremos que colocar un anuncio de que no se encuentra ningun alumno con esa informacion
+                   /*  const mensajeErorr =
+                      document.createElement(`<div class="alert alert-primary" role="alert">
+                    A simple primary alert—check it out!
+                  </div>`);
+                    document.querySelector(".errorContainer").innerHTML = mensajeErorr; */
+                  });
               }
               else if (document.querySelector("#empleado").checked) {
                 loginPetitionEmpleado(username, password);
@@ -100,7 +123,7 @@ export const LoginPage = () => {
             }}
           >
             Iniciar sesión
-          </button>
+          </NavLink>
         </form>
         <div className="errorContainer"></div>
       </div>
