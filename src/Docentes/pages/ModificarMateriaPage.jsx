@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import { validarNumeros,validarCampos } from "./validarCampos";
 export const ModificarMateriaPage = () => {
   //Leemos el query params de la url
   const querystring = window.location.search;
