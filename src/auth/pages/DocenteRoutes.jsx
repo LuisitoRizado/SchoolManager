@@ -35,19 +35,19 @@ export const DocenteRoutes = () => {
                 <Route path="alumnos/eliminarAlumno" element={<EliminarAlumnoPage />} />
                 <Route path="materias/agregarMateria" element={<AgregarMateriaPage />} />
                 <Route path="materias/administrarMaterias" element={<AdministrarMaterias />} />
-                <Route path="administrarMaterias/modificarMateria" element={<ModificarMateriaPage />} />
+                <Route path="materias/administrarMaterias/modificarMateria" element={<ModificarMateriaPage />} />
                 <Route path="docentes" element={<DocentesPage />} />
                 <Route path="docentes/agregarDocente" element={<AgregarDocentePage />} />
                 <Route path="docentes/administrarDocente" element={<AdministrarDocentePage />} />
-                <Route path="administrarDocente/modificarDocente" element={<AdministracionDocentePage />} />
+                <Route path="docentes/administrarDocente/modificarDocente" element={<AdministracionDocentePage />} />
                 <Route path="aulas" element={<AulasPage />} />
                 <Route path="aulas/agregarAula" element={<AgregarAula />} />
                 <Route path="aulas/administrarAula" element={<AdministrarAulaPage  />} />
-                <Route path="administrarAula/modificarAula" element={<ModificarAulaPage  />} />
+                <Route path="aulas/administrarAula/modificarAula" element={<ModificarAulaPage  />} />
                 <Route path="horarios" element={<HorariosPage  />} />
                 <Route path="horarios/agregarHorario" element={<AgregarHorarioPage  />} />
                 <Route path="horarios/administrarHorarios" element={<AdministracionHorarioPage  />} />
-                <Route path="administrarHorarios/modificarHorario" element={<ModificarHorarioPage  />} />
+                <Route path="horarios/administrarHorarios/modificarHorario" element={<ModificarHorarioPage  />} />
                 <Route path="materias/agregarDocenteMateria" element={<AgregarDocenteMateria  />} />
 
 
