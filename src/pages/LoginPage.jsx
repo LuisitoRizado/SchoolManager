@@ -30,6 +30,11 @@ export const LoginPage = () => {
   window.localStorage.removeItem("tieneMaterias");
 
 
+  const onLogoIn = () => {
+    navigate("/user/inicio", {
+      replace: true,
+    });
+  };
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
@@ -104,12 +109,13 @@ export const LoginPage = () => {
                     let obj = new Object();
                     
                     if(Object.entries(data).length!==0){
-                      btnNav.to = {
+                      /* btnNav.to = {
                         pathname:'user/inicio',
                         search: "?usuario=" + usuario
-                      }
+                      } */
+                      onLogoIn()
                     }
-                    console.loe(btnNav)
+                    console.log(btnNav)
                   })
                   .catch((err) => {
                     console.log(err);
