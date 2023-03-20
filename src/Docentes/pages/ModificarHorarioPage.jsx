@@ -157,7 +157,7 @@ export const ModificarHorarioPage = () => {
             <button
               className="btn btn-success m-2"
               onClick={() =>
-                guardarDatos(hora.Id_Horario, hora_final, hora_inicio )
+                guardarDatos(hora.Id_Horario,  hora_inicio,hora_final )
               }
             >
               Confirmar
