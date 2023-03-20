@@ -228,6 +228,7 @@ export const ModificarMateriaPage = () => {
           id="creditos"
           onKeyPress={validarNumeros}
           className="form-control"
+          defaultValue={mat.Creditos}
           onChange={(e) => onHandleCreditos(e)}
         />
             {/*Hora de la materia */}
@@ -242,6 +243,8 @@ export const ModificarMateriaPage = () => {
           id="cupo"
           onKeyPress={validarNumeros}
           className="form-control"
+          defaultValue={mat.Cupo}
+
           onChange={(e) => onHandleCupo(e)}
         />
         <label htmlFor="semestre" className="form-label">
@@ -253,6 +256,8 @@ export const ModificarMateriaPage = () => {
           name="semestre"
           id="semestre"
           className="form-control"
+          defaultValue={mat.Semestre}
+
           onChange={(e) => onHandleSemestre(e)}
         />
             <button
