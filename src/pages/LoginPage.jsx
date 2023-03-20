@@ -139,7 +139,7 @@ export const LoginPage = () => {
                 //loginPetitionEmpleado(username, password);
                 const url = "https://rest-api-production-a5bf.up.railway.app/getEmpleado/" + username + "/" + password;
   //Hacemos la peticion a la API
-  fetch(url)
+  await fetch(url)
     .then((res) => res.json())
     .then((data) => {
       console.log(' info:::', data);
