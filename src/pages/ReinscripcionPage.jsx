@@ -80,9 +80,9 @@ export const ReinscripcionPage = () => {
     <br/>
     <NavLink
                 className={({ isActive }) =>
-                  `nav-item nav-link ${isActive ? "active" : ""}`
+                  `btn btn-danger ${isActive ? "active" : ""}`
                 }
-                to="SeleccionMateriasPage"
+                to="seleccionmaterias"
               >
                 Acceder
               </NavLink>
