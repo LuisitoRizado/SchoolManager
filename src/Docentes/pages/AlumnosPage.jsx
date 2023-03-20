@@ -1,7 +1,9 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const AlumnosPage = () => {
     return (
       <div>
+
         <h1>Alumnos</h1>
       <hr/>
       <div className='documentosDiv row'>
@@ -15,7 +17,14 @@ export const AlumnosPage = () => {
       <h5 className="card-title">Dar de alta alumno</h5>
       <p className="card-text">Puedes dar de alta un alumno</p>
       
-      <a href="agregarAlumno" className="btn btn-primary">Acceder</a>
+      <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarAlumno'
+                }}
+              >
+                Acceder
+              </NavLink>
     </div>
   </div>
   </div>
@@ -30,7 +39,13 @@ export const AlumnosPage = () => {
       <h5 className="card-title">Dar de baja definitiva alumno</h5>
       <p className="card-text">Puedes dar de baja un alumno</p>
       <br/>
-      <a href="eliminarAlumno" className="btn btn-primary">Acceder</a>
+      <NavLink
+                className={'btn btn-primary'}
+                to='eliminarAlumno'
+                
+              >
+                Acceder
+              </NavLink>
     </div>
   </div>
   </div>
