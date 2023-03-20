@@ -112,11 +112,11 @@ export const LoginPage = () => {
                     let obj = new Object();
                     
                     if(Object.entries(data).length!==0){
-                      /* btnNav.to = {
+                       btnNav.to = {
                         pathname:'user/inicio',
                         search: "?usuario=" + usuario
-                      } */
-                      onLogoIn()
+                      } 
+                      //onLogoIn()
                     }
                     console.log(btnNav)
                   })
