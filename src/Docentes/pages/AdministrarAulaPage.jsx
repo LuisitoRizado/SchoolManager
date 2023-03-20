@@ -127,7 +127,7 @@ export const AdministrarAulaPage = () => {
               </NavLink>
                 {/* <a onClick={()=> redirecionamientoPage(aula.Id_Aula)} className="btn btn-warning">
                   Modificar
-                </a> */}
+                </a> xd*/}
               </td>
               <td>
                 <a href="" className="btn btn-danger" onClick={()=>eliminarAula(aula.Id_Aula)}>
