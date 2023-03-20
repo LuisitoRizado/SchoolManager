@@ -60,7 +60,7 @@ export const DocenteRoutes = () => {
 
 
 
-                <Route path="/" element={<Navigate to="/inicio" />} />
+                <Route path="/" element={<Navigate to="/empleado/inicio" />} />
 
             </Routes>
         </div>
