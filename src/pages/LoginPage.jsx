@@ -4,12 +4,15 @@ import { useState } from "react";
 import { loginPetition, loginPetitionEmpleado } from "../fetchPetitions/loginPetition";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
+
 //Esta será nuestra pagina de inicio , la cual deberá realizar una peticion a la api comparando si el
 //Número de control y la contraseña son correctos
 
 //Llamamos a la petiicion cuando el usuario introduzca los valores
 let btnNav;
 export const LoginPage = () => {
+  const navigate = useNavigate();
+
   //Hooks
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
