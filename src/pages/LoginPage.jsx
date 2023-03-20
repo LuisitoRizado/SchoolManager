@@ -146,7 +146,7 @@ export const LoginPage = () => {
       //Pasamos a la siguiente pagina de inicio
       let obj = new Object();
       
-      if(data.length!=0){
+      if(Array.isArray(data)){
       //window.location.href = "empleado/inicio/?usuario=" + usuario;
       onLogInEmpleado()
       }
