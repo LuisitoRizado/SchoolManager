@@ -76,7 +76,7 @@ export const ModificarMateriaPage = () => {
               type="text"
               name="id"
               id="id"
-              placeholder={mat.ID_MATERIA}
+              placeholder={mat.Id_Materia}
               className="form-control disabled"
               disabled={true}
             />
@@ -89,7 +89,7 @@ export const ModificarMateriaPage = () => {
               name="materia"
               id="materia"
               className="form-control"
-              placeholder={mat.MATERIA}
+              placeholder={mat.Materia}
               disabled={true}
             />
             {/*Profesor que imparte la materia */}
@@ -102,7 +102,7 @@ export const ModificarMateriaPage = () => {
               id="profesor"
               className="form-control"
               placeholder={
-                mat.NOMBRE + " " + mat.AP_PATERNO + " " + mat.AP_MATERNO
+                mat.Nombre + " " + mat.Ap_Paterno + " " + mat.Ap_Materno
               }
               onChange={(e)=>onHandleProfesor(e)}
             />
@@ -115,7 +115,7 @@ export const ModificarMateriaPage = () => {
               name="hora"
               id="hora"
               className="form-control"
-              placeholder={mat.HORA_FINAL_LUNES}
+              placeholder={mat.Hora_Inicio_Lunes}
               onChange={(e)=>onHandleHora(e)}
 
             />
@@ -128,7 +128,7 @@ export const ModificarMateriaPage = () => {
               name="aula"
               id="aula"
               className="form-control"
-              placeholder={mat.HORA_INICIO_LUNES}
+              placeholder={mat.Hora_Final_Lunes}
               onChange={(e)=>onHandleAula(e)}
 
             />
