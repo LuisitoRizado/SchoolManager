@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import '../../styles/tablas.css'
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 let inputId, inputIdDocente, inputIdMateria;
 let estaSeleccionado = true;
 let materiasSeleccionadas = []

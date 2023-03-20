@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { validarCampos } from './validarCampos';
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 let inputId;
 
 export const AdministracionHorarioPage = () => {
@@ -116,9 +118,20 @@ export const AdministracionHorarioPage = () => {
                   <td>{horario.Hora_Inicio_Lunes}</td>
                   <td>{horario.Hora_Final_Lunes}</td>
                   <td>
-                    <a onClick={()=> redirecionamientoPage()} className="btn btn-warning">
+                  <NavLink
+                className={'btn btn-warning'}
+                
+                
+                to={{
+                  pathname: 'modificarHorario',
+                  search: '?id='+id_horario
+                }}
+              >
+                Modificar
+              </NavLink>
+                    {/* <a onClick={()=> redirecionamientoPage()} className="btn btn-warning">
                       Modificar
-                    </a>
+                    </a> */}
                   </td>
                   <td>
                     <a href="" className="btn btn-danger" onClick={()=>eliminarHorario(horario.Id_Horario)}>
@@ -129,7 +142,7 @@ export const AdministracionHorarioPage = () => {
               ))
             ) : (
               <tr>
-                <td><p> No existe ese Docente</p></td>
+                <td><p> No existe ese Horario</p></td>
               </tr>
             )}
           </tbody>

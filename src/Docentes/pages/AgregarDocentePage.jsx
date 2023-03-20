@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { validarCampos, validarNumeros } from "./validarCampos";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 let inputId;
 let inputNombre;
 let inputAPaterno;
@@ -476,6 +478,7 @@ export const AgregarDocentePage = () => {
                   />
                 </td>
                 <td className={`btn-${index} form-control`}>
+                
                   <a
                     onClick={() => habilitarModificacion(index)}
                     className="btn btn-warning modificarButton"
@@ -484,6 +487,7 @@ export const AgregarDocentePage = () => {
                   </a>
                 </td>
                 <td>
+                  
                   <a
                     href=""
                     className="btn btn-danger"

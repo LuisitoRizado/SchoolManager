@@ -1,3 +1,5 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const DocentesPage = () => {
     return (
       <div>
@@ -20,9 +22,14 @@ export const DocentesPage = () => {
                    Puedes agregar docentes disponibles para las materias
                   </p>
   
-                  <a href="agregarDocente" className="btn btn-primary">
-                    Acceder
-                  </a>
+                  <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarDocente'
+                }}
+              >
+                Acceder
+              </NavLink>
                 </div>
               </div>
             </div>
@@ -43,9 +50,14 @@ export const DocentesPage = () => {
                    Puedes modificar o eliminar los docentes disponibles
                   </p>
                   <br />
-                  <a href="administrarDocente" className="btn btn-primary">
-                    Acceder
-                  </a>
+                  <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'administrarDocente'
+                }}
+              >
+                Acceder
+              </NavLink>
                 </div>
               </div>
             </div>

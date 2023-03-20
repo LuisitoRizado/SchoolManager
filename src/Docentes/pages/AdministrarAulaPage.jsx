@@ -114,9 +114,20 @@ export const AdministrarAulaPage = () => {
               <td>{aula.Edificio}</td>
               <td>{aula.Capacidad}</td>
               <td>
-                <a onClick={()=> redirecionamientoPage(aula.Id_Aula)} className="btn btn-warning">
+              <NavLink
+                className={'btn btn-warning'}
+                
+                
+                to={{
+                  pathname: 'modificarAula',
+                  search: '?id='+aula.Id_Aula
+                }}
+              >
+                Modificar
+              </NavLink>
+                {/* <a onClick={()=> redirecionamientoPage(aula.Id_Aula)} className="btn btn-warning">
                   Modificar
-                </a>
+                </a> */}
               </td>
               <td>
                 <a href="" className="btn btn-danger" onClick={()=>eliminarAula(aula.Id_Aula)}>

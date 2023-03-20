@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { validarCampos } from "./validarCampos";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const AdministrarMaterias = () => {
   //Hooks
   const [materia, setMateria] = useState([]);
@@ -136,12 +138,17 @@ export const AdministrarMaterias = () => {
 
 
                 <td>
-                  <a
-                    className="btn btn-warning"
-                    onClick={() => redireccionarAModificacion(materia.ID_MATERIA)}
-                  >
-                    Modificar
-                  </a>
+                <NavLink
+                className={'btn btn-warning'}
+                
+                to={{
+                  pathname: 'modificarMateria',
+                  search: '?id='+materia.ID_MATERIA
+                }}
+              >
+                Modificar
+              </NavLink>
+                 
                 </td>
                 <td>
                   <button className="btn btn-danger" onClick={()=>eliminarMateria(materia.ID_MATERIA)}>ELiminar</button>

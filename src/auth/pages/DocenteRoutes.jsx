@@ -48,7 +48,7 @@ export const DocenteRoutes = () => {
                 <Route path="horarios/agregarHorario" element={<AgregarHorarioPage  />} />
                 <Route path="horarios/administrarHorarios" element={<AdministracionHorarioPage  />} />
                 <Route path="modificarHorario" element={<ModificarHorarioPage  />} />
-                <Route path="agregarDocenteMateria" element={<AgregarDocenteMateria  />} />
+                <Route path="materias/agregarDocenteMateria" element={<AgregarDocenteMateria  />} />
 
 
 
