@@ -43,19 +43,19 @@ export const ModificarMateriaPage = () => {
 
       //peticiones
       const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
-      fetch(url2)
+      await fetch(url2)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setHorarios(data);
         });
       //pedir todas las maulas
-      fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
+      await fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
         .then((res) => res.json())
         .then((data) => setAulas(data));
   
       //traer todas las carreas
-      fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
+      await fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
         .then((res) => res.json())
         .then((data) => setCarreras(data));
   };
