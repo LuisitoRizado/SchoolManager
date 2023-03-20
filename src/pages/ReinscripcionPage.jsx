@@ -18,7 +18,7 @@ export const ReinscripcionPage = () => {
     
     <NavLink
                 className={({ isActive }) =>
-                  `btn btn-danger ${isActive ? "active" : ""}`
+                  `btn btn-primary ${isActive ? "active" : ""}`
                 }
                 to="datosreinscripcion"
               >
@@ -40,7 +40,7 @@ export const ReinscripcionPage = () => {
     <br/>
     <NavLink
                 className={({ isActive }) =>
-                  `btn btn-danger ${isActive ? "active" : ""}`
+                  `btn btn-primary ${isActive ? "active" : ""}`
                 }
                 to="materiasdisponibles"
               >
