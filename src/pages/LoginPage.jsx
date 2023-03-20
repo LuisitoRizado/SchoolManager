@@ -34,7 +34,7 @@ export const LoginPage = () => {
 
 
   const onLogoIn = () => {
-    navigate("/user/inicio", {
+    navigate("/user/inicio?user="+username, {
       replace: true,
     });
   };
@@ -112,11 +112,11 @@ export const LoginPage = () => {
                     let obj = new Object();
                     
                     if(Object.entries(data).length!==0){
-                       btnNav.to = {
+                      /*  btnNav.to = {
                         pathname:'user/inicio',
                         search: "?usuario=" + username
-                      } 
-                      //onLogoIn()
+                      }  */
+                      onLogoIn()
                     }
                     console.log(btnNav)
                   })
