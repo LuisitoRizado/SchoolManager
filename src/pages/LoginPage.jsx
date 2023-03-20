@@ -99,7 +99,7 @@ export const LoginPage = () => {
             onClick={async() => {
               if (document.querySelector("#alumno").checked) {
                 //loginPetition(username, password);
-                const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + usuario + "/" + password;
+                const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + username + "/" + password;
                 //Hacemos la peticion a la API
                 await fetch(url)
                   .then((res) => res.json())
