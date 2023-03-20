@@ -106,7 +106,7 @@ export const ModificarHorarioPage = () => {
           <option value="" >{hora.Hora_Inicio_Lunes}</option>
           <option value="9:00">9:00</option>
           <option value="10:00">10:00</option>
-          <option value="11:00">11:0</option>
+          <option value="11:00">11:00</option>
           <option value="12:00">12:00</option>
           <option value="13:00">13:00</option>
           <option value="14:00">14:00</option>
@@ -128,7 +128,7 @@ export const ModificarHorarioPage = () => {
           aria-label="Default select example"
           id="hora_final"
           defaultValue={hora.Hora_Final_Lunes}
-          onChange={(event) => onHandleHora_Inicio(event)}
+          onChange={(event) => onHandleHora_Final(event)}
         >
           <option value="" >{hora.Hora_Final_Lunes}</option>
           <option value="9:00">9:00</option>
@@ -157,7 +157,7 @@ export const ModificarHorarioPage = () => {
             <button
               className="btn btn-success m-2"
               onClick={() =>
-                guardarDatos(hora.Id_Horario,  hora_inicio,hora_final )
+                guardarDatos(hora.Id_Horario,  hora_inicio, hora_final )
               }
             >
               Confirmar
