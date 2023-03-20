@@ -24,7 +24,7 @@ export const ModificarMateriaPage = () => {
         //Esta data la tenemos que pasar a la página para poder imprimirla o pintarla
         
         console.log(data);
-        setMateria(data);
+        setMateria(data.slice(0,1));
       })
       .catch((err) => console.log(err));
   };
@@ -44,6 +44,8 @@ export const ModificarMateriaPage = () => {
     //Vamos a actualizar la materia con los datos que se cambiaron
     setMateria(...materia, profesor,hora,aula)
     console.log('NUEVA MATERIA: ' + materia);
+    //hacemos la peticion fetch
+    fetch('')
     
   };
 
@@ -90,8 +92,8 @@ export const ModificarMateriaPage = () => {
               name="materia"
               id="materia"
               className="form-control"
-              placeholder={mat.Materia}
-              disabled={true}
+             
+              defaultValue={mat.Materia}
             />
             {/*Profesor que imparte la materia */}
             <label htmlFor="" className="form-label">
@@ -102,9 +104,8 @@ export const ModificarMateriaPage = () => {
               name="profesor"
               id="profesor"
               className="form-control"
-              placeholder={
-                mat.Nombre + " " + mat.Ap_Paterno + " " + mat.Ap_Materno
-              }
+              defaultValue={mat.Nombre + " " + mat.Ap_Paterno + " " + mat.Ap_Materno}
+
               onChange={(e)=>onHandleProfesor(e)}
             />
             {/*Hora de la materia */}
@@ -116,7 +117,8 @@ export const ModificarMateriaPage = () => {
               name="hora"
               id="hora"
               className="form-control"
-              placeholder={mat.Hora_Inicio_Lunes}
+              
+              defaultValue={mat.Hora_Inicio_Lunes}
               onChange={(e)=>onHandleHora(e)}
 
             />
@@ -129,7 +131,8 @@ export const ModificarMateriaPage = () => {
               name="aula"
               id="aula"
               className="form-control"
-              placeholder={mat.Hora_Final_Lunes}
+            
+              defaultValue={mat.Hora_Final_Lunes}
               onChange={(e)=>onHandleAula(e)}
 
             />
