@@ -22,7 +22,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=1"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=1'
+                }}
               >
                 1
               </NavLink>
@@ -30,7 +33,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=2"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=2'
+                }}
               >
                 2
               </NavLink>
@@ -38,7 +44,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=3"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=3'
+                }}
               >
                 3
               </NavLink>
@@ -46,7 +55,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=4"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=4'
+                }}
               >
                 4
               </NavLink>
@@ -54,7 +66,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=5"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=5'
+                }}
               >
                 5
               </NavLink>
@@ -62,7 +77,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=6"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=6'
+                }}
               >
                 6
               </NavLink>
@@ -70,7 +88,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=7"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=7'
+                }}
               >
                 7
               </NavLink>
@@ -78,7 +99,10 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=8"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=8'
+                }}
               >
                 8
               </NavLink>
@@ -86,7 +110,11 @@ export const MateriasDisponibles = () => {
           <li>
           <NavLink
                 className={'dropdown-item'}
-                to="materiaspage?semestre=9"
+                to={{
+                  pathname: '/materiaspage',
+                  search: '?semestre=9'
+                }}
+                
               >
                 9
               </NavLink>
