@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 import { validarCampos, validarNumeros } from "./validarCampos";
 let inputIdMateria,
   inputIdHorario,

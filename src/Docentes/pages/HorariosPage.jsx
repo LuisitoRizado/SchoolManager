@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const HorariosPage = () => {
   return (
@@ -22,9 +23,14 @@ export const HorariosPage = () => {
                Puedes agregar horarios disponibles para las materias
               </p>
 
-              <a href="agregarHorario" className="btn btn-primary">
+              <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarHorario'
+                }}
+              >
                 Acceder
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -45,9 +51,14 @@ export const HorariosPage = () => {
                Puedes modificar o eliminar los horarios disponibles
               </p>
               <br />
-              <a href="administrarHorarios" className="btn btn-primary">
+              <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'administrarHorarios'
+                }}
+              >
                 Acceder
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

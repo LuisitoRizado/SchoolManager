@@ -1,3 +1,5 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const MateriasPage = () => {
   
   return (
@@ -21,9 +23,14 @@ export const MateriasPage = () => {
                  Puedes agregar materias disponibles para los alumnos
                 </p>
 
-                <a href="agregarMateria" className="btn btn-primary">
-                  Acceder
-                </a>
+                <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarMateria'
+                }}
+              >
+                Acceder
+              </NavLink>
               </div>
             </div>
           </div>
@@ -44,9 +51,14 @@ export const MateriasPage = () => {
                  Puedes modificar o eliminar las materias
                 </p>
                 <br />
-                <a href="administrarMaterias" className="btn btn-primary">
-                  Acceder
-                </a>
+                <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'administrarMaterias'
+                }}
+              >
+                Acceder
+              </NavLink>
               </div>
             </div>
           </div>
@@ -67,9 +79,14 @@ export const MateriasPage = () => {
                  Puedes asignarle un docente a una materia
                 </p>
 
-                <a href="agregarDocenteMateria" className="btn btn-primary">
-                  Acceder
-                </a>
+                <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarDocenteMateria'
+                }}
+              >
+                Acceder
+              </NavLink>
               </div>
             </div>
           </div>

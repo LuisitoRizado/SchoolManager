@@ -1,3 +1,5 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
 export const AulasPage = () => {
   return (
     <div>
@@ -14,7 +16,14 @@ export const AulasPage = () => {
       <h5 className="card-title">Cargar aulas</h5>
       <p className="card-text">Puedes dar de alta un aula</p>
       
-      <a href="agregarAula" className="btn btn-primary">Acceder</a>
+      <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'agregarAula'
+                }}
+              >
+                Acceder
+              </NavLink>
     </div>
   </div>
   </div>
@@ -29,7 +38,14 @@ export const AulasPage = () => {
       <h5 className="card-title">Administrar aulas</h5>
       <p className="card-text">Puedes adiministrar aulas</p>
       <br/>
-      <a href="administrarAula" className="btn btn-primary">Acceder</a>
+      <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'administrarAula'
+                }}
+              >
+                Acceder
+              </NavLink>
     </div>
   </div>
   </div>
