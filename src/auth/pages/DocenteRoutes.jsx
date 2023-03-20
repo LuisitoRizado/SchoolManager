@@ -52,14 +52,6 @@ export const DocenteRoutes = () => {
 
 
 
-
-
-
-
-
-
-
-
                 <Route path="/" element={<Navigate to="/empleado/inicio" />} />
 
             </Routes>
