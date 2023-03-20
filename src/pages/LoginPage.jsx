@@ -114,7 +114,7 @@ export const LoginPage = () => {
                     if(Object.entries(data).length!==0){
                        btnNav.to = {
                         pathname:'user/inicio',
-                        search: "?usuario=" + usuario
+                        search: "?usuario=" + username
                       } 
                       //onLogoIn()
                     }
