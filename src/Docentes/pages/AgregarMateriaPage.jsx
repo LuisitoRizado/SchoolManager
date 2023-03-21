@@ -65,7 +65,7 @@ export const AgregarMateriaPage = () => {
     setId_Docente(e.target.value);
   };
 
-  const agregarMateria = () => {
+  const agregarMateria = async () => {
     console.log("horario" + HORARIO);
     console.log(
       inputIdMateria,
@@ -90,7 +90,7 @@ export const AgregarMateriaPage = () => {
     ) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addNewMateria";
 
-      fetch(url, {
+      await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
