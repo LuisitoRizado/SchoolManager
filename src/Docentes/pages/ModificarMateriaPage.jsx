@@ -44,10 +44,10 @@ export const ModificarMateriaPage = () => {
         //obtener todos los valores (LISTO)
         setCarrera(data[0].Id_Carrera);
         setAula(data[0].Id_Aula);
-        setHorarios(data[0].Id_Horario)
+        setHora(data[0].Id_Horario)
         setCupo(data[0].Cupo)
         setSemestre(data[0].Semestre)
-        setCreditos(data[0].creditos)
+        setCreditos(data[0].Creditos)
         setNombre(data[0].Materia)
       })
       .catch((err) => console.log(err));
@@ -77,23 +77,33 @@ export const ModificarMateriaPage = () => {
   };
   const onHandleHora = (e) => {
     setHora(e.target.value);
+    console.log(hora)
   };
   const onHandleAula = (e) => {
     setAula(e.target.value);
+    console.log(aula)
   };
   const onHandleCreditos = (e) => {
     setCreditos(e.target.value);
+    console.log(creditos)
   };
   //-----handlers
 
+  const onHandleNombreMateria = (e) =>{
+    setNombre(e.target.value)
+    console.log(nombre)
+  }
   const onHandleCupo = (e) => {
     setCupo(e.target.value);
+    console.log(cupo)
   };
   const onHandleSemestre = (e) => {
     setSemestre(e.target.value);
+    console.log(semestre)
   };
   const onHandleCarrera = (e) => {
-    setId_Carrera(e.target.value);
+    setCarrera(e.target.value);
+    console.log(carrera)
   };
 
   const onHandleHorario = (e) => {
@@ -103,12 +113,44 @@ export const ModificarMateriaPage = () => {
 
 
   //Funciones para los botones
-  const guardarCambios = () => {
+  const guardarCambios = async () => {
     //Vamos a actualizar la materia con los datos que se cambiaron
-    setMateria(...materia, profesor,hora,aula)
+    //setMateria(...materia, profesor,hora,aula)
     console.log('NUEVA MATERIA: ' + materia);
+
+    //verificamos los campos
+    if(validarCampos(inputMateria, inputCarrera, inputAula, inputHora, inputCreditos, inputCupo, inputSemestre)){
+      console.log('VALIDADOS!')
+      //Vamos a hacer la peticion de update
+      console.log(nombre)
+      console.log(carrera)
+      console.log(aula)
+      console.log(hora)
+      console.log(creditos)
+      console.log(cupo)
+      console.log(semestre)
+      //hacemos la peticion fetch
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateMat/" + id, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          
+          ID_HORARIO: hora,
+          ID_AULA: aula,
+          ID_CARRERA: carrera,
+          MATERIA: nombre,
+          CREDITOS: creditos,
+          CUPO: cupo,
+          SEMESTRE: semestre
+        }),
+      });
+      //recargarmos la página
+      window.location.reload()
+    }
     //hacemos la peticion fetch
-    fetch('')
     
   };
 
@@ -116,8 +158,8 @@ export const ModificarMateriaPage = () => {
   useEffect(() => {
     fetchUser();
     inputProfesor = document.querySelector('#profesor')
-    inputCarrera = document.querySelector('#id_carrera')
-    inputHora = document.querySelector('#id_hora')
+    inputCarrera = document.querySelector('#id_carreras')
+    inputHora = document.querySelector('#id_horario')
     inputAula = document.querySelector('#id_aula')
     inputMateria = document.querySelector('#materia')
     inputCreditos = document.querySelector('#creditos')
@@ -128,8 +170,8 @@ export const ModificarMateriaPage = () => {
 
   useEffect(() => {
     inputProfesor = document.querySelector('#profesor')
-    inputCarrera = document.querySelector('#id_carrera')
-    inputHora = document.querySelector('#id_hora')
+    inputCarrera = document.querySelector('#id_carreras')
+    inputHora = document.querySelector('#id_horario')
     inputAula = document.querySelector('#id_aula')
     inputMateria = document.querySelector('#materia')
     inputCreditos = document.querySelector('#creditos')
@@ -189,10 +231,10 @@ export const ModificarMateriaPage = () => {
           id="id_horario"
           aria-label="Default select example"
           onChange={(e) => {
-            onHandleHorario(e);
+            onHandleHora(e);
           }}
         >
-            <option value="">{mat.Hora_Inicio_Lunes + " - " + mat.Hora_Final_Lunes} </option>
+            <option value={mat.Id_Horario}>{mat.Hora_Inicio_Lunes + " - " + mat.Hora_Final_Lunes} </option>
 
           {horarios.length >= 1 ? (
             horarios.map((horario, index) => (
@@ -216,7 +258,7 @@ export const ModificarMateriaPage = () => {
             onHandleAula(e);
           }}
         >
-            <option value="">{mat.Aula} </option>
+            <option value={mat.Id_Aula}>{mat.Aula} </option>
 
           {aulas.length >= 1 ? (
             aulas.map((aula, index) => (
@@ -238,7 +280,7 @@ export const ModificarMateriaPage = () => {
               name="materia"
               id="materia"
               className="form-control"
-             
+              onChange={(e)=>onHandleNombreMateria(e)}
               defaultValue={mat.Materia}
             />
             {/*Profesor que imparte la materia */}
@@ -285,11 +327,11 @@ export const ModificarMateriaPage = () => {
         />
             <button
               className="btn btn-danger m-2"
-              onClick={() => guardarCambios()}
+              
             >
               Cancela
             </button>
-            <button className="btn btn-success m-2">Confirmar</button>
+            <button className="btn btn-success m-2" onClick={() => guardarCambios()}>Confirmar</button>
           </form>
         );
       })}
