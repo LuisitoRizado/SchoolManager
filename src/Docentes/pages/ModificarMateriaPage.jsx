@@ -1,3 +1,4 @@
+import { set } from "lodash";
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { validarNumeros,validarCampos } from "./validarCampos";
@@ -38,7 +39,17 @@ export const ModificarMateriaPage = () => {
         
         console.log(data);
         console.log('hola')
-        setMateria(data.slice(0,1));
+        setMateria(data.slice(0,1))
+        //obtener todos los valores
+        setCarrera(materia.Id_Carrera);
+        setAula(materia.Id_Aula);
+        setHorarios(materia.Id_Horario)
+        setCupo(materia.Cupo)
+        setSemestre(materia.Semestre)
+        setCreditos(materia.creditos)
+        setNombre(materia.Materia)
+        console.log(carrera,aula,horario,cupo,semestre,creditos,nombre)
+        
       })
       .catch((err) => console.log(err));
 
@@ -106,15 +117,26 @@ export const ModificarMateriaPage = () => {
   useEffect(() => {
     fetchUser();
     inputProfesor = document.querySelector('#profesor')
-    inputHora = document.querySelector('#hora')
-    inputAula = document.querySelector('#aula')
+    inputCarrera = document.querySelector('#id_carrera')
+    inputHora = document.querySelector('#id_hora')
+    inputAula = document.querySelector('#id_aula')
+    inputMateria = document.querySelector('#materia')
+    inputCreditos = document.querySelector('#creditos')
+    inputCupo = document.querySelector('#cupo')
+    inputSemestre = document.querySelector('#semestre')
+  
   }, []);
 
   useEffect(() => {
     inputProfesor = document.querySelector('#profesor')
-    inputHora = document.querySelector('#hora')
-    inputAula = document.querySelector('#aula')
-  }, [profesor, hora,aula]);
+    inputCarrera = document.querySelector('#id_carrera')
+    inputHora = document.querySelector('#id_hora')
+    inputAula = document.querySelector('#id_aula')
+    inputMateria = document.querySelector('#materia')
+    inputCreditos = document.querySelector('#creditos')
+    inputCupo = document.querySelector('#cupo')
+    inputSemestre = document.querySelector('#semestre')
+  }, [profesor, hora,aula,carrera, materia,cupo,semestre,creditos]);
   
 
   return (
