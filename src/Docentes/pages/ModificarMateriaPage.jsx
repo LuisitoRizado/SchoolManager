@@ -42,7 +42,7 @@ export const ModificarMateriaPage = () => {
         console.log('hola')
          setMateria(data.slice(0,1))
         //obtener todos los valores
-        setCarrera([1,2,3]);
+        setCarrera(10);
         setAula(data[0].Id_Aula);
         setHorarios(data[0].Id_Horario)
         setCupo(data[0].Cupo)
