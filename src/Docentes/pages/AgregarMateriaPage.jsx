@@ -468,7 +468,6 @@ export const AgregarMateriaPage = () => {
             onHandleHorario(e);
           }}
         >
-            <option value="">{horario.Hora_Inicio_Lunes + " - " + horario.Hora_Final_Lunes} </option>
 
           {horarios.length >= 1 ? (
             horarios.map((horario, index) => (
