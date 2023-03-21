@@ -148,6 +148,7 @@ export const ModificarMateriaPage = () => {
             onHandleCarrera(e);
           }}
         >
+            <option value={mat.Id_Carrera}>{mat.Nombre_Carrera} </option>
 
         {carreras.length >= 1 ? (
           carreras.map((carrera, index) => (
@@ -170,7 +171,7 @@ export const ModificarMateriaPage = () => {
             onHandleHorario(e);
           }}
         >
-            <option value=""> </option>
+            <option value="">{mat.Hora_Inicio_Lunes + " - " + mat.Hora_Final_Lunes} </option>
 
           {horarios.length >= 1 ? (
             horarios.map((horario, index) => (
@@ -194,7 +195,7 @@ export const ModificarMateriaPage = () => {
             onHandleAula(e);
           }}
         >
-            <option value=""> </option>
+            <option value="">{mat.Aula} </option>
 
           {aulas.length >= 1 ? (
             aulas.map((aula, index) => (
