@@ -2,6 +2,8 @@ import { set } from "lodash";
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { validarNumeros,validarCampos } from "./validarCampos";
+let inputProfesor, inputHora, inputAula, inputId, inputCarrera,inputMateria,inputCreditos, inputCupo, inputSemestre;
+
 export const ModificarMateriaPage = () => {
   //Leemos el query params de la url
   const querystring = window.location.search;
@@ -27,7 +29,6 @@ export const ModificarMateriaPage = () => {
 
 
   
-  let inputProfesor, inputHora, inputAula, inputId, inputCarrera,inputMateria,inputCreditos, inputCupo, inputSemestre;
   //FUNCIONES PARA LA FUNCIONALIDAD DE LA PAGINA ESTAS PUEDEN SER IMPORTADAS O NO
   const fetchUser = async () => {
     const URL = "https://rest-api-production-a5bf.up.railway.app/getMateria/" + id;
@@ -41,13 +42,13 @@ export const ModificarMateriaPage = () => {
         console.log('hola')
         setMateria(data.slice(0,1))
         //obtener todos los valores
-        setCarrera(materia.Id_Carrera);
-        setAula(materia.Id_Aula);
-        setHorarios(materia.Id_Horario)
-        setCupo(materia.Cupo)
-        setSemestre(materia.Semestre)
-        setCreditos(materia.creditos)
-        setNombre(materia.Materia)
+        setCarrera(materia[0].Id_Carrera);
+        setAula(materia[0].Id_Aula);
+        setHorarios(materia[0].Id_Horario)
+        setCupo(materia[0].Cupo)
+        setSemestre(materia[0].Semestre)
+        setCreditos(materia[0].creditos)
+        setNombre(materia[0].Materia)
         console.log(carrera,aula,horario,cupo,semestre,creditos,nombre)
         
       })
