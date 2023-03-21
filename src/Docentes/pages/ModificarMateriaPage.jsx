@@ -35,20 +35,20 @@ export const ModificarMateriaPage = () => {
     //Hacemos la peticion
     await fetch(URL)
       .then((res) => res.json())
-      .then(async(data) => {
+      .then((data) => {
         //Esta data la tenemos que pasar a la página para poder imprimirla o pintarla
         
         console.log(data);
         console.log('hola')
-        await setMateria(data.slice(0,1))
+         setMateria(data.slice(0,1))
         //obtener todos los valores
-        setCarrera(materia[0].Id_Carrera);
-        setAula(materia[0].Id_Aula);
-        setHorarios(materia[0].Id_Horario)
-        setCupo(materia[0].Cupo)
-        setSemestre(materia[0].Semestre)
-        setCreditos(materia[0].creditos)
-        setNombre(materia[0].Materia)
+        setCarrera(data[0].Id_Carrera);
+        setAula(data[0].Id_Aula);
+        setHorarios(data[0].Id_Horario)
+        setCupo(data[0].Cupo)
+        setSemestre(data[0].Semestre)
+        setCreditos(data[0].creditos)
+        setNombre(data[0].Materia)
         console.log(carrera,aula,horarios,cupo,semestre,creditos,nombre)
         
       })
