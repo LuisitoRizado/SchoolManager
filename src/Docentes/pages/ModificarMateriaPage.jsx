@@ -49,7 +49,7 @@ export const ModificarMateriaPage = () => {
         setSemestre(data[0].Semestre)
         setCreditos(data[0].creditos)
         setNombre(data[0].Materia)
-        
+        console.log(carrera,aula,horarios,cupo,semestre,creditos,nombre)
       })
       .catch((err) => console.log(err));
 
