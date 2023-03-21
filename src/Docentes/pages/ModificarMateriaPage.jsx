@@ -35,12 +35,12 @@ export const ModificarMateriaPage = () => {
     //Hacemos la peticion
     await fetch(URL)
       .then((res) => res.json())
-      .then((data) => {
+      .then(async(data) => {
         //Esta data la tenemos que pasar a la página para poder imprimirla o pintarla
         
         console.log(data);
         console.log('hola')
-        setMateria(data.slice(0,1))
+        await setMateria(data.slice(0,1))
         //obtener todos los valores
         setCarrera(materia[0].Id_Carrera);
         setAula(materia[0].Id_Aula);
