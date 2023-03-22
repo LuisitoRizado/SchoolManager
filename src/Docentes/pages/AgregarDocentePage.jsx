@@ -19,6 +19,7 @@ export const AgregarDocentePage = () => {
   const [Ap_Matern, setAp_Matern] = useState();
   const [docentes, setDocentes] = useState([]);
   const [search, setSearch] = useState("")
+  const [filteredDocentes, setFilteredDocentes] = useState([]);
 
 
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
@@ -37,24 +38,18 @@ export const AgregarDocentePage = () => {
     setAp_Matern(e.target.value);
     
   };
-  const onHandleSearch = (e)=>{
-    setSearch(e.target.value);
-    console.log(e.target.value)
-    console.log(search)
+  const onHandleSearch = async (event) => {
+    const searchTerm = event.target.value;
+    setSearch(searchTerm)
+    
+  };
 
-    if(validarCampos(inputSearch)){
-      console.log('si esta detectado')
-      results = docentes.filter((docente)=>{
-      docente.Nombre.toUpperCase().includes(search.toLocaleUpperCase())
-    })
-    console.log(results)
-  }
-  else{
-    results = docentes;
-  }
- 
-  }
-
+/*   useEffect(() => {
+    const filtered = docentes.filter((docente) =>
+      docente.Nombre.includes(search)
+    );
+    setFilteredDocentes(filtered);
+  }, [docentes, search]); */
   //metodo para filtrar
   const filtrar = () => {
   
@@ -195,6 +190,7 @@ export const AgregarDocentePage = () => {
       .then((data) => {
         console.log(data);
         setDocentes(data);
+        setFilteredDocentes(data)
       });
   };
   useEffect(() => {
@@ -431,7 +427,7 @@ export const AgregarDocentePage = () => {
           Agregar!
         </button>
       </form>
-      <input type="text" placeholder="Buscar"  className="form-control search" value={search} onChange={(e)=>onHandleSearch(e)}/>
+      
       <div className="table-responsive">
 
       <table className="table  table-bordered">
@@ -446,8 +442,8 @@ export const AgregarDocentePage = () => {
           </tr>
         </thead>
         <tbody>
-          {docentes.length >= 1 ? (
-            docentes.map((docente, index) => (
+          {filteredDocentes.length >= 1 ? (
+            filteredDocentes.map((docente, index) => (
               <tr key={index}>
                 <td>
                   <input

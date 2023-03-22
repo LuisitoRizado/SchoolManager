@@ -7,7 +7,7 @@ export const AdministrarDocentePage = () => {
   const [docentes, setDocentes] = useState([]);
   const [todosLosDocente, setTodosLosDocente] = useState([])
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
-
+  
   //-------------FILTRADO
   const filtreredDocente = () =>{
     return docentes.slice(0,5)
