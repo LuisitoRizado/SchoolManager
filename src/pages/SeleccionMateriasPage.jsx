@@ -89,31 +89,36 @@ export const SeleccionMateriasPage = () => {
   }
 
   //Metodo apra guardar el horario en la base de datos
-  const guardarHorario = () =>{
+  const guardarHorario =  async () =>{
+    //..................................................NO FUNCIONA LA AGREGACION DE MATERIA, TAL VEZ ES PROBLEMAS DE LOS DATOS DE LA BDD
+
     //Primero cargamos las materias del localStorage
     let materias = window.localStorage.getItem("materias")
     //La convertirmos a arreglo
-    materias = JSON.parse(materias);
+    materias = await JSON.parse(materias);
     //Lo imprimimos
     console.log(materias);
 
     //Por cada materia que haya, hacemo una peticion a la api
-    materias.forEach(materia => {
+     await materias.forEach( async (materia) => {
+
         //Hacemos la peticion y lo vamos guardando.
-        fetch('https://rest-api-production-a5bf.up.railway.app/addCarga' , {method:'POST' , headers: {
-          'Accept': 'application/json',
+          await fetch('https://rest-api-production-a5bf.up.railway.app/addCarga' , {method:'POST' , headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json'
       }, body: JSON.stringify({
-          "Id_Carga":Math.floor(Math.random() * 100000) + 1,
-          "Ncontrol": window.localStorage.getItem('user'),
-          "Id_DocxMath":materia.ID_DOCXMATH,
-          "Calificacion":null
+          Id_Carga:await Math.floor(Math.random() * 100000) + 1,
+          Ncontrol: window.localStorage.getItem('user'),
+          Id_DocxMath:materia.ID_DOCXMATH,
+          Calificacion:null
       })
       })
     });
     //Recargamos la pagina y limpiamos las materias
     window.localStorage.setItem('materias', JSON.stringify([]));
-    window.location.reload(2);
+    await setMaterias([])
+    confirm('Horario guadado')
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -188,11 +193,11 @@ export const SeleccionMateriasPage = () => {
                    window.location.reload()}}>Eliminar</button></td>
                 <td>{materia.MATERIA}</td>
                 <td>{materia.NOMBRE} {materia.AP_PATERNO} {materia.AP_MATERNO}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
+                <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.HORA_INICIO_LUNES}</td>
 
                 
 

@@ -46,11 +46,11 @@ export const LoginPage = () => {
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
-    <div className="loginContainer row d-flex h-100 shadow border">
+    <div className="loginContainer row d-flex h-100 shadow border ">
       <div className="rightContainer  col-md-5  d-flex flex-column justify-content-center align-items-center">
         <h4>Inicio de sesión</h4>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Round_Landmark_School_Icon_-_Transparent.svg/1024px-Round_Landmark_School_Icon_-_Transparent.svg.png"
+          src="https://saltillo.tecnm.mx/innovatecnm/images/tec-footer.png"
           alt=""
         />
         <form

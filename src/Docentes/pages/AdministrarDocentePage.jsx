@@ -5,8 +5,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 export const AdministrarDocentePage = () => {
   const [id_docente, setId_docente] = useState([]);
   const [docentes, setDocentes] = useState([]);
-
+  const [todosLosDocente, setTodosLosDocente] = useState([])
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
+
+  //-------------FILTRADO
+  const filtreredDocente = () =>{
+    return docentes.slice(0,5)
+  }
+
+
+
 
   let inputId;
   //---------HANDLERS
@@ -67,6 +75,11 @@ export const AdministrarDocentePage = () => {
    fetch('https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas')
     .then(res=>res.json())
     .then(data=>setmaterias_Asignadas(data))
+
+    //Traer todos los docentes
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllDocentes')
+    .then(res=>res.json())
+    .then(data=>setTodosLosDocente(data))
   }, [])
   useEffect(() => {
     inputId = document.querySelector('#id_docente')

@@ -132,13 +132,13 @@ export const SeleccionarMateriaPage = () => {
             console.log("asdfs" + window.localStorage.getItem("materias"));
             //Falta comprobar si ya ha seleccionado la materia o no
             console.log(carga.ID_MATERIA);
-            if (cargada.includes(carga.ID_MATERIA) || nuevoHorario.includes(carga.HORA_FINAL_LUNES)) {
+            if (cargada.includes(carga.ID_MATERIA) || nuevoHorario.includes(carga.HORA_INICIO_LUNES)) {
               console.log("YA ESTABA SELECCIONADA");
               //Aquí significa que sí esta seleccionada
               estaSeleccionada = true;
             } else {
               console.log("NO ESTABA SELECCIONADA");
-              estaSeleccionada = false;
+              //estaSeleccionada = false;
             }
 
             return (
