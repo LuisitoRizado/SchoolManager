@@ -3,12 +3,13 @@
 *{
     font-family: 'Poppins', sans-serif !important;
 }
+body{
+}
 
 .loginContainer{
     width: 80%;
    margin: 0 auto;
    margin-top: 50px;
-  
    border: 1px solid gray;
    border-radius: 15px;
 }

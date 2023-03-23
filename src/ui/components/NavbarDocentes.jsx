@@ -84,6 +84,15 @@ export const NavbarDocentes = () => {
           >
             Horarios
           </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              `nav-item nav-link ${isActive ? "active" : ""}`
+            }
+            to="carreras"
+          >
+            Carreras
+          </NavLink>
         </div>
       </div>
 

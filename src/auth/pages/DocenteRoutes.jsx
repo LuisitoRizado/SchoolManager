@@ -21,10 +21,15 @@ import { AgregarHorarioPage } from '../../Docentes/pages/AgregarHorarioPage';
 import { AdministracionHorarioPage } from '../../Docentes/pages/AdministracionHorarioPage';
 import { ModificarHorarioPage } from '../../Docentes/pages/ModificarHorarioPage';
 import { AgregarDocenteMateria } from '../../Docentes/pages/AgregarDocenteMateria';
+import { CarrerasPage } from '../../Docentes/pages/CarrerasPage';
+import { AgregarCarreraPage } from '../../Docentes/pages/AgregarCarreraPage';
+import { AdministrarCarreraPage } from '../../Docentes/pages/AdministrarCarreraPage';
+import { ModificarCarreraPage } from '../../Docentes/pages/ModificarCarreraPage';
+import {  SideNavBarDocente } from '../../ui/components/SideBarDocente';
 export const DocenteRoutes = () => {
   return (
     <>
-        <NavbarDocentes />
+        <SideNavBarDocente />
 
         <div className="container">
             <Routes>
@@ -50,6 +55,13 @@ export const DocenteRoutes = () => {
                 <Route path="horarios/administrarHorarios" element={<AdministracionHorarioPage  />} />
                 <Route path="horarios/administrarHorarios/modificarHorario" element={<ModificarHorarioPage  />} />
                 <Route path="materias/agregarDocenteMateria" element={<AgregarDocenteMateria  />} /> 
+                <Route path="carreras" element={<CarrerasPage />} />
+                <Route path="carreras/agregarCarrera" element={<AgregarCarreraPage />} />
+                <Route path="carreras/modificarCarrera" element={<AdministrarCarreraPage />} />
+                <Route path="carreras/modificarCarrera/administrarCarrera" element={<ModificarCarreraPage />} />
+
+
+
 
 
 
