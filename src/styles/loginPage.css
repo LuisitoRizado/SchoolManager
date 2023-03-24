@@ -7,16 +7,15 @@ body{
 }
 
 .loginContainer{
-    width: 80%;
    margin: 0 auto;
-   margin-top: 50px;
    border: 1px solid gray;
    border-radius: 15px;
+   height: 100vh;
 }
 
 /*Estilos del contenedor de imagenes*/
 .leftContainer{
-    background-image: url('https://img.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg');
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -28,8 +27,6 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #58D68D  ;
-    color: white;
 }
 
 .rightContainer img{
@@ -42,8 +39,7 @@ body{
       display: none;
     }
     .loginContainer{
-      
-     margin-top: 50%;
-   
+      border: 1px solid gray;
+      margin: 20px;
   }
   }

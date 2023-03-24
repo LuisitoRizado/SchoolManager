@@ -3,7 +3,7 @@ import "../fetchPetitions/loginPetition";
 import { useState } from "react";
 import { loginPetition, loginPetitionEmpleado } from "../fetchPetitions/loginPetition";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import { validarNumeros } from "../Docentes/pages/validarCampos";
 
 //Esta será nuestra pagina de inicio , la cual deberá realizar una peticion a la api comparando si el
 //Número de control y la contraseña son correctos
@@ -46,8 +46,8 @@ export const LoginPage = () => {
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
-    <div className="loginContainer row d-flex h-100 shadow border ">
-      <div className="rightContainer  col-md-5  d-flex flex-column justify-content-center align-items-center">
+    <div className="loginContainer row d-flex  shadow border border">
+      <div className="rightContainer  col-md-6  d-flex flex-column justify-content-center align-items-center">
         <h4>Inicio de sesión</h4>
         <img
           src="https://saltillo.tecnm.mx/innovatecnm/images/tec-footer.png"
@@ -66,7 +66,7 @@ export const LoginPage = () => {
               value="alumno"
               className="form-check-input"
             />
-            <label htmlFor="alumno">Alumno</label>
+            <label htmlFor="alumno" className="text-dark">Alumno</label>
 
             <input
               type="radio"
@@ -75,7 +75,7 @@ export const LoginPage = () => {
               value="empleado"
               className="form-check-input"
             />
-            <label htmlFor="empleado">Empleado</label>
+            <label htmlFor="empleado" className="text-dark">Empleado</label>
           </div>
 
           <label htmlFor="username" className="mb-3 form-label text-dark">
@@ -84,12 +84,14 @@ export const LoginPage = () => {
           <input
             type="number"
             name="username"
-            className="mt-3 form-control"
+            onKeyPress={validarNumeros}
+            className="mt-3 form-control form-control-lg"
             placeholder="Número de control"
             onChange={(e) => {
               onHandleUsername(e);
             }}
           />
+          
           <label htmlFor="password" className="mt-3 form-label text-dark">
             Contraseña
           </label>
@@ -168,7 +170,8 @@ export const LoginPage = () => {
         </form>
         <div className="errorContainer"></div>
       </div>
-      <div className="leftContainer bg-primary col-md-7"></div>
+      <div className="leftContainer bg-primary col-md-6">
+      </div>
     </div>
   );
 };

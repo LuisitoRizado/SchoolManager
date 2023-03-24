@@ -11,7 +11,7 @@ export const MateriasPage = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src="https://img.freepik.com/iconos-gratis/agregar_318-466615.jpg?w=2000"
+                src="https://icon-library.com/images/subject-icon/subject-icon-5.jpg"
                 className="img-fluid rounded-start"
                 alt="..."
               />
