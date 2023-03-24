@@ -351,12 +351,12 @@ export const AgregarDocenteMateria = () => {
     
   }
 
-  const eliminarMateriaAsignada = (id_docxmath) =>{
+  const eliminarMateriaAsignada = async (id_docxmath) =>{
 
     //vamos a elminar la materia
     if(confirm('Está seguro que quieres eliminar?'))
     {
-    fetch('https://rest-api-production-a5bf.up.railway.app/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
+    await fetch('https://rest-api-production-a5bf.up.railway.app/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
     .then((response) => {
       if (response.ok) {
         console.log("Registro eliminado exitosamente");
@@ -521,7 +521,7 @@ export const AgregarDocenteMateria = () => {
             <th scope="col">Ap materno</th>
             <th scope="col">Hora inicio</th>
             <th scope="col">Hora Final</th>
-            <th>Eliminar</th>
+           {/*  <th>Eliminar</th> */}
           </tr>
         </thead>
         <tbody>
@@ -599,7 +599,7 @@ export const AgregarDocenteMateria = () => {
                     Modificar
                   </a>
                 </td> */}
-                <td>
+                {/* <td>
                   <a
                     href=""
                     className="btn btn-danger"
@@ -607,7 +607,7 @@ export const AgregarDocenteMateria = () => {
                   >
                     Eliminar
                   </a>
-                </td>
+                </td> */}
               </tr>
             ))
           ) : (
