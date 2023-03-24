@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+let estaOcupada = false;
 
 import { validarCampos, validarNumeros } from "./validarCampos";
 let inputIdMateria,
@@ -88,7 +89,26 @@ export const AgregarMateriaPage = () => {
         inputSemestre
       )
     ) {
+      //validar si no se repite el aula YY el horario a la vez
+      console.log(materias)
+      materias.forEach(materia=>{
+        console.log('hooks: ' + HORARIO, AULA)
+        console.log('mat horario: ' + materia.Id_Horario)
+        console.log('mat aula: ' + materia.Id_Aula)
+
+        if(materia.Id_Horario === HORARIO && materia.Id_Aula === AULA){
+          estaOcupada = true;
+          console.log('Se encontro!')
+        }
+      })
+      
       const url = "https://rest-api-production-a5bf.up.railway.app/addNewMateria";
+      //No se puede agregar
+      if(estaOcupada)
+      {
+        confirm('No se puede agregar ya que ya existe una materia en la misma hora y aula')
+      }
+      else{
 
       await fetch(url, {
         method: "POST",
@@ -107,8 +127,9 @@ export const AgregarMateriaPage = () => {
           SEMESTRE: SEMESTRE,
         }),
       });
-      confirm('Materia agregada con exito!')
-      window.location.reload()
+     /*  confirm('Materia agregada con exito!')
+      window.location.reload() */
+    }
     }
   };
 
