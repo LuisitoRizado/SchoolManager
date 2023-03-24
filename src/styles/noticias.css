@@ -7,15 +7,27 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif !important;
 }
+.main{
+    background-image: url('https://cdn.wallpapersafari.com/62/90/owk8QH.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.main2{
+    background-image: url('https://media.istockphoto.com/id/1328368631/photo/ready-for-school-concept-background-with-books-alarm-clock-and-accessory.jpg?b=1&s=170667a&w=0&k=20&c=I1oVAJ9aPkEBHtPEa5GAMvjD_rpzZiaMezHR0peDzfw=');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .contenedorImageMain{
-    background-image: url('https://img.freepik.com/free-vector/ui-ux-design-concept-illustration_114360-11694.jpg?w=740&t=st=1679267245~exp=1679267845~hmac=a5dd69be215ec53d8e7fd7f34d899bf0a20cf132957bf4d1f6a25c11c9414e0f');
+    background-image: url('https://static-hotsites.edufindme.com/tsw-events/d49b6d830f53023abfe0eb68c8e448d27ca3b625/static/img/hub/img/img-student-3.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     min-height: 90vh;
 }
 .contenedorImageMain2{
-    background-image: url('https://img.freepik.com/free-vector/ui-ux-team-concept-illustration_114360-11703.jpg?w=740&t=st=1679267436~exp=1679268036~hmac=86ea2971a749a4ca5b81a9873c0af6e542fb0280a07da4be77400bf09d4c0295');
+    background-image: url('https://www.tccd.edu/images/admission/students/new-to-college-student-apply.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

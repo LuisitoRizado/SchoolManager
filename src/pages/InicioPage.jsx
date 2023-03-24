@@ -27,37 +27,41 @@ export const InicioPage = () => {
   console.log(window.localStorage.getItem("user"));
 
   return (
-    <div className="mainContainer mt-1 border container-fluid">
+    <div className="mainContainer mt-1  container-fluid">
       <div className="main row">
-        <div className="contenedorImageMain col-md-6"></div>
         <div className="infoDerechaMain col-md-6 d-flex flex-column justify-content-center align-items-start">
-          <h2>Bienvendio al portal escolar</h2>
-          <p>
+          <h1 className="text-light">Bienvenido al portal escolar</h1>
+           <hr />
+          <p className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             atque eius necessitatibus dolor libero eveniet nisi, asperiores
             veniam magnam accusantium nesciunt dolorem adipisci quas iure aut
             recusandae provident ipsa vero!
           </p>
-          <button className="btn btn-danger">Acceder</button>
+          <a href="#" class="btn btn-primary">Más información</a>
         </div>
+        <div className="contenedorImageMain col-md-6 p-2"></div>
+
       </div>
-      <div className="main mt-3 border row">
+      <div className="main2 mt-3  row">
+      <div className="contenedorImageMain2 col-md-6"></div>
+
         <div className="infoDerechaMain col-md-6 d-flex flex-column justify-content-center align-items-start">
-          <h1>Bienvendio al portal escolar</h1>
-          <p>
+          <h1 className="">Un nuevo periodo escolar!</h1>
+          <br />
+          <p className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
             atque eius necessitatibus dolor libero eveniet nisi, asperiores
             veniam magnam accusantium nesciunt dolorem adipisci quas iure aut
             recusandae provident ipsa vero!
           </p>
-          <p>
+          <p className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
             animi impedit quas dignissimos adipisci temporibus possimus
             consequuntur quidem, ad ipsam perspiciatis molestiae modi a facere
             excepturi odio ab inventore cumque.
           </p>
         </div>
-        <div className="contenedorImageMain2 col-md-6"></div>
       </div>
       {/*   <div className="noticiaPrincipal row shadow">
         <div className="noticiaInicial col-md-8">
@@ -155,6 +159,92 @@ export const InicioPage = () => {
           </div>
         </div>
       </div> */}
+<footer class="text-center text-lg-start bg-dark mt-4 text-muted container-fluid">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <div class="me-5 d-none d-lg-block">
+      <span>Empieza a estudiar con nostros!</span>
+    </div>
+
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Instituto tecnológico de Saltillo
+          </h6>
+          <p>
+            La mejor opción para tu educación
+          </p>
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Sistemas</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Industrial</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Gestión</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Eléctrica</a>
+          </p>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Mecatrónica</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Administración</a>
+          </p>
+          
+        </div>
+
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Contact0</h6>
+          <p><i class="fas fa-home me-3"></i> Saltillo Coahuila, México</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center p-4" >
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Instituto tecnológico de Saltillo</a>
+  </div>
+</footer>
     </div>
   );
 };

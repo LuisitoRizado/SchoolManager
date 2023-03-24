@@ -59,7 +59,7 @@ export const EnCursoPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className='p-5'>
     <h1>Horario</h1>
         <hr/>
         <p>
@@ -94,7 +94,7 @@ export const EnCursoPage = () => {
     <div className="table-responsive">
 
       <table className="table table-bordered text-center">
-        <thead>
+        <thead className='bg-success text-white'>
           <tr className="bg-body-secondary">
           <th scope="col">LUNES</th>
           <th scope="col">MARTES</th>

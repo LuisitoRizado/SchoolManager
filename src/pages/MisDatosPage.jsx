@@ -35,7 +35,7 @@ export const MisDatos = () => {
  
 
   return (
-    <div>
+    <div className="m-5">
       <h1>Mis datos</h1>
       <hr />
       <div className="infoDiv">
@@ -64,7 +64,6 @@ export const MisDatos = () => {
             <p><kbd className='bg-danger'>Semestre:</kbd> {alum.Semestre} </p>
             <p><kbd className='bg-danger'>Carrera:</kbd>{alum.Id_Carrera} </p>
             <p><kbd className='bg-danger'>Especialidad:</kbd> {alum.Especialidad }</p>
-            <hr/>
         </div>
           )})
         }

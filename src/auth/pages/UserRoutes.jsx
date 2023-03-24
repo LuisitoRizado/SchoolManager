@@ -16,7 +16,7 @@ export const UserRoutes = () => {
     <>
         <Navbar />
 
-        <div className="container">
+        <div className="container-fluid">
             <Routes>
                 <Route path="inicio/*" element={<InicioPage />} />
                 <Route path="encurso" element={<EnCursoPage />} />

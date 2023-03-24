@@ -2,7 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const ReinscripcionPage = () => {
   return (
-    <div>
+    <div className="p-5 ml-5">
       <h1>Reinscripción</h1>
     <hr/>
     <div className='documentosDiv row'>

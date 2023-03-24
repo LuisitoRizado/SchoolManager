@@ -25,11 +25,10 @@ import { CarrerasPage } from '../../Docentes/pages/CarrerasPage';
 import { AgregarCarreraPage } from '../../Docentes/pages/AgregarCarreraPage';
 import { AdministrarCarreraPage } from '../../Docentes/pages/AdministrarCarreraPage';
 import { ModificarCarreraPage } from '../../Docentes/pages/ModificarCarreraPage';
-import {  SideNavBarDocente } from '../../ui/components/SideBarDocente';
 export const DocenteRoutes = () => {
   return (
     <>
-        <SideNavBarDocente />
+        <NavbarDocentes />
 
         <div className="container">
             <Routes>

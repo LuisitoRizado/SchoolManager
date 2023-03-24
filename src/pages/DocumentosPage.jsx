@@ -3,8 +3,8 @@ export const DocumentosPage = () => {
   return (
     <div>  <h1>Documentos</h1>
     <hr/>
-    <div className='documentosDiv row'>
-    <div className="card m-3 col-md-5 shadow" >
+    <div className='documentosDiv row m-5'>
+    <div className="card m-3 col-md-5 shadow " >
 <div className="row g-0">
 <div className="col-md-4">
   <img src="https://thumbs.dreamstime.com/z/un-mont%C3%B3n-de-libros-libro-abierto-y-l%C3%A1piz-suministros-escolares-objetos-dibujos-animados-vectoriales-aislados-en-fondo-blanco-192812588.jpg" className="img-fluid rounded-start" alt="..."/>

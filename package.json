@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy":"gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
@@ -16,14 +16,14 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"
   },
-  "homepage":"https://school-manager-its.000webhostapp.com/",
-  
+  "homepage": "https://school-manager-its.000webhostapp.com/",
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "gh-pages": "^5.0.0",
     "i": "^0.3.7",
+    "tailwindcss": "^3.2.7",
     "vite": "^4.1.0"
   }
 }
