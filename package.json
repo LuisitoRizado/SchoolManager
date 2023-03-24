@@ -10,10 +10,13 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.8",
     "animate.css": "^4.1.1",
+    "framer-motion": "^10.9.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-pdf": "^6.2.2",
     "react-router-dom": "^6.8.1"
   },
   "homepage": "https://school-manager-its.000webhostapp.com/",

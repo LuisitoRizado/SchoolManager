@@ -10,6 +10,7 @@ import { MateriasDisponibles } from '../../pages/MateriasDisponibles';
 import { SeleccionMateriasPage } from '../../pages/SeleccionMateriasPage';
 import { SeleccionarMateriaPage } from '../../pages/SeleccionarMateriaPage';
 import { MateriasPage } from '../../pages/MateriasPage';
+import { HorarioPDF } from '../../pages/HorarioPDF';
 
 export const UserRoutes = () => {
   return (
@@ -28,6 +29,7 @@ export const UserRoutes = () => {
                 <Route path="/reinscripcion/seleccionmaterias" element={<SeleccionMateriasPage />} />
                 <Route path="/reinscripcion/seleccionmaterias/seleccionarMateria" element={<SeleccionarMateriaPage />} />
                 <Route path="/reinscripcion/materiasdisponibles/materiaspage*" element={<MateriasPage />} />
+                <Route path="documentos/cargaAcademica" element={<HorarioPDF />} />
 
 
 

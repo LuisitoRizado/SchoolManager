@@ -23,21 +23,7 @@ export const EnCursoPage = () => {
         //Cortamos el primer número, en caso de ser dos los cortamos los y los convertirmos a number
         let seEncontro = false;
         let hora;
-        /* const arregloConNumerosCortados = data.map((materia)=>{
-          //Buscamos los : 
-          for(let i = 0 ; materia.HORA_INICIO_LUNES.length; i++){
-            //Buscamos el : 
-           if(materia.HORA_INICIO_LUNES.charAt(i)===':')
-           {
-            seEncontro = true;
-           }
-           if(seEncontro){
-            hora = materia.HORA_INICIO_LUNES.slice(0,i);
-            break;
-           }
-          
-          }
-        }) */
+     
         data.sort((o1,o2)=>{
           
           if(o1.HORA_INICIO_LUNES>o2.HORA_INICIO_LUNES){
@@ -65,32 +51,7 @@ export const EnCursoPage = () => {
         <p>
         Revisa tus clases!
         </p>
-        {/* <div className="horario">
-        <div className="diasSemana row">
-          <div className="dia col-md-2">Lunes</div>
-          <div className="dia col-md-2">Martes</div>
-          <div className="dia col-md-2">Miercoles</div>
-          <div className="dia col-md-2">Jueves</div>
-          <div className="dia col-md-2">Viernes</div>
-        </div>
-        <div className="contenedorMaterias ">
-          {cargas.map(carga=>{
-            return (
-              <div className="col-md-2 materia shadow" >
-              <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> 9:00 - 10:00 </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
-               </div>
-            </div>
-            )
-          })}
-         
-           
-            
-        </div>
-      </div> */}
+       
     <div className="table-responsive">
 
       <table className="table table-bordered text-center">

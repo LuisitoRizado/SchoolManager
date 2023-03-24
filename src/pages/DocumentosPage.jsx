@@ -1,3 +1,4 @@
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const DocumentosPage = () => {
   return (
@@ -13,11 +14,18 @@ export const DocumentosPage = () => {
   <div className="card-body">
     <h5 className="card-title">Carga académica</h5>
     <p className="card-text">Puedes asignar, modificar o eliminar alguna materia a tu horario. Sólo en caso de ser posible.</p>
-    
-    <a href="#" className="btn btn-primary">Acceder</a>
+    <NavLink
+                className={({ isActive }) =>
+                  `btn btn-primary ${isActive ? "active" : ""}`
+                }
+                to="cargaAcademica"
+              >
+                Acceder
+              </NavLink>
   </div>
 </div>
 </div>
+
 </div>
 <div className="card m-3 col-md-5 shadow" >
 <div className="row g-0">
@@ -29,6 +37,7 @@ export const DocumentosPage = () => {
     <h5 className="card-title">Cosntancias</h5>
     <p className="card-text">Lista de constancias disponibles para el alumno.</p>
     <br/>
+    
     <a href="#" className="btn btn-danger disabled">Acceder</a>
   </div>
 </div>
