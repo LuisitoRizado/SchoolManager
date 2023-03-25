@@ -13,6 +13,9 @@ export const HorarioPDF = () => {
   //-----Hooks
   const [cargas, setCargas] = useState([]);
   const [user, setUser] = useState([])
+  const [carrera, setCarrera] = useState([])
+  const [idCarrera, setIdCarrera] = useState()
+
   //const [semestre, setSemestre] = useState();
   //URL
   const URL = "https://rest-api-production-a5bf.up.railway.app/getCarga/" + alumno;
@@ -44,19 +47,40 @@ export const HorarioPDF = () => {
   };
 
 
-  const consultarAlumno = () =>{
+  const consultarAlumno = async() =>{
     const url = 'https://rest-api-production-a5bf.up.railway.app/getAlumno/' + alumno;
-    fetch(url)
+    await fetch(url)
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
-      setUser(data)}
+      setUser(data)
+      setIdCarrera(data[0].Id_Carrera);
+      console.log(idCarrera)
+      }
+      )
+  }
+  const consultarCarrera = async() =>{
+    const url = 'https://rest-api-production-a5bf.up.railway.app/getCarrera/' + idCarrera;
+    await fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+      setCarrera(data)}
       )
   }
   useEffect(() => {
     consultarMaterias();
     consultarAlumno()
+    console.log(idCarrera)
   }, []);
+  useEffect(() => {
+    if (idCarrera) {
+      consultarCarrera();
+    }
+  }, [idCarrera]);
+ 
+  
+
   const styles = StyleSheet.create({
     table: {
       margin:'0 auto',
@@ -73,7 +97,8 @@ export const HorarioPDF = () => {
       fontSize:'9px',
     borderWidth: 1,
     borderColor: '#999',
-    color:'white',
+    color:'black',
+    fontWeight:'bold',
     backgroundColor:'#A9A0A0',
     padding: 2,
     },
@@ -99,6 +124,7 @@ export const HorarioPDF = () => {
               alignItems: "center",
               justifyContent: "space-between",
               flexDirection: "row",
+              padding:'40px'
             }}
           >
             <Image
@@ -115,6 +141,8 @@ export const HorarioPDF = () => {
               src="https://cdn.domestika.org/c_pad,dpr_auto,f_auto,h_150,q_auto,w_150/v1595881497/school-logos/000/023/777/23777-original.png?1595881497"
             />
           </View>
+          <Text style={{textAlign:'center', fontSize:'10px', marginTop:'15px'}}>Carga academica</Text>
+
           {/* User info */}
           <View style={{...styles.table, marginTop:'30px'}}>
   <View style={styles.tableRow}>
@@ -154,8 +182,7 @@ export const HorarioPDF = () => {
     </View>
     ))
   }
-  {/* 
-  ))} */}
+
 </View>
 {/* HORARIOS */}
 
@@ -164,20 +191,25 @@ export const HorarioPDF = () => {
   <View style={{  ...styles.tableCol, width: '30%', }}>
       <Text>Materia                                                      </Text>
     </View>
-    <View style={styles.tableCol}>
+    <View style={{  ...styles.tableCol, width: '10%', }}>
+
       <Text>Rep     </Text>
     </View>
   
-    <View style={styles.tableCol}>
+    <View style={{  ...styles.tableCol, width: '10%', }}>
+
       <Text>Lunes      </Text>
     </View>
-    <View style={styles.tableCol}>
+    <View style={{  ...styles.tableCol, width: '10%', }}>
+
       <Text>Martes     </Text>
     </View>
-    <View style={styles.tableCol}>
+    <View style={{  ...styles.tableCol, width: '10%', }}>
+
       <Text>Miercoles </Text>
     </View>
-    <View style={styles.tableCol}>
+    <View style={{  ...styles.tableCol, width: '10%', }}>
+
       <Text>Jueves    </Text>
     </View>
     <View style={styles.tableCol}>
@@ -194,29 +226,37 @@ export const HorarioPDF = () => {
     cargas.map((carga, index)=>(
     <View style={styles.tableRow} key={index}>
       
-      <View style={{...styles.tableCell, width: '30%',}}>
+      <View style={{...styles.tableCell, width: '34%',}}>
       <Text>{carga.AULA} / </Text>
       <Text>{carga.MATERIA}</Text>
       <Text>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
     </View>
     <View style={styles.tableCell}>
-      <Text>No</Text>
+      <Text>No </Text>
     </View>
     
-    <View style={styles.tableCell}>
-      <Text>{carga.HORA_INICIO_LUNES} </Text>
+    <View style={{...styles.tableCell, width:'10%'}}>
+      <Text >{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
     </View>
-    <View style={styles.tableCell}>
-      <Text>{carga.HORA_INICIO_LUNES}</Text>
+    <View style={{...styles.tableCell, width:'10%'}}>
+
+    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+
     </View>
-    <View style={styles.tableCell}>
-      <Text>{carga.HORA_INICIO_LUNES}</Text>
+    <View style={{...styles.tableCell, width:'10%'}}>
+
+    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+
     </View>
-    <View style={styles.tableCell}>
-      <Text>{carga.HORA_INICIO_LUNES}</Text>
+    <View style={{...styles.tableCell, width:'10%'}}>
+
+    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+
     </View>
-    <View style={styles.tableCell}>
-      <Text>{carga.HORA_INICIO_LUNES}</Text>
+    <View style={{...styles.tableCell, width:'10%'}}>
+
+    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+
     </View>
     <View style={styles.tableCell}>
       <Text>           </Text>
