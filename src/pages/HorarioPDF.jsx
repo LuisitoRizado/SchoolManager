@@ -115,7 +115,7 @@ export const HorarioPDF = () => {
     });
 
   return (
-    <PDFViewer style={{ width: "100%", height: "100vh" }}>
+    <PDFViewer style={{ width: "100%", height: "100vh" }} >
       <Document style={{padding:'400px'}}>
         <Page size="A4">
           <View

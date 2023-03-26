@@ -25,6 +25,12 @@ import { CarrerasPage } from '../../Docentes/pages/CarrerasPage';
 import { AgregarCarreraPage } from '../../Docentes/pages/AgregarCarreraPage';
 import { AdministrarCarreraPage } from '../../Docentes/pages/AdministrarCarreraPage';
 import { ModificarCarreraPage } from '../../Docentes/pages/ModificarCarreraPage';
+import { ReportesPage } from '../../Docentes/pages/ReportesPage';
+import { ReporteDocentePage } from '../../Docentes/pages/ReporteDocentePage';
+import { ReportePDF } from '../../Docentes/pages/ReportePDF';
+import { ReporteCalificaciones } from '../../Docentes/pages/ReporteCalificaciones';
+import { CalificacionesAlumnos } from '../../Docentes/pages/CalificacionesAlumnos';
+import { CalificacionAlumnoPage } from '../../Docentes/pages/CalificacionAlumnoPage';
 export const DocenteRoutes = () => {
   return (
     <>
@@ -38,6 +44,8 @@ export const DocenteRoutes = () => {
                 <Route path="materias" element={<MateriasPage />} />
                 <Route path="alumnos/agregarAlumno" element={<AgregarAlumno />} />
                 <Route path="alumnos/eliminarAlumno" element={<EliminarAlumnoPage />} />
+                <Route path="alumnos/calificacionesAlumnos" element={<CalificacionesAlumnos />} />
+                <Route path="alumnos/calificacionesAlumnos/calificacionAlumno" element={<CalificacionAlumnoPage />} />
                 <Route path="materias/agregarMateria" element={<AgregarMateriaPage />} />
                 <Route path="materias/administrarMaterias" element={<AdministrarMaterias />} />
                 <Route path="materias/administrarMaterias/modificarMateria" element={<ModificarMateriaPage />} />
@@ -58,6 +66,12 @@ export const DocenteRoutes = () => {
                 <Route path="carreras/agregarCarrera" element={<AgregarCarreraPage />} />
                 <Route path="carreras/modificarCarrera" element={<AdministrarCarreraPage />} />
                 <Route path="carreras/modificarCarrera/administrarCarrera" element={<ModificarCarreraPage />} />
+                <Route path="docentes/reportesDocentes" element={<ReportesPage />} />
+                <Route path="docentes/reportesDocentes/reporteDocente" element={<ReporteDocentePage />} />
+                <Route path="docentes/reportesDocentes/reporteDocente/reportePDF" element={<ReportePDF />} />
+                <Route path="docentes/reportesDocentes/reporteDocente/reporteCalificacionesPDF" element={<ReporteCalificaciones />} />
+
+
 
 
 

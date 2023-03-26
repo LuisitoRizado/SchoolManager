@@ -50,6 +50,27 @@ export const AlumnosPage = () => {
   </div>
   </div>
   </div>
+  <div className="card m-3 col-md-5 shadow" >
+  <div className="row g-0">
+  <div className="col-md-4">
+    <img src="https://cdn-icons-png.flaticon.com/512/429/429356.png" className="img-fluid rounded-start" alt="..."/>
+  </div>
+  <div className="col-md-8">
+    <div className="card-body">
+      <h5 className="card-title">Calificaciones</h5>
+      <p className="card-text">Puedes asignar calificaciones de alumnos</p>
+      <br/>
+      <NavLink
+                className={'btn btn-primary'}
+                to='calificacionesAlumnos'
+                
+              >
+                Acceder
+              </NavLink>
+    </div>
+  </div>
+  </div>
+  </div>
       </div>
       
      
