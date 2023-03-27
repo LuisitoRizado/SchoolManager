@@ -17,7 +17,7 @@ export const AgregarDocenteMateria = () => {
   const [aulas, setAulas] = useState([])
   const [carreras, setCarreras] = useState([])
   const [materiasCargadas, setMateriasCargadas] = useState([]);
- 
+  const [materias_Asignadas, setMaterias_Asignadas] = useState([])
   const [docenteSeleccionado, setDocenteSeleccionado] = useState();
   const [horarios, setHorarios] = useState([])
   //-----Handlers
@@ -88,6 +88,12 @@ export const AgregarDocenteMateria = () => {
     fetch('https://rest-api-production-a5bf.up.railway.app/getAllCarreras')
     .then(res=>res.json())
     .then(data=>setCarreras(data))
+
+    fetch('https://rest-api-production-a5bf.up.railway.app/getAllCargas')
+    .then(res=>res.json())
+    .then(data=>setMaterias_Asignadas(data))
+
+
 
   }, []);
   //----HABILITAMOS LA EDICION DE LOS DATOS EN LOS INPUTS
@@ -352,8 +358,20 @@ export const AgregarDocenteMateria = () => {
   }
 
   const eliminarMateriaAsignada = async (id_docxmath) =>{
-
+    let tieneHijos = false;
     //vamos a elminar la materia
+    //verificar que no este en alguna carga de algun alumno
+    materias_Asignadas.forEach(materia=>{
+      console.log(materia)
+      if(materia.Id_DocxMath == id_docxmath){
+        tieneHijos =true;
+      }
+    })
+
+    if(!tieneHijos)
+    {
+
+    
     if(confirm('Está seguro que quieres eliminar?'))
     {
     await fetch('https://rest-api-production-a5bf.up.railway.app/deleteMateria_Asignada/'+id_docxmath, { method: "DELETE" })
@@ -367,6 +385,10 @@ export const AgregarDocenteMateria = () => {
     .catch((error) => console.error(error));
     confirm('Materia eliminada con exito')
   }
+}
+else{
+  confirm('No se puede eliminar, tiene hijos')
+}
   }
   return (
     <div>
@@ -521,6 +543,7 @@ export const AgregarDocenteMateria = () => {
             <th scope="col">Ap materno</th>
             <th scope="col">Hora inicio</th>
             <th scope="col">Hora Final</th>
+            <th scope="col">Eliminar</th>
            {/*  <th>Eliminar</th> */}
           </tr>
         </thead>
@@ -599,7 +622,7 @@ export const AgregarDocenteMateria = () => {
                     Modificar
                   </a>
                 </td> */}
-                {/* <td>
+                 <td>
                   <a
                     href=""
                     className="btn btn-danger"
@@ -607,7 +630,7 @@ export const AgregarDocenteMateria = () => {
                   >
                     Eliminar
                   </a>
-                </td> */}
+                </td> 
               </tr>
             ))
           ) : (
