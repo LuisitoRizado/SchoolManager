@@ -150,7 +150,7 @@ export const CalificacionAlumnoPage = () => {
                         <td>{materia.HORA_INICIO_LUNES} - {materia.HORA_FINAL_LUNES}</td>
                         <td>{materia.AULA}</td>
                         <td><input onKeyPress={validarNumeros} type="text" name="" id={`input fila-`+index} defaultValue={materia.CALIFICACION ? materia.CALIFICACION : 'No asignada' } className={'form-control fila-'+ index} disabled onChange={(e)=>onHandleCalificacion(e)}/></td>
-                        <td className={'btn-'+index}><button className={'btn btn-success modificarButton '} id={`btn-`+index} onClick={()=>modificarCalificacion(index)}>Editar</button></td>
+                        <td className={'btn-'+index}><button className={'btn btn-warning modificarButton '} id={`btn-`+index} onClick={()=>modificarCalificacion(index)}>Editar</button></td>
                     </tr>
                 ))
                ) : (<tr><td>No hay materias</td></tr>)

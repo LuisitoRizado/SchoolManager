@@ -151,7 +151,7 @@ export const AdministrarMaterias = () => {
                  
                 </td>
                 <td>
-                  <button className="btn btn-danger" onClick={()=>eliminarMateria(materia.ID_MATERIA)}>ELiminar</button>
+                  <button className="btn btn-danger" onClick={()=>eliminarMateria(materia.ID_MATERIA)}>Eliminar</button>
                 </td>
               </tr>
             ))

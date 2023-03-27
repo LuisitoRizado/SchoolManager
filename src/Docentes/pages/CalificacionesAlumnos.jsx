@@ -106,13 +106,13 @@ export const CalificacionesAlumnos = () => {
                   />
                 </td>
                 <td>
-                  <NavLink className='btn btn-success' 
+                  <NavLink className='btn btn-warning' 
                   to={{
                     pathname: 'calificacionAlumno',
                     search: '?id='+alumno.NControl
                   }}
                   >
-                    Acceder
+                    Asignar
                   </NavLink>
                 </td>
 

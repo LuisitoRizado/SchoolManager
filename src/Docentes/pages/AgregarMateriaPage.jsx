@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-let estaOcupada = false;
 
 import { validarCampos, validarNumeros } from "./validarCampos";
 let inputIdMateria,
@@ -67,6 +66,8 @@ export const AgregarMateriaPage = () => {
   };
 
   const agregarMateria = async () => {
+let estaOcupada = false;
+
     console.log("horario" + HORARIO);
     console.log(
       inputIdMateria,
@@ -96,7 +97,7 @@ export const AgregarMateriaPage = () => {
         console.log('mat horario: ' + materia.Id_Horario)
         console.log('mat aula: ' + materia.Id_Aula)
 
-        if(materia.Id_Horario === HORARIO && materia.Id_Aula === AULA){
+        if(materia.Id_Horario == HORARIO && materia.Id_Aula == AULA){
           estaOcupada = true;
           console.log('Se encontro!')
         }
@@ -109,8 +110,8 @@ export const AgregarMateriaPage = () => {
         confirm('No se puede agregar ya que ya existe una materia en la misma hora y aula')
       }
       else{
-
-      await fetch(url, {
+        console.log('materia agregada')
+       await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -127,8 +128,8 @@ export const AgregarMateriaPage = () => {
           SEMESTRE: SEMESTRE,
         }),
       });
-     /*  confirm('Materia agregada con exito!')
-      window.location.reload() */
+      confirm('Materia agregada con exito!')
+      window.location.reload()  
     }
     }
   };
