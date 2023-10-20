@@ -422,7 +422,7 @@ export const AgregarAlumno = () => {
                     {carreras.length >= 1 ? (
                       carreras.map((carrera, index) => (
                         <option
-                          value={carrera.Id_Carrera}
+                          value={Carrera.Id_Carrera}
                           className={"opcion-" + index}
                         >
                           {carrera.Nombre}

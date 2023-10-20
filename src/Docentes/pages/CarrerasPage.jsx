@@ -21,7 +21,7 @@ export const CarrerasPage = () => {
               <div className="card-body">
                 <h5 className="card-title">Agregar carrera</h5>
                 <p className="card-text">
-                 Puedes agregarrrrrrrrrrrr carreras disponibles para los alumnos
+                 Puedes agregar carreras disponibles para los alumnos
                 </p>
 
                 <NavLink
