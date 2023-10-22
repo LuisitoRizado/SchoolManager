@@ -166,7 +166,7 @@ export const AdministracionDocentePage = () => {
             </label>
             
             <select name="estatus" id="estatus" defaultValue = {doc.Estatus} className="form-select" >
-              <option value={1}>Activo</option>
+              <option value={doc.Estatus}>{doc.Estatus}</option>
               <option value={2}>Inactivo</option>
               <option value={3}>Pendiente</option>
 
