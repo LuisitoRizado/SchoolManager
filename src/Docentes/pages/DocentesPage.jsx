@@ -17,7 +17,7 @@ export const DocentesPage = () => {
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">Agregar Docente</h5>
+                  <h5 className="card-title">Agregar Docentessssssssss</h5>
                   <p className="card-text">
                    Puedes agregar docentes disponibles para las materias
                   </p>
