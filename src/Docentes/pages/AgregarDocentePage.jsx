@@ -110,8 +110,7 @@ export const AgregarDocentePage = () => {
           CORREO: correo
         }),
       })
-        .then((response) => response.json())
-        .then((data) => console.log("Alumno agregado: " + data));
+     
 
       //window.location.reload();
     } else {
