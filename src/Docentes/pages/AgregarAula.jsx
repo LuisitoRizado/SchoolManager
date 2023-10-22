@@ -44,8 +44,7 @@ export const AgregarAula = () => {
         body: JSON.stringify({
           ID_AULA: id_aula,
           NOMBRE: nombreAula,
-          EDIFICIO: edificio,
-          CAPACIDAD: capacidad,
+          CAMPUS: edificio
         }),
       });
       //Recargamos la pagina
@@ -286,19 +285,16 @@ export const AgregarAula = () => {
           className="form-control"
           onChange={(event) => onHandleAula(event)}
         />
-        <label htmlFor="edificio" className="form-label">
-          Edificio
-        </label>
-
         
         <label htmlFor="campus" className="form-label">
           Campus
         </label>
 
         <select
+                    onChange = {(event) => onHandleEdificio(event)}
                     className={"form-select nuevoIdAula fila-"}
                     aria-label="Default select example"
-                    id='campus'
+                    id='edificio'
                   >
                       
                     
