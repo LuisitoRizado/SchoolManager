@@ -424,12 +424,16 @@ export const AgregarDocentePage = () => {
           name="ap_materno"
           id="AMaterno"
           className="form-control"
-          onChange={(event) => onHandleEstatus(event)}
+          onChange={(event) => onHandleApMaterno(event)}
         />
-         <label htmlFor="ap_materno" className="form-label">
+         <label htmlFor="estatus" className="form-label">
           Estatus
         </label>
-        <select name="estatus" id="estatus">
+        <select name="estatus" id="estatus"
+          onChange={(event) => onHandleEstatus(event)}
+
+        
+        >
           <option value="1">Activo</option>
           <option value="2">Inactivo</option>
           <option value="3">Pendiente</option>
