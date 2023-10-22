@@ -45,6 +45,7 @@ export const AgregarDocentePage = () => {
   };
   const onHandleEstatus = (e) => {
     setEstatus(e.target.value);
+    console.log(e.target.value)
     
   };
   const onHandleSearch = async (event) => {
