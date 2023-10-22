@@ -346,6 +346,22 @@ export const AgregarAula = () => {
                   />
                 </td>
                 <td>
+                <select
+        
+        onChange = {(event) => onHandleEdificio(event)}
+        className={"form-select nuevoIdAula fila-"}
+        aria-label="Default select example"
+        defaultValue={aula.Campus}
+        id='edificio'
+      >
+ 
+            <option   >
+            Boilot
+            </option>
+            <option   >
+            Principal
+            </option>
+      </select>
                   <input
                     className={`fila-${index} form-control`}
                     defaultValue={aula.Campus}
