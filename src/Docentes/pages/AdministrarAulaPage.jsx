@@ -101,8 +101,7 @@ export const AdministrarAulaPage = () => {
         <tr className="bg-body-dark">
           <th scope="col">Id aula</th>
           <th scope="col">Nombre</th>
-          <th scope="col">Edificio </th>
-          <th scope="col">Capacidad</th>
+          <th scope="col">Campus </th>
           <th>Modificar</th>
           <th>Eliminar</th>
         </tr>
@@ -113,8 +112,7 @@ export const AdministrarAulaPage = () => {
             <tr key={aula}>
               <td>{aula.Id_Aula}</td>
               <td>{aula.Nombre}</td>
-              <td>{aula.Edificio}</td>
-              <td>{aula.Capacidad}</td>
+              <td>{aula.Campus}</td>
               <td>
               <NavLink
                 className={'btn btn-warning'}
