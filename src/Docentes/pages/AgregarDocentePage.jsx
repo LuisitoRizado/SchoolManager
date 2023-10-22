@@ -86,7 +86,7 @@ export const AgregarDocentePage = () => {
     }
   };
   console.log(inputId);
-  const addDocentePetition = async(id_docente, nombre, ap_paterno, ap_materno, estatus, correo) => {
+  const addDocentePetition = (id_docente, nombre, ap_paterno, ap_materno, estatus, correo) => {
     //Hacemos la peticion para enviar los datos del dcoente
     console.log(inputId);
     console.log(inputNombre);
@@ -95,7 +95,7 @@ export const AgregarDocentePage = () => {
 
     if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
-      await fetch(url, {
+       fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",
