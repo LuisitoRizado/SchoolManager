@@ -112,7 +112,7 @@ export const AgregarDocentePage = () => {
         .then((response) => response.json())
         .then((data) => console.log("Alumno agregado: " + data));
 
-      window.location.reload();
+      //window.location.reload();
     } else {
       console.log("faltan datos");
     }
