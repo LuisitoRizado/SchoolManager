@@ -431,7 +431,9 @@ export const AgregarDocentePage = () => {
         </label>
         <select name="estatus" id="estatus"
           onChange={(event) => onHandleEstatus(event)}
-
+          className={"form-select"}
+          defaultValue={1}
+          
         
         >
           <option value={1}>Activo</option>
