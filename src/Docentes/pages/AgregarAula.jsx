@@ -141,8 +141,7 @@ export const AgregarAula = () => {
     const valoresIniciales = [];
     valoresIniciales.push(inputs[0].value);
     valoresIniciales.push(inputs[1].value);
-    valoresIniciales.push(inputs[2].value);
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 2; i++) {
       console.log(valoresIniciales[i]);
     }
 
@@ -168,7 +167,6 @@ export const AgregarAula = () => {
       console.log(valoresIniciales[0]);
       inputs[0].value = valoresIniciales[0];
       inputs[1].value = valoresIniciales[1];
-      inputs[2].value = valoresIniciales[2];
       inputs.forEach((input, index) => {
         input.disabled = true;
         //a la vez, regresamos su valores iniciales
@@ -189,11 +187,9 @@ export const AgregarAula = () => {
       //guardamos los datos de los inputs
       const aula = inputs[0].value;
       const edificio = inputs[1].value;
-      const capacidad = inputs[2].value;
       //recopilamos los inputs
       const inputName = inputs[0];
       const inputEdificio = inputs[1];
-      const inputCapacidad = inputs[2];
 
       //hacemos la peticion
 
@@ -291,6 +287,7 @@ export const AgregarAula = () => {
         </label>
 
         <select
+        
                     onChange = {(event) => onHandleEdificio(event)}
                     className={"form-select nuevoIdAula fila-"}
                     aria-label="Default select example"
