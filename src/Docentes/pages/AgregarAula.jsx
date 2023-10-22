@@ -349,9 +349,10 @@ export const AgregarAula = () => {
                 <select
         
         onChange = {(event) => onHandleEdificio(event)}
-        className={"form-select nuevoIdAula fila-"}
         aria-label="Default select example"
+        className={`fila-${index} form-control`}
         defaultValue={aula.Campus}
+        disabled
         id='edificio'
       >
  
@@ -362,11 +363,7 @@ export const AgregarAula = () => {
             Principal
             </option>
       </select>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={aula.Campus}
-                    disabled
-                  />
+               
                 </td>
                
                 <td className={`btn-${index} form-control`}>
