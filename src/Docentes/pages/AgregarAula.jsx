@@ -263,7 +263,7 @@ export const AgregarAula = () => {
       <hr />
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="id_aula" className="form-label">
-          Id Aula
+          Código Aula
         </label>
         <input
           type="number"
@@ -330,8 +330,7 @@ export const AgregarAula = () => {
           <tr className="bg-body-dark">
             <th scope="col">Id aula</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Edificio </th>
-            <th scope="col">Capacidad</th>
+            <th scope="col">Campus </th>
             <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
@@ -357,18 +356,11 @@ export const AgregarAula = () => {
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={aula.Edificio}
+                    defaultValue={aula.Campus}
                     disabled
                   />
                 </td>
-                <td>
-                  <input
-                    onKeyPress={validarNumeros}
-                    className={`fila-${index} form-control`}
-                    defaultValue={aula.Capacidad}
-                    disabled
-                  />
-                </td>
+               
                 <td className={`btn-${index} form-control`}>
                   <a
                     onClick={() => habilitarModificacion(index)}
