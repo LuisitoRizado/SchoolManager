@@ -20,7 +20,8 @@ export const AgregarDocentePage = () => {
   const [docentes, setDocentes] = useState([]);
   const [search, setSearch] = useState("")
   const [filteredDocentes, setFilteredDocentes] = useState([]);
-
+  const [Correo, setCorreo] = useState();
+  const [Estatus, setEstatus] = useState();
 
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
 
@@ -36,6 +37,14 @@ export const AgregarDocentePage = () => {
   };
   const onHandleApMaterno = (e) => {
     setAp_Matern(e.target.value);
+    
+  };
+  const onHandleCorreo = (e) => {
+    setCorreo(e.target.value);
+    
+  };
+  const onHandleEstatus = (e) => {
+    setEstatus(e.target.value);
     
   };
   const onHandleSearch = async (event) => {
@@ -76,7 +85,7 @@ export const AgregarDocentePage = () => {
     }
   };
   console.log(inputId);
-  const addDocentePetition = async(id_docente, nombre, ap_paterno, ap_materno) => {
+  const addDocentePetition = async(id_docente, nombre, ap_paterno, ap_materno, estatus, correo) => {
     //Hacemos la peticion para enviar los datos del dcoente
     console.log(inputId);
     console.log(inputNombre);
@@ -96,6 +105,8 @@ export const AgregarDocentePage = () => {
           NOMBRE: nombre,
           AP_PATERNO: ap_paterno,
           AP_MATERNO: ap_materno,
+          ESTATUS: estatus,
+          CORREO: correo
         }),
       })
         .then((response) => response.json())
@@ -369,7 +380,7 @@ export const AgregarDocentePage = () => {
       <hr />
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="id_docente" className="form-label">
-          Id docente
+         Número empleado
         </label>
         <input
           type="number"
@@ -413,15 +424,34 @@ export const AgregarDocentePage = () => {
           name="ap_materno"
           id="AMaterno"
           className="form-control"
-          onChange={(event) => onHandleApMaterno(event)}
+          onChange={(event) => onHandleEstatus(event)}
         />
+         <label htmlFor="ap_materno" className="form-label">
+          Estatus
+        </label>
+        <select name="estatus" id="estatus">
+          <option value="1">Activo</option>
+          <option value="2">Inactivo</option>
+          <option value="3">Pendiente</option>
+        </select>
 
+        <label htmlFor="correo" className="form-label">
+          Correo
+        </label>
+
+        <input
+          type="text"
+          name="correo"
+          id="correo"
+          className="form-control"
+          onChange={(event) => onHandleCorreo(event)}
+        />
         <button className="btn btn-danger" onClick={()=>cancelarEvent()}>Cancelar</button>
         <button
           className="btn btn-success m-4 btn-agregar"
           //Llamamos a la función para agregar al alumno, antes que todo, hay que validar que todos los datos sean correctos
           onClick={() =>
-            addDocentePetition(id_docente, Nombre, Ap_Paterno, Ap_Matern)
+            addDocentePetition(id_docente, Nombre, Ap_Paterno, Ap_Matern, Estatus, Correo)
           }
         >
           Agregar!

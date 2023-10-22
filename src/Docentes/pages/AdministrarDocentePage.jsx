@@ -89,22 +89,7 @@ export const AdministrarDocentePage = () => {
     <div>
       <h1>Administrar docentes</h1>
       <hr />
-      <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="Buscar por id docente"
-          className="form-control "
-          id="id_docente"
-          onKeyPress={validarNumeros}
-          onChange={(e) => onHandleDocente(e)}
-        />
-        <button
-          className="btn btn-primary mt-2"
-          onClick={() => mostrarDocentes()}
-        >
-          Buscar
-        </button>
-      </form>
+      
       <hr />
       <h3>Resultados</h3>
       <hr />
