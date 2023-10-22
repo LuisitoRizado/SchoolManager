@@ -33,7 +33,7 @@ export const AgregarAula = () => {
   //Functions
   const addAula = () => {
     //Damos fetcha  nuestra api
-    if (validarCampos(inputAula, inputId, inputEdificio, inputCapacidad)) {
+    if (validarCampos(inputAula, inputId, inputEdificio)) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addAula";
       fetch(url, {
         method: "POST",
