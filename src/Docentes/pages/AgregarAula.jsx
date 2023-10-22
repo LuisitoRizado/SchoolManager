@@ -290,25 +290,27 @@ export const AgregarAula = () => {
           Edificio
         </label>
 
-        <input
-          type="text"
-          name="edificio"
-          id="edificio"
-          className="form-control"
-          onChange={(event) => onHandleEdificio(event)}
-        />
-        <label htmlFor="capacidad" className="form-label">
-          Capacidad
+        
+        <label htmlFor="campus" className="form-label">
+          Campus
         </label>
 
-        <input
-          type="number"
-          name="capacidad"
-          id="capacidad"
-          onKeyPress={validarNumeros}
-          className="form-control"
-          onChange={(event) => onHandleCupo(event)}
-        />
+        <select
+                    className={"form-select nuevoIdAula fila-"}
+                    aria-label="Default select example"
+                    id='campus'
+                  >
+                      
+                    
+                        <option   >
+                        Boilot
+                        </option>
+                        <option   >
+                        Principal
+                        </option>
+                    
+                  
+                  </select>
 
         <button className="btn btn-danger" onClick={() => cancelarEvent()}>
           Cancelar
