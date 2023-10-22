@@ -193,7 +193,7 @@ export const AgregarAula = () => {
 
       //hacemos la peticion
 
-      if(validarCampos(inputName, inputEdificio, inputCapacidad))
+      if(validarCampos(inputName, inputEdificio))
       {
       await fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
         method: "PUT",
