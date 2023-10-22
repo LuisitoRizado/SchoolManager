@@ -157,12 +157,31 @@ export const AdministracionDocentePage = () => {
               id="ap_materno"
               className="form-control"
               defaultValue = {doc.AP_MATERNO}
-
-              
-
               onChange= {(e)=>onHandleAp_Materno(e)}
-              
+            />
 
+            {/*Estatus y correo */}
+            <label htmlFor="" className="form-label">
+              Estatus
+            </label>
+            
+            <select name="estatus" id="estatus" defaultValue = {doc.Estatus} className="form-select" >
+              <option value={1}>Activo</option>
+              <option value={2}>Inactivo</option>
+              <option value={3}>Pendiente</option>
+
+            </select>
+
+<label htmlFor="" className="form-label">
+              Correo
+            </label>
+            <input
+              type="text"
+              name="hora"
+              id="correo"
+              className="form-control"
+              defaultValue = {doc.CORREO}
+              onChange= {(e)=>onHandleAp_Materno(e)}
             />
             {/*Aula donde se imparte la materia */}
             
