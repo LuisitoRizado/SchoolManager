@@ -203,8 +203,7 @@ export const AgregarAula = () => {
         },
         body: JSON.stringify({
           NOMBRE: aula,
-          EDIFICIO: edificio,
-          CAPACIDAD: capacidad,
+          CAMPUS: edificio
         }),
       });
       window.location.reload();
