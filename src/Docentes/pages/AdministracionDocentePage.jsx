@@ -35,7 +35,12 @@ export const AdministracionDocentePage = () => {
     const onHandleAp_Materno = (e) =>{
         setAP_MATERNO(e.target.value)
     }
-
+    const onHandleCorreo = (e) =>{
+      setCorreo(e.target.value)
+  }
+  const onHandleESTATUS = (e) =>{
+    setEstatus(e.target.value)
+}
 
     //Peticion
     const obtenerDocente = async () =>{
@@ -177,7 +182,7 @@ export const AdministracionDocentePage = () => {
             </label>
             
             <select name="estatus" id="estatus" defaultValue = {doc.Estatus} className="form-select" 
-              onChange= {(e)=>setEstatus(e)}
+              onChange= {(e)=>onHandleESTATUS(e)}
             
             >
               <option value={1}>Activo</option>
@@ -195,7 +200,7 @@ export const AdministracionDocentePage = () => {
               id="correo"
               className="form-control"
               defaultValue = {doc.CORREO}
-              onChange= {(e)=>setCorreo(e)}
+              onChange= {(e)=>onHandleCorreo(e)}
             />
             {/*Aula donde se imparte la materia */}
             
