@@ -463,10 +463,7 @@ export const AgregarDocentePage = () => {
           Agregar!
         </button>
       </form>
-      <form action="" className="form-busqueda" onSubmit={(e)=>e.preventDefault()}>
-      <input type="text" placeholder="Buscar"  className="form-control search" value={search} onChange={(e)=>onHandleSearch(e)} />
-      <button className="btn btn-success" onClick={()=>buscarDocente()}>Buscar!</button>
-      </form>
+    
       <div className="table-responsive">
 
       <table className="table  table-bordered">
