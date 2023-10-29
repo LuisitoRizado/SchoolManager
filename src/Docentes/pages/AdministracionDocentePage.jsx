@@ -14,6 +14,8 @@ export const AdministracionDocentePage = () => {
     //Hooks
     const [docente, setDocente] = useState([])
     const [nombre, setNombre] = useState("")
+    const [correo, setCorreo] = useState("")
+    const [estatus, setEstatus] = useState("")
     const [AP_PATERNO, setAP_PATERNO] = useState("")
     const [AP_MATERNO, setAP_MATERNO] = useState("")
     let inputId;
@@ -50,7 +52,7 @@ export const AdministracionDocentePage = () => {
       }
 
     //Mmetodo para guardar los datos del docente
-    const guardarDatos = (id_docente, name, ap_pat, ap_mat) =>{
+    const guardarDatos = (id_docente, name, ap_pat, ap_mat, correo, estatus) =>{
       inputNombre = document.querySelector('#nombre');
       inputAPaterno = document.querySelector('#ap_paterno');
       inputAMaterno = document.querySelector('#ap_materno');
@@ -68,6 +70,8 @@ export const AdministracionDocentePage = () => {
             NOMBRE: name,
             AP_PATERNO: ap_pat,
             AP_MATERNO: ap_mat,
+            CORREO: correo,
+            ESTATUS: estatus
           }),
         });
         confirm('Modificaciones realizadas!')
@@ -165,8 +169,11 @@ export const AdministracionDocentePage = () => {
               Estatus
             </label>
             
-            <select name="estatus" id="estatus" defaultValue = {doc.Estatus} className="form-select" >
-              <option value={doc.Estatus}>{doc.Estatus}</option>
+            <select name="estatus" id="estatus" defaultValue = {doc.Estatus} className="form-select" 
+              onChange= {(e)=>setEstatus(e)}
+            
+            >
+              <option value={1}>Activo</option>
               <option value={2}>Inactivo</option>
               <option value={3}>Pendiente</option>
 
@@ -181,7 +188,7 @@ export const AdministracionDocentePage = () => {
               id="correo"
               className="form-control"
               defaultValue = {doc.CORREO}
-              onChange= {(e)=>onHandleAp_Materno(e)}
+              onChange= {(e)=>setCorreo(e)}
             />
             {/*Aula donde se imparte la materia */}
             
