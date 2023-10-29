@@ -476,6 +476,8 @@ export const AgregarDocentePage = () => {
             <th scope="col">Nombre</th>
             <th scope="col">Ap paterno</th>
             <th scope="col">Ap materno</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Estatus</th>
             <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
