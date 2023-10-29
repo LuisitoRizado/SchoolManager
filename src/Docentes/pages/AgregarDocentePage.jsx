@@ -514,6 +514,20 @@ export const AgregarDocentePage = () => {
                     disabled
                   />
                 </td>
+                <td>
+                  <input
+                    className={`fila-${index} form-control`}
+                    defaultValue={docente.CORREO}
+                    disabled
+                  />
+                </td>
+                <td>
+                  <input
+                    className={`fila-${index} form-control`}
+                    defaultValue={docente.ESTATUS}
+                    disabled
+                  />
+                </td>
                 <td className={`btn-${index} form-control`}>
                 
                   <a
