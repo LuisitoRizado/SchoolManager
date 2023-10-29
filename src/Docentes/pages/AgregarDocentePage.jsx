@@ -347,13 +347,13 @@ export const AgregarDocentePage = () => {
     let tieneHijos = false;
 
     //vamos a recorrer las materias asignadas profesor en busca del id del docente
-    materias_asignadas.forEach(materia=>{
+    /*materias_asignadas.forEach(materia=>{
       //vamos a buscar en cada materia
       if(materia.Id_Docente==id_docente){
         tieneHijos = true;
       }
     })
-
+*/
     //si no tiene hijos, eliminamos el registro
     if(!tieneHijos){
       
