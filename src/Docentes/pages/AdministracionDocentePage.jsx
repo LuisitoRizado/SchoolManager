@@ -22,6 +22,8 @@ export const AdministracionDocentePage = () => {
     let inputNombre;
     let inputAPaterno;
     let inputAMaterno;
+    let inputCorreo;
+    let inputEstatus;
 
     //LEER DATOS DEL INPUT
     const onHandleNombre = (e) =>{
@@ -82,6 +84,9 @@ export const AdministracionDocentePage = () => {
     inputNombre = document.querySelector('#nombre');
     inputAPaterno = document.querySelector('#ap_paterno');
     inputAMaterno = document.querySelector('#ap_materno');
+    inputCorreo = document.querySelector('#correo')
+    inputEstatus = document.querySelector('#estatus')
+
     //Para los datos
     useEffect(() => {
     obtenerDocente();
@@ -90,7 +95,8 @@ export const AdministracionDocentePage = () => {
     inputNombre = document.querySelector('#nombre');
     inputAPaterno = document.querySelector('#ap_paterno');
     inputAMaterno = document.querySelector('#ap_materno');
-    
+    inputCorreo = document.querySelector('#correo')
+    inputEstatus = document.querySelector('#estatus')
     }, [])
     useEffect(() => {
       //obtenemos los inputs al cargar
@@ -98,8 +104,9 @@ export const AdministracionDocentePage = () => {
       inputNombre = document.querySelector('#nombre');
       inputAPaterno = document.querySelector('#ap_paterno');
       inputAMaterno = document.querySelector('#ap_materno');
-      
-      }, [nombre, AP_PATERNO, AP_MATERNO])
+      inputCorreo = document.querySelector('#correo')
+      inputEstatus = document.querySelector('#estatus')
+      }, [nombre, AP_PATERNO, AP_MATERNO, correo,estatus])
    
     
 
@@ -199,7 +206,7 @@ export const AdministracionDocentePage = () => {
               Cancelar
             </button>
             <button className="btn btn-success m-2"
-              onClick={() => guardarDatos(doc.ID_Docente, inputNombre.value, inputAPaterno.value, inputAMaterno.value)}
+              onClick={() => guardarDatos(doc.ID_Docente, inputNombre.value, inputAPaterno.value, inputAMaterno.value, inputCorreo.value, inputEstatus.value )}
             
             >Confirmar</button>
           </form>
