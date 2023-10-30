@@ -641,7 +641,7 @@ let estaOcupada = false;
                     disabled
                   >
                     <option value={materia.Id_Carrera} >
-                      {materia.Nombre_Carrera}
+                      {materia.NombreCarrera}
                     </option>
                     {carreras.length >= 1 ? (
                       carreras.map((carrera, index) => (
