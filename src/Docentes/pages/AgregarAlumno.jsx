@@ -26,7 +26,7 @@ export const AgregarAlumno = () => {
   const [Especialidad, setEspecialidad] = useState();
   const [Contrasena, setContrasena] = useState();
   const [alumno, setAlumno] = useState([]);
-  const [Estatus, setEstatus] = useState([]);
+  const [Estatus, setEstatus] = useState();
 
   const [carreras, setCarreras] = useState([])
 
@@ -70,7 +70,7 @@ export const AgregarAlumno = () => {
   };
   
   const onHandleEstatus = (e) => {
-    setContrasena(e.target.value);
+    setEstatus(e.target.value);
   };
   useEffect(() => {
     //Ncontrol
