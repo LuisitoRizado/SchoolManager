@@ -432,6 +432,15 @@ export const AgregarAlumno = () => {
                       <option>No existen Carreras</option>
                     )}
                   </select>
+                  <label htmlFor="estatus">Estatus</label>
+                  <select name="estatus" id="estatus"
+                  className={"form-select nuevoIdAula fila-"}
+                  aria-label="Default select example">
+                    <option value={1}>Activo</option>
+                    <option value={2}>Inactivo</option>
+                    <option value={3}>Pendiente</option>
+
+                  </select>
         <label htmlFor="nombre" className="form-label mt-3">
           Nombre (s)
         </label>
@@ -478,41 +487,9 @@ export const AgregarAlumno = () => {
           className="form-control"
           onChange={(event) => onHandleSemestre(event)}
         />
-        <label htmlFor="periodo" className="form-label">
-          Periodo
-        </label>
-
-        <input
-          type="text"
-          name="periodo"
-          id="periodo"
-          className="form-control"
-          onChange={(event) => onHandlePeriodo(event)}
-        />
-        <label htmlFor="creditos" className="form-label">
-          Créditos disponibles
-        </label>
-
-        <input
-          type="text"
-          name="creditos"
-          onKeyPress={validarNumeros}
-
-          id="creditos"
-          className="form-control"
-          onChange={(event) => onHandleCreditos(event)}
-        />
-        <label htmlFor="especialidad" className="form-label">
-          Especialidad
-        </label>
-
-        <input
-          type="text"
-          name="especialidad"
-          id="especialidad"
-          className="form-control"
-          onChange={(event) => onHandleEspecialidad(event)}
-        />
+       
+      
+        
         <label htmlFor="contrasena" className="form-label">
           Contraseña
         </label>
@@ -542,9 +519,8 @@ export const AgregarAlumno = () => {
             <th scope="col">Apellido Paterno</th>
             <th scope="col">Apellido Materno</th>
             <th scope="col">Semestre</th>
-            <th scope="col">Periodo</th>
-            <th scope="col">Creditos</th>
-            <th scope="col">Especialidad</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Carrera</th>           
             <th scope="col">Modificar</th>
             <th>Eliminar</th>
           </tr>
@@ -590,30 +566,7 @@ export const AgregarAlumno = () => {
                     disabled
                   />
                 </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={alumno.Periodo}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={alumno.Creditos_Disponibles}
-                    onKeyPress={validarNumeros}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={
-                      alumno.Especialidad ? alumno.Especialidad : "Ninguna"
-                    }
-                    disabled
-                  />
-                </td>
+               
 
                 <td className={`btn-${index} form-control`}>
                   <a
