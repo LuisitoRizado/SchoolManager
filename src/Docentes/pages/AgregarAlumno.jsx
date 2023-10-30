@@ -186,9 +186,6 @@ export const AgregarAlumno = () => {
         inputAPaterno,
         inputAPaterno,
         inputSemestre,
-        inputPeriodo,
-        inputCreditos,
-        inputEspecidaldiad,
         inputContrasena
       )
     ) {
@@ -205,9 +202,6 @@ export const AgregarAlumno = () => {
           AP_PATERNO: Ap_Paterno,
           AP_MATERNO: Ap_Matern,
           SEMESTRE: Semestre,
-          PERIODO: Periodo,
-          CREDITOS_DISPONIBLES: Creditos,
-          ESPECIALIDAD: Especialidad,
           CONTRASENA: Contrasena,
         }),
       })
@@ -493,7 +487,7 @@ export const AgregarAlumno = () => {
         <label htmlFor="contrasena" className="form-label">
           Contraseña
         </label>
-
+        
         <input
           type="text"
           name="contrasena"
@@ -566,8 +560,24 @@ export const AgregarAlumno = () => {
                     disabled
                   />
                 </td>
-               
+              <td>
+                <select name="estatus" id="estatus" defaultValue={alumno.EstatusNombre}>
+                  <option value={1}>{alumno.EstatusNombre}</option>
+                  <option value={2}>Inactivo</option>
+                  <option value={3}>Pendiente</option>
 
+                </select>
+              </td>
+
+              <td>
+                <select name="carrera" id="carrera" defaultValue={alumno.EstatusNCarreraNombreombre}>
+                  <option value={1}>{alumno.CarreraNombre}</option>
+                  <option value={20}>Industrial</option>
+                  <option value={30}>Gestion</option>
+
+                </select>
+              </td>
+              
                 <td className={`btn-${index} form-control`}>
                   <a
                     onClick={() => habilitarModificacion(index)}
