@@ -381,7 +381,7 @@ export const AgregarAlumno = () => {
       .then((res) => res.json())
       .then((data)=>console.log('Eliminado : ' + data))
       confirm('Alumno eliminado con exito!')
-      window.location.reload();
+      //window.location.reload();
     }
     else{
       //De lo contrario no hacemos nada
