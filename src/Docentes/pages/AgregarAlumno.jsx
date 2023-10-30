@@ -208,7 +208,7 @@ export const AgregarAlumno = () => {
           AP_MATERNO: Ap_Matern,
           SEMESTRE: Semestre,
           ESTATUS: Estatus,
-          CONTRASENA: Contrasena,
+          CONTRASENA: Contrasena
         }),
       })
         .then((response) => response.json())
