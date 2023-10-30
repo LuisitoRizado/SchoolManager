@@ -561,7 +561,7 @@ export const AgregarAlumno = () => {
                   />
                 </td>
               <td>
-                <select name="estatus" id="estatus" defaultValue={alumno.EstatusNombre}>
+                <select name="estatus" id="estatus" defaultValue={alumno.EstatusNombre}  className={`fila-${index} form-control`} >
                   <option value={1}>{alumno.EstatusNombre}</option>
                   <option value={2}>Inactivo</option>
                   <option value={3}>Pendiente</option>
@@ -570,7 +570,7 @@ export const AgregarAlumno = () => {
               </td>
 
               <td>
-                <select name="carrera" id="carrera" defaultValue={alumno.EstatusNCarreraNombreombre}>
+                <select name="carrera" id="carrera" defaultValue={alumno.EstatusNCarreraNombreombre}  className={`fila-${index} form-control`}>
                   <option value={1}>{alumno.CarreraNombre}</option>
                   <option value={20}>Industrial</option>
                   <option value={30}>Gestion</option>
