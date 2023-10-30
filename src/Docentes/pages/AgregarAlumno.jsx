@@ -26,6 +26,8 @@ export const AgregarAlumno = () => {
   const [Especialidad, setEspecialidad] = useState();
   const [Contrasena, setContrasena] = useState();
   const [alumno, setAlumno] = useState([]);
+  const [Estatus, setEstatus] = useState([]);
+
   const [carreras, setCarreras] = useState([])
 
   ///-------FIN DE HOOKS
@@ -66,7 +68,10 @@ export const AgregarAlumno = () => {
   const onHandleContrasena = (e) => {
     setContrasena(e.target.value);
   };
-
+  
+  const onHandleEstatus = (e) => {
+    setContrasena(e.target.value);
+  };
   useEffect(() => {
     //Ncontrol
     inputContro = document.querySelector("#NControl");
@@ -202,6 +207,7 @@ export const AgregarAlumno = () => {
           AP_PATERNO: Ap_Paterno,
           AP_MATERNO: Ap_Matern,
           SEMESTRE: Semestre,
+          ESTATUS: Estatus,
           CONTRASENA: Contrasena,
         }),
       })
@@ -428,6 +434,10 @@ export const AgregarAlumno = () => {
                   </select>
                   <label htmlFor="estatus">Estatus</label>
                   <select name="estatus" id="estatus"
+                  onChange={(e) => {
+                    onHandleEstatus(e)
+                     
+                   }}
                   className={"form-select nuevoIdAula fila-"}
                   aria-label="Default select example">
                     <option value={1}>Activo</option>
@@ -562,7 +572,8 @@ export const AgregarAlumno = () => {
                 </td>
               <td>
                 <select name="estatus" id="estatus" defaultValue={alumno.EstatusNombre}  className={`fila-${index} form-control`} >
-                  <option value={1}>{alumno.EstatusNombre}</option>
+                  <option value={alumno.Id_Estatus}>{alumno.EstatusNombre}</option>
+                  <option value={1}>Activo</option>
                   <option value={2}>Inactivo</option>
                   <option value={3}>Pendiente</option>
 
