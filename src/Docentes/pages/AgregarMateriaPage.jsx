@@ -599,12 +599,10 @@ let estaOcupada = false;
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
             <th scope="col">Id_Materia</th>
-            <th scope="col">Id horario</th>
-            <th scope="col">Id aula</th>
-            <th scope="col">Carrera</th>
             <th scope="col">Materia</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Estatus</th>
             <th scope="col">Creditos</th>
-            <th scope="col">Cupo</th>
             <th scope="col">Semestre</th>
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
@@ -623,69 +621,12 @@ let estaOcupada = false;
                   />
                 </td>
                 <td>
-                  <select
-                    className={"form-select mySelect fila-" + index}
-                    aria-label="Default select example"
-                    onChange={(e) => {
-                      const selectedValueAsNumber = parseInt(e.target.value);
-                      console.log(
-                        `Valor seleccionado: ${selectedValueAsNumber}`
-                      );
-                    }}
+                  <input
                     disabled
-                  >
-                    <option value={materia.Id_Horario} >
-                      {materia.Hora_Inicio_Lunes +
-                        " - " +
-                        materia.Hora_Final_Lunes}
-                    </option>
-                    {horarios.length >= 1 ? (
-                      horarios.map((horario, index) => (
-                        <option
-                          value={horario.Id_Horario}
-                          className={"opcion-" + index}
-                          key={index}
-                        >
-                          {horario.Hora_Inicio_Lunes +
-                            " - " +
-                            horario.Hora_Final_Lunes}
-                        </option>
-                      ))
-                    ) : (
-                      <option>No existen horarios</option>
-                      
-                    )}
-                  </select>
-                </td>
-                <td>
-                  <select
-                    className={"form-select nuevoIdAula fila-" + index}
-                    aria-label="Default select example"
-                    onChange={(e) => {
-                      const selectedValueAsNumber = parseInt(e.target.value);
-                      console.log(
-                        `Valor seleccionado: ${selectedValueAsNumber}`
-                      );
-                    }}
-                    disabled
-                  >
-                    <option value={materia.Id_Aula} >
-                      {materia.Nombre_Aula}
-                    </option>
-                    {aulas.length >= 1 ? (
-                      aulas.map((aula, index) => (
-                        <option
-                          value={aula.Id_Aula}
-                          className={"opcion-" + index}
-                          key={index}
-                        >
-                          {aula.Nombre}
-                        </option>
-                      ))
-                    ) : (
-                      <option>No existen aulas</option>
-                    )}
-                  </select>
+                    type="text"
+                    defaultValue={materia.Materia}
+                    className={"form-control fila-" + index}
+                  />
                 </td>
                 <td>
                   <select
@@ -718,28 +659,19 @@ let estaOcupada = false;
                   </select>
                 </td>
                 <td>
-                  <input
-                    disabled
-                    type="text"
-                    defaultValue={materia.Materia}
-                    className={"form-control fila-" + index}
-                  />
+                  <select name="estatus" id="estatus">
+                    <option value={1}>Activo</option>
+                    <option value={2}>Inactivo</option>
+                    <option value={3}>Pendiente</option>
+                  </select>
                 </td>
+                
                 <td>
                   <input
                     disabled
                     type="number"
                     onKeyPress={validarNumeros}
                     defaultValue={materia.Creditos}
-                    className={"form-control fila-" + index}
-                  />
-                </td>
-                <td>
-                  <input
-                    disabled
-                    type="number"
-                    defaultValue={materia.Cupo}
-                    onKeyPress={validarNumeros}
                     className={"form-control fila-" + index}
                   />
                 </td>
