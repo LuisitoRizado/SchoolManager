@@ -76,38 +76,28 @@ let estaOcupada = false;
     console.log("horario" + HORARIO);
     console.log(
       inputIdMateria,
-      inputIdHorarioMostrar,
-      inputIdAula,
       inputMateria,
-      inputCredtios,
-      inputCupo,
       inputSemestre
     );
     if (
       validarCampos(
         inputIdMateria,
-        inputIdHorarioMostrar,
-        inputIdAula,
         inputMateria,
         inputIdCarrera,
         inputCredtios,
-        inputCupo,
         inputSemestre
       )
     ) {
       //validar si no se repite el aula YY el horario a la vez
-      console.log(materias)
+    /*  console.log(materias)
       materias.forEach(materia=>{
-        console.log('hooks: ' + HORARIO, AULA)
-        console.log('mat horario: ' + materia.Id_Horario)
-        console.log('mat aula: ' + materia.Id_Aula)
-
+       
         if(materia.Id_Horario == HORARIO && materia.Id_Aula == AULA){
           estaOcupada = true;
           console.log('Se encontro!')
         }
       })
-      
+      */
       const url = "https://rest-api-production-a5bf.up.railway.app/addNewMateria";
       //No se puede agregar
       if(estaOcupada)
