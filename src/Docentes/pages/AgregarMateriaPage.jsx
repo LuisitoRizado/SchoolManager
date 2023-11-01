@@ -479,52 +479,8 @@ let estaOcupada = false;
           <option >No existen Carreras</option>
         )}
       </select>
-        <label htmlFor="horario" className="form-label">
-          Id horario
-        </label>
-        <select
-          className={"form-select mySelect "}
-          id="id_horario"
-          aria-label="Default select example"
-          onChange={(e) => {
-            onHandleHorario(e);
-          }}
-        >
+        
 
-          {horarios.length >= 1 ? (
-            horarios.map((horario, index) => (
-              <option value={horario.Id_Horario} className={"opcion-" + index} key={index}>
-                {horario.Hora_Inicio_Lunes + " - " + horario.Hora_Final_Lunes}
-              </option>
-            ))
-          ) : (
-            <option >No existen horarios</option>
-          )}
-        </select>
-
-        <label htmlFor="aula" className="form-label">
-          Id Aula
-        </label>
-        <select
-          className={"form-select mySelect "}
-          id="id_aula"
-          aria-label="Default select example"
-          onChange={(e) => {
-            onHandleAula(e);
-          }}
-        >
-            <option value=""> </option>
-
-          {aulas.length >= 1 ? (
-            aulas.map((aula, index) => (
-              <option value={aula.Id_Aula} className={"opcion-" + index} key={index}>
-                {aula.Nombre}
-              </option>
-            ))
-          ) : (
-            <option >No existen horarios</option>
-          )}
-        </select>
 
         <label htmlFor="materia" className="form-label">
           Materia
@@ -549,17 +505,7 @@ let estaOcupada = false;
           onChange={(e) => onHandleCreditos(e)}
         />
 
-        <label htmlFor="cupo" className="form-label">
-          Cupo
-        </label>
-        <input
-          type="number"
-          name="cupo"
-          id="cupo"
-          onKeyPress={validarNumeros}
-          className="form-control"
-          onChange={(e) => onHandleCupo(e)}
-        />
+       
 
         <label htmlFor="semestre" className="form-label">
           Semestre
