@@ -36,7 +36,6 @@ export const ModificarAulaPage = () => {
         setAula(data);
         setNombre(data[0].Nombre);
         setEdificio(data[0].Campus);
-        setCapacidad(data[0].Capacidad);
 
       });
   };
