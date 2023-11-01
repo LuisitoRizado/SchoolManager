@@ -474,7 +474,7 @@ let estaOcupada = false;
         {carreras.length >= 1 ? (
           carreras.map((carrera, index) => (
             <option value={carrera.Id_Carrera} className={"opcion-" + index} key={index}>
-              {carrera.Nombre}
+              {carrera.Carrera}
             </option>
           ))
         ) : (
