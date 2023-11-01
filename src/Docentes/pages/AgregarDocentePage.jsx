@@ -7,6 +7,8 @@ let inputNombre;
 let inputAPaterno;
 let inputAMaterno;
 let ventanaModal;
+let inputEstado;
+let inputCorreo;
 let inputSearch;
 let results = [];
 
@@ -93,7 +95,7 @@ export const AgregarDocentePage = () => {
     console.log(inputAPaterno);
     console.log(inputAMaterno);
 
-    if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
+    if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno, inputEstado, inputCorreo)) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
        fetch(url, {
         method: "POST",
@@ -236,10 +238,12 @@ export const AgregarDocentePage = () => {
     inputAMaterno = document.querySelector("#AMaterno");
     inputAMaterno = document.querySelector("#AMaterno");
     inputSearch = document.querySelector('.search')
+    inputEstado = document.querySelector('#estado')
+    inputCorreo = document.querySelector('#correo')
 
 
     console.log(inputId.value);
-  }, [id_docente, Nombre, Ap_Paterno, Ap_Matern]);
+  }, [id_docente, Nombre, Ap_Paterno, Ap_Matern, Estatus, Correo]);
 
   //Metodo para podera habilitar la modificacion de una row de la tabla
   const habilitarModificacion = (index) => {
