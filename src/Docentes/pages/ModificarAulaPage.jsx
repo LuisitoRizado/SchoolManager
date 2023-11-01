@@ -115,14 +115,12 @@ export const ModificarAulaPage = () => {
             <label htmlFor="" className="form-label">
               Edificio
             </label>
-            <input
-              type="text"
-              name="edificio"
-              id="edificio"
-              className="form-control"
-              defaultValue={aul.Campus}
-              onChange={(e) => onHandleEdificio(e)}
-            />
+            <select name="edificio" id="edificio" onChange={(e) => onHandleEdificio(e)}>
+              <option value="Principal">{aul.Campus}</option>
+              <option value="Boilot">Principal</option>
+              <option value="Boilot">Boilot</option>
+            </select>
+           
             {/*Hora de la materia */}
             
             {/*Aula donde se imparte la materia */}
