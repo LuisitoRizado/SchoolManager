@@ -115,7 +115,7 @@ export const ModificarAulaPage = () => {
             <label htmlFor="" className="form-label">
               Edificio
             </label>
-            <select name="edificio" id="edificio" onChange={(e) => onHandleEdificio(e)}>
+            <select name="edificio" id="edificio" onChange={(e) => onHandleEdificio(e)}     className="form-select">
               <option value="Principal">{aul.Campus}</option>
               <option value="Boilot">Principal</option>
               <option value="Boilot">Boilot</option>
