@@ -351,13 +351,19 @@ export const AgregarDocentePage = () => {
     if (tieneHijos) {
       alert('No se puede eliminar, ya que tiene hijos');
     } else {
-      if (confirm('¿Estás seguro de que deseas eliminar este docente?')) {
+      const confirmed = window.confirm('¿Estás seguro de que deseas eliminar este docente?');
+      
+      if (confirmed) {
+        // Evita que la confirmación predeterminada recargue la página
+        window.event.preventDefault();
+  
         // Elimina el docente
         fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/' + id_docente, { method: 'DELETE' })
           .then(response => {
             if (response.ok) {
               console.log('Registro eliminado exitosamente');
-              // Actualiza la interfaz de usuario aquí si es necesario.
+              // Recarga la página manualmente después de la eliminación
+              window.location.reload();
             } else {
               console.error('Ocurrió un error al eliminar el registro');
             }
@@ -366,6 +372,7 @@ export const AgregarDocentePage = () => {
       }
     }
   };
+  
   
   return (
     <div>
