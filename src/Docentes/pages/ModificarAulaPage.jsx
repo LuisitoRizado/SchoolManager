@@ -41,11 +41,11 @@ export const ModificarAulaPage = () => {
       });
   };
 
-  const guardarDatos = (id, aula, edificio, capacidad) => {
+  const guardarDatos = (id, aula, edificio) => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
 
-    if(validarCampos(inputNombre, inputEdificio, inputCapacidad)){
+    if(validarCampos(inputNombre, inputEdificio)){
     fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
       method: "PUT",
       headers: {
@@ -55,7 +55,6 @@ export const ModificarAulaPage = () => {
       body: JSON.stringify({
         "NOMBRE": aula,
         "EDIFICIO": edificio,
-        "CAPACIDAD": capacidad,
       }),
     });
     confirm('Aula actualizada!')
@@ -122,22 +121,11 @@ export const ModificarAulaPage = () => {
               name="edificio"
               id="edificio"
               className="form-control"
-              defaultValue={aul.Edificio}
+              defaultValue={aul.Campus}
               onChange={(e) => onHandleEdificio(e)}
             />
             {/*Hora de la materia */}
-            <label htmlFor="" className="form-label">
-              Capacidad
-            </label>
-            <input
-              type="text"
-              name="capacidad"
-              id="capacidad"
-              className="form-control"
-              defaultValue={aul.Capacidad}
-              onKeyPress={validarNumeros}
-              onChange={(e) => onHandleCapacidad(e)}
-            />
+            
             {/*Aula donde se imparte la materia */}
 
             <button
@@ -149,7 +137,7 @@ export const ModificarAulaPage = () => {
             <button
               className="btn btn-success m-2"
               onClick={() =>
-                guardarDatos(aul.Id_Aula, nombre, edificio, capacidad)
+                guardarDatos(aul.Id_Aula, nombre, edificio)
               }
             >
               Confirmar
