@@ -23,6 +23,8 @@ export const AgregarMateriaPage = () => {
   const [Id_Docente, setId_Docente] = useState();
   const [aulas, setAulas] = useState([]);
   const [carreras, setCarreras] = useState([]);
+  const [estatus, setEstatus] = useState([]);
+
   //hook para cargar todas las materias existentes
   const [materias, setMaterias] = useState([]);
   const [horarios, setHorarios] = useState([]);
@@ -481,7 +483,21 @@ let estaOcupada = false;
       </select>
         
 
+      <label htmlFor="carrera" className="form-label">
+          Estatus
+        </label>
+        <select
+          className={"form-select mySelect "}
+          name='estatus'
+          id="estatus"
+          aria-label="Default select example"
+        >
 
+        <option value={1}>Activo</option>
+        <option value={2}>Inactivo</option>
+        <option value={3}>Pendiente</option>
+
+      </select>
         <label htmlFor="materia" className="form-label">
           Materia
         </label>
