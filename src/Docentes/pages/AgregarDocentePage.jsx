@@ -342,38 +342,31 @@ export const AgregarDocentePage = () => {
   };
 
   //eliminar docente
-  const eliminarDocente =  (id_docente) =>{
-    //vamos a eliminar el docente seleccionado, solo en caso de que no tenga elementos hijos
+  const eliminarDocente = (id_docente) => {
+    // Verificar si el docente tiene hijos (modifica esta parte según tu lógica)
     let tieneHijos = false;
-
-    //vamos a recorrer las materias asignadas profesor en busca del id del docente
-    /*materias_asignadas.forEach(materia=>{
-      //vamos a buscar en cada materia
-      if(materia.Id_Docente==id_docente){
-        tieneHijos = true;
-      }
-    })
-*/
-    //si no tiene hijos, eliminamos el registro
-    if(!tieneHijos){
-      
-      //eliminamos
-      if(confirm('Esta seguro?'))
-       fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
-      .then(response => {
-    if (response.ok) {
-      console.log('Registro eliminado exitosamente');
+    
+    // Realiza la verificación, por ejemplo, recorre las materias asignadas al docente y establece tieneHijos en consecuencia.
+  
+    if (tieneHijos) {
+      alert('No se puede eliminar, ya que tiene hijos');
     } else {
-      console.error('Ocurrió un error al eliminar el registro');
+      if (confirm('¿Estás seguro de que deseas eliminar este docente?')) {
+        // Elimina el docente
+        fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/' + id_docente, { method: 'DELETE' })
+          .then(response => {
+            if (response.ok) {
+              console.log('Registro eliminado exitosamente');
+              // Actualiza la interfaz de usuario aquí si es necesario.
+            } else {
+              console.error('Ocurrió un error al eliminar el registro');
+            }
+          })
+          .catch(error => console.error(error));
+      }
     }
-  })
-  .catch(error => console.error(error));
-
-    }
-    else{
-      confirm('No se puede eliminar, ya que tiene hijos')
-    }
-  }
+  };
+  
   return (
     <div>
       <h1>Agregar docentes </h1>
