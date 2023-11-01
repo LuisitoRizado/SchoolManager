@@ -23,7 +23,7 @@ export const AgregarMateriaPage = () => {
   const [Id_Docente, setId_Docente] = useState();
   const [aulas, setAulas] = useState([]);
   const [carreras, setCarreras] = useState([]);
-  const [estatus, setEstatus] = useState([]);
+  const [estatus, setEstatus] = useState();
 
   //hook para cargar todas las materias existentes
   const [materias, setMaterias] = useState([]);
@@ -55,6 +55,9 @@ export const AgregarMateriaPage = () => {
     setCreditos(e.target.value);
   };
 
+  const onHandleEstatus = (e) =>{
+    setEstatus(e.target.value)
+  }
 
   const onHandleCupo = (e) => {
     setCupo(e.target.value);
@@ -121,12 +124,10 @@ let estaOcupada = false;
         },
         body: JSON.stringify({
           ID_MATERIA: ID_MATERIA,
-          ID_HORARIO: HORARIO,
-          ID_AULA: AULA,
           ID_CARRERA: Id_Carrera,
+          ID_ESTATUS: estatus,
           MATERIA: MATERIA,
           CREDITOS: CREDITOS,
-          CUPO: CUPO,
           SEMESTRE: SEMESTRE,
         }),
       });
@@ -491,6 +492,8 @@ let estaOcupada = false;
           name='estatus'
           id="estatus"
           aria-label="Default select example"
+          onChange={(e) => onHandleEstatus(e)}
+
         >
 
         <option value={1}>Activo</option>
