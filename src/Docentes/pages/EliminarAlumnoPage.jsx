@@ -90,10 +90,10 @@ export const EliminarAlumnoPage = () => {
                   <tr key={alumno}>
                   <td>{alumno.NControl}</td>
                   <td>{alumno.Nombre}</td>
-                  <td>{alumno.AP_PATERNO}</td>
-                  <td>{alumno.AP_MATERNO}</td>
-                  <td>{alumno.SEMESTRE}</td>
-                  <td></td>
+                  <td>{alumno.Ap_Paterno}</td>
+                  <td>{alumno.Ap_Materno}</td>
+                  <td>{alumno.Semestre}</td>
+                  <td>{alumno.Carrera}</td>
                   <td><button className="btn btn-danger" onClick={() => eliminarAlumno(alumno.NControl)}>Eliminar</button></td>
                 </tr>
               )) : 
