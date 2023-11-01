@@ -342,7 +342,7 @@ export const AgregarDocentePage = () => {
   };
 
   //eliminar docente
-  const eliminarDocente = async (id_docente) =>{
+  const eliminarDocente =  (id_docente) =>{
     //vamos a eliminar el docente seleccionado, solo en caso de que no tenga elementos hijos
     let tieneHijos = false;
 
@@ -359,7 +359,7 @@ export const AgregarDocentePage = () => {
       
       //eliminamos
       if(confirm('Esta seguro?'))
-      await fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
+       fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
       .then(response => {
     if (response.ok) {
       console.log('Registro eliminado exitosamente');
