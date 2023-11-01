@@ -73,7 +73,7 @@ export const AgregarMateriaPage = () => {
   const agregarMateria = async () => {
 let estaOcupada = false;
 
-    console.log("horario" + HORARIO);
+    
     console.log(
       inputIdMateria,
       inputMateria,
@@ -605,7 +605,7 @@ let estaOcupada = false;
                           className={"opcion-" + index}
                           key={index}
                         >
-                          {carrera.Nombre}
+                          {carrera.Carrera}
                         </option>
                       ))
                     ) : (
