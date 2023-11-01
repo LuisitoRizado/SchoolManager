@@ -112,7 +112,7 @@ export const AdministrarAulaPage = () => {
             <tr key={aula}>
               <td>{aula.Id_Aula}</td>
               <td>{aula.Nombre}</td>
-              <td>{aula.Edificio}</td>
+              <td>{aula.Campus}</td>
               <td>
               <NavLink
                 className={'btn btn-warning'}
