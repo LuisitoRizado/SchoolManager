@@ -224,6 +224,8 @@ export const AgregarDocentePage = () => {
   useEffect(() => {
     inputAPaterno = document.querySelector("#APaterno");
     console.log(inputAPaterno.value);
+    inputEstado = document.querySelector('#estado')
+    inputCorreo = document.querySelector('#correo')
   }, []);
 
   useEffect(() => {
