@@ -43,7 +43,10 @@ export const AdministrarAulaPage = () => {
           tieneHijos = true;
         }
       });
-  
+      
+      if(confirm('Seguro que quieres eliminar esta aula?'))
+      {
+
       //Si no tiene hijos
       if (!tieneHijos) {
         //borramos la materia
@@ -60,6 +63,8 @@ export const AdministrarAulaPage = () => {
       } else {
         confirm("No se puede eliminar, tiene hijos");
       }
+    }
+
     };
   useEffect(() => {
     inputId = document.querySelector('#id_aula')
