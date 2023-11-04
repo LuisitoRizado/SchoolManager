@@ -48,7 +48,7 @@ export const AgregarAula = () => {
         }),
       });
       //Recargamos la pagina
-      window.prompt("Aula agregada con exito");
+      window.alert("Aula agregada con exito");
       window.location.reload();
     }
   };
@@ -233,6 +233,8 @@ export const AgregarAula = () => {
         tieneHijos = true;
       }
     });
+    if(confirm('Seguro que quieres eliminar esta aula?'))
+    {
 
     //Si no tiene hijos
     if (!tieneHijos) {
@@ -250,6 +252,8 @@ export const AgregarAula = () => {
     } else {
       confirm("No se puede eliminar, tiene hijos");
     }
+  }
+
   };
   return (
     <div className="animate__zoomInDown">
