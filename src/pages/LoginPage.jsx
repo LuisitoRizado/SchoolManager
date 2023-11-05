@@ -10,14 +10,15 @@ import { validarCampos, validarNumeros } from "../Docentes/pages/validarCampos";
 
 //Llamamos a la petiicion cuando el usuario introduzca los valores
 let btnNav;
+let inputUsuario;
+let inputPassword;
 export const LoginPage = () => {
   const navigate = useNavigate();
 
   //Hooks
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  let inputUsuario;
-  let inputPassword;
+ 
   btnNav = document.querySelector('.btnLogin')
   //Obtenemos los datos que el usuario va escribiendo y los vamos gaurdando en los hooks
   const onHandleUsername = (e) => {
