@@ -220,53 +220,7 @@ export const ModificarMateriaPage = () => {
           <option >No existen Carreras</option>
         )}
       </select>
-      <label htmlFor="horario" className="form-label">
-          Id horario
-        </label>
-        <select
-          className={"form-select mySelect "}
-          id="id_horario"
-          aria-label="Default select example"
-          onChange={(e) => {
-            onHandleHora(e);
-          }}
-        >
-            <option value={mat.Id_Horario}>{mat.Hora_Inicio_Lunes + " - " + mat.Hora_Final_Lunes} </option>
 
-          {horarios.length >= 1 ? (
-            horarios.map((horario, index) => (
-              <option value={horario.Id_Horario} className={"opcion-" + index} key={index}>
-                {horario.Hora_Inicio_Lunes + " - " + horario.Hora_Final_Lunes}
-              </option>
-            ))
-          ) : (
-            <option >No existen horarios</option>
-          )}
-        </select>
-
-        <label htmlFor="aula" className="form-label">
-          Id Aula
-        </label>
-        <select
-          className={"form-select mySelect "}
-          id="id_aula"
-          aria-label="Default select example"
-          onChange={(e) => {
-            onHandleAula(e);
-          }}
-        >
-            <option value={mat.Id_Aula}>{mat.Aula} </option>
-
-          {aulas.length >= 1 ? (
-            aulas.map((aula, index) => (
-              <option value={aula.Id_Aula} className={"opcion-" + index} key={index}>
-                {aula.Nombre}
-              </option>
-            ))
-          ) : (
-            <option >No existen horarios</option>
-          )}
-        </select>
 
             {/*Nombre de la materia. */}
             <label htmlFor="" className="form-label">
@@ -296,19 +250,7 @@ export const ModificarMateriaPage = () => {
             {/*Hora de la materia */}
            
             {/*Aula donde se imparte la materia */}
-            <label htmlFor="cupo" className="form-label">
-          Cupo
-        </label>
-        <input
-          type="number"
-          name="cupo"
-          id="cupo"
-          onKeyPress={validarNumeros}
-          className="form-control"
-          defaultValue={mat.Cupo}
-
-          onChange={(e) => onHandleCupo(e)}
-        />
+           
         <label htmlFor="semestre" className="form-label">
           Semestre
         </label>
