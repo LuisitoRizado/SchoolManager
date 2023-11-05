@@ -66,7 +66,7 @@ export const LoginPage = () => {
               value="alumno"
               className="form-check-input"
             />
-            <label htmlFor="alumno" className="text-dark">Alumno</label>
+            <label htmlFor="alumno" className="text-dark">Alumno   </label>
 
             <input
               type="radio"
@@ -75,7 +75,7 @@ export const LoginPage = () => {
               value="empleado"
               className="form-check-input"
             />
-            <label htmlFor="empleado" className="text-dark">Administrador</label>
+            <label htmlFor="empleado" className="text-dark">Administrador    </label>
 
             <input
               type="radio"
@@ -90,14 +90,14 @@ export const LoginPage = () => {
           </div>
 
           <label htmlFor="username" className="mb-3 form-label text-dark">
-            Número de control
+            Usuario
           </label>
           <input
             type="number"
             name="username"
             onKeyPress={validarNumeros}
             className="mt-3 form-control form-control-lg"
-            placeholder="Número de control"
+            placeholder="Usuario"
             onChange={(e) => {
               onHandleUsername(e);
             }}
