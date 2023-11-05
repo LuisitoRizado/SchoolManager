@@ -53,6 +53,10 @@ export const AdministrarDocentePage = () => {
     })
 */
     //si no tiene hijos, eliminamos el registro
+    if(confirm("Seguro que quieres eliminar este docente?"))
+    {
+
+
     if(!tieneHijos){
       //eliminamos
       fetch('https://rest-api-production-a5bf.up.railway.app/deleteADocente/'+id_docente, { method: 'DELETE' })
@@ -69,6 +73,8 @@ export const AdministrarDocentePage = () => {
     else{
       confirm('No se puede eliminar, ya que tiene hijos')
     }
+  }
+
   }
   useEffect(() => {
    inputId = document.querySelector('#id_docente')
