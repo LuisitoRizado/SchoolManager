@@ -22,10 +22,13 @@ export const ModificarMateriaPage = () => {
   const [creditos, setCreditos] = useState()
   const [cupo, setCupo] = useState()
   const [semestre, setSemestre] = useState()
+  const [estatus, setEstatus] = useState()
+
   //peticiones
   const [aulas, setAulas] = useState([]);
   const [carreras, setCarreras] = useState([]);
   const [horarios, setHorarios] = useState([]);
+
 
 
   
@@ -46,6 +49,7 @@ export const ModificarMateriaPage = () => {
         setSemestre(data[0].Semestre)
         setCreditos(data[0].Creditos)
         setNombre(data[0].Materia)
+        setEstatus(data[0].Estatus)
       })
       .catch((err) => console.log(err));
 
@@ -106,6 +110,9 @@ export const ModificarMateriaPage = () => {
   const onHandleHorario = (e) => {
     setHorario(e.target.value);
   };
+  const onHandleEstatus = (e)=> {
+    setEstatus(e.target.value)
+  }
 
 
 
@@ -116,15 +123,12 @@ export const ModificarMateriaPage = () => {
     console.log('NUEVA MATERIA: ' + materia);
 
     //verificamos los campos
-    if(validarCampos(inputMateria, inputCarrera, inputAula, inputHora, inputCreditos, inputCupo, inputSemestre)){
+    if(validarCampos(inputMateria, inputCarrera,inputCreditos, inputSemestre)){
       console.log('VALIDADOS!')
       //Vamos a hacer la peticion de update
       console.log(nombre)
       console.log(carrera)
-      console.log(aula)
-      console.log(hora)
       console.log(creditos)
-      console.log(cupo)
       console.log(semestre)
       //hacemos la peticion fetch
       await fetch("https://rest-api-production-a5bf.up.railway.app/updateMat/" + id, {
@@ -135,12 +139,10 @@ export const ModificarMateriaPage = () => {
         },
         body: JSON.stringify({
           
-          ID_HORARIO: hora,
-          ID_AULA: aula,
           ID_CARRERA: carrera,
           MATERIA: nombre,
           CREDITOS: creditos,
-          CUPO: cupo,
+          ESTATUS:  estatus,
           SEMESTRE: semestre
         }),
       });
@@ -258,6 +260,16 @@ export const ModificarMateriaPage = () => {
 
           onChange={(e) => onHandleSemestre(e)}
         />
+        <label htmlFor="estatus" className="form-label">
+          Estatus
+        </label>
+        <select name="estatus" id="estatus" defaultValue={mat.Estatus}>
+        <option value={mat.Id_Estatus}>{mat.Estatus}</option>
+          <option value={1}>Activo</option>
+          <option value={2}>Inactivo</option>
+          <option value={3}>Pendiente</option>
+
+        </select>
             <button
               className="btn btn-danger m-2"
               
