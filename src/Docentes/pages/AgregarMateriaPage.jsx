@@ -444,7 +444,7 @@ let estaOcupada = false;
           name="idmateria"
           id="id_materia"
           className="form-control"
-          onBlur={() => comprobarSiExiste()}
+          //onBlur={() => comprobarSiExiste()}
           onKeyPress={validarNumeros}
           onChange={(e) => onHandleIdMateria(e)}
         />
