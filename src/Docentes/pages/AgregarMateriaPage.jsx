@@ -616,6 +616,7 @@ let estaOcupada = false;
                 </td>
                 <td>
                   <select name="estatus" id="estatus" disabled  className={"form-select  fila-" + index}>
+                    <option value={materia.Id_Estatus}>{materia.Estatus}</option>
                     <option value={1}>Activo</option>
                     <option value={2}>Inactivo</option>
                     <option value={3}>Pendiente</option>
