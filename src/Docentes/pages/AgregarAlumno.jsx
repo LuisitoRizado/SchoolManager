@@ -215,6 +215,7 @@ export const AgregarAlumno = () => {
         .then((data) => console.log("Alumno agregado: " + data));
 
       alert("Alumno agregado");
+      window.location.reload()
     }
   };
   //----------------------------------------------------------logica de modificacion
