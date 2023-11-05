@@ -452,7 +452,8 @@ let estaOcupada = false;
         <label htmlFor="carrera" className="form-label">
           Carrera
         </label>
-        <select
+        <select 
+        defaultValue={20}
           className={"form-select mySelect "}
           name='carrera'
           id="id_carreras"
@@ -483,7 +484,7 @@ let estaOcupada = false;
           id="estatus"
           aria-label="Default select example"
           onChange={(e) => onHandleEstatus(e)}
-
+          defaultValue={1}
         >
 
         <option value={1}>Activo</option>
