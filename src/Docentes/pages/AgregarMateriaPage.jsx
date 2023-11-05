@@ -13,7 +13,7 @@ let inputIdMateria,
   inputIdHorarioMostrar;
 export const AgregarMateriaPage = () => {
   const [ID_MATERIA, setID_MATERIA] = useState(0);
-  const [Id_Carrera, setId_Carrera] = useState();
+  const [Id_Carrera, setId_Carrera] = useState(20);
   const [HORARIO, setHorario] = useState();
   const [AULA, setAula] = useState();
   const [MATERIA, setMateria] = useState();
@@ -23,7 +23,7 @@ export const AgregarMateriaPage = () => {
   const [Id_Docente, setId_Docente] = useState();
   const [aulas, setAulas] = useState([]);
   const [carreras, setCarreras] = useState([]);
-  const [estatus, setEstatus] = useState();
+  const [estatus, setEstatus] = useState(1);
 
   //hook para cargar todas las materias existentes
   const [materias, setMaterias] = useState([]);
