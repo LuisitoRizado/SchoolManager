@@ -43,9 +43,6 @@ export const ModificarMateriaPage = () => {
          setMateria(data.slice(0,1))
         //obtener todos los valores (LISTO)
         setCarrera(data[0].Id_Carrera);
-        setAula(data[0].Id_Aula);
-        setHora(data[0].Id_Horario)
-        setCupo(data[0].Cupo)
         setSemestre(data[0].Semestre)
         setCreditos(data[0].Creditos)
         setNombre(data[0].Materia)
@@ -53,7 +50,7 @@ export const ModificarMateriaPage = () => {
       .catch((err) => console.log(err));
 
       //peticiones
-      const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
+      /*const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
       await fetch(url2)
         .then((res) => res.json())
         .then((data) => {
@@ -64,7 +61,7 @@ export const ModificarMateriaPage = () => {
       await fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
         .then((res) => res.json())
         .then((data) => setAulas(data));
-  
+  */
       //traer todas las carre
       await fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
         .then((res) => res.json())
