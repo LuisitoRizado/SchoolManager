@@ -31,7 +31,7 @@ export const ModificarMateriaPage = () => {
   
   //FUNCIONES PARA LA FUNCIONALIDAD DE LA PAGINA ESTAS PUEDEN SER IMPORTADAS O NO
   const fetchUser = async () => {
-    const URL = "https://rest-api-production-a5bf.up.railway.app/getMateria/" + id;
+    const URL = "https://rest-api-production-a5bf.up.railway.app/getJusAtMateria/" + id;
     //Hacemos la peticion
     await fetch(URL)
       .then((res) => res.json())
