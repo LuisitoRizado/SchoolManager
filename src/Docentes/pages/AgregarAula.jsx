@@ -359,7 +359,7 @@ export const AgregarAula = () => {
         disabled
         id='edificio'
       >
- 
+        <option value={aula.Campus}>{aula.Campus}</option>
             <option   >
             Boilot
             </option>
