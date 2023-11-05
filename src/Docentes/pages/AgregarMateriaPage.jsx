@@ -148,17 +148,17 @@ let estaOcupada = false;
       .then((res) => res.json())
       .then((data) => setMaterias(data));
 
-    const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
-    fetch(url2)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setHorarios(data);
-      });
+   // const url2 = "https://rest-api-production-a5bf.up.railway.app/getAllHorarios";
+    //fetch(url2)
+     // .then((res) => res.json())
+     // .then((data) => {
+      //  console.log(data);
+       // setHorarios(data);
+      //});
     //pedir todas las maulas
-    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
-      .then((res) => res.json())
-      .then((data) => setAulas(data));
+   // fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
+      //.then((res) => res.json())
+      //.then((data) => setAulas(data));
 
     //traer todas las carreas
     fetch("https://rest-api-production-a5bf.up.railway.app/getAllCarreras")
@@ -166,13 +166,13 @@ let estaOcupada = false;
       .then((data) => setCarreras(data));
 
     //traer todas las auals
-    fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
-      .then((res) => res.json())
-      .then((data) => setAulas(data));
+    //fetch("https://rest-api-production-a5bf.up.railway.app/getAllAulas")
+     // .then((res) => res.json())
+      //.then((data) => setAulas(data));
 
-    fetch("https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas")
-      .then((res) => res.json())
-      .then((data) => setmMteriasAsignadas(data));
+    //fetch("https://rest-api-production-a5bf.up.railway.app/getMaterias_asigandas")
+     // .then((res) => res.json())
+     // .then((data) => setmMteriasAsignadas(data));
   }, []);
 
   
@@ -614,7 +614,7 @@ let estaOcupada = false;
                   </select>
                 </td>
                 <td>
-                  <select name="estatus" id="estatus">
+                  <select name="estatus" id="estatus" disabled>
                     <option value={1}>Activo</option>
                     <option value={2}>Inactivo</option>
                     <option value={3}>Pendiente</option>
