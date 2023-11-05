@@ -156,11 +156,8 @@ export const ModificarMateriaPage = () => {
     fetchUser();
     inputProfesor = document.querySelector('#profesor')
     inputCarrera = document.querySelector('#id_carreras')
-    inputHora = document.querySelector('#id_horario')
-    inputAula = document.querySelector('#id_aula')
     inputMateria = document.querySelector('#materia')
     inputCreditos = document.querySelector('#creditos')
-    inputCupo = document.querySelector('#cupo')
     inputSemestre = document.querySelector('#semestre')
   
   }, []);
@@ -168,11 +165,8 @@ export const ModificarMateriaPage = () => {
   useEffect(() => {
     inputProfesor = document.querySelector('#profesor')
     inputCarrera = document.querySelector('#id_carreras')
-    inputHora = document.querySelector('#id_horario')
-    inputAula = document.querySelector('#id_aula')
     inputMateria = document.querySelector('#materia')
     inputCreditos = document.querySelector('#creditos')
-    inputCupo = document.querySelector('#cupo')
     inputSemestre = document.querySelector('#semestre')
   }, [profesor, hora,aula,carrera, materia,cupo,semestre,creditos]);
   
