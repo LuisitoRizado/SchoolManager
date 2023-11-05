@@ -135,7 +135,7 @@ export const AdministrarMaterias = () => {
                 
                 to={{
                   pathname: 'modificarMateria',
-                  search: '?id='+materia.ID_MATERIA
+                  search: '?id='+materia.Id_Materia
                 }}
               >
                 Modificar
