@@ -422,6 +422,7 @@ export const AgregarAlumno = () => {
                      onHandleCarrera(e)
                       
                     }}
+                    defaultValue={20}
                   >
                       
                     {carreras.length >= 1 ? (
