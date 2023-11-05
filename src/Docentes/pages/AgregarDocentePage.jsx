@@ -113,7 +113,7 @@ export const AgregarDocentePage = () => {
         }),
       })
      
-
+      alert("Docente agregado con exito!")
       //window.location.reload();
     } else {
       console.log("faltan datos");
