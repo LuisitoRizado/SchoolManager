@@ -318,6 +318,7 @@ export const AgregarAlumno = () => {
       const inputPeriodo = inputs[4];
       const inputCreditos = inputs[5];
       const inputEspecialidad = inputs[6];
+      
 
       //hacemos la peticion
       if(validarCampos(inputNombre,inputAPaterno, inputAMaterno, inputSemestre, inputPeriodo, inputCreditos, inputEspecialidad))
@@ -438,6 +439,7 @@ export const AgregarAlumno = () => {
                   </select>
                   <label htmlFor="estatus">Estatus</label>
                   <select name="estatus" id="estatus"
+                  defaultValue={1}
                   onChange={(e) => {
                     onHandleEstatus(e)
                      
