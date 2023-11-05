@@ -75,7 +75,18 @@ export const LoginPage = () => {
               value="empleado"
               className="form-check-input"
             />
-            <label htmlFor="empleado" className="text-dark">Empleado</label>
+            <label htmlFor="empleado" className="text-dark">Administrador</label>
+
+            <input
+              type="radio"
+              id="docente"
+              name="fav_language"
+              value="docente"
+              className="form-check-input"
+            />
+
+            <label htmlFor="empleado" className="text-dark">Docente</label>
+
           </div>
 
           <label htmlFor="username" className="mb-3 form-label text-dark">
