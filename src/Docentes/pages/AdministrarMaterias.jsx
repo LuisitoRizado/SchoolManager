@@ -55,12 +55,12 @@ export const AdministrarMaterias = () => {
   const eliminarMateria = async (id_materia) => {
     let tieneHijos = false;
 
-     todasLasMaterias.forEach((materia) => {
-      if (materia.Id_Materia === id_materia) {
-        tieneHijos = true;
-      }
-      console.log(materia.Id_Materia + " === " + id_materia);
-    });
+    // todasLasMaterias.forEach((materia) => {
+      //if (materia.Id_Materia === id_materia) {
+      //  tieneHijos = true;
+     // }
+    //  console.log(materia.Id_Materia + " === " + id_materia);
+ //   });
 
     if (!tieneHijos) {
       //borramos la materia
