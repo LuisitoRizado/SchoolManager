@@ -3,7 +3,7 @@ import "../fetchPetitions/loginPetition";
 import { useState } from "react";
 import { loginPetition, loginPetitionEmpleado } from "../fetchPetitions/loginPetition";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { validarNumeros } from "../Docentes/pages/validarCampos";
+import { validarCampos, validarNumeros } from "../Docentes/pages/validarCampos";
 
 //Esta será nuestra pagina de inicio , la cual deberá realizar una peticion a la api comparando si el
 //Número de control y la contraseña son correctos
@@ -16,6 +16,8 @@ export const LoginPage = () => {
   //Hooks
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  let inputUsuario;
+  let inputPassword;
   btnNav = document.querySelector('.btnLogin')
   //Obtenemos los datos que el usuario va escribiendo y los vamos gaurdando en los hooks
   const onHandleUsername = (e) => {
@@ -34,15 +36,29 @@ export const LoginPage = () => {
 
 
   const onLogoIn = () => {
-    navigate("/user/inicio/?usuario="+username, {
-      replace: true,
-    });
+    if(validarCampos(inputUsuario,inputPassword))
+    {
+      navigate("/user/inicio/?usuario="+username, {
+        replace: true,
+      });
+    }
+ 
   };
   const onLogInEmpleado = () => {
-    navigate("/empleado/inicio/?usuario="+username, {
-      replace: true,
-    });
+    if(validarCampos(inputUsuario,inputPassword))
+    {
+      navigate("/empleado/inicio/?usuario="+username, {
+        replace: true,
+      });
+    }
+    
   };
+
+  useEffect(() => {
+    inputUsuario = document.querySelector('#usuario')
+    inputPassword = document.querySelector('#password')
+    
+   }, [])
   //Realizamos las peticions
   //loginPetition(username,password);
   return (
@@ -94,6 +110,7 @@ export const LoginPage = () => {
           </label>
           <input
             type="number"
+            id="usuario"
             name="username"
             onKeyPress={validarNumeros}
             className="mt-3 form-control form-control-lg"
@@ -109,6 +126,7 @@ export const LoginPage = () => {
           <input
             type="password"
             name="password"
+            id="password"
             className="mt-3 form-control"
             placeholder="******"
             onChange={(e) => {
