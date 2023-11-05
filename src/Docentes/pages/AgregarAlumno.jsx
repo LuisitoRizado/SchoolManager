@@ -410,7 +410,7 @@ export const AgregarAlumno = () => {
 
           id="Ncontrol"
           className="form-control"
-          onBlur={() => comprobarSiExiste()}
+         // onBlur={() => comprobarSiExiste()}
           onChange={(event) => onHandleNcontrol(event)}
         />
         <h4 className="mt-3">Carrera</h4>
