@@ -65,7 +65,7 @@ export const AdministracionDocentePage = () => {
       inputAMaterno = document.querySelector('#ap_materno');
         //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
         //Todo esto es lo introducido en los campos de texto del formulario
-      if(validarCampos(inputNombre,inputAPaterno,inputAMaterno)){
+      if(validarCampos(inputNombre,inputAPaterno,inputAMaterno, inputCorreo,inputEstatus)){
 
         fetch("https://rest-api-production-a5bf.up.railway.app/updateDocente/" + id, {
           method: "PUT",
