@@ -53,7 +53,7 @@ export const ModificarAulaPage = () => {
       },
       body: JSON.stringify({
         "NOMBRE": aula,
-        "EDIFICIO": edificio,
+        "CAMPUS": edificio,
       }),
     });
     confirm('Aula actualizada!')
