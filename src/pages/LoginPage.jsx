@@ -37,21 +37,19 @@ export const LoginPage = () => {
 
 
   const onLogoIn = () => {
-    if(validarCampos(inputUsuario,inputPassword))
-    {
+    
       navigate("/user/inicio/?usuario="+username, {
         replace: true,
       });
-    }
+    
  
   };
   const onLogInEmpleado = () => {
-    if(validarCampos(inputUsuario,inputPassword))
-    {
+    
       navigate("/empleado/inicio/?usuario="+username, {
         replace: true,
       });
-    }
+    
     
   };
 
@@ -137,6 +135,8 @@ export const LoginPage = () => {
           <NavLink
             className="btn btn-primary mt-4 btnLogin"
             onClick={async() => {
+    if(validarCampos(inputUsuario,inputPassword))
+{
               if (document.querySelector("#alumno").checked) {
                 //loginPetition(username, password);
                 const url = "https://rest-api-production-a5bf.up.railway.app/getLogin/" + username + "/" + password;
@@ -180,6 +180,7 @@ export const LoginPage = () => {
       
       if(Array.isArray(data)){
       //window.location.href = "empleado/inicio/?usuario=" + usuario;
+
       onLogInEmpleado()
       }
     })
@@ -193,7 +194,7 @@ export const LoginPage = () => {
       document.querySelector(".errorContainer").innerHTML = mensajeErorr; */
     });
               }
-            }}
+            }}}
           >
             Iniciar sesión
           </NavLink>
