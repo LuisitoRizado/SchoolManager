@@ -208,7 +208,7 @@ export const ModificarMateriaPage = () => {
             onHandleCarrera(e);
           }}
         >
-            <option value={mat.Id_Carrera}>{mat.Nombre_Carrera} </option>
+            <option value={mat.Id_Carrera}>{mat.Carrera} </option>
 
         {carreras.length >= 1 ? (
           carreras.map((carrera, index) => (
