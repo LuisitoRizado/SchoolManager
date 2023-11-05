@@ -185,6 +185,7 @@ export const AdministracionDocentePage = () => {
               onChange= {(e)=>onHandleESTATUS(e)}
             
             >
+              <option value={doc.ID_ESTATUS}>{doc.ESTATUS}</option>
               <option value={1}>Activo</option>
               <option value={2}>Inactivo</option>
               <option value={3}>Pendiente</option>
