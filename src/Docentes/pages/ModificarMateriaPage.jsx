@@ -263,7 +263,9 @@ export const ModificarMateriaPage = () => {
         <label htmlFor="estatus" className="form-label">
           Estatus
         </label>
-        <select name="estatus" id="estatus" defaultValue={mat.Estatus} className={"form-select mySelect "}>
+        <select name="estatus" id="estatus" defaultValue={mat.Estatus} className={"form-select mySelect "} 
+         onChange={(e) => onHandleEstatus(e)}
+        >
         <option value={mat.Id_Estatus}>{mat.Estatus}</option>
           <option value={1}>Activo</option>
           <option value={2}>Inactivo</option>
