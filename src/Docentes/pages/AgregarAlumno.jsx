@@ -16,7 +16,7 @@ export const AgregarAlumno = () => {
 
   //Hacemos un hook para cada atributo del alumno
   const [Ncontrol, setNcontrol] = useState(0);
-  const [Id_Carrera, setId_Carrera] = useState();
+  const [Id_Carrera, setId_Carrera] = useState(20);
   const [Nombre, setNombre] = useState();
   const [Ap_Paterno, setAp_Paterno] = useState();
   const [Ap_Matern, setAp_Matern] = useState();
@@ -26,7 +26,7 @@ export const AgregarAlumno = () => {
   const [Especialidad, setEspecialidad] = useState();
   const [Contrasena, setContrasena] = useState();
   const [alumno, setAlumno] = useState([]);
-  const [Estatus, setEstatus] = useState();
+  const [Estatus, setEstatus] = useState(1);
 
   const [carreras, setCarreras] = useState([])
 
