@@ -111,13 +111,10 @@ export const AdministrarMaterias = () => {
           <tr className="bg-body-dark">
             <th scope="col">Id_Materia</th>
             <th scope="col">Materia</th>
-            <th scope="col">Hora inicio</th>
-            <th scope="col">Hora fin</th>
-            <th scope="col">Aula</th>
-            <th scope="col">Carrera</th>
             <th scope="col">Creditos</th>
-            <th scope="col">Cupo</th>
             <th scope="col">Semestre</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Carrera</th>
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
           </tr>
@@ -126,17 +123,12 @@ export const AdministrarMaterias = () => {
           {materias.length >= 1 ? (
             materias.map((materia) => (
               <tr key={materia}>
-                <td>{materia.ID_MATERIA}</td>
-                <td>{materia.MATERIA}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
-                <td>{materia.HORA_FINAL_LUNES}</td>
-                <td>{materia.NOMBRE}</td>
-                <td>{materia.Nombre}</td>
-                <td>{materia.CREDITOS}</td>
-                <td>{materia.CUPO}</td>
-                <td>{materia.SEMESTRE}</td>
-
-
+                <td>{materia.Id_Materia}</td>
+                <td>{materia.Materia}</td>
+                <td>{materia.Creditos}</td>
+                <td>{materia.Semestre}</td>
+                <td>{materia.Estatus}</td>
+                <td>{materia.Carrera}</td>
                 <td>
                 <NavLink
                 className={'btn btn-warning'}
