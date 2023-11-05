@@ -40,7 +40,7 @@ export const ModificarMateriaPage = () => {
         
         console.log(data);
         console.log('hola')
-         setMateria(data.slice(0,1))
+         setMateria(data)
         //obtener todos los valores (LISTO)
         setCarrera(data[0].Id_Carrera);
         setSemestre(data[0].Semestre)
