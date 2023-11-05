@@ -1,6 +1,6 @@
 import "../styles/loginPage.css";
 import "../fetchPetitions/loginPetition";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { loginPetition, loginPetitionEmpleado } from "../fetchPetitions/loginPetition";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { validarCampos, validarNumeros } from "../Docentes/pages/validarCampos";
