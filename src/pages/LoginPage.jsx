@@ -66,7 +66,7 @@ export const LoginPage = () => {
               value="alumno"
               className="form-check-input"
             />
-            <label htmlFor="alumno" className="text-dark">Alumno   </label>
+            <label htmlFor="alumno" className="text-dark mx-1">Alumno   </label>
 
             <input
               type="radio"
@@ -75,7 +75,7 @@ export const LoginPage = () => {
               value="empleado"
               className="form-check-input"
             />
-            <label htmlFor="empleado" className="text-dark">Administrador    </label>
+            <label htmlFor="empleado" className="text-dark mx-1">Administrador    </label>
 
             <input
               type="radio"
