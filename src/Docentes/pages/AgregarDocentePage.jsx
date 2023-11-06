@@ -95,7 +95,7 @@ export const AgregarDocentePage = () => {
     console.log(inputAPaterno);
     console.log(inputAMaterno);
 
-    if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno, inputEstado, inputCorreo)) {
+    if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
       alert("Datos validados")
       const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
        await fetch(url, {
