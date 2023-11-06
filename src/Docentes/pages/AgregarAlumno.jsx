@@ -183,8 +183,6 @@ export const AgregarAlumno = () => {
   };
 
   const agregarAlumno = async () => {
-    alert("campos validados xd")
-
     const url = "https://rest-api-production-a5bf.up.railway.app/addAlumno";
     if (
       validarCampos(
@@ -192,9 +190,10 @@ export const AgregarAlumno = () => {
         inputNombre,
         inputAPaterno,
         inputAPaterno,
+        inputSemestre,
+        inputContrasena
       )
     ) {
-      alert("campos validados xd")
       await fetch(url, {
         method: "POST",
         headers: {
