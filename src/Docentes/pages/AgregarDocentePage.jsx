@@ -23,7 +23,7 @@ export const AgregarDocentePage = () => {
   const [search, setSearch] = useState("")
   const [filteredDocentes, setFilteredDocentes] = useState([]);
   const [Correo, setCorreo] = useState();
-  const [Estatus, setEstatus] = useState(20);
+  const [Estatus, setEstatus] = useState(2);
 
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
 
@@ -398,7 +398,7 @@ export const AgregarDocentePage = () => {
           name="id_docente"
           className="form-control"
           onKeyPress={validarNumeros}
-          onBlur={() => comprobarSiExiste()}
+          //onBlur={() => comprobarSiExiste()}
           onChange={(event) => onHandleId(event)}
         />
 
