@@ -23,7 +23,7 @@ export const AgregarDocentePage = () => {
   const [search, setSearch] = useState("")
   const [filteredDocentes, setFilteredDocentes] = useState([]);
   const [Correo, setCorreo] = useState();
-  const [Estatus, setEstatus] = useState();
+  const [Estatus, setEstatus] = useState(20);
 
   const [materias_asignadas, setmaterias_Asignadas] = useState([])
 
@@ -115,7 +115,7 @@ export const AgregarDocentePage = () => {
       })
      
       alert("Docente agregado con exito!")
-      //window.location.reload();
+      window.location.reload();
     } else {
       console.log("faltan datos");
     }
@@ -442,8 +442,6 @@ export const AgregarDocentePage = () => {
           onChange={(event) => onHandleEstatus(event)}
           className={"form-select"}
           defaultValue={1}
-          
-        
         >
           <option value={1}>Activo</option>
           <option value={2}>Inactivo</option>
