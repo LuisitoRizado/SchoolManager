@@ -194,6 +194,7 @@ export const AgregarAlumno = () => {
         inputContrasena
       )
     ) {
+      alert("campos validados xd")
       await fetch(url, {
         method: "POST",
         headers: {
