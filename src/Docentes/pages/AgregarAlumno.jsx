@@ -192,8 +192,6 @@ export const AgregarAlumno = () => {
         inputNombre,
         inputAPaterno,
         inputAPaterno,
-        inputSemestre,
-        inputContrasena
       )
     ) {
       alert("campos validados xd")
