@@ -526,7 +526,7 @@ export const AgregarAlumno = () => {
             <th scope="col">Semestre</th>
             <th scope="col">Estatus</th>
             <th scope="col">Carrera</th>           
-            <th scope="col">Modificar</th>
+            {/*<th scope="col">Modificar</th>*/}
             <th>Eliminar</th>
           </tr>
         </thead>
