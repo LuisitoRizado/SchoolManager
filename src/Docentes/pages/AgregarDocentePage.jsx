@@ -534,12 +534,17 @@ export const AgregarDocentePage = () => {
                 </td>
                 <td className={`btn-${index} form-control`}>
                 
-                  <a
-                    onClick={() => habilitarModificacion(index)}
-                    className="btn btn-warning modificarButton"
-                  >
-                    Modificar
-                  </a>
+                <NavLink
+                className={'btn btn-warning'}
+                
+                
+                to={{
+                  pathname: 'modificarDocente' ,
+                  search: '?id='+docente.Id_Docente
+                }}
+              >
+                Modificar
+              </NavLink>
                 </td>
                 <td>
                   
