@@ -66,14 +66,13 @@ export const ModificarAulaPage = () => {
     obtenerAula();
     inputNombre = document.querySelector('#aula')
     inputEdificio = document.querySelector('#edificio')
-    inputCapacidad = document.querySelector('#capacidad')
     }, [])
+  
 
     useEffect(() => {
       inputNombre = document.querySelector('#aula')
       inputEdificio = document.querySelector('#edificio')
-      inputCapacidad = document.querySelector('#capacidad')
-      }, [aula, edificio, capacidad])
+      }, [aula, edificio])
 
     
 
