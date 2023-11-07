@@ -590,15 +590,16 @@ export const AgregarAlumno = () => {
                 </select>
               </td>
               
-                <td className={`btn-${index} form-control`}>
-                  {/*<a
+                {/*<td className={`btn-${index} form-control`}>
+                  <a
                     onClick={() => habilitarModificacion(index)}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
                   </a>
-            */}
+            
                 </td>
+                */}
                 <td>
                   <button
                     className="btn btn-danger"
