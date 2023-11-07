@@ -371,8 +371,8 @@ export const AgregarAula = () => {
                 </td>
                
                 <td className={`btn-${index} form-control`}>
-                  <a
-                    onClick={() => habilitarModificacion(index)}
+                <a
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/aulas/administrarAula/modificarAula?id=" + aula.Id_Aula}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
