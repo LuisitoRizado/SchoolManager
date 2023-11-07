@@ -40,12 +40,12 @@ export const ModificarAulaPage = () => {
       });
   };
 
-  const guardarDatos = (id, aula, edificio) => {
+  const guardarDatos = async (id, aula, edificio) => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
 
     if(validarCampos(inputNombre, inputEdificio)){
-    fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
+    await fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
       method: "PUT",
       headers: {
         'Accept': "application/json",
