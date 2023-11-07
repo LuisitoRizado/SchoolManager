@@ -645,7 +645,7 @@ let estaOcupada = false;
                 <td className={"btn-" + index}>
                   <a
                     className={"btn btn-warning modificarButton"}
-                    onClick={() => habilitarModificacion(index)}
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/materias/administrarMaterias/modificarMateria?id="+materia.Id_Materia}
                   >
                     Modificar
                   </a>
