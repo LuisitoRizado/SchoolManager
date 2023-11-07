@@ -247,9 +247,8 @@ export const AgregarAlumno = () => {
     valoresIniciales.push(inputs[3].value);
     valoresIniciales.push(inputs[4].value);
     valoresIniciales.push(inputs[5].value);
-    valoresIniciales.push(inputs[6].value);
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       console.log(valoresIniciales[i]);
     }
 
@@ -279,7 +278,6 @@ export const AgregarAlumno = () => {
       inputs[3].value = valoresIniciales[3];
       inputs[4].value = valoresIniciales[4];
       inputs[5].value = valoresIniciales[5];
-      inputs[6].value = valoresIniciales[6];
 
 
       inputs.forEach((input, index) => {
@@ -306,7 +304,6 @@ export const AgregarAlumno = () => {
       const semestre = inputs[3].value;
       const periodo = inputs[4].value;
       const creditos = inputs[5].value;
-      const especialidad = inputs[6].value;
 
       //recopilamos los inputs
       const inputNombre = inputs[0];
@@ -315,7 +312,6 @@ export const AgregarAlumno = () => {
       const inputSemestre = inputs[3];
       const inputPeriodo = inputs[4];
       const inputCreditos = inputs[5];
-      const inputEspecialidad = inputs[6];
       
 
       //hacemos la peticion
