@@ -591,12 +591,13 @@ export const AgregarAlumno = () => {
               </td>
               
                 <td className={`btn-${index} form-control`}>
-                  <a
+                  {/*<a
                     onClick={() => habilitarModificacion(index)}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
                   </a>
+            */}
                 </td>
                 <td>
                   <button
