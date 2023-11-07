@@ -248,9 +248,8 @@ export const AgregarAlumno = () => {
     valoresIniciales.push(inputs[4].value);
     valoresIniciales.push(inputs[5].value);
     valoresIniciales.push(inputs[6].value);
-    valoresIniciales.push(inputs[7].value);
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 7; i++) {
       console.log(valoresIniciales[i]);
     }
 
@@ -281,7 +280,6 @@ export const AgregarAlumno = () => {
       inputs[4].value = valoresIniciales[4];
       inputs[5].value = valoresIniciales[5];
       inputs[6].value = valoresIniciales[6];
-      inputs[7].value = valoresIniciales[7];
 
 
       inputs.forEach((input, index) => {
