@@ -534,17 +534,12 @@ export const AgregarDocentePage = () => {
                 </td>
                 <td className={`btn-${index} form-control`}>
                 
-                <NavLink
-                className={'btn btn-warning'}
-                
-                
-                to={{
-                  pathname: 'modificarDocente' ,
-                  search: '?id='+docente.Id_Docente
-                }}
-              >
-                Modificar
-              </NavLink>
+                  <a
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/docentes/administrarDocente/modificarDocente?id="+docente.Id_Docente}
+                    className="btn btn-warning modificarButton"
+                  >
+                    Modificar
+                  </a>
                 </td>
                 <td>
                   
