@@ -44,7 +44,7 @@ export const ModificarAulaPage = () => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
 
-    if(validarCampos(inputNombre, inputEdificio)){
+    //if(validarCampos(inputNombre, inputEdificio)){
     await fetch("https://rest-api-production-a5bf.up.railway.app/updateAula/" + id, {
       method: "PUT",
       headers: {
@@ -58,7 +58,7 @@ export const ModificarAulaPage = () => {
     });
     confirm('Aula actualizada!')
     window.location.reload();
-  }
+ //}
   };
 
    //Para los datos
@@ -116,7 +116,7 @@ export const ModificarAulaPage = () => {
             </label>
             <select name="edificio" id="edificio" onChange={(e) => onHandleEdificio(e)}     className="form-select">
               <option value={aul.Campus}>{aul.Campus}</option>
-              <option value="Boilot">Principal</option>
+              <option value="Principal">Principal</option>
               <option value="Boilot">Boilot</option>
             </select>
            
