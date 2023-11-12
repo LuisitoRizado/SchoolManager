@@ -41,7 +41,7 @@ export const MateriasPage = () => {
         <table className="table table-bordered text-center">
           <thead>
             <tr className="bg-body-secondary">
-              <th scope="col">Id materia</th>
+              <th scope="col">Clave Materia</th>
               <th scope="col">Materia</th>
               <th scope="col">Cupo</th>
               <th scope="col">Créditos</th>
