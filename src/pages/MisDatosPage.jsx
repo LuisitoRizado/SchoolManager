@@ -65,7 +65,6 @@ export const MisDatos = () => {
             <p><kbd className='bg-danger'>Estatus:</kbd>{alum.Estado}</p>
             <p><kbd className='bg-danger'>Semestre:</kbd> {alum.Semestre} </p>
             <p><kbd className='bg-danger'>Carrera:</kbd>{alum.Carrera} </p>
-            <p><kbd className='bg-danger'>Especialidad:</kbd> {alum.Especialidad }</p>
         </div>
           )})
         }

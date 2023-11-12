@@ -54,7 +54,6 @@ export const MateriasPage = () => {
                 <tr key={index}>
                   <td>{materia.Id_Materia}</td>
                   <td>{materia.Materia}</td>
-                  <td>{materia.Cupo}</td>
                   <td>{materia.Creditos}</td>
                   <td>{materia.Semestre}</td>
                 </tr>
