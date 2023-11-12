@@ -57,12 +57,14 @@ export const MisDatos = () => {
             <h4 className="text-primary">Estudiante</h4>
             
             <h3 className='bg-dark text-white'>Datos generales</h3>
-            <p><kbd className='bg-danger'>Nombre :</kbd>{alum.Nombre} {alum.Ap_Paterno} {alum.Ap_Materno} </p>
+            <p><kbd className='bg-danger'>Nombre :</kbd>{alum.Nombre} </p>
+            <p><kbd className='bg-danger'>Apellido Paterno :</kbd>{alum.Ap_Materno} </p>
+            <p><kbd className='bg-danger'>Apellido Materno :</kbd>:{alum.Ap_Materno}</p>
             <h3 className='bg-dark text-white'>Información escolar</h3>
             <p><kbd className='bg-danger'>Número control:</kbd> {alum.NControl} </p>
-            <p><kbd className='bg-danger'>Estatus:</kbd>ACTIVO</p>
+            <p><kbd className='bg-danger'>Estatus:</kbd>{alum.EstadoAlumno}</p>
             <p><kbd className='bg-danger'>Semestre:</kbd> {alum.Semestre} </p>
-            <p><kbd className='bg-danger'>Carrera:</kbd>{alum.Id_Carrera} </p>
+            <p><kbd className='bg-danger'>Carrera:</kbd>{alum.Carrera} </p>
             <p><kbd className='bg-danger'>Especialidad:</kbd> {alum.Especialidad }</p>
         </div>
           )})
