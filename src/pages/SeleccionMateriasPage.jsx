@@ -265,7 +265,6 @@ export const SeleccionMateriasPage = () => {
           <tr>
             <th scope="col">Id Materia</th>
             <th scope="col">Materia</th>
-            <th scope="col">Cupo</th>
             <th scope="col">Créditos</th>
             <th scope="col">Semestre</th>
 
