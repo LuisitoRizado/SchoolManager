@@ -74,50 +74,50 @@ export const EnCursoPage = () => {
               <td>
               <div className=" materia shadow" >
               <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.HORA_INICIO_LUNES} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
+                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Hora_Inicio} </h5>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Nombre_Materia}</h6>
+                <p className="card-text">Aula: {carga.Nombre_Aula} </p>
+                <p>Profesor: {carga.Nombre_Docente}</p>
                </div>
             </div>
             </td>
             <td>
               <div className=" materia shadow" >
               <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.HORA_INICIO_LUNES} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
+              <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Hora_Inicio} </h5>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Nombre_Materia}</h6>
+                <p className="card-text">Aula: {carga.Nombre_Aula} </p>
+                <p>Profesor: {carga.Nombre_Docente}</p>
                </div>
             </div>
             </td>
             <td>
               <div className=" materia shadow" >
               <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.HORA_INICIO_LUNES} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
+              <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Hora_Inicio} </h5>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Nombre_Materia}</h6>
+                <p className="card-text">Aula: {carga.Nombre_Aula} </p>
+                <p>Profesor: {carga.Nombre_Docente}</p>
                </div>
             </div>
             </td>
             <td>
               <div className=" materia shadow" >
               <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.HORA_INICIO_LUNES} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
+              <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Hora_Inicio} </h5>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Nombre_Materia}</h6>
+                <p className="card-text">Aula: {carga.Nombre_Aula} </p>
+                <p>Profesor: {carga.Nombre_Docente}</p>
                </div>
             </div>
             </td>
             <td>
               <div className=" materia shadow" >
               <div className="card-body">
-                <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i>{carga.HORA_INICIO_LUNES} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.MATERIA}</h6>
-                <p className="card-text">Aula: {carga.AULA} </p>
-                <p>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</p>
+              <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Hora_Inicio} </h5>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Nombre_Materia}</h6>
+                <p className="card-text">Aula: {carga.Nombre_Aula} </p>
+                <p>Profesor: {carga.Nombre_Docente}</p>
                </div>
             </div>
             </td>
