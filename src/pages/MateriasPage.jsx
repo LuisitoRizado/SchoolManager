@@ -43,7 +43,6 @@ export const MateriasPage = () => {
             <tr className="bg-body-secondary">
               <th scope="col">Clave Materia</th>
               <th scope="col">Materia</th>
-              <th scope="col">Cupo</th>
               <th scope="col">Créditos</th>
               <th scope="col">Semestre</th>
             </tr>
