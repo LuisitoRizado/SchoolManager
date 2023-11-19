@@ -57,7 +57,7 @@ export const MateriasPage = () => {
                   <td>{materia.Semestre}</td>
                 </tr>
               );
-            })):(<p>No existen materias</p>)}
+            })):(<p>No existen materias para este semestre y carrera.</p>)}
           </tbody>
         </table>
       </div>
