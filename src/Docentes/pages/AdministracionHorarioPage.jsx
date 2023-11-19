@@ -115,8 +115,8 @@ export const AdministracionHorarioPage = () => {
               horarios.map((horario) => (
                 <tr key={horario}>
                   <td>{horario.Id_Horario}</td>
-                  <td>{horario.Hora_Inicio_Lunes}</td>
-                  <td>{horario.Hora_Final_Lunes}</td>
+                  <td>{horario.Hora_Inicio}</td>
+                  <td>{horario.Hora_Final}</td>
                   <td>
                   <NavLink
                 className={'btn btn-warning'}
