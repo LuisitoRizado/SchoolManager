@@ -54,10 +54,7 @@ export const ReinscripcionPage = () => {
     
     <div className='documentosDiv row'>
     <div className="card m-3 col-md-5 shadow">
-<div className="row g-0">
 
-
-</div>
 </div>
 <div className="card m-3 col-md-5 shadow">
 <div className="row g-0">
