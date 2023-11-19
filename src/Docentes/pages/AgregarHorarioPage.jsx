@@ -227,6 +227,7 @@ export const AgregarHorarioPage = () => {
 
     if (!tieneHijos) {
       //borramos la materia
+      if(confirm("Estas seguro que quieres eliminar este horario?"))
       fetch("https://rest-api-production-a5bf.up.railway.app/deleteHorario/" + id_horario, { method: "DELETE" })
         .then((response) => {
           if (response.ok) {
