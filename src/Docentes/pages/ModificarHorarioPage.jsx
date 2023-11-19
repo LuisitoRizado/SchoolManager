@@ -47,8 +47,8 @@ export const ModificarHorarioPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          HORA_INICIO_LUNES: hora_inicio,
-          HORA_FINAL_LUNES: hora_final,
+          Hora_Inicio: hora_inicio,
+          Hora_Final: hora_final,
         }),
       });
       confirm('Cambios realizados!')
@@ -100,7 +100,7 @@ export const ModificarHorarioPage = () => {
           className="form-select"
           aria-label="Default select example"
           id="hora_inicio"
-          defaultValue={hora.Hora_Inicio_Lunes}
+          defaultValue={hora.Hora_Inicio}
           onChange={(event) => onHandleHora_Inicio(event)}
         >
           <option value="" >{hora.Hora_Inicio_Lunes}</option>
@@ -127,7 +127,7 @@ export const ModificarHorarioPage = () => {
           className="form-select"
           aria-label="Default select example"
           id="hora_final"
-          defaultValue={hora.Hora_Final_Lunes}
+          defaultValue={hora.Hora_Final}
           onChange={(event) => onHandleHora_Final(event)}
         >
           <option value="" >{hora.Hora_Final_Lunes}</option>
