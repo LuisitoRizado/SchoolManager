@@ -63,9 +63,9 @@ export const AgregarHorarioPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ID_HORARIO: id_horario,
-          HORA_INICIO_LUNES: hora_inicio,
-          HORA_FINAL_LUNES: hora_fin,
+          Id_Horario: id_horario,
+          Hora_Inicio: hora_inicio,
+          Hora_Final: hora_fin,
         }),
       });
       //Recargamos la pagina
@@ -100,8 +100,8 @@ export const AgregarHorarioPage = () => {
         //Actualizamos los datos en los inputs
         console.log(data)
         inputHorario.value = data[0].Id_Horario;
-        inputInicio.value = data[0].Hora_Inicio_Lunes;
-        inputFin.value = data[0].Hora_Final_Lunes;
+        inputInicio.value = data[0].Hora_Inicio;
+        inputFin.value = data[0].Hora_Final;
       });
 
     if (inputInicio.value === "") {
@@ -356,10 +356,10 @@ export const AgregarHorarioPage = () => {
                   <select
                     aria-label="Default select example"
                     className={`fila-${index} form-control form-select`}
-                    defaultValue={horario.Hora_Inicio_Lunes}
+                    defaultValue={horario.Hora_Inicio}
                     disabled
                   >
-                    <option value={horario.Hora_Inicio_Lunes}>{horario.Hora_Inicio_Lunes}</option>
+                    <option value={horario.Hora_Inicio}>{horario.Hora_Inicio}</option>
                     <option value="9:00">9:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:0</option>
@@ -380,10 +380,10 @@ export const AgregarHorarioPage = () => {
                   <select
                     aria-label="Default select example"
                     className={`fila-${index} form-control form-select`}
-                    defaultValue={horario.Hora_Final_Lunes}
+                    defaultValue={horario.Hora_Final}
                     disabled
                   >
-                    <option value={horario.Hora_Final_Lunes}>{horario.Hora_Final_Lunes}</option>
+                    <option value={horario.Hora_Final}>{horario.Hora_Final}</option>
                     <option value="9:00">9:00</option>
                     <option value="10:00">10:00</option>
                     <option value="11:00">11:0</option>
