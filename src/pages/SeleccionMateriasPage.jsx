@@ -290,7 +290,7 @@ export const SeleccionMateriasPage = () => {
                     className="btn btn-primary"
                     to={{
                   pathname: 'seleccionarMateria',
-                  search: '?materia='+materia.Materia
+                  search: '?materia='+materia.Id_Materia
                 }}>
                   Ver grupos
                     </NavLink>
