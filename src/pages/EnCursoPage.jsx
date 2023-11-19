@@ -70,7 +70,7 @@ export const EnCursoPage = () => {
          
             return (
               
-              <tr key={index}>Hora_Inicio
+              <tr key={index}>
               <td>
               <div className=" materia shadow" >
               <div className="card-body">
