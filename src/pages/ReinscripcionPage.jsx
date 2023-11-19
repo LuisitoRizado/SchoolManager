@@ -35,8 +35,8 @@ export const ReinscripcionPage = () => {
 </div>
 <div className="col-md-8">
   <div className="card-body">
-    <h5 className="card-title">Grupos disponibles</h5>
-    <p className="card-text">Comprueba los grupos disponibles para este semestre.</p>
+    <h5 className="card-title">Materias </h5>
+    <p className="card-text">Revisa las materias de cada semestre.</p>
     <br/>
     <NavLink
                 className={({ isActive }) =>
@@ -58,14 +58,7 @@ export const ReinscripcionPage = () => {
 <div className="col-md-4">
   <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" className="img-fluid rounded-start" alt="..."/>
 </div>
-<div className="col-md-8">
-  <div className="card-body">
-    <h5 className="card-title">Materias de Verano</h5>
-    <p className="card-text">Materias disponibles para cursar en verano.</p>
-    
-    <a href="/" className="btn btn-danger disabled">No disponible</a>
-  </div>
-</div>
+
 </div>
 </div>
 <div className="card m-3 col-md-5 shadow">
