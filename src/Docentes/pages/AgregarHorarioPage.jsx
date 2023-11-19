@@ -63,7 +63,7 @@ export const AgregarHorarioPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          Id_Horario: id_horario,
+          ID_HORARIO: id_horario,
           Hora_Inicio: hora_inicio,
           Hora_Final: hora_fin,
         }),
