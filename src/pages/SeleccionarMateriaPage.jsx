@@ -157,25 +157,25 @@ export const SeleccionarMateriaPage = () => {
                 </td>
                 <td>{carga.MATERIA}</td>
                 <td>
-                  {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}
+                  {carga.NOMBRE_DOCENTE} {carga.AP_PATERNO} {carga.Ap_Materno}
                 </td>
                 <td>Tec Saltillo</td>
 
                 <td>{carga.AULA}</td>
                 <td>
-                  {carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES}
+                  {carga.Hora_Inicio} - {carga.Hora_Final}
                 </td>
                 <td>
-                  {carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES}
+                {carga.Hora_Inicio} - {carga.Hora_Final}
                 </td>
                 <td>
-                  {carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES}
+                {carga.Hora_Inicio} - {carga.Hora_Final}
                 </td>
                 <td>
-                  {carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES}
+                {carga.Hora_Inicio} - {carga.Hora_Final}
                 </td>
                 <td>
-                  {carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES}
+                {carga.Hora_Inicio} - {carga.Hora_Final}
                 </td>
               </tr>
             );
