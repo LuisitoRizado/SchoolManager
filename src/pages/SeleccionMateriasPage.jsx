@@ -193,11 +193,11 @@ export const SeleccionMateriasPage = () => {
                    window.location.reload()}}>Eliminar</button></td>
                 <td>{materia.MATERIA}</td>
                 <td>{materia.NOMBRE} {materia.AP_PATERNO} {materia.AP_MATERNO}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
-                <td>{materia.HORA_INICIO_LUNES}</td>
+                <td>{materia.Hora_Inicio}</td>
+                <td>{materia.Hora_Inicio}</td>
+                <td>{materia.Hora_Inicio}</td>
+                <td>{materia.Hora_Inicio}</td>
+                <td>{materia.Hora_Inicio}</td>
 
                 
 

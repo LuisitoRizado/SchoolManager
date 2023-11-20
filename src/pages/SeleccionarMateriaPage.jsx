@@ -163,19 +163,19 @@ export const SeleccionarMateriaPage = () => {
 
                 <td>{carga.AULA}</td>
                 <td>
-                  {carga.Hora_Inicio} - {carga.Hora_Final}
+                  {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
                 <td>
-                {carga.Hora_Inicio} - {carga.Hora_Final}
+                {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
                 <td>
-                {carga.Hora_Inicio} - {carga.Hora_Final}
+                {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
                 <td>
-                {carga.Hora_Inicio} - {carga.Hora_Final}
+                {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
                 <td>
-                {carga.Hora_Inicio} - {carga.Hora_Final}
+                {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
               </tr>
             );
