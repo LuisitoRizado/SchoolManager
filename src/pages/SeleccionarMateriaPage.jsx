@@ -161,7 +161,7 @@ export const SeleccionarMateriaPage = () => {
                 </td>
                 <td>Tec Saltillo</td>
 
-                <td>{carga.AULA}</td>
+                <td>{carga.AULA_NOMBRE}</td>
                 <td>
                   {carga.HORA_INICIO} - {carga.HORA_FINAL}
                 </td>
