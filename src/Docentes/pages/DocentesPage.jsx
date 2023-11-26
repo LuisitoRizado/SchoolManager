@@ -111,7 +111,7 @@ export const DocentesPage = () => {
                   <NavLink
                 className={'btn btn-primary'}
                 to={{
-                  pathname: 'calificacionesAlumnos'
+                  pathname: 'asignarCalificaciones'
                 }}
               >
                 Acceder
