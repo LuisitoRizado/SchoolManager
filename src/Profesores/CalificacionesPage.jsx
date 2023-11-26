@@ -137,7 +137,7 @@ console.log(formattedDate);
                 className={`btn btn-warning   `}
               
                 to={{
-                  pathname: 'reportePDF',
+                  pathname: 'calificacionAlumno',
                   search: '?id='+id
 
                 }}
