@@ -13,10 +13,6 @@ export const ProfesorRoutes = () => {
                 <Route path="inicio/*" element={<InicioPage />} />
                
 
-
-
-
-
                 <Route path="/" element={<Navigate to="/profesor/inicio" />} />
 
             </Routes>
