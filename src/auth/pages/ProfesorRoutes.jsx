@@ -17,7 +17,7 @@ export const ProfesorRoutes = () => {
                 <Route path="reportes/" element={<ReporteDocentePage />} />
                 <Route path="calificaciones/" element={<CalificacionesPage />} />
                 <Route path="misDatos/" element={<ReporteDocentePage />} />
-
+                <Route path="reportes/reportePDF" element={<ReportePDF />} />
                
 
                 <Route path="/" element={<Navigate to="/profesor/inicio" />} />
