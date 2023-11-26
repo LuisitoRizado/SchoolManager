@@ -121,7 +121,7 @@ export const CalificacionAlumnoPage = () => {
     }
   return (
     <div>
-        <h1>Calificación Alumno xddddd</h1>
+        <h1>Calificación Alumno </h1>
         <hr />
         <div>
         <div className="table-responsive">
@@ -146,10 +146,10 @@ export const CalificacionAlumnoPage = () => {
                 carga.map((materia,index)=>(
                     <tr>
                         <td className={'id-'+index}>{materia.CARGA}</td>
-                        <td>{materia.MATERIA}</td>
-                        <td>{materia.NOMBRE} {materia.AP_PATERNO} {materia.AP_MATERNO}</td>
-                        <td>{materia.HORA_INICIO_LUNES} - {materia.HORA_FINAL_LUNES}</td>
-                        <td>{materia.AULA}</td>
+                        <td>{materia.Nombre_Materia}</td>
+                        <td>{materia.Nombre_Alumno} {materia.Ap_Paterno} {materia.Ap_Materno}</td>
+                        <td>{materia.Hora_Inicio} - {materia.Hora_Final}</td>
+                        <td>{materia.Nombre_Aula}</td>
                         <td><input onKeyPress={validarNumeros} type="text" name="" id={`input fila-`+index} defaultValue={materia.CALIFICACION ? materia.CALIFICACION : 'No asignada' } className={'form-control fila-'+ index} disabled onChange={(e)=>onHandleCalificacion(e)}/></td>
                         <td className={'btn-'+index}><button className={'btn btn-warning modificarButton '} id={`btn-`+index} onClick={()=>modificarCalificacion(index)}>Editar</button></td>
                     </tr>
