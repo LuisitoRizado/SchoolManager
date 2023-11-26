@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { InicioPage } from "../../pages/InicioPage";
 
-export const NavbarDocentes = () => {
+export const NavbarProfesor = () => {
   //Custom hook de react router para la navegación
   const navigate = useNavigate();
 
