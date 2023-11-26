@@ -33,9 +33,6 @@ export const CalificacionesAlumnos = () => {
             <th scope="col">Apellido Paterno</th>
             <th scope="col">Apellido Materno</th>
             <th scope="col">Semestre</th>
-            <th scope="col">Periodo</th>
-            <th scope="col">Creditos</th>
-            <th scope="col">Especialidad</th>
             <th scope="col"></th>
 
           </tr>
@@ -81,30 +78,7 @@ export const CalificacionesAlumnos = () => {
                     disabled
                   />
                 </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={alumno.Periodo}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={alumno.Creditos_Disponibles}
-                    onKeyPress={validarNumeros}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={
-                      alumno.Especialidad ? alumno.Especialidad : "Ninguna"
-                    }
-                    disabled
-                  />
-                </td>
+              
                 <td>
                   <NavLink className='btn btn-warning' 
                   to={{

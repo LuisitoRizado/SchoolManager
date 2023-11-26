@@ -89,6 +89,24 @@ export const DocentesPage = () => {
               </NavLink>
                 </div>
               </div>
+
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">Calificaciones</h5>
+                  <p className="card-text">
+                  Asigna calificaciones a alumnos
+                  </p>
+                  <br />
+                  <NavLink
+                className={'btn btn-primary'}
+                to={{
+                  pathname: 'asignarCalificaciones'
+                }}
+              >
+                Acceder
+              </NavLink>
+                </div>
+              </div>
             </div>
           </div>
         </div>
