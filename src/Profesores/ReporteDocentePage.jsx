@@ -7,7 +7,7 @@ export const ReporteDocentePage = () => {
 
   // usando el querystring, creamos un objeto del tipo URLSearchParams
   const params = new URLSearchParams(querystring);
-  const id = params.get("id");
+  const id = parseInt(localStorage.getItem("user"));
   console.log(id);
   const [docente, setDocente] = useState([]);
   const [materias, setMaterias] = useState([]);
