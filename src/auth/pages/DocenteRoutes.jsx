@@ -31,6 +31,8 @@ import { ReportePDF } from '../../Docentes/pages/ReportePDF';
 import { ReporteCalificaciones } from '../../Docentes/pages/ReporteCalificaciones';
 import { CalificacionesAlumnos } from '../../Docentes/pages/CalificacionesAlumnos';
 import { CalificacionAlumnoPage } from '../../Docentes/pages/CalificacionAlumnoPage';
+import { CalificacionesPage } from '../../Docentes/pages/CalificacionesPage';
+
 export const DocenteRoutes = () => {
   return (
     <>
@@ -70,7 +72,7 @@ export const DocenteRoutes = () => {
                 <Route path="docentes/reportesDocentes/reporteDocente" element={<ReporteDocentePage />} />
                 <Route path="docentes/reportesDocentes/reporteDocente/reportePDF" element={<ReportePDF />} />
                 <Route path="docentes/reportesDocentes/reporteDocente/reporteCalificacionesPDF" element={<ReporteCalificaciones />} />
-
+                <Route path="docentes/asignarCalificaciones" element={<CalificacionesPage />} />
 
 
 
