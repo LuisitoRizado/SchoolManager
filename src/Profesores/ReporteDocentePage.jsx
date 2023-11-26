@@ -155,7 +155,7 @@ console.log(formattedDate);
               >
                 Ver Listado
               </NavLink>
-             
+              
     </div>
   );
 };

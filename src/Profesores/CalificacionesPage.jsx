@@ -151,6 +151,17 @@ console.log(formattedDate);
         }
   </tbody>
 </table>
+<NavLink
+                className={`btn btn-warning  btnPDF ${materiaSeleccionada.length === 0 ? 'disabled' : 'enable'}`}
+              
+                to={{
+                  pathname: 'reporteCalificacionesPDF',
+                  search: '?id='+id
+
+                }}
+              >
+                Ver calificaciones
+              </NavLink>
 </div>
         
         </div>
