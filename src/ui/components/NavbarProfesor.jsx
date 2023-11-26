@@ -66,16 +66,9 @@ export const NavbarProfesor = () => {
             }
             to="misDatos"
           >
-            Mis datos
+            Datos
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `nav-item nav-link ${isActive ? "active" : ""}`
-            }
-            to="aulas"
-          >
-            Aulas
-          </NavLink>
+          
           
 
          
