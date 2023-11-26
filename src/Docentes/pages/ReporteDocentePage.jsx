@@ -75,7 +75,7 @@ console.log(formattedDate);
         {materias.length >= 1 ? (
           materias.map((materia, index) => (
             <option
-              value={materia.Id_Materia}
+              value={materia.Id_Grupo}
               className={"opcion-" + index}
               key={index}
             >
@@ -130,7 +130,7 @@ console.log(formattedDate);
           alumnosCargados.length>0 ? (
             alumnosCargados.map((alumno, index)=>(
               <tr>
-                <td>{alumno.Ncontrol} </td>
+                <td>{alumno.NControl} </td>
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
