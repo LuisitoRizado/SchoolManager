@@ -182,7 +182,7 @@ export const ReporteCalificaciones = () => {
                 key={index}
               >
                 <View style={{ ...styles.tableCell, width: "20%" }}>
-                  <Text>{alumno.Ncontrol}</Text>
+                  <Text>{alumno.NControl}</Text>
                 </View>
                 <View style={{ ...styles.tableCell, width: "20%" }}>
                   <Text>

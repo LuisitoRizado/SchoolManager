@@ -179,7 +179,7 @@ export const ReportePDF = () => {
                 key={index}
               >
                 <View style={{ ...styles.tableCell, width: "25%" }}>
-                  <Text>{alumno.Ncontrol}</Text>
+                  <Text>{alumno.NControl}</Text>
                 </View>
                 <View style={{ ...styles.tableCell, width: "25%" }}>
                   <Text>
