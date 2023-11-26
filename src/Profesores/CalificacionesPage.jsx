@@ -155,28 +155,7 @@ console.log(formattedDate);
         
         </div>
       </div>
-      <NavLink
-                className={`btn btn-warning  btnPDF ${materiaSeleccionada.length === 0 ? 'disabled' : 'enable'}`}
-              
-                to={{
-                  pathname: 'reportePDF',
-                  search: '?id='+id
-
-                }}
-              >
-                Ver Listado
-              </NavLink>
-              <NavLink
-                className={`btn btn-warning m-2 btnPDF ${materiaSeleccionada.length === 0 ? 'disabled' : 'enable'}`}
-              
-                to={{
-                  pathname: 'reporteCalificacionesPDF',
-                  search: '?id='+id
-
-                }}
-              >
-                Ver Calificaciones
-              </NavLink>
+     
     </div>
   );
 };
