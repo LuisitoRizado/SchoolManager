@@ -52,7 +52,14 @@ export const LoginPage = () => {
     
     
   };
-
+  const onLogInDocente = () => {
+    
+    navigate("/profesor/inicio/?usuario="+username, {
+      replace: true,
+    });
+  
+  
+};
   useEffect(() => {
     inputUsuario = document.querySelector('#usuario')
     inputPassword = document.querySelector('#password')
@@ -193,6 +200,24 @@ export const LoginPage = () => {
     </div>`);
       document.querySelector(".errorContainer").innerHTML = mensajeErorr; */
     });
+              }
+              else if (document.querySelector("#docente").checked){
+                 //loginPetitionEmpleado(username, password);
+                 const url = "https://rest-api-production-a5bf.up.railway.app/getProfesor/" + username + "/" + password;
+                 //Hacemos la peticion a la API
+                 await fetch(url)
+                   .then((res) => res.json())
+                   .then((data) => {
+                     console.log(' info:::', data);
+                     //Pasamos a la siguiente pagina de inicio
+                     let obj = new Object();
+                     
+                     if(Array.isArray(data)){
+                     //window.location.href = "empleado/inicio/?usuario=" + usuario;
+               
+                     onLogInDocente()
+                     }
+                   })
               }
             }}}
           >
