@@ -3,7 +3,7 @@ import { NavbarProfesor } from '../../ui/components/NavbarProfesor';
 import { InicioPage } from '../../Profesores/InicioPage';
 import { CalificacionesPage } from '../../Profesores/CalificacionesPage';
 import { ReporteDocentePage } from '../../Profesores/ReporteDocentePage';
-import { ReportePDF } from '../../Profesores/ReporteDocentePage';
+import { ReportePDF } from '../../Profesores/ReportePDF';
 
 
 
