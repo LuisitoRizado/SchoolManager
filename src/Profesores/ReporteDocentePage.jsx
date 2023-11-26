@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
-export const CalificacionesPage = () => {
+export const ReporteDocentePage = () => {
   const querystring = window.location.search;
 
   // usando el querystring, creamos un objeto del tipo URLSearchParams
@@ -57,7 +57,7 @@ console.log(formattedDate);
 
   return (
     <div>
-      <h1>Calificaciones</h1>
+      <h1>Reportes</h1>
       <hr />
       {/* Mostrar lista de materias */}
       <label htmlFor="">Selecciona una materia</label>
@@ -106,6 +106,8 @@ console.log(formattedDate);
           ): (<span className="text-danger">Selecciona una materia</span>)}
           </p>
           
+          <p >Fecha: <span className="border-bottom border-dark">{formattedDate}</span></p>
+          <p >Hora: <span className="border-bottom border-dark">{hours}:{minutes}</span></p>
         </div>
         {/* Mostrar lista de alumnoss */}
         <hr />
@@ -120,7 +122,6 @@ console.log(formattedDate);
       <th scope="col">Apellido paterno</th>
       <th scope="col">Apellido Materno</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Calificaciones</th>
      
     </tr>
   </thead>
@@ -133,18 +134,6 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><NavLink
-                className={`btn btn-warning   `}
-              
-                to={{
-                  pathname: 'reportePDF',
-                  search: '?id='+id
-
-                }}
-              >
-               Asigna
-              </NavLink></td>
-
               </tr>
             ))
           ):(<p>No existe alumnos inscritos</p>)
