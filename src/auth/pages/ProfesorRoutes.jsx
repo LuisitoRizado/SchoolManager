@@ -4,7 +4,7 @@ import { InicioPage } from '../../Profesores/InicioPage';
 import { CalificacionesPage } from '../../Profesores/CalificacionesPage';
 import { ReporteDocentePage } from '../../Profesores/ReporteDocentePage';
 import { ReportePDF } from '../../Profesores/ReportePDF';
-
+import { ReporteCalificaciones } from '../../Docentes/pages/ReporteCalificaciones';
 
 
 export const ProfesorRoutes = () => {
@@ -19,6 +19,7 @@ export const ProfesorRoutes = () => {
                 <Route path="calificaciones/" element={<CalificacionesPage />} />
                 <Route path="misDatos/" element={<ReporteDocentePage />} />
                 <Route path="reportes/reportePDF" element={<ReportePDF />} />
+                <Route path="calificaciones/reporteCalificacionesPDF" element={<ReporteCalificaciones />} />
                
 
                 <Route path="/" element={<Navigate to="/profesor/inicio" />} />
