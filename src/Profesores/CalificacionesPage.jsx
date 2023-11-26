@@ -57,7 +57,7 @@ console.log(formattedDate);
 
   return (
     <div>
-      <h1>Calificaciones</h1>
+      <h1>Calificaciones xddd</h1>
       <hr />
       {/* Mostrar lista de materias */}
       <label htmlFor="">Selecciona una materia</label>
