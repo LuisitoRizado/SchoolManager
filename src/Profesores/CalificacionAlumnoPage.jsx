@@ -6,7 +6,8 @@ export const CalificacionAlumnoPage = () => {
 
     // usando el querystring, creamos un objeto del tipo URLSearchParams
     const params = new URLSearchParams(querystring);
-    const id = params.get("id");
+    const id = parseInt(localStorage.getItem("user"));
+
     console.log(id);
     const [carga, setCarga] = useState([])
     const [calificacion, setCalificacion] = useState([])

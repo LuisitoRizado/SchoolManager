@@ -23,7 +23,8 @@ export const ReportePDF = () => {
 
   // usando el querystring, creamos un objeto del tipo URLSearchParams
   const params = new URLSearchParams(querystring);
-  const id = params.get("id");
+  const id = parseInt(localStorage.getItem("user"));
+
   const id_Materia = parseInt(window.localStorage.getItem("id_materia"));
   console.log(id);
   const [docente, setDocente] = useState([]);
