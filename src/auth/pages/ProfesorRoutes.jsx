@@ -17,7 +17,7 @@ export const ProfesorRoutes = () => {
 
 
 
-                <Route path="/" element={<Navigate to="/user/inicio" />} />
+                <Route path="/" element={<Navigate to="/profesor/inicio" />} />
 
             </Routes>
         </div>
