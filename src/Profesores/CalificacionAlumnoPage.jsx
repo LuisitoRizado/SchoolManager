@@ -121,7 +121,7 @@ export const CalificacionAlumnoPage = () => {
     }
   return (
     <div>
-        <h1>Calificación Alumno</h1>
+        <h1>Calificación Alumno xddddd</h1>
         <hr />
         <div>
         <div className="table-responsive">
