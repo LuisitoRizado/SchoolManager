@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { validarNumeros, validarCampos } from './pages/validarCampos';
+import { validarNumeros, validarCampos } from './validarCampos';
 export const CalificacionAlumnoPage = () => {
     const querystring = window.location.search;
 
