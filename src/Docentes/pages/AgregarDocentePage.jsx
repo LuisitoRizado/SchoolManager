@@ -94,7 +94,15 @@ export const AgregarDocentePage = () => {
     console.log(inputNombre);
     console.log(inputAPaterno);
     console.log(inputAMaterno);
-
+    let existeDocente;
+    await fetch('https://rest-api-production-a5bf.up.railway.app/getDocente')
+      .then((res) => res.json())
+      .then((data) => {
+        existeDocente = data
+      });
+      if(data){
+        alert('yA EXISTE ESE DOCENTE')
+      }
     if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
       alert("Datos validados")
       const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
@@ -476,7 +484,7 @@ export const AgregarDocentePage = () => {
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
-            <th scope="col">Id docente</th>
+            <th scope="col">Num empleado</th>
             <th scope="col">Nombre</th>
             <th scope="col">Ap paterno</th>
             <th scope="col">Ap materno</th>
