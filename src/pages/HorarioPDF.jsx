@@ -227,35 +227,35 @@ export const HorarioPDF = () => {
     <View style={styles.tableRow} key={index}>
       
       <View style={{...styles.tableCell, width: '34%',}}>
-      <Text>{carga.AULA} / </Text>
-      <Text>{carga.MATERIA}</Text>
-      <Text>Profesor: {carga.NOMBRE} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
+      <Text>{carga.Nombre_Aula} / </Text>
+      <Text>{carga.Nombre_Materia}</Text>
+      <Text>Profesor: {carga.Nombre_Docente} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
     </View>
     <View style={styles.tableCell}>
       <Text>No </Text>
     </View>
     
     <View style={{...styles.tableCell, width:'10%'}}>
-      <Text >{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+      <Text >{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
     </View>
     <View style={{...styles.tableCell, width:'10%'}}>
 
-    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
-
-    </View>
-    <View style={{...styles.tableCell, width:'10%'}}>
-
-    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
 
     </View>
     <View style={{...styles.tableCell, width:'10%'}}>
 
-    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
 
     </View>
     <View style={{...styles.tableCell, width:'10%'}}>
 
-    <Text>{carga.HORA_INICIO_LUNES} - {carga.HORA_FINAL_LUNES} </Text>
+    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
+
+    </View>
+    <View style={{...styles.tableCell, width:'10%'}}>
+
+    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
 
     </View>
     <View style={styles.tableCell}>
