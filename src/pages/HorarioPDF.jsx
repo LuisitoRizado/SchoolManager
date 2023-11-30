@@ -176,9 +176,7 @@ export const HorarioPDF = () => {
 
       <Text>{alumno.Semestre}    </Text>
     </View>
-    <View style={{...styles.tableCell, display:'flex', flexDirection:'column', width:'30%'}}>
-      <Text>{alumno.Periodo}</Text>
-    </View>
+     
     </View>
     ))
   }
