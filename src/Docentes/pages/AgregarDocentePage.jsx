@@ -98,7 +98,7 @@ export const AgregarDocentePage = () => {
     await fetch('https://rest-api-production-a5bf.up.railway.app/getDocente')
       .then((res) => res.json())
       .then((data) => {
-        existeDocente = data
+        existeDocente = data[0]
       });
       if(data){
         alert('yA EXISTE ESE DOCENTE')
