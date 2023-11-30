@@ -100,7 +100,7 @@ export const AgregarDocentePage = () => {
       .then((data) => {
         existeDocente = data[0]
       });
-      if(existeDocente.length===0){
+      if(existeDocente.length===1){
         alert('yA EXISTE ESE DOCENTE')
       }
     if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
