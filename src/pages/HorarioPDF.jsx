@@ -158,10 +158,7 @@ export const HorarioPDF = () => {
 
       <Text>Semestre  </Text>
     </View>
-    <View style={{  ...styles.tableCol, width: '30%', }}>
-
-      <Text>Periodo     </Text>
-    </View>
+    
   </View>
   {
     user.map((alumno, index)=>(
