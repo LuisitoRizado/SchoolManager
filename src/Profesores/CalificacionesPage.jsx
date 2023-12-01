@@ -14,7 +14,7 @@ export const CalificacionesPage = () => {
   const [materiaSeleccionada, setMateriaSeleccionada] = useState([]);
   const [id_MateriaSeleccionada, setId_MateriaSeleccionada] = useState();
   const [alumnosCargados, setAlumnosCargados] = useState([])
-  const [alumnoSeleccionado, setAlumnoSeleccionado] = useState()
+  const [newCalificacion, setnewCalificacion] = useState()
   const today = new Date();
 const day = today.getDate();
 const month = today.getMonth() + 1;
@@ -26,7 +26,9 @@ const minutes = now.getMinutes();
 const seconds = now.getSeconds();
 console.log(formattedDate);
 
-
+  const onHandleCalificacion = (e) => {
+    setnewCalificacion(e.target.value)
+  }
   const modificarCalificacion = async (alumno, index)=>{
     let calificacion = document.getElementById('calificacionInput-'+index).value;
     const url = 'https://rest-api-production-a5bf.up.railway.app/updateCalificacion/'+ alumno + '/' + id_MateriaSeleccionada;
@@ -37,7 +39,7 @@ console.log(formattedDate);
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-      "Calificacion": calificacion
+      "Calificacion": newCalificacion
       }),
     });
     confirm('Aula actualizada!')
@@ -154,7 +156,7 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input type="number" className='mt-3 form-control' id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
+                <td><input type="number" className='mt-3 form-control' oonChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
                 <td><button className='btn btn-warning'  onClick={async() => {
                   modificarCalificacion(alumno.Ncontrol, index)
                 }}>Modificar</button></td>
