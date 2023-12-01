@@ -36,7 +36,7 @@ export const AgregarAula = () => {
     const ur2l = "https://rest-api-production-a5bf.up.railway.app/getAula/" + id_aula;
 
     let existeAula;
-    await fetch(url2)
+    await fetch(ur2l)
       .then((res) => res.json())
       .then((data) => {
         //Actualizamos los datos en los inputs
