@@ -121,6 +121,8 @@ console.log(formattedDate);
       <th scope="col">Apellido Materno</th>
       <th scope="col">Nombre</th>
       <th scope="col">Calificaciones</th>
+      <th scope="col">Modificar</th>
+
      
     </tr>
   </thead>
@@ -133,18 +135,8 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><NavLink
-                className={`btn btn-warning   `}
-              
-                to={{
-                  pathname: 'calificacionAlumno',
-                  search: '?id='+alumno.NControl
-
-                }}
-              >
-               Asigna
-              </NavLink></td>
-
+                <td><input type="text" className='mt-3 form-control'/>{alumno.Calificacion}</td>
+                <td><button className='btn btn-warning'>Modificar</button></td>
               </tr>
             ))
           ):(<p>No existe alumnos inscritos</p>)
