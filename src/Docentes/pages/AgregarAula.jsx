@@ -31,8 +31,23 @@ export const AgregarAula = () => {
   };
 
   //Functions
-  const addAula = () => {
+  const  addAula =async () => {
+
+    const ur2l = "https://rest-api-production-a5bf.up.railway.app/getAula/" + id_aula;
+
+    let existeAula;
+    await fetch(url2)
+      .then((res) => res.json())
+      .then((data) => {
+        //Actualizamos los datos en los inputs
+        existeAula = data[0]
+      });
+
+      if(existeAula){
+        alert('YA EXISTE UN AULA CON ESA CLAVE')
+      }
     //Damos fetcha  nuestra api
+    else
     if (validarCampos(inputAula, inputId, inputEdificio)) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addAula";
       fetch(url, {
@@ -261,7 +276,7 @@ export const AgregarAula = () => {
       <hr />
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="id_aula" className="form-label">
-          Código Aula
+          Clave Aula
         </label>
         <input
           type="number"
