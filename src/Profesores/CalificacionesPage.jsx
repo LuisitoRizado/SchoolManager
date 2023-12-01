@@ -14,7 +14,7 @@ export const CalificacionesPage = () => {
   const [materiaSeleccionada, setMateriaSeleccionada] = useState([]);
   const [id_MateriaSeleccionada, setId_MateriaSeleccionada] = useState();
   const [alumnosCargados, setAlumnosCargados] = useState([])
-
+  const [alumnoSeleccionado, setAlumnoSeleccionado] = useState()
   const today = new Date();
 const day = today.getDate();
 const month = today.getMonth() + 1;
@@ -26,6 +26,24 @@ const minutes = now.getMinutes();
 const seconds = now.getSeconds();
 console.log(formattedDate);
 
+  const modificarCalificacion = async (alumno)=>{
+    let calificacion = document.getElementById('calificacionInput').value;
+    const url = 'https://rest-api-production-a5bf.up.railway.app/updateCalificacion/'+ alumno + '/' + id_MateriaSeleccionada;
+    await fetch(url, {
+      method: "PUT",
+      headers: {
+        'Accept': "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+      "Calificacion": calificacion
+      }),
+    });
+    confirm('Aula actualizada!')
+    window.location.reload();
+ //}
+  };
+  
   useEffect(() => {
     //PETICION PARA DOCENTE
     fetch("https://rest-api-production-a5bf.up.railway.app/getDocente/" + id)
@@ -135,8 +153,10 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input type="text" className='mt-3 form-control' value={alumno.Calificacion}/></td>
-                <td><button className='btn btn-warning'>Modificar</button></td>
+                <td><input type="text" className='mt-3 form-control' id='calificacionInput' value={alumno.Calificacion}/></td>
+                <td><button className='btn btn-warning'  onClick={async() => {
+                  modificarCalificacion(alumno.Ncontrol)
+                }}>Modificar</button></td>
               </tr>
             ))
           ):(<p>No existe alumnos inscritos</p>)
