@@ -46,7 +46,6 @@ export const AgregarAula = () => {
       if(existeAula){
         alert('YA EXISTE UN AULA CON ESA CLAVE')
       }
-    //Damos fetcha  nuestra api
     else
     if (validarCampos(inputAula, inputId, inputEdificio)) {
       const url = "https://rest-api-production-a5bf.up.railway.app/addAula";
