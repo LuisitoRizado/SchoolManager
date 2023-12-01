@@ -14,7 +14,7 @@ export const CalificacionesPage = () => {
   const [materiaSeleccionada, setMateriaSeleccionada] = useState([]);
   const [id_MateriaSeleccionada, setId_MateriaSeleccionada] = useState();
   const [alumnosCargados, setAlumnosCargados] = useState([])
-  const [newCalificacion, setnewCalificacion] = useState()
+  const [newCalificacion, setnewCalificacion] = useState(0)
   const today = new Date();
 const day = today.getDate();
 const month = today.getMonth() + 1;
