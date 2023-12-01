@@ -26,8 +26,9 @@ const minutes = now.getMinutes();
 const seconds = now.getSeconds();
 console.log(formattedDate);
 
-  const modificarCalificacion = async (alumno)=>{
-    let calificacion = document.getElementById('calificacionInput').textContent;
+
+  const modificarCalificacion = async (alumno, index)=>{
+    let calificacion = document.getElementById('calificacionInput-'+index).value;
     const url = 'https://rest-api-production-a5bf.up.railway.app/updateCalificacion/'+ alumno + '/' + id_MateriaSeleccionada;
     await fetch(url, {
       method: "PUT",
@@ -153,9 +154,9 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input type="number" className='mt-3 form-control' id='calificacionInput' defaultValue={alumno.Calificacion}/></td>
+                <td><input type="number" className='mt-3 form-control' id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
                 <td><button className='btn btn-warning'  onClick={async() => {
-                  modificarCalificacion(alumno.Ncontrol)
+                  modificarCalificacion(alumno.Ncontrol, index)
                 }}>Modificar</button></td>
               </tr>
             ))
