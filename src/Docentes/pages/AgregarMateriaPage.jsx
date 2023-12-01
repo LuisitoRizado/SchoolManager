@@ -113,7 +113,7 @@ let estaOcupada = false;
 
       if(existeMateria)
       {
-        confirm('Ya existe esa materia')
+        confirm('Clave de materia ' + ID_MATERIA + ' Repetida')
       }
       else{
         console.log('materia agregada')
@@ -448,7 +448,7 @@ let estaOcupada = false;
       <hr />
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="idmateria" className="form-label">
-          Id materia
+          Clave materia
         </label>
         <input
           type="number"
@@ -565,7 +565,7 @@ let estaOcupada = false;
       <table className="table  table-bordered">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
-            <th scope="col">Id_Materia</th>
+            <th scope="col">Clave materia</th>
             <th scope="col">Materia</th>
             <th scope="col">Carrera</th>
             <th scope="col">Estatus</th>
