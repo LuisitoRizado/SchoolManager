@@ -30,7 +30,6 @@ console.log(formattedDate);
     setnewCalificacion(e.target.value)
   }
   const modificarCalificacion = async (alumno, index)=>{
-    let calificacion = document.getElementById('calificacionInput-'+index).value;
     const url = 'https://rest-api-production-a5bf.up.railway.app/updateCalificacion/'+ alumno + '/' + id_MateriaSeleccionada;
     await fetch(url, {
       method: "PUT",
