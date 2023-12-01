@@ -95,7 +95,7 @@ export const AgregarDocentePage = () => {
     console.log(inputAPaterno);
     console.log(inputAMaterno);
     let existeDocente;
-    await fetch('https://rest-api-production-a5bf.up.railway.app/getDocente')
+    await fetch('https://rest-api-production-a5bf.up.railway.app/getDocente/'+id_docente)
       .then((res) => res.json())
       .then((data) => {
         existeDocente = data[0]
