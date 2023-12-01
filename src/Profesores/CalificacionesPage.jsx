@@ -138,7 +138,7 @@ console.log(formattedDate);
               
                 to={{
                   pathname: 'calificacionAlumno',
-                  search: '?id='+id
+                  search: '?id='+alumno.NControl
 
                 }}
               >
