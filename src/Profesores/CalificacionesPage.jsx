@@ -38,7 +38,7 @@ console.log(formattedDate);
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-      "Calificacion": newCalificacion
+      "Calificacion": 0
       }),
     });
     confirm('Aula actualizada!')
