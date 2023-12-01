@@ -135,7 +135,7 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input type="text" className='mt-3 form-control'/>{alumno.Calificacion}</td>
+                <td><input type="text" className='mt-3 form-control' value={alumno.Calificacion}/></td>
                 <td><button className='btn btn-warning'>Modificar</button></td>
               </tr>
             ))
