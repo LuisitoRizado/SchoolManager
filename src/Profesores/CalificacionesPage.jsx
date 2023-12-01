@@ -153,7 +153,7 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input type="text" className='mt-3 form-control' id='calificacionInput' value={alumno.Calificacion}/></td>
+                <td><input type="number" className='mt-3 form-control' id='calificacionInput' defaultValue={alumno.Calificacion}/></td>
                 <td><button className='btn btn-warning'  onClick={async() => {
                   modificarCalificacion(alumno.Ncontrol)
                 }}>Modificar</button></td>
