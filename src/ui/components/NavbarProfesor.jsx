@@ -60,14 +60,7 @@ export const NavbarProfesor = () => {
           >
             Calificaciones
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `nav-item nav-link ${isActive ? "active" : ""}`
-            }
-            to="misDatos"
-          >
-            Datos
-          </NavLink>
+          
           
           
 

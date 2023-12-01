@@ -107,7 +107,7 @@ export const LoginPage = () => {
               className="form-check-input"
             />
 
-            <label htmlFor="empleado" className="text-dark">Docente</label>
+            <label htmlFor="docente" className="text-dark">Docente</label>
 
           </div>
 
