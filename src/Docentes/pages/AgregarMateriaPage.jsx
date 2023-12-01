@@ -100,9 +100,20 @@ let estaOcupada = false;
       */
       const url = "https://rest-api-production-a5bf.up.railway.app/addNewMateria";
       //No se puede agregar
-      if(estaOcupada)
+      const url2 = "https://rest-api-production-a5bf.up.railway.app/getMateria/" + ID_MATERIA;
+      let existeMateria
+      await fetch(url2)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        //Actualizamos los datos en los inputs
+        existeMateria = data[0]
+
+      });
+
+      if(existeMateria)
       {
-        confirm('No se puede agregar ya que ya existe una materia en la misma hora y aula')
+        confirm('Ya existe esa materia')
       }
       else{
         console.log('materia agregada')
