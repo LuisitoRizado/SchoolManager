@@ -453,8 +453,7 @@ export const AgregarDocentePage = () => {
           defaultValue={1}
         >
           <option value={1}>Activo</option>
-          <option value={2}>Inactivo</option>
-          <option value={3}>Pendiente</option>
+           
         </select>
 
         <label htmlFor="correo" className="form-label">
