@@ -575,8 +575,7 @@ export const AgregarAlumno = () => {
                 <select name="estatus" id="estatus" defaultValue={alumno.EstatusNombre} disabled  className={`fila-${index} form-select`} >
                   <option value={alumno.Id_Estatus}>{alumno.EstatusNombre}</option>
                   <option value={1}>Activo</option>
-                  <option value={2}>Inactivo</option>
-                  <option value={3}>Pendiente</option>
+       
 
                 </select>
               </td>
