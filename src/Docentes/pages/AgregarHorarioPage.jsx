@@ -250,7 +250,7 @@ export const AgregarHorarioPage = () => {
       <hr />
       <form action="" className="mt-5" onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="id_aula" className="form-label">
-          Id Horario
+          Clave Horario
         </label>
         <input
           type="number"

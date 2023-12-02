@@ -30,7 +30,7 @@ export const AgregarCarreraPage = () => {
     const agregarCarrera =async () =>{
 
         //validamos los datos
-        if(validarCampos(inputIdCarrera, inputNombreCarrera, inputPlanEstudios)){
+        if(validarCampos(inputIdCarrera, inputNombreCarrera)){
             //hacemos la peticion para agregar la carrear
             const url = "https://rest-api-production-a5bf.up.railway.app/addCarrera";
             await fetch(url, {
@@ -42,7 +42,6 @@ export const AgregarCarreraPage = () => {
               body: JSON.stringify({
                 ID_CARRERA: idCarrera,
                 NOMBRE: nombreCarrera,
-                PLAN_ESTUDIOS: planEstudios,
               }),
             })
               .then((response) => response.json())
@@ -281,9 +280,7 @@ export const AgregarCarreraPage = () => {
             <label htmlFor="carrera" className='label-form'>Nombre carrera</label>
             <input type="text" className='form-control' id='inputCarrera' name='carrera' onChange={(e)=>onHandleNombreCarrera(e)} />
             
-            <label htmlFor="plan" className='label-form'>Plan de estudios </label>
-            <input type="text" className='form-control' id='inputPlan' name='plan' onChange={(e)=>onHandelPlanEstudios(e)} />
-            
+             
             <button className='btn btn-danger m-2' onClick={()=>cancelarEvent()}>Cancelar</button>
             <button className='btn btn-success m-2 btn-agregar' onClick={()=>agregarCarrera()}>Guardar</button>
         </form>
@@ -297,9 +294,8 @@ export const AgregarCarreraPage = () => {
         <table className="table  table-bordered ">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
-            <th scope="col">Id carrera</th>
+            <th scope="col">Clave carrera</th>
             <th scope="col">Carrera</th>
-            <th scope="col">Plan estudios</th>
             <th scope="col">Modificar</th>
             <th scope="col">Eliminar</th>
 
@@ -318,10 +314,7 @@ export const AgregarCarreraPage = () => {
                 <input type="text" name=""  className={`fila-${index} form-control`} defaultValue={carrera.Nombre} disabled/>
                   
                 </td>
-                <td>
-               <input type="text" name=""  className={`fila-${index} form-control`} defaultValue={carrera.Plan_Estudios} disabled/>
-                
-                </td>
+                 
                 <td className={`btn-${index} form-control`}><button className='btn btn-warning modificarButton' onClick={() => habilitarModificacion(index)}>Modificar</button></td>
                 <td><button className='btn btn-danger' onClick={()=>eliminarCarrera(carrera.Id_Carrera)}>Eliminar</button></td>
 

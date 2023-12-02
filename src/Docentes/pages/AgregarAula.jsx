@@ -300,7 +300,7 @@ export const AgregarAula = () => {
         />
         
         <label htmlFor="campus" className="form-label">
-          Campus
+        Edificio
         </label>
 
         <select
@@ -340,7 +340,7 @@ export const AgregarAula = () => {
           <tr className="bg-body-dark">
             <th scope="col">Id aula</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Campus </th>
+            <th scope="col">Edificio </th>
             <th>Modificar</th>
             <th>Eliminar</th>
           </tr>
