@@ -89,6 +89,7 @@ console.log(formattedDate);
         aria-label="Default select example"
         onChange={(e) => {
           const selectedValueAsNumber = parseInt(e.target.value);
+          console.log('VALORRR' + selectedValueAsNumber)
           setId_MateriaSeleccionada(selectedValueAsNumber)
         }}
       >
