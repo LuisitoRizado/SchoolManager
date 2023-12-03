@@ -402,8 +402,8 @@ export const AgregarHorarioPage = () => {
                   </select>
                 </td>
                 <td className={`btn-${index} form-control`}>
-                  <a
-                    onClick={() => habilitarModificacion(index)}
+                <a
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/horarios/administrarHorarios/modificarHorario?id=" + horario.Id_Horario}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
