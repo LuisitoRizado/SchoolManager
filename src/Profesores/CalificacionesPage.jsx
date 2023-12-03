@@ -31,6 +31,7 @@ console.log(formattedDate);
   }
   const modificarCalificacion = async (alumno, index)=>{
    let ncontrol = parseInt(alumno)
+   alert('N CONTROL: ' + ncontrol)
     //checar si te trae la materia o el grupo
     const url = 'https://rest-api-production-a5bf.up.railway.app/updateCalificacion/'+ ncontrol + '/' + id_MateriaSeleccionada;
     await fetch(url, {
