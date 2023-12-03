@@ -13,7 +13,7 @@ export const DocumentosPage = () => {
 <div className="col-md-8">
   <div className="card-body">
     <h5 className="card-title">Carga académica</h5>
-    <p className="card-text">Puedes asignar, modificar o eliminar alguna materia a tu horario. Sólo en caso de ser posible.</p>
+    <p className="card-text">Revisa tus materias.</p>
     <NavLink
                 className={({ isActive }) =>
                   `btn btn-primary ${isActive ? "active" : ""}`
