@@ -152,13 +152,13 @@ console.log(formattedDate);
   <tbody>
   {
           alumnosCargados.length>0 ? (
-            alumnosCargados.map((alumno, index)=>(
+            alumnosCargados.map((alumno)=>(
               <tr>
                 <td>{alumno.NControl} </td>
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input   type="number" className='mt-3 form-control' oonChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
+                <td><input   type="number" className='mt-3 form-control' onChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
                 <td><button className='btn btn-warning'  onClick={() => {
                   modificarCalificacion(alumno.Ncontrol)
                 }}>Modificar</button></td>
