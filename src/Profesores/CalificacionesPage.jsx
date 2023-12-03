@@ -159,7 +159,7 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
                 <td><input   type="number" className='mt-3 form-control' oonChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
-                <td><button className='btn btn-warning'  onClick={async() => {
+                <td><button className='btn btn-warning'  onClick={() => {
                   modificarCalificacion(alumno.Ncontrol)
                 }}>Modificar</button></td>
               </tr>
