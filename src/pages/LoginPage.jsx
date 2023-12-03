@@ -80,36 +80,7 @@ export const LoginPage = () => {
           className="d-flex flex-column p-3"
           onSubmit={(e) => e.preventDefault()}
         >
-          <div className="radioGroup p-1 d-flex justify-content-around">
-            <input
-              type="radio"
-              id="alumno"
-              name="fav_language"
-              value="alumno"
-              className="form-check-input"
-            />
-            <label htmlFor="alumno" className="text-dark mx-1">Alumno   </label>
-
-            <input
-              type="radio"
-              id="empleado"
-              name="fav_language"
-              value="empleado"
-              className="form-check-input"
-            />
-            <label htmlFor="empleado" className="text-dark mx-1">Administrador    </label>
-
-            <input
-              type="radio"
-              id="docente"
-              name="fav_language"
-              value="docente"
-              className="form-check-input"
-            />
-
-            <label htmlFor="docente" className="text-dark">Docente</label>
-
-          </div>
+           
 
           <label htmlFor="username" className="mb-3 form-label text-dark">
             Usuario
