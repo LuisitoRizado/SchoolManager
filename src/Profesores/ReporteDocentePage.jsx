@@ -60,7 +60,7 @@ console.log(formattedDate);
       <h1>Reportes</h1>
       <hr />
       {/* Mostrar lista de materias */}
-      <label htmlFor="">Selecciona una materia</label>
+      <label htmlFor="">Selecciona un grupo</label>
       <select
         className={"form-select mySelect "}
         id="materias"
