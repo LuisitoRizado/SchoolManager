@@ -53,9 +53,7 @@ console.log(formattedDate);
  const valoresIniciales = [];
  valoresIniciales.push(inputs[0].value);
  
- for (let i = 0; i < 1; i++) {
-   console.log(valoresIniciales[i]);
- }
+ 
 
  //Agregamos el button
  mod.appendChild(okButton);
