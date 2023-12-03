@@ -61,7 +61,8 @@ export const MateriasPage = () => {
           </tbody>
         </table>
       </div>
-      <a className="btn btn-warning" href="materiasdisponibles">Regresar</a>
+      <a className="btn btn-warning" href="materiasdisponibles" onClick={() => window.history.back()}>Regresar</a>
+
     </div>
   );
 };
