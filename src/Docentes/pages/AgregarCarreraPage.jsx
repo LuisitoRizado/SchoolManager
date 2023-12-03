@@ -311,17 +311,12 @@ export const AgregarCarreraPage = () => {
                   
                 </td>
                  
-                <NavLink
-                className={'btn btn-warning'}
-                
-                
-                to={{
-                  pathname: 'https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera',
-                  search: '?id='+carrera.Id_Carrera
-                }}
-              >
-                Modificar
-              </NavLink>
+                <a
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera?" + carrera.Id_Carrera}
+                    className="btn btn-warning modificarButton"
+                  >
+                    Modificar
+                  </a>
                 <td><button className='btn btn-danger' onClick={()=>eliminarCarrera(carrera.Id_Carrera)}>Eliminar</button></td>
 
               </tr>
