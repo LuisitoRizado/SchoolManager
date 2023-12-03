@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { validarCampos, validarNumeros } from './validarCampos';
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //inputs
 let inputIdCarrera, inputNombreCarrera, inputPlanEstudios;
 export const AgregarCarreraPage = () => {
