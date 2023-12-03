@@ -234,7 +234,7 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
                 <td><input disabled    type="number" className={`mt-3 form-control  fila-${index} `} onChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
-                <td><button className={`btn btn-warning modificarButton btn-${index} id-${index}`}  onClick={() => {
+                <td  className={`btn-${index}`}><button className={`btn btn-warning modificarButton btn-${index} id-${index}`}  onClick={() => {
                   modificarCalificacion(alumno.NControl, index)
                 }}>Modificar</button></td>
               </tr>
