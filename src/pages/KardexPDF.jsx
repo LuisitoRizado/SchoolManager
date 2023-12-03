@@ -216,19 +216,17 @@ export const KardexPDF = () => {
     </View>
     
     <View style={{...styles.tableCell, width:'10%'}}>
-    <Text>Profesor: {carga.Nombre_Docente} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
+    <Text> {carga.Nombre_Docente} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
 
     </View>
     <View style={{...styles.tableCell, width:'10%'}}>
 
-    <Text>Profesor: {carga.Semestre} </Text>
+    <Text>  {carga.Semestre} </Text>
 
 
     </View>
     
-    <View style={styles.tableCell}>
-      <Text>           </Text>
-    </View>
+    
     <View style={styles.tableCell}>
       <Text> {carga.Calificacion}           </Text>
     </View>
