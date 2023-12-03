@@ -36,11 +36,11 @@ export const ModificarHorarioPage = () => {
       });
   };
 
-  const guardarDatos = (id, hora_inicio, hora_final) => {
+  const guardarDatos = async (id, hora_inicio, hora_final) => {
     //En esta peticion va el metodo put el cual no va a ayudar a poder modificar los cambios realizaod
     //Todo esto es lo introducido en los campos de texto del formulario
     if (validarCampos(inputInicio, inputFinal)) {
-      fetch("https://rest-api-production-a5bf.up.railway.app/updateHorario/" + id, {
+      await fetch("https://rest-api-production-a5bf.up.railway.app/updateHorario/" + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",
