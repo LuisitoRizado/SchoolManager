@@ -90,22 +90,18 @@ export const AgregarDocentePage = () => {
   console.log(inputId);
   const addDocentePetition = async(id_docente, nombre, ap_paterno, ap_materno, estatus, correo) => {
     //Hacemos la peticion para enviar los datos del dcoente
-    console.log(inputId);
-    console.log(inputNombre);
-    console.log(inputAPaterno);
-    console.log(inputAMaterno);
+    
     let existeDocente;
     await fetch('https://rest-api-production-a5bf.up.railway.app/getDocente/'+id_docente)
       .then((res) => res.json())
       .then((data) => {
-        existeDocente =  data[0]
+        existeDocente =  data[0];
       });
       if(existeDocente){
         alert('NUMERO DE EMPLEADO DUPLICADO')
       }
       else
     if (validarCampos(inputId, inputNombre, inputAPaterno, inputAMaterno)) {
-      alert("Datos validados")
       const url = "https://rest-api-production-a5bf.up.railway.app/addDocente";
        await fetch(url, {
         method: "POST",
