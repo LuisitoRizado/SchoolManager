@@ -84,7 +84,7 @@ export const KardexPDF = () => {
   const styles = StyleSheet.create({
     table: {
       margin:'0 auto',
-    width: '90%',
+    width: '70%',
     borderWidth: 1,
     textAlign:'center',
     borderColor: '#999',
