@@ -54,6 +54,7 @@ export const ModificarCarreraPage = () => {
             NOMBRE: nombre,
           }),
         });
+        alert('Datos guardados!')
         window.location.reload();
       }
     }
