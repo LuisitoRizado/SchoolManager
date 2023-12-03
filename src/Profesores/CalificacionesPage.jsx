@@ -78,10 +78,10 @@ console.log(formattedDate);
 
   return (
     <div>
-      <h1>Calificaciones xddd</h1>
+      <h1>Calificaciones </h1>
       <hr />
       {/* Mostrar lista de materias */}
-      <label htmlFor="">Selecciona una materia</label>
+      <label htmlFor="">Selecciona un grupo</label>
       <select
         className={"form-select mySelect "}
         id="materias"
@@ -100,7 +100,7 @@ console.log(formattedDate);
               className={"opcion-" + index}
               key={index}
             >
-              {materia.Materia}
+             {materia.Materia}  {materia.Hora_Inicio} - {materia.Hora_Final}
             </option>
           ))
         ) : (
