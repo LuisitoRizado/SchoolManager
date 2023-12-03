@@ -148,7 +148,7 @@ export const CalificacionAlumnoPage = () => {
                         <td>{materia.Nombre_Alumno} {materia.Ap_Paterno} {materia.Ap_Materno}</td>
                         <td>{materia.Hora_Inicio} - {materia.Hora_Final}</td>
                         <td>{materia.Nombre_Aula}</td>
-                        <td><input onKeyPress={validarNumeros} type="text" name="" id={`input fila-`+index} defaultValue={materia.Calificacion ? materia.Calificacion : 'No asignada' } className={'form-control fila-'+ index} disabled onChange={(e)=>onHandleCalificacion(e)}/></td>
+                        <td><input onKeyPress={validarNumeros} type="text" name="" id={`input fila-`+index} defaultValue={materia.Calificacion ? materia.Calificacion : 'No asignada' }  className={'disabled form-control fila-'+ index} disabled onChange={(e)=>onHandleCalificacion(e)}/></td>
                         <td className={'btn-'+index}><button className={'btn btn-warning modificarButton '} id={`btn-`+index} onClick={()=>modificarCalificacion(index)}>Editar</button></td>
                     </tr>
                 ))
