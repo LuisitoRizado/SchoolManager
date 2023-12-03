@@ -30,6 +30,76 @@ console.log(formattedDate);
     setnewCalificacion(e.target.value)
   }
   const modificarCalificacion = async (alumno, index)=>{
+ //deshabilitamos el boton modificar
+ const modificarButton = document.querySelectorAll(".modificarButton");
+ modificarButton.forEach((btn) => {
+   btn.classList.add("disabled");
+ });
+
+ //vamos a buscar todos los elementos con la classe fila-index
+ const inputs = document.querySelectorAll(".fila-" + index);
+ const mod = document.querySelector(".btn-" + index);
+ const id = document.querySelector(".id-" + index).value;
+ console.log(id);
+ console.log(inputs);
+ const okButton = document.createElement("button");
+ const noButton = document.createElement("button");
+ okButton.classList.add("btn", "btn-success", "m-2");
+ okButton.innerText = "OK";
+ noButton.classList.add("btn", "btn-danger", "m-2");
+ noButton.innerText = "X";
+
+ //obtener valores iniciales
+ const valoresIniciales = [];
+ valoresIniciales.push(inputs[0].value);
+ 
+ for (let i = 0; i < 1; i++) {
+   console.log(valoresIniciales[i]);
+ }
+
+ //Agregamos el button
+ mod.appendChild(okButton);
+ mod.appendChild(noButton);
+
+ //Habiliatamos los campos
+ inputs.forEach((input) => {
+   input.disabled = false;
+ });
+
+ //Evento de cancelacion
+ noButton.addEventListener("click", () => {
+   modificarButton.disabled = false;
+
+   //Aquí vamos a cancelar todo, es decir solo eliminamos los dos botones
+   modificarButton.forEach((btn) => {
+     btn.classList.replace("disabled", "enable");
+   });
+   //primero deshabilitamo los inputs
+   console.log(inputs[0].value);
+   console.log(valoresIniciales[0]);
+   inputs[0].value = valoresIniciales[0]; 
+   inputs.forEach((input, index) => {
+     input.disabled = true;
+     //a la vez, regresamos su valores iniciales
+
+     //por ultimo, eliminamos los botones
+     noButton.remove();
+     okButton.remove();
+   });
+ });
+ //detectamos el evento del button ok
+ okButton.addEventListener("click",async () => {
+   modificarButton.forEach((btn) => {
+     btn.classList.replace("disabled", "enable");
+   });
+
+   console.log("me diste click");
+   console.log(inputs[0]);
+   //guardamos los datos de los inputs
+   const aula = inputs[0].value;
+  
+   //recopilamos los inputs
+   const inputName = inputs[0];
    let ncontrol = parseInt(alumno)
    alert('N CONTROL: ' + ncontrol)
     //checar si te trae la materia o el grupo
@@ -47,6 +117,12 @@ console.log(formattedDate);
     confirm('Aula actualizada!')
     window.location.reload();
  //}
+ });
+
+
+
+
+  
   };
   
   useEffect(() => {
@@ -159,9 +235,9 @@ console.log(formattedDate);
                 <td>{alumno.Ap_Paterno} </td>
                 <td>{alumno.Ap_Materno}</td>
                 <td>{alumno.Nombre}</td>
-                <td><input   type="number" className='mt-3 form-control' onChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
-                <td><button className='btn btn-warning'  onClick={() => {
-                  modificarCalificacion(alumno.NControl)
+                <td><input disabled   type="number" className='mt-3 form-control ' onChange={(e) => onHandleCalificacion(e)} id={'calificacionInput-'+index} defaultValue={alumno.Calificacion}/></td>
+                <td><button className={`btn btn-warning modificarButton btn-${index} id-${index}`}  onClick={() => {
+                  modificarCalificacion(alumno.NControl, index)
                 }}>Modificar</button></td>
               </tr>
             ))
