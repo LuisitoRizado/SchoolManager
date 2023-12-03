@@ -34,11 +34,18 @@ export const DocumentosPage = () => {
 </div>
 <div className="col-md-8">
   <div className="card-body">
-    <h5 className="card-title">Cosntancias</h5>
-    <p className="card-text">Lista de constancias disponibles para el alumno.</p>
+    <h5 className="card-title">Kardex</h5>
+    <p className="card-text">Revisa tu kardex.</p>
     <br/>
     
-    <a href="#" className="btn btn-danger disabled">Acceder</a>
+    <NavLink
+                className={({ isActive }) =>
+                  `btn btn-primary ${isActive ? "active" : ""}`
+                }
+                to="Kardex"
+              >
+                Acceder
+              </NavLink>
   </div>
 </div>
 </div>
