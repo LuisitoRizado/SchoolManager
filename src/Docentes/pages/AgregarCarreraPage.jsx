@@ -316,7 +316,7 @@ export const AgregarCarreraPage = () => {
                 
                 
                 to={{
-                  pathname: 'administrarCarrera',
+                  pathname: 'modificarCarrera/administrarCarrera',
                   search: '?id='+carrera.Id_Carrera
                 }}
               >
