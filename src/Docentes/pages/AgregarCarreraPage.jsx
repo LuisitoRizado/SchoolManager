@@ -316,7 +316,7 @@ export const AgregarCarreraPage = () => {
                 
                 
                 to={{
-                  pathname: 'https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera?id=20',
+                  pathname: 'https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera',
                   search: '?id='+carrera.Id_Carrera
                 }}
               >
