@@ -79,7 +79,7 @@ console.log(formattedDate);
               className={"opcion-" + index}
               key={index}
             >
-              {materia.Materia}
+              {materia.Materia}  {materia.Hora_Inicio} - {materia.Hora_Final}
             </option>
           ))
         ) : (
