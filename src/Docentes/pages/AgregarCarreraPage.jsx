@@ -312,7 +312,7 @@ export const AgregarCarreraPage = () => {
                 </td>
                  
                 <a
-                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera?" + carrera.Id_Carrera}
+                    onClick={() => location.href="https://radiant-queijadas-7b50d2.netlify.app/empleado/carreras/modificarCarrera/administrarCarrera?id=" + carrera.Id_Carrera}
                     className="btn btn-warning modificarButton"
                   >
                     Modificar
