@@ -315,7 +315,17 @@ export const AgregarCarreraPage = () => {
                   
                 </td>
                  
-                <td className={`btn-${index} form-control`}><button className='btn btn-warning modificarButton' onClick={() => habilitarModificacion(index)}>Modificar</button></td>
+                <NavLink
+                className={'btn btn-warning'}
+                
+                
+                to={{
+                  pathname: 'administrarCarrera',
+                  search: '?id='+carrera.Id_Carrera
+                }}
+              >
+                Modificar
+              </NavLink>
                 <td><button className='btn btn-danger' onClick={()=>eliminarCarrera(carrera.Id_Carrera)}>Eliminar</button></td>
 
               </tr>

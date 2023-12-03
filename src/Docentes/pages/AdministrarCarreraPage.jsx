@@ -123,7 +123,6 @@ export const AdministrarCarreraPage = () => {
         <tr className="bg-body-dark">
           <th scope="col">Id carrera</th>
           <th scope="col">Nombre</th>
-          <th scope="col">Plan estudios </th>
           <th>Modificar</th>
           <th>Eliminar</th>
         </tr>
@@ -134,7 +133,6 @@ export const AdministrarCarreraPage = () => {
             <tr key={carrera}>
               <td>{carrera.Id_Carrera}</td>
               <td>{carrera.Nombre}</td>
-              <td>{carrera.Plan_Estudios}</td>
               <td>
               <NavLink
                 className={'btn btn-warning'}
