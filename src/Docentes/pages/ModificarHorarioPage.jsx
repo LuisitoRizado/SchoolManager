@@ -51,7 +51,6 @@ export const ModificarHorarioPage = () => {
           Hora_Final: hora_final,
         }),
       });
-      confirm('Cambios realizados!')
       window.location.reload();
     }
   };
