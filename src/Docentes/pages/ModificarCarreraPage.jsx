@@ -55,7 +55,6 @@ export const ModificarCarreraPage = () => {
           },
           body: JSON.stringify({
             NOMBRE: nombre,
-            PLAN_ESTUDIOS: plan,
           }),
         });
         window.location.reload();
@@ -74,8 +73,6 @@ export const ModificarCarreraPage = () => {
                 <label htmlFor="carrera" className='label-form'>Nombre carrera</label>
                 <input type="text" defaultValue={mat.Nombre} className='form-control' id='inputCarrera' name='carrera' onChange={(e)=>handleNombre(e)} />
                 
-                <label htmlFor="plan" className='label-form'>Plan de estudios </label>
-                <input type="text" defaultValue={mat.Plan_Estudios} className='form-control' id='inputPlan' name='plan' onChange={(e)=>onHandelPlanEstudios(e)} />
                 
                 <button className='btn btn-danger m-2' onClick={()=>cancelarEvent()}>Cancelar</button>
                 <button className='btn btn-success m-2 btn-agregar' onClick={()=>modificarCarrera()}>Guardar</button>

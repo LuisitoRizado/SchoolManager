@@ -67,7 +67,6 @@ export const AgregarCarreraPage = () => {
             console.log(inputPlanEstudios)
     
             inputNombreCarrera.value = data[0].Nombre;
-            inputPlanEstudios.value = data[0].Plan_Estudios;
           });
         
           if(inputNombreCarrera.value==='undefined'){
@@ -75,18 +74,15 @@ export const AgregarCarreraPage = () => {
             //bloqueamos el boton  y los inputs
             inputIdCarrera.disabled = false; 
             inputNombreCarrera.disabled = false;
-            inputPlanEstudios.disabled = false;
             const btnagregar = document.querySelector('.btn-agregar');
             btnagregar.disabled = false;
             //Limpiamos las cajas
             inputNombreCarrera.value = ''
-            inputPlanEstudios.value = ''
             
           }
           else{
             inputIdCarrera.disabled = true; 
             inputNombreCarrera.disabled = true;
-            inputPlanEstudios.disabled = true;
             const btnagregar = document.querySelector('.btn-agregar');
             btnagregar.disabled = true;
             //llenamos las cajas
@@ -101,7 +97,6 @@ export const AgregarCarreraPage = () => {
     //habilitamos
     inputIdCarrera.disabled = false; 
     inputNombreCarrera.disabled = false;
-    inputPlanEstudios.disabled = false;
     const btnagregar = document.querySelector('.btn-agregar');
     btnagregar.disabled = false;
   }
