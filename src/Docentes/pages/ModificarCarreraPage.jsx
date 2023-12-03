@@ -41,7 +41,6 @@ export const ModificarCarreraPage = () => {
     const modificarCarrera = async () =>{
         //obtener valores de las cajas de texto
         let nombre = inputNombre.value;
-        let plan = inputPlan.value;
         //hacemos la peticion
         if(validarCampos(inputNombre))
         {
@@ -61,7 +60,7 @@ export const ModificarCarreraPage = () => {
     
   return (
     <div>
-        <h1>ModificarCarreraPage</h1>
+        <h1>Modificar Carrera</h1>
         <hr />
         {materia.map((mat,index)=>{
             return (
