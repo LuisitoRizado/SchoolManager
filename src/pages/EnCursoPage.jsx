@@ -75,7 +75,7 @@ export const EnCursoPage = () => {
               <div className=" materia shadow" >
               <div className="card-body">
                 <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Nombre_Materia} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Inicio}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Final}</h6>
                 <p className="card-text">Aula: {carga.Nombre_Aula} </p>
                 <p>Profesor: {carga.Nombre_Docente} {carga.Paterno_Docente} {carga.Materno_Docente}</p>
                </div>
@@ -85,7 +85,7 @@ export const EnCursoPage = () => {
               <div className=" materia shadow" >
               <div className="card-body">
               <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Nombre_Materia} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Inicio}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Final}</h6>
                 <p className="card-text">Aula: {carga.Nombre_Aula} </p>
                 <p>Profesor: {carga.Nombre_Docente} {carga.Paterno_Docente} {carga.Materno_Docente}</p>
                </div>
@@ -95,7 +95,7 @@ export const EnCursoPage = () => {
               <div className=" materia shadow" >
               <div className="card-body">
               <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Nombre_Materia} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Inicio}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Final}</h6>
                 <p className="card-text">Aula: {carga.Nombre_Aula} </p>
                 <p>Profesor: {carga.Nombre_Docente} {carga.Paterno_Docente} {carga.Materno_Docente}</p>
                </div>
@@ -105,7 +105,7 @@ export const EnCursoPage = () => {
               <div className=" materia shadow" >
               <div className="card-body">
               <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Nombre_Materia} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Inicio}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Final}</h6>
                 <p className="card-text">Aula: {carga.Nombre_Aula} </p>
                 <p>Profesor: {carga.Nombre_Docente} {carga.Paterno_Docente} {carga.Materno_Docente}</p>
                </div>
@@ -115,7 +115,7 @@ export const EnCursoPage = () => {
               <div className=" materia shadow" >
               <div className="card-body">
               <h5 className="card-title text-primary"><i className="bi bi-alarm-fill"></i> {carga.Nombre_Materia} </h5>
-                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Inicio}</h6>
+                <h6 className="card-subtitle mb-2 text-muted">{carga.Hora_Inicio} - {carga.Hora_Final}</h6>
                 <p className="card-text">Aula: {carga.Nombre_Aula} </p>
                 <p>Profesor: {carga.Nombre_Docente} {carga.Paterno_Docente} {carga.Materno_Docente}</p>
                </div>
