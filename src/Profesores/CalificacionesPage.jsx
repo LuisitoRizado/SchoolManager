@@ -152,7 +152,7 @@ console.log(formattedDate);
   <tbody>
   {
           alumnosCargados.length>0 ? (
-            alumnosCargados.map((alumno)=>(
+            alumnosCargados.map((alumno, index)=>(
               <tr>
                 <td>{alumno.NControl} </td>
                 <td>{alumno.Ap_Paterno} </td>
