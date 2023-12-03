@@ -193,26 +193,13 @@ export const KardexPDF = () => {
   
     <View style={{  ...styles.tableCol, width: '10%', }}>
 
-      <Text>Lunes      </Text>
+      <Text>Profesor      </Text>
     </View>
     <View style={{  ...styles.tableCol, width: '10%', }}>
 
-      <Text>Martes     </Text>
+      <Text>Semestre     </Text>
     </View>
-    <View style={{  ...styles.tableCol, width: '10%', }}>
-
-      <Text>Miercoles </Text>
-    </View>
-    <View style={{  ...styles.tableCol, width: '10%', }}>
-
-      <Text>Jueves    </Text>
-    </View>
-    <View style={styles.tableCol}>
-      <Text>Viernes   </Text>
-    </View>
-    <View style={styles.tableCol}>
-      <Text>Sábado    </Text>
-    </View>
+    
     <View style={styles.tableCol}>
       <Text>Calificacion    </Text>
     </View>
@@ -222,37 +209,23 @@ export const KardexPDF = () => {
     <View style={styles.tableRow} key={index}>
       
       <View style={{...styles.tableCell, width: '34%',}}>
-      <Text>{carga.Nombre_Aula} / </Text>
       <Text>{carga.Nombre_Materia}</Text>
-      <Text>Profesor: {carga.Nombre_Docente} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
     </View>
     <View style={styles.tableCell}>
       <Text>No </Text>
     </View>
     
     <View style={{...styles.tableCell, width:'10%'}}>
-      <Text >{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
-    </View>
-    <View style={{...styles.tableCell, width:'10%'}}>
-
-    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
+    <Text>Profesor: {carga.Nombre_Docente} {carga.AP_PATERNO} {carga.AP_MATERNO}</Text>
 
     </View>
     <View style={{...styles.tableCell, width:'10%'}}>
 
-    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
+    <Text>Profesor: {carga.Semestre} </Text>
+
 
     </View>
-    <View style={{...styles.tableCell, width:'10%'}}>
-
-    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
-
-    </View>
-    <View style={{...styles.tableCell, width:'10%'}}>
-
-    <Text>{carga.Hora_Inicio} - {carga.Hora_Final} </Text>
-
-    </View>
+    
     <View style={styles.tableCell}>
       <Text>           </Text>
     </View>
