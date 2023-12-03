@@ -11,10 +11,10 @@ export const ModificarHorarioPage = () => {
   console.log(id);
 
   //-----HOOKS
-  const [horario, setHorario] = useState([]);
-  const [hora_inicio, setHora_Inicio] = useState();
-  const [hora_final, setHora_Final] = useState();
   let inputInicio, inputFinal;
+  const [horario, setHorario] = useState([]);
+  const [hora_inicio, setHora_Inicio] = useState(hora_inicio);
+  const [hora_final, setHora_Final] = useState(hora_final);
 
   const onHandleHora_Inicio = (e) => {
     setHora_Inicio(e.target.value);
