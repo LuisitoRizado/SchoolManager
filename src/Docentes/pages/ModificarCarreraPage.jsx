@@ -21,14 +21,12 @@ export const ModificarCarreraPage = () => {
             setMateria(data)
         })
     inputNombre = document.querySelector('#inputCarrera')
-    inputPlan = document.querySelector('#inputPlan')
 
     }, [])
 
     useEffect(() => {
        
     inputNombre = document.querySelector('#inputCarrera')
-    inputPlan = document.querySelector('#inputPlan')
 
     }, [nombreCarrera, Plan_estudios])
 
@@ -45,7 +43,7 @@ export const ModificarCarreraPage = () => {
         let nombre = inputNombre.value;
         let plan = inputPlan.value;
         //hacemos la peticion
-        if(validarCampos(inputNombre, inputPlan))
+        if(validarCampos(inputNombre))
         {
         await fetch("https://rest-api-production-a5bf.up.railway.app/updateCarrera/" + id, {
           method: "PUT",
