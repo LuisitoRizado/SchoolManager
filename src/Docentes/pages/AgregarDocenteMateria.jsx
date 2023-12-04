@@ -56,46 +56,46 @@ export const AgregarDocenteMateria = () => {
   };
 
   //useEffect
-  useEffect(() => {
+  useEffect(async()  => {
     //Cargamos los datos de todas las materias
     inputId = document.querySelector("#id");
     inputIdDocente = document.querySelector("#id_docente");
     inputIdMateria = document.querySelector("#id_materia");
     const url1 = "https://rest-api-production-a5bf.up.railway.app/getAllMats";
-    fetch(url1)
+    await fetch(url1)
       .then((res) => res.json())
       .then((data) => {
         setMateriasCargadas(data);
         console.log(data);
       });
     //obtener todos los docentes
-    fetch("https://rest-api-production-a5bf.up.railway.app/getAllDocentes")
+    await fetch("https://rest-api-production-a5bf.up.railway.app/getAllDocentes")
       .then((res) => res.json())
       .then((data) => setDocentes(data));
 
       const url3 = "https://rest-api-production-a5bf.up.railway.app/getAllMaterias";
-    fetch(url3)
+      await fetch(url3)
       .then((res) => res.json())
       .then((data) => setMaterias(data));
       
     const url2 = 'https://rest-api-production-a5bf.up.railway.app/getAllHorarios'
-    fetch(url2)
+    await fetch(url2)
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
       setHorarios(data)
     })
     //pedir todas las maulas
-    fetch('https://rest-api-production-a5bf.up.railway.app/getAllAulas')
+    await fetch('https://rest-api-production-a5bf.up.railway.app/getAllAulas')
     .then(res=>res.json())
     .then(data=>setAulas(data))
 
     //traer todas las carreas
-    fetch('https://rest-api-production-a5bf.up.railway.app/getAllCarreras')
+    await fetch('https://rest-api-production-a5bf.up.railway.app/getAllCarreras')
     .then(res=>res.json())
     .then(data=>setCarreras(data))
 
-    fetch('https://rest-api-production-a5bf.up.railway.app/getAllCargas')
+    await fetch('https://rest-api-production-a5bf.up.railway.app/getAllCargas')
     .then(res=>res.json())
     .then(data=>setMaterias_Asignadas(data))
 
@@ -350,7 +350,7 @@ export const AgregarDocenteMateria = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "Id_Grupo": Math.floor(Math.random() * 101) + 100,
+            "Id_Grupo": Math.floor(Math.random() * 1001) + 1000,
             "Id_Materia": id_materia,
             "Id_Aula": aula,
             "Id_Horario":hora,
