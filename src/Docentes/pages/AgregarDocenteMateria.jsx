@@ -23,6 +23,9 @@ export const AgregarDocenteMateria = () => {
   const [materias_Asignadas, setMaterias_Asignadas] = useState([])
   const [docenteSeleccionado, setDocenteSeleccionado] = useState();
   const [horarios, setHorarios] = useState([])
+  const [hora, setHora] = useState()
+  const [aula, setAula] = useState()
+
   //-----Handlers
   const onHandleId = (e) => {
     setId(e.target.value);
@@ -347,9 +350,16 @@ export const AgregarDocenteMateria = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "ID_DOCXMATH":Math.floor(Math.random() * 100000),
-            "ID_DOCENTE":docenteSeleccionado,
-            "ID_MATERIA":materia
+            "Id_Grupo": Math.floor(Math.random() * 101) + 100,
+            "Id_Materia": id_materia,
+            "Id_Aula": aula,
+            "Id_Horario":hora,
+            "No_Empleado":id_docente,
+            "Cupo_Total":20,
+            "Fecha_Creacion":"2023-12-12",
+            "Periodo":"Agosto - Diciembre",
+            "Alumnos_Inscritos":1
+
           }),
         });   
         console.log('ID: ' + Math.floor(Math.random() * 100000) +  ' materia: ' + materia + "  docente: "+ docenteSeleccionado)
@@ -527,7 +537,7 @@ else{
                     <td>{aula.Nombre}</td>
                     <td>{aula.Campus}</td>
                     
-                    <td className="d-flex justify-content-center align-items-center"><input  className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setAula(aula.Id_Aula)}} className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -556,7 +566,7 @@ else{
                     <td>{horario.Id_Horario}</td>
                     <td>{horario.Hora_Inicio}</td>
                     <td>{horario.Hora_Final}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input   className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setHora(horario.Id_Horario)}}   className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -590,7 +600,9 @@ else{
   </div>
 </div>
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
-        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'   >Aceptar</button>
+        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal' onClick ={()=>{
+
+        }}  >Aceptar</button>
         
        
       </div>
