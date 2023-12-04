@@ -14,8 +14,8 @@ export const EnCursoPage = () => {
   //URL
   const URL = "https://rest-api-production-a5bf.up.railway.app/getCarga/" + alumno;
   //Peticion
-  const consultarMaterias =  () => {
-     fetch(URL)
+  const consultarMaterias =  async () => {
+     await fetch(URL)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

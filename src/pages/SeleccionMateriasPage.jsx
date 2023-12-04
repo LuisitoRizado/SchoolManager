@@ -110,7 +110,7 @@ export const SeleccionMateriasPage = () => {
           Id_Carga: Math.floor(Math.random() * 10000) + 1,
           Id_Grupo: materia.ID_GRUPO,
           NControl_Alumno: ncontrol,
-          Calificacion:0
+          Calificacion:1
       })
       })
     });
