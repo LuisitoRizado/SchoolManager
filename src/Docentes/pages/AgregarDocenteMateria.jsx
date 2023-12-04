@@ -508,7 +508,8 @@ else{
         </div>
       </div>
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
-      <div class="modal fade" id="mi-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <div class="modal fade" style="z-index: 1050;" id="mi-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
