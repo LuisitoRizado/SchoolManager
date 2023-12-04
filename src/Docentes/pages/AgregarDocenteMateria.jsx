@@ -510,6 +510,26 @@ else{
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
         <button className="btn btn-success m-3 btnAceptar disabled"   onClick={()=>guardarCambios()} >Aceptar</button>
+        <div class='' id='mi-modal' >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Seleccion</h5>
+                <button className="btn-close"></button>
+              </div>
+              <div className="modal-body">
+                <p>Horario</p>
+
+                <p>Aula</p>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-danger">Cancelar</button>
+                <button className="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
       <hr />
       <div className="table-responsive">
