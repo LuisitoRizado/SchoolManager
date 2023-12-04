@@ -527,7 +527,7 @@ else{
                     <td>{aula.Nombre}</td>
                     <td>{aula.Campus}</td>
                     
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input  className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -556,7 +556,7 @@ else{
                     <td>{horario.Id_Horario}</td>
                     <td>{horario.Hora_Inicio}</td>
                     <td>{horario.Hora_Final}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input   className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
