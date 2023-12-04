@@ -508,26 +508,23 @@ else{
         </div>
       </div>
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
-      <div class='modal fade' id='mi-modal' data-bs-backdrop='static' >
-          <div className="modal-dialog modal-dialog-scrollable modal-dialog-center" >
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Seleccion</h5>
-                <button className="btn-close"></button>
-              </div>
-              <div className="modal-body">
-                <p>Horario</p>
-
-                <p>Aula</p>
-              </div>
-              <div className="modal-footer">
-                <button className="btn btn-danger">Cancelar</button>
-                <button className="btn btn-primary">Guardar</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <div class="modal fade" id="mi-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
         <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'   >Aceptar</button>
         
