@@ -107,7 +107,7 @@ export const SeleccionMateriasPage = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json'
       }, body: JSON.stringify({
-          Id_Carga:await Math.floor(Math.random() * 10000) + 1,
+          Id_Carga: Math.floor(Math.random() * 10000) + 1,
           Id_Grupo: materia.ID_GRUPO,
           NControl_Alumno:materia.ID_MATERIA,
           Calificacion:0
