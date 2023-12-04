@@ -480,7 +480,7 @@ else{
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
               <tr key={index} >
-                <td className="d-flex justify-content-center align-items-center"><input disabled onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode, e)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
+                <td className="d-flex justify-content-center align-items-center"><input   onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode, e)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
                 <td>
                 {materia.Id_Materia}
                 </td>
