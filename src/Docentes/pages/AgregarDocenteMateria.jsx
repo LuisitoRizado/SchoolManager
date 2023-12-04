@@ -513,22 +513,20 @@ else{
           <table className="table  table-bordered table-responsive">
             <thead className="bg-body-secondary table-container">
               <tr className="bg-body-dark">
-                <th scope="col">Numero empleado</th>
+                <th scope="col">Clave aula</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Ap paterno</th>
-                <th scope="col">Ap materno</th>
-                <th scope="col">Seleccionar</th>
-
+                <th scope="col">Edificio</th>
+               
               </tr>
             </thead>
             <tbody>
-              {docentes.length >= 1 ? (
-                docentes.map((docente, index) => (
+              {aulas.length >= 1 ? (
+                aulas.map((aula, index) => (
                   <tr key={index}  >
-                    <td>{docente.Id_Docente}</td>
-                    <td>{docente.Nombre}</td>
-                    <td>{docente.AP_PATERNO}</td>
-                    <td>{docente.AP_MATERNO}</td>
+                    <td>{aula.Id_Aula}</td>
+                    <td>{aula.Nombre}</td>
+                    <td>{aula.Campus}</td>
+                    
                     <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
@@ -546,22 +544,18 @@ else{
           <table className="table  table-bordered table-responsive">
             <thead className="bg-body-secondary table-container">
               <tr className="bg-body-dark">
-                <th scope="col">Numero empleado</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Ap paterno</th>
-                <th scope="col">Ap materno</th>
-                <th scope="col">Seleccionar</th>
-
+                <th scope="col">Clave horario</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Final</th>
               </tr>
             </thead>
             <tbody>
-              {docentes.length >= 1 ? (
-                docentes.map((docente, index) => (
+              {horarios.length >= 1 ? (
+                horarios.map((horario, index) => (
                   <tr key={index}  >
-                    <td>{docente.Id_Docente}</td>
-                    <td>{docente.Nombre}</td>
-                    <td>{docente.AP_PATERNO}</td>
-                    <td>{docente.AP_MATERNO}</td>
+                    <td>{horario.Id_Horario}</td>
+                    <td>{horario.Hora_Inicio}</td>
+                    <td>{horario.Hora_Final}</td>
                     <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
