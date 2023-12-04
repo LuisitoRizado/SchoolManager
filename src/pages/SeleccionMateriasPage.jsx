@@ -109,7 +109,7 @@ export const SeleccionMateriasPage = () => {
       }, body: JSON.stringify({
           Id_Carga: Math.floor(Math.random() * 10000) + 1,
           Id_Grupo: materia.ID_GRUPO,
-          NControl_Alumno:materia.ID_MATERIA,
+          NControl_Alumno:ncontrol,
           Calificacion:0
       })
       })
