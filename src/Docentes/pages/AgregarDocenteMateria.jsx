@@ -467,15 +467,10 @@ else{
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
             <th scope="col">Seleccionar</th>
-            <th scope="col">Id_Materia</th>
-            <th scope="col">Horario</th>
-            <th scope="col">Aula</th>
-            <th scope="col">Carrera</th>
+            <th scope="col">Clave materia</th>
             <th scope="col">Materia</th>
             <th scope="col">Creditos</th>
-            <th scope="col">Cupo</th>
             <th scope="col">Semestre</th>
-           
           </tr>
         </thead>
         <tbody>
@@ -487,28 +482,16 @@ else{
                 {materia.Id_Materia}
                 </td>
                 <td>
-                {materia.Hora_Inicio_Lunes+ ' - ' + materia.Hora_Final_Lunes}
-                  
-                </td>
-                <td>
                
-                {materia.Nombre_Aula}
-                </td>
-                <td>
-                {materia.Nombre_Carrera}
-                </td>
-                <td>
                 {materia.Materia}
                 </td>
                 <td>
                 {materia.Creditos}
                 </td>
                 <td>
-                {materia.Cupo}
-                </td>
-                <td>
                 {materia.Semestre}
                 </td>
+               
 
                 
               </tr>
