@@ -511,8 +511,8 @@ else{
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
         <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'   >Aceptar</button>
         
-        <div class='modal' id='mi-modal' >
-          <div className="modal-dialog">
+        <div class='modal fade' id='mi-modal' data-bs-backdrop='static' >
+          <div className="modal-dialog modal-dialog-scrollable modal-dialog-center" >
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Seleccion</h5>
