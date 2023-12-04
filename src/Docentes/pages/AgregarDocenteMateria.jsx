@@ -338,7 +338,7 @@ export const AgregarDocenteMateria = () => {
 
     
   }
-  const guardarCambios = () =>{
+  const guardarCambios = async() =>{
     //primero comprobamos que si hay un profe y una materia al menos
     
       console.log('se seleccionaron!');
