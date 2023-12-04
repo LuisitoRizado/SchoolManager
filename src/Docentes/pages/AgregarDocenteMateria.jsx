@@ -508,10 +508,7 @@ else{
         </div>
       </div>
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
-        <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
-        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'   >Aceptar</button>
-        
-        <div class='modal fade' id='mi-modal' data-bs-backdrop='static' >
+      <div class='modal fade' id='mi-modal' data-bs-backdrop='static' >
           <div className="modal-dialog modal-dialog-scrollable modal-dialog-center" >
             <div className="modal-content">
               <div className="modal-header">
@@ -531,6 +528,10 @@ else{
           </div>
 
         </div>
+        <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
+        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'   >Aceptar</button>
+        
+       
       </div>
       <hr />
       <div className="table-responsive">
