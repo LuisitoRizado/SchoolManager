@@ -509,8 +509,9 @@ else{
       </div>
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
-        <button className="btn btn-success m-3 btnAceptar disabled"   onClick={()=>guardarCambios()} >Aceptar</button>
-        <div class='' id='mi-modal' >
+        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal'  onClick={()=>guardarCambios()} >Aceptar</button>
+        
+        <div class='modal' id='mi-modal' >
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
