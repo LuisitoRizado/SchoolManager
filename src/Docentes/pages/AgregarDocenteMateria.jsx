@@ -509,6 +509,72 @@ else{
         </tbody>
       </table>
         </div>
+        <div className="tablaDocentes col-md-6 table-responsive table-container border">
+          <table className="table  table-bordered table-responsive">
+            <thead className="bg-body-secondary table-container">
+              <tr className="bg-body-dark">
+                <th scope="col">Numero empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ap paterno</th>
+                <th scope="col">Ap materno</th>
+                <th scope="col">Seleccionar</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {docentes.length >= 1 ? (
+                docentes.map((docente, index) => (
+                  <tr key={index}  >
+                    <td>{docente.Id_Docente}</td>
+                    <td>{docente.Nombre}</td>
+                    <td>{docente.AP_PATERNO}</td>
+                    <td>{docente.AP_MATERNO}</td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+              <td>
+                <p className="m-1 text-danger">No se encontro ningúna docente</p>
+              </td>
+            </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="tablaDocentes col-md-6 table-responsive table-container border">
+          <table className="table  table-bordered table-responsive">
+            <thead className="bg-body-secondary table-container">
+              <tr className="bg-body-dark">
+                <th scope="col">Numero empleado</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Ap paterno</th>
+                <th scope="col">Ap materno</th>
+                <th scope="col">Seleccionar</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {docentes.length >= 1 ? (
+                docentes.map((docente, index) => (
+                  <tr key={index}  >
+                    <td>{docente.Id_Docente}</td>
+                    <td>{docente.Nombre}</td>
+                    <td>{docente.AP_PATERNO}</td>
+                    <td>{docente.AP_MATERNO}</td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+              <td>
+                <p className="m-1 text-danger">No se encontro ningúna docente</p>
+              </td>
+            </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="contenedorBotones container-fluid d-flex justify-content-center align-items-center">
 
