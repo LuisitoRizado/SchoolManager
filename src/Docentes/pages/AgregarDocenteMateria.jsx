@@ -600,8 +600,8 @@ else{
   </div>
 </div>
         <button className="btn btn-danger m-3 btnCancelar " disabled >Cancelar</button>
-        <button className="btn btn-success m-3 btnAceptar disabled " data-bs-toggle='modal' data-bs-target='#mi-modal' onClick ={()=>{
-
+        <button className="btn btn-success m-3 btnAceptar disabled " onClick ={()=>{
+          guardarCambios()
         }}  >Aceptar</button>
         
        
