@@ -432,7 +432,7 @@ else{
           <table className="table  table-bordered table-responsive">
             <thead className="bg-body-secondary table-container">
               <tr className="bg-body-dark">
-                <th scope="col">Id docente</th>
+                <th scope="col">Numero empleado</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Ap paterno</th>
                 <th scope="col">Ap materno</th>
@@ -534,8 +534,7 @@ else{
       <table className="table  table-bordered table-responsive ">
         <thead className="bg-body-secondary">
           <tr className="bg-body-dark">
-            <th scope="col">Id materia asignada docente</th>
-            <th scope="col">Id Materia</th>
+            
             <th scope="col">Materia</th>
             <th scope="col">Aula</th>
             <th scope="col">Profesor</th>
@@ -551,45 +550,33 @@ else{
           {materiasCargadas.length >= 1 ? (
             materiasCargadas.map((materia, index) => (
               <tr key={index}>
+                
+                
                 <td>
                   <input
-                    className={`id-${index} form-control`}
-                    defaultValue={materia.Id_Docxmath}
+                    className={`fila-${index} form-control`}
+                    defaultValue={materia.MATERIA}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.Id_Materia}
+                    defaultValue={materia.AULA_NOMBRE}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.Materia}
+                    defaultValue={materia.NOMBRE_DOCENTE}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.NOMBRE}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={materia.Nombre}
-                    disabled
-                  />
-                </td>
-                <td>
-                  <input
-                    className={`fila-${index} form-control`}
-                    defaultValue={materia.Ap_Paterno}
+                    defaultValue={materia.AP_PATERNO}
                     disabled
                   />
                 </td>
@@ -603,14 +590,14 @@ else{
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.Hora_Inicio_Lunes}
+                    defaultValue={materia.HORA_INICIO}
                     disabled
                   />
                 </td>
                 <td>
                   <input
                     className={`fila-${index} form-control`}
-                    defaultValue={materia.Hora_Final_Lunes}
+                    defaultValue={materia.HORA_FINAL}
                     disabled
                   />
                 </td>

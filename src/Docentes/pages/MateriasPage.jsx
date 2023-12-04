@@ -74,9 +74,9 @@ export const MateriasPage = () => {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h5 className="card-title">Asignar docente a  materia</h5>
+                <h5 className="card-title">Grupos</h5>
                 <p className="card-text">
-                 Puedes asignarle un docente a una materia
+                 Crear grupos
                 </p>
 
                 <NavLink
