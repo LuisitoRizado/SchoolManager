@@ -107,10 +107,10 @@ export const SeleccionMateriasPage = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json'
       }, body: JSON.stringify({
-          Id_Carga:await Math.floor(Math.random() * 100000) + 1,
-          Ncontrol: window.localStorage.getItem('user'),
-          Id_DocxMath:materia.ID_DOCXMATH,
-          Calificacion:null
+          Id_Carga:await Math.floor(Math.random() * 10000) + 1,
+          Id_Grupo: materia.ID_GRUPO,
+          Id_DocxMath:materia.ID_MATERIA,
+          Calificacion:0
       })
       })
     });
