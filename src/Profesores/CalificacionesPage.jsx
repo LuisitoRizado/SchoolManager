@@ -94,7 +94,7 @@ console.log(formattedDate);
    console.log("me diste click");
    console.log(inputs[0]);
    //guardamos los datos de los inputs
-   const aula = inputs[0].value;
+   const calificacion = inputs[0].value;
   
    //recopilamos los inputs
    const inputName = inputs[0];
@@ -109,10 +109,10 @@ console.log(formattedDate);
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-      "Calificacion": newCalificacion
+      "Calificacion": calificacion
       }),
     });
-    confirm('Aula actualizada!')
+    confirm('Calificacion actualizada!')
     window.location.reload();
  //}
  });
