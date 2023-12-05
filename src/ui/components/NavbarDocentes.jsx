@@ -112,7 +112,7 @@ export const NavbarDocentes = () => {
             Carreras
           </NavLink>
         </div>
-        <p className='white bold'> Usuario: {nombre} </p>
+        <p className='text-white nav-item'> Usuario: {nombre} </p>
 
       </div>
 
