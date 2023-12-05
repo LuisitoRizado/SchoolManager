@@ -111,8 +111,9 @@ export const NavbarDocentes = () => {
           >
             Carreras
           </NavLink>
-          <p className='white bold'> Usuario: {nombre} </p>
         </div>
+        <p className='white bold'> Usuario: {nombre} </p>
+
       </div>
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
