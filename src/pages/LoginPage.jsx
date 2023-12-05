@@ -46,6 +46,7 @@ export const LoginPage = () => {
   };
   const onLogInEmpleado = () => {
     
+    window.localStorage.setItem('user', username)
       navigate("/empleado/inicio/?usuario="+username, {
         replace: true,
       });

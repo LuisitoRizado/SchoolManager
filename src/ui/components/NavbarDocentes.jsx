@@ -4,7 +4,7 @@ import { InicioPage } from "../../pages/InicioPage";
 export const NavbarDocentes = () => {
   //Custom hook de react router para la navegación
   const navigate = useNavigate();
-
+  const usuario = window.localStorage.getItem('user')
   const onLogout = () => {
     navigate("/login", {
       replace: true,
@@ -93,6 +93,7 @@ export const NavbarDocentes = () => {
           >
             Carreras
           </NavLink>
+          <p></p>
         </div>
       </div>
 
