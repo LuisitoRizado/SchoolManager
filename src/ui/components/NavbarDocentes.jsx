@@ -111,7 +111,7 @@ export const NavbarDocentes = () => {
           >
             Carreras
           </NavLink>
-          <p> Usuario: {nombre} </p>
+          <p className='white bold'> Usuario: {nombre} </p>
         </div>
       </div>
 
