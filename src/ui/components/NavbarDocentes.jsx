@@ -1,12 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { InicioPage } from "../../pages/InicioPage";
 import { useState,useEffect } from 'react';
+ let nombre;
 export const NavbarDocentes = () => {
   //Custom hook de react router para la navegación
   const navigate = useNavigate();
   const usuario =parseInt(window.localStorage.getItem('user'))
   const password =window.localStorage.getItem('password')
-  let nombre;
+ 
   const URL = "https://rest-api-production-a5bf.up.railway.app/getEmpleado/" + usuario + '/' + password;
   const consultarMaterias =  async () => {
     await fetch(URL)
