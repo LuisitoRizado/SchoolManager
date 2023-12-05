@@ -5,7 +5,7 @@ export const NavbarDocentes = () => {
   //Custom hook de react router para la navegación
   const navigate = useNavigate();
   const usuario =parseInt(window.localStorage.getItem('user'))
-  const password =parseInt(window.localStorage.getItem('password'))
+  const password =window.localStorage.getItem('password')
   let nombre;
   const URL = "https://rest-api-production-a5bf.up.railway.app/getEmpleado/" + usuario + '/' + password;
   const consultarMaterias =  async () => {
