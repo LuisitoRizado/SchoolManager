@@ -467,7 +467,7 @@ else{
                     <td>{docente.AP_PATERNO}</td>
                     <td>{docente.AP_MATERNO}</td>
                     <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>
-                   setDocenteSeleccionado(docente.Id_Docente)} className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
+                   setId_docente(docente.Id_Docente)} className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
