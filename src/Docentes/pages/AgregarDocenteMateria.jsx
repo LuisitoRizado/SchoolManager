@@ -537,7 +537,7 @@ else{
                     <td>{aula.Nombre}</td>
                     <td>{aula.Campus}</td>
                     
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setAula(aula.Id_Aula)}} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setAula(aula.Id_Aula)}} className="form-check-input  " type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -566,7 +566,7 @@ else{
                     <td>{horario.Id_Horario}</td>
                     <td>{horario.Hora_Inicio}</td>
                     <td>{horario.Hora_Final}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setHora(horario.Id_Horario)}}   className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setHora(horario.Id_Horario)}}   className="form-check-input  " type="checkbox" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
