@@ -14,7 +14,7 @@ export const AgregarDocenteMateria = () => {
   const [id, setId] = useState();
   const [id_docente, setId_docente] = useState();
   const [id_materia, setId_materia] = useState();
-  const [materias, setMaterias] = useState([]);
+  const [materias, setMaterias] = useState();
 
   const [docentes, setDocentes] = useState([]);
   const [aulas, setAulas] = useState([])
