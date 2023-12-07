@@ -342,6 +342,11 @@ export const AgregarDocenteMateria = () => {
     //primero comprobamos que si hay un profe y una materia al menos
     
       console.log('se seleccionaron!');
+      alert('Id materia: ' + id_materia)
+      alert('Id Aula: ' + aula)
+      alert('Id Horario : ' + hora)
+      alert('No empleado: ' + id_docente)
+
       materiasSeleccionadas.forEach(async(materia)=>{
          await fetch('https://rest-api-production-a5bf.up.railway.app/addMateria_Asignada', {
           method: "POST",
