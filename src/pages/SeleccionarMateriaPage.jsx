@@ -10,6 +10,11 @@ export const SeleccionarMateriaPage = () => {
   let estaCargada;
   //-----Hooks
   const [cargas, setCargas] = useState([]);
+
+  const goBack = () => {
+    window.history.back();
+  }
+
   //const [semestre, setSemestre] = useState();
   //URL
   const URL = "https://rest-api-production-a5bf.up.railway.app/getGrupos/" + materia;
@@ -183,7 +188,9 @@ export const SeleccionarMateriaPage = () => {
         </tbody>
       </table>
       </div>
-      <button className="btn btn-warning">Regresar</button>
+      <button className="btn btn-warning" onClick={() => {
+        goBack()
+      }}>Regresar</button>
     </div>
   );
 };
