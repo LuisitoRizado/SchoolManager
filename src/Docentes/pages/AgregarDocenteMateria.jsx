@@ -466,7 +466,8 @@ else{
                     <td>{docente.Nombre}</td>
                     <td>{docente.AP_PATERNO}</td>
                     <td>{docente.AP_MATERNO}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>seleccionarDocente(e.target, e.target.parentNode.parentNode)} className="form-check-input check-docente" type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=>
+                   setDocenteSeleccionado(docente.Id_Docente)} className="form-check-input check-docente" type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -495,7 +496,7 @@ else{
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
               <tr key={index} >
-                <td className="d-flex justify-content-center align-items-center"><input   onChange={(e)=>seleccionarMaterias(e.target, e.target.parentNode.parentNode, e)} className="form-check-input check-materia" type="checkbox" value="" id="defaultCheck1"></input></td>
+                <td className="d-flex justify-content-center align-items-center"><input   onChange={(e)=>setMaterias(materia.Id_Materia)} className="form-check-input check-materia" type="radio" value="" id="defaultCheck1"></input></td>
                 <td>
                 {materia.Id_Materia}
                 </td>
@@ -542,7 +543,7 @@ else{
                     <td>{aula.Nombre}</td>
                     <td>{aula.Campus}</td>
                     
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setAula(aula.Id_Aula)}} className="form-check-input  " type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setAula(aula.Id_Aula)}} className="form-check-input  " type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
@@ -571,7 +572,7 @@ else{
                     <td>{horario.Id_Horario}</td>
                     <td>{horario.Hora_Inicio}</td>
                     <td>{horario.Hora_Final}</td>
-                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setHora(horario.Id_Horario)}}   className="form-check-input  " type="checkbox" value="" id="defaultCheck1"></input></td>
+                    <td className="d-flex justify-content-center align-items-center"><input onChange={(e)=> {setHora(horario.Id_Horario)}}   className="form-check-input  " type="radio" value="" id="defaultCheck1"></input></td>
                   </tr>
                 ))
               ) : (
