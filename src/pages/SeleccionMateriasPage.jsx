@@ -23,9 +23,9 @@ export const SeleccionMateriasPage = () => {
   //URL
  
   //Peticion
-  const consultarMaterias =  (semestre) => {
+  const consultarMaterias = async (semestre) => {
     const URL = "https://rest-api-production-a5bf.up.railway.app/getMaterias/" + semestre + '/' + user[0].Id_Carrera;
-     fetch(URL)
+    await fetch(URL)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
