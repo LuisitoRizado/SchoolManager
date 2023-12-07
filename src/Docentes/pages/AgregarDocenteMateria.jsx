@@ -14,7 +14,7 @@ export const AgregarDocenteMateria = () => {
   const [id, setId] = useState();
   const [id_docente, setId_docente] = useState();
   const [id_materia, setId_materia] = useState();
-  const [materias, setMaterias] = useState();
+  const [materias, setMaterias] = useState([]);
 
   const [docentes, setDocentes] = useState([]);
   const [aulas, setAulas] = useState([])
@@ -496,7 +496,7 @@ else{
           {materias.length >= 1 ? (
             materias.map((materia, index) => (
               <tr key={index} >
-                <td className="d-flex justify-content-center align-items-center"><input   onChange={(e)=>setMaterias(materia.Id_Materia)} className="form-check-input check-materia" type="radio" value="" id="defaultCheck1"></input></td>
+                <td className="d-flex justify-content-center align-items-center"><input   onChange={(e)=>setId_materia(materia.Id_Materia)} className="form-check-input check-materia" type="radio" value="" id="defaultCheck1"></input></td>
                 <td>
                 {materia.Id_Materia}
                 </td>
